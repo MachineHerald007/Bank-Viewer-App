@@ -6,7 +6,7 @@
     "distDir": "../out"
   },
   "package": {
-    "productName": "bank-viewer",
+    "productName": "psobb-bank-viewer",
     "version": "0.1.0"
   },
   "tauri": {
@@ -22,13 +22,9 @@
       },
       "externalBin": [],
       "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.icns",
-        "icons/icon.ico"
+        "icons/psobb.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.psobb-bankviewer",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -55,10 +51,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 1400,
         "resizable": true,
-        "title": "Bank Viewer",
-        "width": 800
+        "title": "PSOBB Bank Viewer",
+        "width": 1400
       }
     ]
   }
