@@ -1,6 +1,6 @@
     export const characters = [
         {
-            name: "Sensui",
+            name: "Machine",
             class: "HUcast",
             sec_id: "Skyly",
             level: 200,
@@ -91,7 +91,7 @@
             name: "Machine",
             class: "RAmarl",
             sec_id: "Purplenum",
-            level: 143,
+            level: 141,
             slot: 11,
             img: "https://minimal-kit-react.vercel.app/assets/images/avatars/avatar_25.jpg"
         },

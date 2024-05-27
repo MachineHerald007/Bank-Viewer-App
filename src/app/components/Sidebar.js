@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import ReactDOM from 'react-dom'
 import {
+    Table,
     Pagination,
     Pane,
     Tablist,
@@ -132,57 +133,85 @@ export function Sidebar() {
         }
     }
 
+    const CharacterCards = ({ characters }) => {
+        return (
+            <Table>
+                <Table.Head>
+                    <Table.TextHeaderCell marginLeft={12}>Name</Table.TextHeaderCell>
+                    <Table.TextHeaderCell>Level</Table.TextHeaderCell>
+                    <Table.TextHeaderCell>Class</Table.TextHeaderCell>
+                    <Table.TextHeaderCell>Section ID</Table.TextHeaderCell>
+                    <Table.TextHeaderCell>Slot</Table.TextHeaderCell>
+                </Table.Head>
+                <Table.Body>
+                    {characters.map((character, index) => (
+                    <Table.Row
+                        height={72}
+                        key={index}
+                        isSelectable onSelect={() => alert(character.name)}
+                    >
+                        <Table.TextCell marginLeft={8}>
+                            <Avatar
+                                position="relative"
+                                top={2}
+                                marginRight={16}
+                                src={character.img}
+                                name={character.name}
+                                size={44}
+                            />
+                            <Text position="relative" bottom={14} fontWeight={600}>{character.name}</Text>
+                        </Table.TextCell>
+                        <Table.TextCell textProps={{ size: 400, fontWeight: 600 }}>{character.level}</Table.TextCell>
+                        <Table.TextCell textProps={{ size: 400, fontWeight: 600 }}>{character.class}</Table.TextCell>
+                        <Table.TextCell textProps={{ size: 400, fontWeight: 600 }}>{character.sec_id}</Table.TextCell>
+                        <Table.TextCell textProps={{ size: 400, fontWeight: 600 }}>{character.slot}</Table.TextCell>
+                    </Table.Row>
+                    ))}
+                </Table.Body>
+            </Table>
+        )
+    }
+
     const returnCharacters = (characters) => {
-        const [] = useState([])
+        // const [characters, setcharacters] = useState([]);
         const [loading, setLoading] = useState(false)
-        const [currentPage, SetCurrentPage] = useState(1)
-        const [charactersPerPage, setCharactersPerPage] = useState(divideAndRoundUp(characters.length))
+        const [currentPage, setCurrentPage] = useState(1)
+        const [characterPages, setcharacterPages] = useState(divideAndRoundUp(characters.length))
 
         // Fetch characters from backend
-        // useEffect(() => {
-        //     setLoading(true)
-        // }, [])
+        useEffect(() => {
+        }, [currentPage])
+
+        const charactersPerPage = 4
+        const indexOfLastCharacter = currentPage * charactersPerPage
+        const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage
+        const currentCharacters = characters.slice(indexOfFirstCharacter, indexOfLastCharacter)
 
         return (
             <Pane>
-                {characters.map((character, index) => {
-                    return (
-                        <Pane
-                            display="inline-block"
-                            width={256}
-                            paddingTop={8}
-                            paddingBottom={8}
-                            marginRight={16}
-                            marginBottom={16}
-                            background="#41bd8e"
-                            elevation={3}
-                        >
-                            <Avatar
-                                position="relative"
-                                bottom={12}
-                                marginRight={16}
-                                marginLeft={16}
-                                src={character.img}
-                                name={character.name}
-                                size={64}
-                            />
-                            <Pane
-                                display="inline-block"
-                                paddingTop={4}
-                                paddingBottom={4}
-                            >
-                                <Text display="block" color="#FFFFFF"><b>Slot: </b> {character.slot}</Text>
-                                <Text display="block" color="#FFFFFF"><b>Name: </b> {character.name}</Text>
-                                <Text display="block" color="#FFFFFF"><b>Level: </b> {character.level}</Text>
-                                <Text display="block" color="#FFFFFF"><b>Class: </b> {character.class}</Text>
-                                <Text display="block" color="#FFFFFF"><b>Section ID: </b> {character.sec_id}</Text>
-                            </Pane>
-                        </Pane>
-                    )
-                })}
-                <Pagination page={1} totalPages={charactersPerPage}>
-                    
-                </Pagination>
+                <CharacterCards characters={currentCharacters} />
+                <Pane
+                    height={64}
+                    position="relative"s
+                    bottom={2}
+                    paddingTop={1}
+                    backgroundColor="white"
+                    borderTop="1px solid #E6E8F0"
+                    borderRight="1px solid #E6E8F0"
+                    borderLeft="1px solid #E6E8F0"
+                    borderBottom="1px solid #E6E8F0"
+                    borderBottomLeftRadius={4}
+                    borderBottomRightRadius={4}
+                >
+                    <Pagination
+                        float="right"
+                        page={currentPage}
+                        totalPages={characterPages}
+                        onPageChange={(page) => setCurrentPage(page)}
+                        onNextPage={() => setCurrentPage(currentPage + 1)}
+                        onPreviousPage={() => setCurrentPage(currentPage - 1)}
+                    />
+                </Pane>
             </Pane>
         )
     }
@@ -190,40 +219,40 @@ export function Sidebar() {
     return (
         <Pane display="flex" height={1200}>
             <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
-            <ProfileSection character={char} />
-            {tabs.map((tab, index) => {
-                return (
-                    <Tab
-                        aria-controls={`panel-${tab}`}
-                        direction="vertical"
-                        isSelected={index === selectedIndex}
-                        key={tab}
-                        onSelect={() => setSelectedIndex(index)}
-                        height={44}
-                    >
-                        {returnIcon(tab)}
-                    </Tab>
-                )
-            })}
+                <ProfileSection character={char} />
+                {tabs.map((tab, index) => {
+                    return (
+                        <Tab
+                            aria-controls={`panel-${tab}`}
+                            direction="vertical"
+                            isSelected={index === selectedIndex}
+                            key={tab}
+                            onSelect={() => setSelectedIndex(index)}
+                            height={44}
+                        >
+                            {returnIcon(tab)}
+                        </Tab>
+                    )
+                })}
             </Tablist>
             <Pane padding={16} background="tint1" flex="1">
-            {tabs.map((tab, index) => (
-                <Pane
-                    aria-labelledby={tab}
-                    aria-hidden={index !== selectedIndex}
-                    display={index === selectedIndex ? 'block' : 'none'}
-                    key={tab}
-                    role="tabpanel"
-                    paddingLeft={24}
-                    paddingRight={24}
-                    paddingBottom={24}
-                    style={{ minHeight: "100vh", height: "fit-content" }}
-                >
-                    <Pane>
-                        {handlePanelPage(tab)}
+                {tabs.map((tab, index) => (
+                    <Pane
+                        aria-labelledby={tab}
+                        aria-hidden={index !== selectedIndex}
+                        display={index === selectedIndex ? 'block' : 'none'}
+                        key={tab}
+                        role="tabpanel"
+                        paddingLeft={24}
+                        paddingRight={24}
+                        paddingBottom={24}
+                        style={{ minHeight: "100vh", height: "fit-content" }}
+                    >
+                        <Pane>
+                            {handlePanelPage(tab)}
+                        </Pane>
                     </Pane>
-                </Pane>
-            ))}
+                ))}
             </Pane>
         </Pane>
     )

@@ -9,6 +9,7 @@ export const ProfilePicture = ({ character }) => {
       name={character.name}
       size={40}
       margin={24}
+      marginLeft={8}
     />
   )
 }
@@ -17,7 +18,7 @@ export function ProfileSection({ character }) {
     return (
         <Pane display="flex">
             <ProfilePicture character={character} />
-            <Heading is="h3" marginTop={32}>{character.name}</Heading>
+            <Heading is="h3" marginTop={32} color="#474d66">{character.name}</Heading>
         </Pane>
     )
 }

@@ -7,7 +7,7 @@ import { Sidebar } from "./components/Sidebar"
 
 export default function BankView() {
     useEffect(() => {
-    invoke("hydrate_data", { name: "Bank Viewer" })
+    invoke("greet", { name: "Bank Viewer" })
         .then(console.log)
         .catch(console.error)
     }, [])
