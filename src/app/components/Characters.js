@@ -5,7 +5,7 @@
             sec_id: "Skyly",
             level: 200,
             slot: 0,
-            img: "https://minimal-kit-react.vercel.app/assets/images/avatars/avatar_25.jpg"
+            img: "https://i.ibb.co/z4S7p5S/HUcast.png"
         },
         {
             name: "Machine",
@@ -13,7 +13,7 @@
             sec_id: "Whitill",
             level: 200,
             slot: 1,
-            img: "https://minimal-kit-react.vercel.app/assets/images/avatars/avatar_25.jpg"
+            img: "https://i.ibb.co/z4S7p5S/HUcast.png"
         },
         {
             name: "Groovy",
@@ -21,7 +21,7 @@
             sec_id: "Greenil",
             level: 171,
             slot: 2,
-            img: "https://minimal-kit-react.vercel.app/assets/images/avatars/avatar_25.jpg"
+            img: "https://i.ibb.co/z4S7p5S/HUcast.png"
         },
         {
             name: "Toguro",
@@ -29,7 +29,7 @@
             sec_id: "Oran",
             level: 199,
             slot: 3,
-            img: "https://minimal-kit-react.vercel.app/assets/images/avatars/avatar_25.jpg"
+            img: "https://i.ibb.co/z4S7p5S/HUcast.png"
         },
         {
             name: "Renji",
@@ -37,7 +37,7 @@
             sec_id: "Skyly",
             level: 140,
             slot: 4,
-            img: "https://minimal-kit-react.vercel.app/assets/images/avatars/avatar_25.jpg"
+            img: "https://i.ibb.co/z4S7p5S/HUcast.png"
         },
         {
             name: "Zaraki",
@@ -45,7 +45,7 @@
             sec_id: "Blueful",
             level: 150,
             slot: 5,
-            img: "https://minimal-kit-react.vercel.app/assets/images/avatars/avatar_25.jpg"
+            img: "https://i.ibb.co/z4S7p5S/HUcast.png"
         },
         {
             name: "Kenpachi",
@@ -53,7 +53,7 @@
             sec_id: "Pinkal",
             level: 144,
             slot: 6,
-            img: "https://minimal-kit-react.vercel.app/assets/images/avatars/avatar_25.jpg"
+            img: "https://i.ibb.co/z4S7p5S/HUcast.png"
         },
         {
             name: "Gun Maiden",
@@ -61,7 +61,7 @@
             sec_id: "Purplenum",
             level: 31,
             slot: 7,
-            img: "https://minimal-kit-react.vercel.app/assets/images/avatars/avatar_25.jpg"
+            img: "https://i.ibb.co/z4S7p5S/HUcast.png"
         },
         {
             name: "Mobile Suit",
@@ -69,7 +69,7 @@
             sec_id: "Viridia",
             level: 200,
             slot: 8,
-            img: "https://minimal-kit-react.vercel.app/assets/images/avatars/avatar_25.jpg"
+            img: "https://i.ibb.co/z4S7p5S/HUcast.png"
         },
         {
             name: "Machine",
@@ -77,7 +77,7 @@
             sec_id: "Yellowboze",
             level: 163,
             slot: 9,
-            img: "https://minimal-kit-react.vercel.app/assets/images/avatars/avatar_25.jpg"
+            img: "https://i.ibb.co/z4S7p5S/HUcast.png"
         },
         {
             name: "Vash",
@@ -85,7 +85,7 @@
             sec_id: "Redria",
             level: 120,
             slot: 10,
-            img: "https://minimal-kit-react.vercel.app/assets/images/avatars/avatar_25.jpg"
+            img: "https://i.ibb.co/z4S7p5S/HUcast.png"
         },
         {
             name: "Machine",
@@ -93,6 +93,6 @@
             sec_id: "Purplenum",
             level: 141,
             slot: 11,
-            img: "https://minimal-kit-react.vercel.app/assets/images/avatars/avatar_25.jpg"
+            img: "https://i.ibb.co/z4S7p5S/HUcast.png"
         },
     ]

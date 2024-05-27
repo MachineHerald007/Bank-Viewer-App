@@ -1,5 +1,3 @@
-
-
 export const metadata = {
   title: 'PSOBB Banking App',
   description: 'View your bank and inventory.',

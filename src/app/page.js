@@ -1,7 +1,7 @@
-import BankView from "./BankView"
+import Dashboard from "./Dashboard"
 
 export default function Home() {
   return (
-    <BankView />
+    <Dashboard />
   )
 }
