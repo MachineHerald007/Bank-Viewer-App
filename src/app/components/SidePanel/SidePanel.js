@@ -26,6 +26,7 @@ import {
 } from 'evergreen-ui'
 import { ProfileSection  } from "./ProfileSection"
 import { AllItems } from "../Page/All-Items/All-Items"
+import { SharedBank } from "../Page/SharedBank/SharedBank"
 import { CharacterViewer } from "../Page/CharacterViewer/CharacterViewer"
 
 export function SidePanel() {
@@ -101,11 +102,7 @@ export function SidePanel() {
             case "All Items":
                 return <AllItems />
             case "Shared Bank":
-                return (
-                    <Pane>
-                        <Text>{tab}</Text>
-                    </Pane>
-                )
+                return <SharedBank />
             case "Custom Item Sets":
                  return (
                     <Pane>
