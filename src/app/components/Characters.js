@@ -62,15 +62,15 @@ const _characters = [
         name: "Machine",
         class: "RAcast",
         sec_id: "Whitill",
-        level: 200,
+        level: 189,
         slot: 1,
         img: ""
     },
     {
-        name: "Groovy",
+        name: "Machine",
         class: "FOnewm",
         sec_id: "Greenil",
-        level: 171,
+        level: 172,
         slot: 2,
         img: ""
     },
@@ -126,7 +126,7 @@ const _characters = [
         name: "Machine",
         class: "RAmar",
         sec_id: "Yellowboze",
-        level: 163,
+        level: 164,
         slot: 9,
         img: ""
     },

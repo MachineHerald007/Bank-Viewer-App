@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import ReactDOM from 'react-dom'
+import React, { useState, useEffect, useContext } from "react"
+import { AccountContext } from "../../page"
 import {
     Table,
     Pagination,
@@ -26,9 +26,9 @@ import {
 } from 'evergreen-ui'
 import { ProfileSection  } from "./ProfileSection"
 import { CharacterViewer } from "../Page/CharacterViewer/CharacterViewer"
-import { characters } from "../Characters"
 
 export function SidePanel() {
+    const { characters } = useContext(AccountContext)
     const [selectedIndex, setSelectedIndex] = React.useState(0)
     const tabs = React.useMemo(() => [
         "Analytics",

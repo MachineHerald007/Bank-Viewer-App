@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react"
+import React, { useContext, useState, useEffect } from "react"
+import { CharacterContext } from "../CharacterViewer/CharacterViewer"
 import {
     Avatar,
     Text,
@@ -8,6 +9,7 @@ import {
 } from 'evergreen-ui'
 
 export function CharacterProfileCard({ character }) {
+    const { selectedCharacter } = useContext(CharacterContext)
     return (
         <Pane
             width={374}
@@ -25,18 +27,18 @@ export function CharacterProfileCard({ character }) {
                 position="relative"
                 top={22}
                 size={128}
-                src={character.img}
-                name={character.name}
+                src={selectedCharacter.img}
+                name={selectedCharacter.name}
             />
             <Pane
                 display="inline-block"
                 marginLeft={24}
             >
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>NAME:</Text> {character.name}</Text>
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>LEVEL:</Text> {character.level}</Text>
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>CLASS:</Text> {character.class}</Text>
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>SECTION ID:</Text> {character.sec_id}</Text>
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>SLOT:</Text> {character.slot}</Text>
+                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>NAME:</Text> {selectedCharacter.name}</Text>
+                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>LEVEL:</Text> {selectedCharacter.level}</Text>
+                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>CLASS:</Text> {selectedCharacter.class}</Text>
+                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>SECTION ID:</Text> {selectedCharacter.sec_id}</Text>
+                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>SLOT:</Text> {selectedCharacter.slot}</Text>
             </Pane>
         </Pane>
     )

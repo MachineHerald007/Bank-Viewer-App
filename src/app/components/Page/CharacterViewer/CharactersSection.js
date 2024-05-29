@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, {
+    useContext,
+    useState,
+    useEffect
+} from "react"
 import {
     Avatar,
     Text,
@@ -6,12 +10,14 @@ import {
     Pagination,
     Pane,
 } from 'evergreen-ui'
+import { CharacterContext } from "./CharacterViewer"
 
 function divideAndRoundUp(num) {
   return Math.ceil(num / 4)
 }
 
 const CharacterCards = ({ characters }) => {
+    const { selectedCharacter, setSelectedCharacter } = useContext(CharacterContext)
     return (
         <Table>
             <Table.Head>
@@ -26,7 +32,10 @@ const CharacterCards = ({ characters }) => {
                 <Table.Row
                     height={72}
                     key={index}
-                    isSelectable onSelect={() => alert(character.name)}
+                    isSelectable onSelect={() => {
+                        // console.log(character)
+                        setSelectedCharacter(character)
+                    }}
                 >
                     <Table.TextCell marginLeft={8}>
                         <Avatar

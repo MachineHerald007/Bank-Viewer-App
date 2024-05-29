@@ -13,8 +13,8 @@ export default function Dashboard() {
     }, [])
 
     return (
-    <Pane marginLeft={24}>
-        <SidePanel />
-    </Pane>
+        <Pane marginLeft={24}>
+            <SidePanel />
+        </Pane>
     )
 }
