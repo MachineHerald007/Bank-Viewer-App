@@ -25,7 +25,7 @@ export function CharacterProfileCard({ character }) {
                 position="relative"
                 top={22}
                 size={128}
-                src={character.class == "HUcast" ? "https://i.ibb.co/z4S7p5S/HUcast.png" : ""}
+                src={character.img}
                 name={character.name}
             />
             <Pane

@@ -33,7 +33,7 @@ const CharacterCards = ({ characters }) => {
                             position="relative"
                             top={2}
                             marginRight={16}
-                            src={character.class == "HUcast" ? "https://i.ibb.co/z4S7p5S/HUcast.png" : ""}
+                            src={character.img}
                             name={character.name}
                             size={44}
                         />

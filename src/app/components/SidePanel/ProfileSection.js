@@ -5,7 +5,7 @@ import { Pane, Avatar, Heading } from 'evergreen-ui'
 export const ProfilePicture = ({ character }) => {
   return (
     <Avatar
-      src={character.class == "HUcast" ? "https://i.ibb.co/z4S7p5S/HUcast.png" : ""}
+      src={character.img}
       name={character.name}
       size={40}
       margin={24}
