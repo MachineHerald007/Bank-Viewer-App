@@ -25,6 +25,7 @@ import {
     DiagramTreeIcon
 } from 'evergreen-ui'
 import { ProfileSection  } from "./ProfileSection"
+import { AllItems } from "../Page/All-Items/All-Items"
 import { CharacterViewer } from "../Page/CharacterViewer/CharacterViewer"
 
 export function SidePanel() {
@@ -98,11 +99,7 @@ export function SidePanel() {
                     </Pane>
                 )
             case "All Items":
-                return (
-                    <Pane>
-                        <Text>{tab}</Text>
-                    </Pane>
-                )
+                return <AllItems />
             case "Shared Bank":
                 return (
                     <Pane>

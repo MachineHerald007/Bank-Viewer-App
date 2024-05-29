@@ -1,4 +1,361 @@
-export const bank = `Gungnir +10 [Berserk] [0/0/0/20|60] 
+export const bank = `[U] Diska of Braveman [Berserk] [0/25/20/0|0] 
+[U] Diska of Braveman [Berserk] [45/0/0/0|20] 
+[U] Diska of Braveman [Berserk] [15/0/15/0|25] 
+[U] Diska of Braveman [Berserk] [0/5/0/0|5] 
+[U] Diska of Braveman [Berserk] [0/0/5/5|10] 
+Diska of Braveman [Berserk] [0/0/55/15|0] 
+[U] Diska of Braveman [Berserk] [20/45/0/10|0] 
+[U] Diska of Braveman [Berserk] [0/0/20/0|0] 
+[U] Diska of Braveman [Berserk] [0/25/5/0|0] 
+[U] Diska of Braveman [Berserk] [25/5/20/0|0] 
+Diska of Braveman [Berserk] [0/0/0/0|25] 
+[U] Custom Ray ver.OO [Flame] [0/0/0/0|20] 
+[U] Custom Ray ver.OO [Flame] [0/0/0/0|20] 
+[U] Justy-23ST [Devil's] [15/0/0/0|10] 
+[U] M&A60 Vise [Berserk] [15/50/0/0|0] 
+M&A60 Vise [Berserk] [0/0/0/0|30] 
+[U] Arms +3 [Frost] [0/0/30/0|40] 
+Meteor Smash [Soul] [0/0/0/0|20] 
+[U] Final Impact [Lord's] [0/0/25/15|10] 
+[U] Club +1 [Dark] [0/0/15/25|35] 
+Club of Zumiuran [Storm] [0/50/15/0|0] 
+Storm Wand: Indra [Storm] [0/15/40/0|0] 
+[U] Storm Wand: Indra [Storm] [0/5/0/0|0] 
+[U] Storm Wand: Indra [Storm] [10/0/15/0|25] 
+[U] Silence Claw [Dark] [0/0/0/0|0] 
+[U] Inferno Bazooka [Devil's] [25/0/10/0|15] 
+[U] Meteor Cudgel [Blizzard] [0/0/0/25|10] 
+Girasole [0/0/0/0|0] 
+Madam's Umbrella [Berserk] [0/0/0/0|15] 
+Frozen Shooter [0/0/25/0|0] 
+Yasminkov 3000R [25/0/20/0|0] 
+Yasminkov 2000H [0/10/0/5|0] 
+Yasminkov 7000V [0/0/0/20|0] 
+Hitogata [Soul] [0/25/0/0|0] 
+[U] Hitogata [Soul] [0/0/35/0|0] 
+[U] Hitogata [Soul] [0/10/0/0|0] 
+Hitogata [Soul] [0/0/0/30|35] 
+[U] Flowen's Sword (3084) [Spirit] [0/35/5/0|0] 
+[U] Ophelie Seize [Chaos] [0/0/0/10|0] 
+Heaven Striker [Berserk] [20/0/0/0|0] 
+Tree Clippers [Charge] [0/0/0/0|0] 
+D-Parts ver1.01 [7/10 | 7/7] [4S] 
+Flame Garment [28/50 | 11/20] [0S] 
+Red Odoshi Domaru [4/10 | 6/10] [0S] 
+Dirty Lifejacket [0/0 | 0/0] [0S] 
+Alliance Uniform [5/12 | 0/0] [0S] 
+Alliance Uniform [1/12 | 0/0] [0S] 
+Samurai Armor [0/0 | 0/0] [0S] 
+Proto Regene Gear [0/7 | 7/7] 
+Assist Barrier [4/5 | 0/5] 
+Blue Barrier [3/5 | 1/5] 
+Blue Barrier [3/5 | 4/5] 
+Yellow Barrier [2/5 | 1/5] 
+Yellow Barrier [1/5 | 2/5] 
+Yellow Barrier [3/5 | 5/5] 
+Hero/Ability 
+Hero/Ability 
+Friend Ring 
+Mag [5.00/0.00/0.00/0.00] [ | | ] [Violet] 
+Mag [5.00/0.00/0.00/0.00] [ | | ] [Grey] 
+Mag [5.00/0.00/0.00/0.00] [ | | ] [Gold] 
+Reverser  Lv1
+Anti  Lv7
+Gifoie  Lv15
+Gifoie  Lv15
+Rafoie  Lv15
+Rafoie  Lv15
+Rafoie  Lv15
+Rafoie  Lv15
+Rafoie  Lv15
+Gibarta  Lv15
+Rabarta  Lv15
+Rabarta  Lv15
+Rabarta  Lv15
+Rabarta  Lv15
+Zonde  Lv15
+Gizonde  Lv15
+Gizonde  Lv15
+Gizonde  Lv15
+Razonde  Lv15
+Razonde  Lv15
+Razonde  Lv15
+Razonde  Lv15
+Razonde  Lv15
+Razonde  Lv15
+Razonde  Lv15
+Deband  Lv15
+Jellen  Lv15
+Jellen  Lv15
+Jellen  Lv15
+Zalure  Lv15
+Zalure  Lv15
+Zalure  Lv15
+Shifta  Lv15
+Shifta  Lv15
+Shifta  Lv15
+Shifta  Lv15
+Shifta  Lv15
+Gifoie  Lv15
+Gifoie  Lv20
+Gifoie  Lv20
+Gizonde  Lv20
+Gizonde  Lv20
+Razonde  Lv20
+Razonde  Lv20
+Deband  Lv20
+Jellen  Lv20
+Gifoie  Lv20
+Megid  Lv24
+Grants  Lv26
+Gifoie  Lv27
+Gifoie  Lv28
+Gibarta  Lv28
+Zonde  Lv28
+Gifoie  Lv28
+Foie  Lv29
+Gifoie  Lv29
+Rafoie  Lv29
+Barta  Lv29
+Barta  Lv29
+Barta  Lv29
+Gibarta  Lv29
+Gibarta  Lv29
+Gibarta  Lv29
+Zonde  Lv29
+Zonde  Lv29
+Gizonde  Lv29
+Gizonde  Lv29
+Razonde  Lv29
+Foie  Lv29
+Jellen  Lv30
+Resta  Lv30
+Resta  Lv30
+Deband  Lv30
+Scape Doll x1 
+Scape Doll x1 
+Scape Doll x1 
+Evade Material x2 
+Sinow Berill's Arms x1 
+Amplifier of Red x1 
+Amplifier of Red x1 
+Amplifier of Red x1 
+Amplifier of Red x1 
+Amplifier of Red x1 
+Disk Vol.25 "Last Impression" x1 
+Meseta: 0
+`
+
+export const bank_09 = `[U] Diska of Braveman [Berserk] [0/25/20/0|0] 
+[U] Diska of Braveman [Berserk] [45/0/0/0|20] 
+[U] Diska of Braveman [Berserk] [15/0/15/0|25] 
+[U] Diska of Braveman [Berserk] [0/5/0/0|5] 
+[U] Diska of Braveman [Berserk] [0/0/5/5|10] 
+Diska of Braveman [Berserk] [0/0/55/15|0] 
+[U] Diska of Braveman [Berserk] [20/45/0/10|0] 
+[U] Diska of Braveman [Berserk] [0/0/20/0|0] 
+[U] Diska of Braveman [Berserk] [0/25/5/0|0] 
+[U] Diska of Braveman [Berserk] [25/5/20/0|0] 
+Diska of Braveman [Berserk] [0/0/0/0|25] 
+[U] Custom Ray ver.OO [Flame] [0/0/0/0|20] 
+[U] Custom Ray ver.OO [Flame] [0/0/0/0|20] 
+[U] Justy-23ST [Devil's] [15/0/0/0|10] 
+[U] M&A60 Vise [Berserk] [15/50/0/0|0] 
+M&A60 Vise [Berserk] [0/0/0/0|30] 
+[U] Arms +3 [Frost] [0/0/30/0|40] 
+Meteor Smash [Soul] [0/0/0/0|20] 
+[U] Final Impact [Lord's] [0/0/25/15|10] 
+[U] Club +1 [Dark] [0/0/15/25|35] 
+Club of Zumiuran [Storm] [0/50/15/0|0] 
+Storm Wand: Indra [Storm] [0/15/40/0|0] 
+[U] Storm Wand: Indra [Storm] [0/5/0/0|0] 
+[U] Storm Wand: Indra [Storm] [10/0/15/0|25] 
+[U] Silence Claw [Dark] [0/0/0/0|0] 
+[U] Inferno Bazooka [Devil's] [25/0/10/0|15] 
+[U] Meteor Cudgel [Blizzard] [0/0/0/25|10] 
+Girasole [0/0/0/0|0] 
+Madam's Umbrella [Berserk] [0/0/0/0|15] 
+Frozen Shooter [0/0/25/0|0] 
+Yasminkov 3000R [25/0/20/0|0] 
+Yasminkov 2000H [0/10/0/5|0] 
+Yasminkov 7000V [0/0/0/20|0] 
+Hitogata [Soul] [0/25/0/0|0] 
+[U] Hitogata [Soul] [0/0/35/0|0] 
+[U] Hitogata [Soul] [0/10/0/0|0] 
+Hitogata [Soul] [0/0/0/30|35] 
+[U] Flowen's Sword (3084) [Spirit] [0/35/5/0|0] 
+[U] Ophelie Seize [Chaos] [0/0/0/10|0] 
+Heaven Striker [Berserk] [20/0/0/0|0] 
+Tree Clippers [Charge] [0/0/0/0|0] 
+D-Parts ver1.01 [7/10 | 7/7] [4S] 
+Flame Garment [28/50 | 11/20] [0S] 
+Red Odoshi Domaru [4/10 | 6/10] [0S] 
+Dirty Lifejacket [0/0 | 0/0] [0S] 
+Alliance Uniform [5/12 | 0/0] [0S] 
+Alliance Uniform [1/12 | 0/0] [0S] 
+Samurai Armor [0/0 | 0/0] [0S] 
+Proto Regene Gear [0/7 | 7/7] 
+Assist Barrier [4/5 | 0/5] 
+Blue Barrier [3/5 | 1/5] 
+Blue Barrier [3/5 | 4/5] 
+Yellow Barrier [2/5 | 1/5] 
+Yellow Barrier [1/5 | 2/5] 
+Yellow Barrier [3/5 | 5/5] 
+Hero/Ability 
+Hero/Ability 
+Friend Ring 
+Mag [5.00/0.00/0.00/0.00] [ | | ] [Violet] 
+Mag [5.00/0.00/0.00/0.00] [ | | ] [Grey] 
+Mag [5.00/0.00/0.00/0.00] [ | | ] [Gold] 
+Reverser  Lv1
+Anti  Lv7
+Gifoie  Lv15
+Gifoie  Lv15
+Rafoie  Lv15
+Rafoie  Lv15
+Rafoie  Lv15
+Rafoie  Lv15
+Rafoie  Lv15
+Gibarta  Lv15
+Rabarta  Lv15
+Rabarta  Lv15
+Rabarta  Lv15
+Rabarta  Lv15
+Zonde  Lv15
+Gizonde  Lv15
+Gizonde  Lv15
+Gizonde  Lv15
+Razonde  Lv15
+Razonde  Lv15
+Razonde  Lv15
+Razonde  Lv15
+Razonde  Lv15
+Razonde  Lv15
+Razonde  Lv15
+Deband  Lv15
+Jellen  Lv15
+Jellen  Lv15
+Jellen  Lv15
+Zalure  Lv15
+Zalure  Lv15
+Zalure  Lv15
+Shifta  Lv15
+Shifta  Lv15
+Shifta  Lv15
+Shifta  Lv15
+Shifta  Lv15
+Gifoie  Lv15
+Gifoie  Lv20
+Gifoie  Lv20
+Gizonde  Lv20
+Gizonde  Lv20
+Razonde  Lv20
+Razonde  Lv20
+Deband  Lv20
+Jellen  Lv20
+Gifoie  Lv20
+Megid  Lv24
+Grants  Lv26
+Gifoie  Lv27
+Gifoie  Lv28
+Gibarta  Lv28
+Zonde  Lv28
+Gifoie  Lv28
+Foie  Lv29
+Gifoie  Lv29
+Rafoie  Lv29
+Barta  Lv29
+Barta  Lv29
+Barta  Lv29
+Gibarta  Lv29
+Gibarta  Lv29
+Gibarta  Lv29
+Zonde  Lv29
+Zonde  Lv29
+Gizonde  Lv29
+Gizonde  Lv29
+Razonde  Lv29
+Foie  Lv29
+Jellen  Lv30
+Resta  Lv30
+Resta  Lv30
+Deband  Lv30
+Scape Doll x1 
+Scape Doll x1 
+Scape Doll x1 
+Evade Material x2 
+Sinow Berill's Arms x1 
+Amplifier of Red x1 
+Amplifier of Red x1 
+Amplifier of Red x1 
+Amplifier of Red x1 
+Amplifier of Red x1 
+Disk Vol.25 "Last Impression" x1 
+Meseta: 0
+`
+
+export const bank_11 = `[U] Pallasch [Flame] [0/0/0/25|40] 
+DB's Saber [0/0/0/0|20] 
+[U] Raygun +1 [Master's] [0/0/0/0|45] 
+[U] Raygun +1 [Dark] [0/0/0/0|30] 
+[U] Beam +1 [Heart] [0/0/30/0|45] 
+[U] M&A60 Vise [Berserk] [0/0/5/0|15] 
+L&K14 Combat [Seize] [15/0/35/0|20] 
+Arms +10 [Tempest] [0/0/0/0|60] 
+[U] Striker [Arrest] [0/0/0/30|45] 
+Brave Hammer [Spirit] [0/0/0/0|25] 
+[U] Scepter [Fire] [0/0/0/0|40] 
+Storm Wand: Indra [Storm] [40/20/0/0|0] 
+Inferno Bazooka [Devil's] [15/0/0/15|20] 
+L&K38 Combat [Burning] [0/0/15/20|0] 
+[U] Sting Tip [Soul] [15/15/0/0|0] 
+Rabbit Wand [Chaos] [0/0/0/0|25] 
+[U] Glide Divine [Blizzard] [30/0/0/0|0] 
+[U] Glide Divine [Blizzard] [0/0/0/0|0] 
+Glide Divine [Blizzard] [0/50/0/0|25] 
+[U] Glide Divine [Blizzard] [0/25/0/0|0] 
+Glide Divine [Blizzard] [0/30/0/30|0] 
+Glide Divine [Blizzard] [0/0/0/50|0] 
+Synthesizer [0/0/0/0|0] 
+Graviton Plate [8/8 | 0/0] [0S] 
+Graviton Plate [4/8 | 0/0] [0S] 
+Flowen's Frame [8/10 | 4/10] [0S] 
+Custom Frame ver.OO [3/10 | 0/10] [1S] 
+Star Cuirass [4/20 | 0/0] [0S] 
+Gods Shield "Genbu" [0/0 | 0/0] 
+Gods Shield "Seiryu" [0/0 | 0/0] 
+Gibarta  Lv15
+Gibarta  Lv15
+Deband  Lv15
+Gifoie  Lv20
+Gibarta  Lv20
+Rabarta  Lv20
+Gizonde  Lv20
+Razonde  Lv20
+Zalure  Lv20
+Zalure  Lv20
+Gibarta  Lv28
+Rafoie  Lv29
+Rafoie  Lv29
+Rafoie  Lv29
+Gibarta  Lv29
+Gibarta  Lv29
+Gibarta  Lv29
+Rabarta  Lv29
+Zonde  Lv29
+Razonde  Lv29
+Razonde  Lv29
+Deband  Lv30
+Deband  Lv30
+Jellen  Lv30
+Zalure  Lv30
+Evade Material x6 
+S-beat's Arms x1 
+Sinow Berill's Arms x1 
+Meseta: 0
+`
+
+export const shared_bank = `Gungnir +10 [Berserk] [0/0/0/20|60] 
 Diska +10 [Charge] [0/0/0/0|50] 
 Diska +10 [Berserk] [0/50/0/40|50] 
 Diska of Braveman +9 [Berserk] [20/0/0/85|0] 
