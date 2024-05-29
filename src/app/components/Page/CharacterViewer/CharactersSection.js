@@ -17,7 +17,7 @@ function divideAndRoundUp(num) {
 }
 
 const CharacterCards = ({ characters }) => {
-    const { selectedCharacter, setSelectedCharacter } = useContext(CharacterContext)
+    const { selectedCharacter, saveSelectedCharacter } = useContext(CharacterContext)
     return (
         <Table>
             <Table.Head>
@@ -33,8 +33,7 @@ const CharacterCards = ({ characters }) => {
                     height={72}
                     key={index}
                     isSelectable onSelect={() => {
-                        // console.log(character)
-                        setSelectedCharacter(character)
+                        saveSelectedCharacter(character)
                     }}
                 >
                     <Table.TextCell marginLeft={8}>

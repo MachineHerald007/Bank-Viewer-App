@@ -1,4 +1,9 @@
-import React, { createContext, useState, useEffect } from "react"
+import React, {
+    createContext,
+    useContext,
+    useState,
+    useEffect
+} from "react"
 import {
     Avatar,
     Heading,
@@ -8,6 +13,7 @@ import {
     Pagination,
     Pane,
 } from 'evergreen-ui'
+import { AccountContext } from "@/app/page"
 
 import { all_inventory } from "../../inventory"
 import { shared_bank } from "../../bank"
@@ -22,8 +28,8 @@ function getItems(raw_items) {
 function getAllItems(char) {
     let l = char.length
     for (let i = 0; i < l; i++) {
-        console.log(char[i].inventory)
         try {
+            char[i].character = char[i].character
             char[i].inventory = getItems(char[i].inventory)
             char[i].bank = getItems(char[i].bank)
         } catch (error) {
@@ -38,7 +44,8 @@ function getSharedBank(items) {
 }
 
 export function AllItems() {
-    const [characters, setCharacters] = useState(getAllItems(all_inventory))
+    const { characters } = useContext(AccountContext)
+    // const [characters, setCharacters] = useState(getAllItems(all_inventory))
     const [sharedBank, setSharedBank] = useState(getSharedBank(shared_bank))
 
     return (
@@ -56,7 +63,22 @@ export function AllItems() {
             <Table.Body>
                 {characters.map((char, index) => (
                     <>
-                        {char.inventory.map((item, i) => (
+                        <Table.Row
+                            backgroundColor="#edeff5"
+                            height={44}
+                            key={char.slot}
+                            isSelectable
+                            onSelect={() => console.log(char)}
+                        >
+                            <Table.TextCell>
+                                <Text fontSize={16} marginLeft={16}><b>Character Slot: {char.slot}</b></Text>
+                                <Text fontSize={16} marginLeft={4}> | <b>{char.name}</b></Text>
+                                <Text fontSize={16} marginLeft={4}> | <b>{char.level}</b></Text>
+                                <Text fontSize={16} marginLeft={4}> | <b>{char.sec_id}</b></Text>
+                                <Text fontSize={16} marginLeft={4}> | <b>{char.class}</b></Text>
+                            </Table.TextCell>
+                        </Table.Row>
+                        {char.inventory.split("\n").map((item, i) => (
                             <Table.Row
                                 height={44}
                                 key={`inventory-${index}-${i}`}
@@ -68,7 +90,21 @@ export function AllItems() {
                                 </Table.TextCell>
                             </Table.Row>
                         ))}
-                        {char.bank.map((item, i) => (
+                        <Table.Row height={44} isSelectable >
+                            <Table.TextCell></Table.TextCell>
+                        </Table.Row>
+                        <Table.Row
+                            backgroundColor="#edeff5"
+                            height={44}
+                            key={char.slot}
+                            isSelectable
+                            onSelect={() => console.log(char)}
+                        >
+                            <Table.TextCell>
+                                <Text fontSize={16} marginLeft={16}><b>Character Bank</b></Text>
+                            </Table.TextCell>
+                        </Table.Row>
+                        {char.bank.split("\n").map((item, i) => (
                             <Table.Row
                                 height={44}
                                 key={`bank-${index}-${i}`}
@@ -82,7 +118,15 @@ export function AllItems() {
                         ))}
                     </>
                 ))}
-
+                <Table.Row
+                    backgroundColor="#edeff5"
+                    height={44}
+                    isSelectable
+                >
+                    <Table.TextCell>
+                        <Text fontSize={16} marginLeft={16}><b>Shared Bank - Normal</b></Text>
+                    </Table.TextCell>
+                </Table.Row>
                 {sharedBank.map((item, index) => (
                     <Table.Row
                         height={44}

@@ -42,7 +42,7 @@ export function SidePanel() {
     ], [])
 
     //hardcoded data for testing
-    const char = characters[9]
+    const char = characters[0]
 
     const returnIcon = (tab) => {
         switch(tab) {

@@ -11,10 +11,6 @@ import { CharacterProfileCard } from "./CharacterProfileCard"
 import { CharacterProfileAnalytics } from "./CharacterProfileAnalytics"
 import { CharacterInventory } from "./CharacterInventory"
 import { CharacterBank } from "./CharacterBank"
-import { inventory } from "../../inventory"
-import { bank } from "../../bank"
-
-export const CharacterContext = createContext()
 
 const selected_character = {
     name: "",
@@ -22,8 +18,12 @@ const selected_character = {
     sec_id: "",
     level: null,
     slot: null,
-    img: ""
+    img: "",
+    inventory: "",
+    bank: ""
 }
+
+export const CharacterContext = createContext()
 
 export function CharacterViewer({ characters }) {
     const [selectedCharacter, setSelectedCharacter] = useState(selected_character)
@@ -36,19 +36,21 @@ export function CharacterViewer({ characters }) {
             sec_id: character.sec_id,
             level: character.level,
             slot: character.slot,
-            img: character.img
+            img: character.img,
+            inventory: character.inventory,
+            bank: character.bank
         })
     }
 
     return (
-        <CharacterContext.Provider value={{ selectedCharacter, setSelectedCharacter }}>
+        <CharacterContext.Provider value={{ selectedCharacter, saveSelectedCharacter }}>
             <Pane>
                 <CharactersSection characters={characters} />
                 <Pane marginBottom={24}>
                     <CharacterProfileCard />
                 </Pane>
-                <CharacterInventory display="inline-block" character={characters[0]} inventory={inventory} />
-                <CharacterBank display="inline-block" character={characters[0]} bank={bank} />
+                <CharacterInventory display="inline-block" character={selectedCharacter} inventory={selectedCharacter.inventory} />
+                <CharacterBank display="inline-block" character={selectedCharacter} bank={selectedCharacter.bank} />
             </Pane>
         </CharacterContext.Provider>
     )

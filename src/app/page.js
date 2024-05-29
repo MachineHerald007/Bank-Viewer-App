@@ -9,7 +9,7 @@ export const AllItemsContext = createContext()
 
 export default function Home() {
   return (
-    <AccountContext.Provider value={{ characters,  }}>
+    <AccountContext.Provider value={{ characters, AllItemsContext }}>
         <Dashboard />
     </AccountContext.Provider>
   )
