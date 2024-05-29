@@ -16,19 +16,19 @@ function getBankItems(raw_bank) {
 }
 
 export function CharacterBank({ character, bank }) {
-    const [items, setItems] = useState(() => getBankItems(bank));
+    const [items, setItems] = useState(() => getBankItems(bank))
     const [expandBank, setExpandBank] = useState(false)
 
     // Debugging logs
     useEffect(() => {
-        console.log("Received bank prop: ", bank);
-        console.log("Initialized items state: ", items);
-    }, [bank, items]);
+        console.log("Received bank prop: ", bank)
+        console.log("Initialized items state: ", items)
+    }, [bank, items])
 
     // Effect to handle updates to the bank prop
     useEffect(() => {
-        setItems(getBankItems(bank));
-    }, [bank]);
+        setItems(getBankItems(bank))
+    }, [bank])
 
     return (
         <Pane
