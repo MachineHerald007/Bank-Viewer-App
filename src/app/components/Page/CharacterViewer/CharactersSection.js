@@ -5,6 +5,7 @@ import React, {
 } from "react"
 import {
     Avatar,
+    UserIcon,
     Text,
     Table,
     Pagination,

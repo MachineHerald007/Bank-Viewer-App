@@ -66,7 +66,7 @@ export function AllItems() {
                         <Table.Row
                             backgroundColor="#edeff5"
                             height={44}
-                            key={char.slot}
+                            key={`${char.slot} - ${char.name}`}
                             isSelectable
                             onSelect={() => console.log(char)}
                         >

@@ -28,6 +28,7 @@ import { ProfileSection  } from "./ProfileSection"
 import { AllItems } from "../Page/All-Items/All-Items"
 import { SharedBank } from "../Page/SharedBank/SharedBank"
 import { CharacterViewer } from "../Page/CharacterViewer/CharacterViewer"
+import { Settings } from "../Page/Settings/Settings"
 
 export function SidePanel() {
     const { characters } = useContext(AccountContext)
@@ -112,11 +113,7 @@ export function SidePanel() {
             case "Character Viewer":
                 return <CharacterViewer characters={characters}/>
             case "Settings":
-                return (
-                    <Pane>
-                        <Text>{tab}</Text>
-                    </Pane>
-                )
+                return <Settings />
         }
     }
 

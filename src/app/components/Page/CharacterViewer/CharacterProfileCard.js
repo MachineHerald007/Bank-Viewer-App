@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import { CharacterContext } from "../CharacterViewer/CharacterViewer"
 import {
+    UserIcon,
     Avatar,
     Text,
     Table,

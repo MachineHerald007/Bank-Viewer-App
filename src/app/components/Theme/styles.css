@@ -1,0 +1,21 @@
+/* styles.css */
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+}
+
+body.light {
+    --background-color: #ffffff;
+    --text-color: #000000;
+}
+
+body.dark {
+    /* --background-color: #333333; */
+    --background-color: #24252B;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
