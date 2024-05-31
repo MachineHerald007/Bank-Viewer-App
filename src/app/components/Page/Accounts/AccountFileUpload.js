@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback } from "react"
-import { Avatar, Pane, Account, Alert, FileCard, majorScale, FileUploader } from 'evergreen-ui'
+import { Pane, Alert, FileCard, majorScale, FileUploader } from 'evergreen-ui'
 import styled, { ThemeProvider } from "styled-components"
 import { useTheme } from "../../Theme/Theme"
 
@@ -20,6 +20,13 @@ const AccountPane = styled(Pane)`
     label, p {
         color: ${({ theme }) => (theme.mode === 'light' ? '#474d66' : '#f3f3f3')} !important;
         font-weight: 600;
+    }
+
+    .ub-mt_16px {
+        max-height: 400px !important;
+        overflow: auto !important;
+        scrollbar-width: thin !important;
+        padding: 8px;
     }
 `;
 
@@ -132,65 +139,64 @@ const AccountFileCardError = styled(FileCard)`
         background-color: ${({ theme }) => (theme.mode === 'light' ? '#FAFBFF' : '#282A2E')} !important;
         border-color: #D14343 !important;
     }
-
 `;
 
 export function AccountFileUpload({ theme }) {
-    const acceptedMimeTypes = [MimeType.jpeg, MimeType.pdf, MimeType.psobank, MimeType.psoclassicbank, MimeType.psochar]
-    const maxFiles = 32
-    const maxSizeInBytes = 50 * 1024 ** 2 // 50 MB
-    const [files, setFiles] = useState([])
-    const [fileRejections, setFileRejections] = useState([])
+    const acceptedMimeTypes = [MimeType.psobank, MimeType.psoclassicbank, MimeType.psochar];
+    const maxFiles = 32;
+    const maxSizeInBytes = 50 * 1024 ** 2; // 50 MB
+    const [files, setFiles] = useState([]);
+    const [fileRejections, setFileRejections] = useState([]);
 
     const values = useMemo(() => [...files, ...fileRejections.map((fileRejection) => fileRejection.file)], [
         files,
         fileRejections,
-    ])
+    ]);
 
     const handleRemove = useCallback(
         (file) => {
-            const updatedFiles = files.filter((existingFile) => existingFile !== file)
-            const updatedFileRejections = fileRejections.filter((fileRejection) => fileRejection.file !== file)
+            const updatedFiles = files.filter((existingFile) => existingFile !== file);
+            const updatedFileRejections = fileRejections.filter((fileRejection) => fileRejection.file !== file);
 
             const { accepted, rejected } = rebaseFiles(
                 [...updatedFiles, ...updatedFileRejections.map((fileRejection) => fileRejection.file)],
                 { acceptedMimeTypes, maxFiles, maxSizeInBytes }
-            )
+            );
 
-            setFiles(accepted)
-            setFileRejections(rejected)
+            setFiles(accepted);
+            setFileRejections(rejected);
         },
         [acceptedMimeTypes, files, fileRejections, maxFiles, maxSizeInBytes]
-    )
+    );
 
     const rebaseFiles = (allFiles, { acceptedMimeTypes, maxFiles, maxSizeInBytes }) => {
-        const accepted = []
-        const rejected = []
+        const accepted = [];
+        const rejected = [];
 
         allFiles.forEach((file) => {
             if (accepted.length < maxFiles) {
                 if (acceptedMimeTypes.includes(file.type) && file.size <= maxSizeInBytes) {
-                    accepted.push(file)
+                    accepted.push(file);
                 } else {
                     rejected.push({
                         file,
                         reason: !acceptedMimeTypes.includes(file.type)
                             ? RejectionReason.InvalidMimeType
                             : RejectionReason.FileTooLarge
-                    })
+                    });
                 }
             } else {
                 rejected.push({
                     file,
                     reason: RejectionReason.OverFileLimit
-                })
+                });
             }
-        })
+        });
 
-        return { accepted, rejected }
-    }
+        return { accepted, rejected };
+    };
 
-    const fileCountOverLimit = files.length + fileRejections.length - maxFiles
+    const fileCountOverLimit = files.length + fileRejections.length - maxFiles;
     const fileCountError = `You can upload up to ${maxFiles} files. Please remove ${fileCountOverLimit} ${
         fileCountOverLimit === 1 ? 'file' : 'files'
     }.`
@@ -209,12 +215,12 @@ export function AccountFileUpload({ theme }) {
                 onAccepted={setFiles}
                 onRejected={setFileRejections}
                 renderFile={(file, index) => {
-                    const { name, size, type } = file
-                    const renderFileCountError = index === 0 && fileCountOverLimit > 0
+                    const { name, size, type } = file;
+                    const renderFileCountError = index === 0 && fileCountOverLimit > 0;
                     const fileRejection = fileRejections.find(
                         (fileRejection) => fileRejection.file === file && fileRejection.reason !== RejectionReason.OverFileLimit
-                    )
-                    const { message } = fileRejection || {}
+                    );
+                    const { message } = fileRejection || {};
 
                     return (
                         <React.Fragment key={`${file.name}-${index}`}>
@@ -245,5 +251,5 @@ export function AccountFileUpload({ theme }) {
                 values={values}
             />
         </AccountPane>
-    )
+    );
 }
