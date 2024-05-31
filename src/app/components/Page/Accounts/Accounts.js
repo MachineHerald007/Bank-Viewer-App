@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react"
 import {
     Avatar,
     AddIcon,
     PlusIcon,
     Text,
     Pane
-} from "evergreen-ui";
-import styled from "styled-components";
-import { useTheme } from "../../Theme/Theme";
-import { ThemeToggler } from "../../Theme/ThemeToggler";
+} from "evergreen-ui"
+import styled from "styled-components"
+import { useTheme } from "../../Theme/Theme"
+import { ThemeToggler } from "../../Theme/ThemeToggler"
+import { AccountSetup } from "./AccountSetup"
 
 function getAccounts() {
     return [
@@ -24,14 +25,16 @@ function getAccounts() {
             characters: [],
             shared_bank: null
         }
-    ];
+    ]
 }
 
 const HoverPane = styled(Pane)`
     width: fit-content;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     border-radius: 50px;
     transition: background-color 0.3s ease;
+    position: relative;
+    left: 8px;
 
     &:hover {
         cursor: pointer;
@@ -47,42 +50,49 @@ const ProfileAvatar = styled(Avatar)`
     }
 `;
 
+const CenteredPane = styled(Pane)`
+    height: fit-content;
+    width: fit-content;
+    maxWidth: 80%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    overflow: hidden;
+
+    .ub-lft_12px {
+        left: 0 !important;
+    }
+`;
+
+// .ub-lft_12px
 const AccountSection = ({ accounts }) => {
-    const { theme } = useTheme();
-    const [isOverflow, setIsOverflow] = useState(false);
-    const containerRef = useRef(null);
+    const { theme } = useTheme()
+    const [isOverflow, setIsOverflow] = useState(false)
+    const containerRef = useRef(null)
 
     const styles = {
         color: theme === 'light' ? '#101840' : '#fff',
-    };
+    }
 
     const hpane_styles = {
         background: theme === 'light' ? '#d8dae5' : '#474649',
         color: theme === 'light' ? '#8f95b2' : '#edeff5',
-    };
+    }
 
     useEffect(() => {
-        const container = containerRef.current;
+        const container = containerRef.current
         if (container.scrollWidth > container.clientWidth) {
-            setIsOverflow(true);
+            setIsOverflow(true)
         } else {
-            setIsOverflow(false);
+            setIsOverflow(false)
         }
-    }, [accounts]);
+    }, [accounts])
 
     return (
-        <Pane
-            height="fit-content"
-            width="fit-content"
-            maxWidth="80%"
-            position="absolute"
-            top={0}
-            bottom={0}
-            left={0}
-            right={0}
-            margin="auto"
-            overflow="hidden"
-        >
+        <CenteredPane>
             <Text 
                 display="block"
                 color={styles.color}
@@ -102,12 +112,12 @@ const AccountSection = ({ accounts }) => {
                     display="inline-block"
                     marginBottom={16}
                     position="relative"
-                    top={12}
+                    top={8}
                 >
                     <HoverPane
                         backgroundColor={hpane_styles.background}
                         color={hpane_styles.color}
-                        padding={32}
+                        padding={16}
                     >
                         <PlusIcon size={32} position="relative" top={2}/>
                     </HoverPane>
@@ -123,11 +133,11 @@ const AccountSection = ({ accounts }) => {
                     </Text>
                 </Pane>
                 {accounts.map((account, index) => (
-                    <Pane display="inline-block" marginLeft={48} key={index}>
+                    <Pane display="inline-block" textAlign="center" marginLeft={36} key={index}>
                         <ProfileAvatar
-                            marginBottom={24}
+                            marginBottom={16}
                             src={account.profile_pic}
-                            size={120} 
+                            size={80} 
                         />
                         <Pane>
                             <Text
@@ -143,29 +153,30 @@ const AccountSection = ({ accounts }) => {
                     </Pane>
                 ))}
             </Pane>
-        </Pane>
-    );
-};
+        </CenteredPane>
+    )
+}
 
 export function Accounts() {
-    const { theme } = useTheme();
-    const [accounts, setAccounts] = useState([]);
+    const { theme } = useTheme()
+    const [accounts, setAccounts] = useState([])
 
     useEffect(() => {
-        const accounts = getAccounts();
-        setAccounts(accounts);
-    }, []);
+        const accounts = getAccounts()
+        setAccounts(accounts)
+    }, [])
 
     const styles = {
-        background: theme === 'light' ? '#F9FAFA' : '#24252B',
-        color: theme === 'light' ? '#000' : '#fff',
+        background: theme === 'light' ? '#FFFFFF' : '#24252B',
+        color: theme === 'light' ? '#101840' : '#fff',
         height: "100vh"
-    };
+    }
 
     return (
         <Pane style={styles}>
             <ThemeToggler />
-            <AccountSection accounts={accounts}/>
+            {/* <AccountSection accounts={accounts}/> */}
+            <AccountSetup />
         </Pane>
-    );
+    )
 }
