@@ -22,6 +22,14 @@ const AccountPane = styled(Pane)`
         font-weight: 600;
     }
 
+    label {
+        font-size: 16px;
+    }
+
+    #undefined__description {
+        font-size: 13px;
+    }
+
     .ub-mt_16px {
         max-height: 400px !important;
         overflow: auto !important;
@@ -52,7 +60,6 @@ const AccountFileUploader = styled(FileUploader)`
     }
 
     span {
-        letter-spacing: 0.5px;
         font-weight: 600;
     }
 
@@ -61,7 +68,7 @@ const AccountFileUploader = styled(FileUploader)`
     }
 
     .ub-color_696f8c {
-        color: ${({ theme }) => (theme.mode === 'light' ? '#101840' : '#fff')};
+        color: ${({ theme }) => (theme.mode === 'light' ? '#474d66' : '#fff')};
     }
 
     .ub-bg-clr_edeff5 {
