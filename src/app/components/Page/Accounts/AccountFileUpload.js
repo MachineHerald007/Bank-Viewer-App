@@ -30,6 +30,11 @@ const AccountPane = styled(Pane)`
         font-size: 13px;
     }
 
+    [data-state="dragging"] {
+        background-color: ${({ theme }) => (theme.mode === 'light' ? '#EBF0FF' : '#1f2023')};
+        border-color: ${({ theme }) => (theme.mode === 'light' ? '#3366FF' : '#474d66')};
+    }
+
     .ub-mt_16px {
         max-height: 400px !important;
         overflow: auto !important;
