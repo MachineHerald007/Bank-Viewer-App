@@ -11,7 +11,11 @@
   },
   "tauri": {
     "allowlist": {
-      "all": false
+        "all": true,
+        "fs": {
+            "all": true,
+            "scope": ["$HOME", "$DOWNLOAD"]
+        }
     },
     "bundle": {
       "active": true,
@@ -54,7 +58,8 @@
         "height": 1400,
         "resizable": true,
         "title": "PSOBB Bank Viewer",
-        "width": 1400
+        "width": 1400,
+        "fileDropEnabled": false
       }
     ]
   }

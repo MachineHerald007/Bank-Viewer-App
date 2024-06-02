@@ -1,20 +1,20 @@
-import React, { useState, useMemo, useCallback } from "react"
-import { Pane, Alert, FileCard, majorScale, FileUploader } from 'evergreen-ui'
-import styled, { ThemeProvider } from "styled-components"
-import { useTheme } from "../../Theme/Theme"
+import { invoke } from "@tauri-apps/api/tauri";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { Pane, Alert, FileCard, majorScale, FileUploader } from 'evergreen-ui';
+import styled from "styled-components";
 
 // Custom rejection reasons
 const RejectionReason = {
     OverFileLimit: 'OverFileLimit',
     InvalidMimeType: 'InvalidMimeType',
     FileTooLarge: 'FileTooLarge'
-}
+};
 
 const MimeType = {
     psobank: "",
     psoclassicbank: "",
     psochar: ""
-}
+};
 
 const AccountPane = styled(Pane)`
     label, p {
@@ -39,7 +39,7 @@ const AccountPane = styled(Pane)`
         max-height: 400px !important;
         overflow: auto !important;
         scrollbar-width: thin !important;
-        padding: 8px;
+        padding: 8px;   
     }
 `;
 
@@ -158,6 +158,7 @@ export function AccountFileUpload({ theme }) {
     const maxFiles = 32;
     const maxSizeInBytes = 50 * 1024 ** 2; // 50 MB
     const [files, setFiles] = useState([]);
+    const [parsedData, setParsedData] = useState(null);
     const [fileRejections, setFileRejections] = useState([]);
 
     const values = useMemo(() => [...files, ...fileRejections.map((fileRejection) => fileRejection.file)], [
@@ -213,6 +214,35 @@ export function AccountFileUpload({ theme }) {
         fileCountOverLimit === 1 ? 'file' : 'files'
     }.`
 
+    const handleAcceptedFiles = useCallback((acceptedFiles) => {
+        // Parse the files as needed
+        acceptedFiles.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                const arrayBuffer = e.target.result;
+                const binary = new Uint8Array(arrayBuffer);
+                try {
+                    const result = await invoke('parse_file', {
+                        fileData: { filename: file.name, binary: Array.from(binary) }
+                    });
+                    console.log("parsed file: ", result)
+                    setParsedData(result);
+                } catch (error) {
+                    console.log("Error parsing file: ", error)
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        });
+
+        setFiles(acceptedFiles);
+    }, [setFiles, setParsedData]);
+
+    // Log files to console whenever they are set
+    useEffect(() => {
+        console.log("Accepted files:", files);
+        console.log("Rejected files:", fileRejections);
+    }, [files, fileRejections]);
+
     return (
         <AccountPane maxWidth={654}>
             <AccountFileUploader
@@ -224,7 +254,7 @@ export function AccountFileUpload({ theme }) {
                 disabled={files.length + fileRejections.length >= maxFiles}
                 maxSizeInBytes={maxSizeInBytes}
                 maxFiles={maxFiles}
-                onAccepted={setFiles}
+                onAccepted={handleAcceptedFiles}
                 onRejected={setFileRejections}
                 renderFile={(file, index) => {
                     const { name, size, type } = file;
