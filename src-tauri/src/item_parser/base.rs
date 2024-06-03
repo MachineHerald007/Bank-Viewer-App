@@ -1,14 +1,19 @@
-struct Base;
+use crate::util::Util;
+use crate::config::config::Config;
+use crate::item_parser::item::Item;
+
+pub struct Base;
 
 impl Base {
-    fn new(character_data: &[u8], slot: u8) -> Self {
-        config::init();
+    pub fn new(character_data: &[u8], slot: u8) -> Self {
+        let mode = "";
+        Config::init(mode);
         println!("====== characterData ======");
         println!("{:?}", character_data);
         Base
     }
 
-    fn set_inventory(
+    pub fn set_inventory(
         &self,
         items_data: &[u8],
         inventory: &mut std::collections::HashMap<String, Vec<(String, Item, String)>>,
@@ -39,23 +44,19 @@ impl Base {
             }
             println!("{:?}", item_data);
 
-            let item_code = common_util::binary_array_to_int(&item_data[0..3]);
-            let item_code_hex = common_util::binary_array_to_hex(&item_data[0..3]);
+            let item_code = Util::binary_array_to_int(&item_data[0..3]);
+            let item_code_hex = Util::binary_array_to_hex(&item_data[0..3]);
             println!("item code: {}", item_code_hex);
 
-            let item = Item::new(item_data.to_vec(), item_code, lang.to_string());
-            println!("item name: {}", item.get_display());
+            let item = Item::new(item_data.to_vec(), item_code, lang);
+            println!("item name: {:?}", item);
 
             array.push((item_code_hex, item, slot.to_string()));
         }
         inventory.insert(lang.to_string(), array);
     }
 
-    fn set_slot(&mut self, slot: String) {
-        self.Slot = slot;
-    }
-
-    fn set_meseta(
+    pub fn set_meseta(
         &self,
         meseta_data: &[u8],
         inventory: &mut std::collections::HashMap<String, Vec<(String, Item, String)>>,
@@ -64,13 +65,9 @@ impl Base {
     ) {
         let name = if lang == "EN" { "MESETA" } else { "メセタ" };
         let meseta = ((meseta_data[2] as u32) << 16) | ((meseta_data[1] as u32) << 8) | meseta_data[0] as u32;
-        let item = Item {
-            data: vec![],
-            code: meseta,
-            lang: lang.to_string(),
-            display: format!("{} {}", meseta, name),
-        };
+
         let meseta_code = format!("09{:07}", meseta);
+        let item = Item::new(meseta_data.to_vec(), meseta, lang);
 
         if let Some(lang_inventory) = inventory.get_mut(lang) {
             lang_inventory.push((meseta_code, item, slot.to_string()));
@@ -79,7 +76,7 @@ impl Base {
 
     fn is_blank(&self, item_data: &[u8]) -> bool {
         item_data.iter().take(20).all(|&b| b == 0)
-            || common_util::binary_array_to_hex(item_data) == "000000000000000000000000FFFFFFFF0000000000000000"
-            || common_util::binary_array_to_hex(item_data).contains("00FF00000000000000000000FFFFFFFF")
+            || Util::binary_array_to_hex(item_data) == "000000000000000000000000FFFFFFFF0000000000000000"
+            || Util::binary_array_to_hex(item_data).contains("00FF00000000000000000000FFFFFFFF")
     }
 }

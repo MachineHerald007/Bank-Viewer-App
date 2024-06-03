@@ -1,4 +1,7 @@
-struct SharedBank {
+use crate::item_parser::base::Base;
+use crate::item_parser::item::Item;
+
+pub struct SharedBank {
     slot: String,
     mode: u8,
     bank: std::collections::HashMap<String, Vec<(String, Item, String)>>,
@@ -27,7 +30,8 @@ impl SharedBank {
     }
 
     fn set_slot(&mut self, slot: u8) {
-        self.slot = if slot == config::Mode::NORMAL {
+        let NORMAL_MODE = 0;
+        self.slot = if slot == NORMAL_MODE {
             "SharedBank".to_string()
         } else {
             "SharedBank(Classic)".to_string()
@@ -37,12 +41,4 @@ impl SharedBank {
     fn set_mode(&mut self, slot: u8) {
         self.mode = slot;
     }
-}
-
-fn main() {
-    let character_data = vec![0u8; 4810]; // Example character data
-    let slot = config::Mode::NORMAL;
-    let share_bank = SharedBank::new(character_data, slot);
-
-    println!("{:?}", share_bank);
 }

@@ -1,4 +1,6 @@
 use crate::config::config::Config;
+use crate::item_parser::character::Character;
+use crate::item_parser::shared_bank::SharedBank;
 use serde::Deserialize;
 use serde::Serialize;
 use std::str;

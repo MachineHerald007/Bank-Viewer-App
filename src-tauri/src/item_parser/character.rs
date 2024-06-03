@@ -1,4 +1,9 @@
-struct Character {
+use crate::util::Util;
+use crate::config::config::Config;
+use crate::item_parser::base::Base;
+use crate::item_parser::item::Item;
+
+pub struct Character {
     slot: String,
     mode: u8,
     name: String,
@@ -15,7 +20,7 @@ struct Character {
 
 impl Character {
     fn new(character_data: Vec<u8>, slot: u8) -> Self {
-        config::init();
+        Config::init("");
         let mut character = Character {
             slot: String::new(),
             mode: 0,
@@ -56,10 +61,14 @@ impl Character {
 
     fn set_mode(&mut self, character_data: &[u8]) {
         if character_data[7] == 0x40 {
-            self.mode = config::Mode::CLASSIC;
+            self.mode = Config::Mode::CLASSIC;
         } else {
-            self.mode = config::Mode::NORMAL;
+            self.mode = Config::Mode::NORMAL;
         }
+    }
+
+    pub fn set_slot(&mut self, slot: String) {
+        self.Slot = slot;
     }
 
     fn set_name(&mut self, character_data: &[u8]) {
@@ -72,7 +81,7 @@ impl Character {
             name.push(char::from_u32(((array[i + 1] as u32) << 8) | array[i] as u32).unwrap());
         }
 
-        println!("name: {}", common_util::binary_array_to_hex(array));
+        println!("name: {}", Util::binary_array_to_hex(array));
         println!("name: {}", name);
         self.name = name;
     }
@@ -84,18 +93,18 @@ impl Character {
             guild_card_number.push_str(&format!("{}", value & 0x0F));
         }
 
-        println!("guildCardNumber: {}", common_util::binary_array_to_hex(array));
+        println!("guildCardNumber: {}", Util::binary_array_to_hex(array));
         println!("guildCardNumber: {}", guild_card_number);
         self.guild_card_number = guild_card_number;
     }
 
     fn set_class(&mut self, character_data: &[u8]) {
-        self.class = config::Classes::get_class(character_data[937]).to_string();
+        self.class = Config::Classes::get_class(character_data[937]).to_string();
         println!("class: {}", character_data[937]);
     }
 
     fn set_section_id(&mut self, character_data: &[u8]) {
-        self.section_id = config::SectionIDs::get_section_id(character_data[936]).to_string();
+        self.section_id = Config::SectionIDs::get_section_id(character_data[936]).to_string();
         println!("sectionID: {}", character_data[936]);
     }
 
@@ -113,7 +122,7 @@ impl Character {
         if count == 0 {
             self.ep1_progress = "No Progress".to_string();
         } else {
-            self.ep1_progress = format!("Stage {} Cleared! | {}", count, config::Titles[count]);
+            self.ep1_progress = format!("Stage {} Cleared! | {}", count, Config::Titles[count]);
         }
     }
 

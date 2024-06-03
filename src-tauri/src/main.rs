@@ -9,6 +9,14 @@ mod config {
     pub mod item_codes;
     pub mod item_codes_ja;
 }
+mod item_parser {
+    pub mod base;
+    pub mod item;
+    pub mod types;
+    pub mod character;
+    pub mod shared_bank;
+}
+mod util;
 mod file_parser;
 use file_parser::parse_file;
 

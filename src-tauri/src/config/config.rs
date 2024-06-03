@@ -90,6 +90,13 @@ impl<'a> Config<'a> {
         map
     }
 
+    pub fn mode(mode: &str) -> u8 {
+        match mode {
+            "NORMAL" => 0,
+            "CLASSIC" => 1
+        }
+    }
+
     pub fn mode_name(mode: u32) -> &'static str {
         match mode {
             0 => "NORMAL",
