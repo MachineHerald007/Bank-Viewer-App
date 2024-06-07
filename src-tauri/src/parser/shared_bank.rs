@@ -1,8 +1,8 @@
 use std::collections::HashMap;
 
-use crate::item;
-use crate::item_parser::types::Item;
-use crate::item_parser::types::Inventory;
+use crate::parser::item;
+use crate::parser::types::Item;
+use crate::parser::types::Inventory;
 use crate::config::config::Config;
 
 #[derive(Debug)]
@@ -21,7 +21,7 @@ pub fn create<'a>(char_data: &'a [u8], mode: u8, lang: &'a str, config: &'a Conf
     SharedBank {
         account_type: set_account_type(mode),
         mode: mode,
-        bank: item::set_items(char_data, set_account_type(mode), lang, char_data.len(), config),
+        bank: item::set_items(char_data, set_account_type(mode), lang, 24, config),
         lang: lang
     }
 }

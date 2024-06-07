@@ -1,8 +1,7 @@
 use tauri::regex::Regex;
 use crate::config::config::Config;
-// use crate::item_parser::character::Character;
-// use crate::item_parser::shared_bank::SharedBank;
-use crate::shared_bank;
+// use crate::parser::character;
+use crate::parser::shared_bank;
 use serde::Deserialize;
 use serde::Serialize;
 use std::str;
@@ -60,7 +59,7 @@ fn decode(files_to_parse: Files, config: Config, lang: &str) {
 
         if re_psobank.is_match(&file.filename) {
             shared_bank.push(shared_bank::create(&binary[8..4808], Config::mode("NORMAL"), lang, &config));
-            println!("Shared Bank: {:?}", shared_bank);
+            // println!("Shared Bank: {:?}", shared_bank[0]);
         }
 
         if re_psoclassicbank.is_match(&file.filename) {

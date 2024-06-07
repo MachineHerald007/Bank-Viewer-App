@@ -2,13 +2,13 @@ use std::collections::HashMap;
 
 use crate::util::Util;
 use crate::config::config::Config;
-use crate::item_parser::types::Inventory;
-use crate::item_parser::types::Status;
-use crate::item_parser::types::Item;
-use crate::item_parser::types::ItemData;
-use crate::item_parser::types::Attribute;
-use crate::item_parser::types::Addition;
-use crate::item_parser::types::AdditionType;
+use crate::parser::types::Inventory;
+use crate::parser::types::Status;
+use crate::parser::types::Item;
+use crate::parser::types::ItemData;
+use crate::parser::types::Attribute;
+use crate::parser::types::Addition;
+use crate::parser::types::AdditionType;
 
 fn is_s_rank_weapon(item_code: u32) -> bool {
     Config::srank_weapon_codes().contains_key(&(item_code & 0xFFF0))
