@@ -1,7 +1,9 @@
 use std::collections::HashMap;
 
+pub type Inventory<'a> = HashMap<String, Vec<(String, Item<'a>, String)>>;
+
 #[derive(Debug)]
-pub enum ItemData {
+pub enum ItemData<'a> {
     Weapon {
         name: String,
         type_: u8,
@@ -18,8 +20,8 @@ pub enum ItemData {
         type_: u8,
         itemdata: String,
         slot: u8,
-        status: Status,
         addition: Addition,
+        max_addition: Addition,
         display: String,
     },
     Barrier {
@@ -46,7 +48,7 @@ pub enum ItemData {
         color: String,
         rgb: String,
         status: Status,
-        pds: [String; 3],
+        pbs: [String; 3],
         display: String,
         display_front: String,
         display_end: String,
@@ -58,8 +60,8 @@ pub enum ItemData {
         level: u8,
         display: String,
     },
-    SRankWeapon {
-        name: String,
+    SRank_Weapon {
+        name: &'a str,
         type_: u8,
         itemdata: String,
         grinder: u8,
@@ -86,6 +88,17 @@ pub enum ItemData {
         number: u8,
         display: String,
     },
+}
+
+// #[derive(Debug)]
+// pub struct Item {
+//     item: Option<ItemData>,
+//     config: Config<'a>
+// }
+
+#[derive(Debug)]
+pub struct Item<'a> {
+    pub item: Option<ItemData<'a>>
 }
 
 #[derive(Debug)]
@@ -122,5 +135,15 @@ pub struct Meseta {
     pub name: String,
     pub r#type: u32,
     pub amount: u32,
+    pub display: String,
+}
+
+#[derive(Debug)]
+pub struct SRankWeapon {
+    pub name: String,
+    pub type_: u8,
+    pub itemdata: String,
+    pub grinder: u8,
+    pub element: String,
     pub display: String,
 }

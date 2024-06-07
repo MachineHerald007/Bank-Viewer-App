@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use crate::config::item_codes;
 use crate::config::item_codes_ja;
 
@@ -25,8 +27,8 @@ use item_codes_ja::{
     item_codes_ja,
     pbs_ja
 };
-use std::collections::HashMap;
 
+#[derive(Debug)]
 pub struct Config<'a> {
     pub item_codes: Option<HashMap<u32, &'a str>>,
     pub weapon_special_codes: Option<HashMap<u8, &'a str>>,
@@ -93,11 +95,12 @@ impl<'a> Config<'a> {
     pub fn mode(mode: &str) -> u8 {
         match mode {
             "NORMAL" => 0,
-            "CLASSIC" => 1
+            "CLASSIC" => 1,
+            _ => 0
         }
     }
 
-    pub fn mode_name(mode: u32) -> &'static str {
+    pub fn mode_name(mode: u8) -> &'static str {
         match mode {
             0 => "NORMAL",
             1 => "CLASSIC",
@@ -146,7 +149,7 @@ impl<'a> Config<'a> {
         ]
     }
 
-    pub fn attribute_type() -> HashMap<&'static str, u32> {
+    pub fn attribute_type() -> HashMap<&'static str, u8> {
         let mut map = HashMap::new();
         map.insert("native", 0x01);
         map.insert("aBeast", 0x02);
@@ -226,8 +229,8 @@ impl<'a> Config<'a> {
         map
     }
 
-    pub fn init(mode: &str) -> Self {
-        match mode {
+    pub fn init(lang: &str) -> Self {
+        match lang {
             "JA" => Config {
                 item_codes: Some(item_codes_ja()),
                 weapon_special_codes: Some(weapon_special_codes_ja()),
