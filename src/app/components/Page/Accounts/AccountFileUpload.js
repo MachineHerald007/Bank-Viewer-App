@@ -5,9 +5,10 @@ import styled from "styled-components";
 
 // Custom rejection reasons
 const RejectionReason = {
-    OverFileLimit: 'OverFileLimit',
-    InvalidMimeType: 'InvalidMimeType',
-    FileTooLarge: 'FileTooLarge'
+    OverFileLimit: "OverFileLimit",
+    InvalidMimeType: "InvalidMimeType",
+    FileTooLarge: "FileTooLarge",
+    DuplicateFile: "File already exists."
 };
 
 const MimeType = {
@@ -166,18 +167,30 @@ export function AccountFileUpload({ theme }) {
         fileRejections,
     ]);
 
+    const parseFiles = async (files) => {
+        try {
+            const result = await invoke('parse_files', {
+                files: files,
+                lang: "EN"
+            });
+            return result;
+        } catch (error) {
+            console.log("Error parsing file: ", error)
+        }
+    }
+
     const handleRemove = useCallback(
         (file) => {
             const updatedFiles = files.filter((existingFile) => existingFile !== file);
             const updatedFileRejections = fileRejections.filter((fileRejection) => fileRejection.file !== file);
 
             const { accepted, rejected } = rebaseFiles(
-                [...updatedFiles, ...updatedFileRejections.map((fileRejection) => fileRejection.file)],
+                [...updatedFiles],
                 { acceptedMimeTypes, maxFiles, maxSizeInBytes }
             );
 
             setFiles(accepted);
-            setFileRejections(rejected);
+            setFileRejections([...updatedFileRejections, ...rejected]);
         },
         [acceptedMimeTypes, files, fileRejections, maxFiles, maxSizeInBytes]
     );
@@ -186,10 +199,20 @@ export function AccountFileUpload({ theme }) {
         const accepted = [];
         const rejected = [];
 
+        // Track file names to detect duplicates
+        const seenFileNames = new Set();
+
         allFiles.forEach((file) => {
-            if (accepted.length < maxFiles) {
+            // Check if the file has already been seen (to handle duplicates)
+            if (seenFileNames.has(file.name)) {
+                rejected.push({
+                    file,
+                    reason: RejectionReason.DuplicateFile
+                });
+            } else if (accepted.length < maxFiles) {
                 if (acceptedMimeTypes.includes(file.type) && file.size <= maxSizeInBytes) {
                     accepted.push(file);
+                    seenFileNames.add(file.name); // Mark this file as seen
                 } else {
                     rejected.push({
                         file,
@@ -197,12 +220,14 @@ export function AccountFileUpload({ theme }) {
                             ? RejectionReason.InvalidMimeType
                             : RejectionReason.FileTooLarge
                     });
+                    seenFileNames.add(file.name); // Mark this file as seen
                 }
             } else {
                 rejected.push({
                     file,
                     reason: RejectionReason.OverFileLimit
                 });
+                seenFileNames.add(file.name); // Mark this file as seen
             }
         });
 
@@ -214,28 +239,45 @@ export function AccountFileUpload({ theme }) {
         fileCountOverLimit === 1 ? 'file' : 'files'
     }.`
 
-    const handleAcceptedFiles = useCallback((acceptedFiles) => {
-        // Parse the files as needed
-        acceptedFiles.forEach(file => {
-            const reader = new FileReader();
-            reader.onload = async (e) => {
-                const arrayBuffer = e.target.result;
-                const binary = new Uint8Array(arrayBuffer);
-                try {
-                    const result = await invoke('parse_file', {
-                        fileData: { filename: file.name, binary: Array.from(binary) }
-                    });
-                    console.log("parsed file: ", result)
-                    setParsedData(result);
-                } catch (error) {
-                    console.log("Error parsing file: ", error)
-                }
-            };
-            reader.readAsArrayBuffer(file);
-        });
+    const handleAcceptedFiles = useCallback(async (acceptedFiles) => {
+        const filesToAdd = [];
+        const currentFileNames = new Set(files.map(file => file.name));
+        const currentRejectedFileNames = new Set(fileRejections.map(rejection => rejection.file.name));
+        const newRejections = [];
 
-        setFiles(acceptedFiles);
-    }, [setFiles, setParsedData]);
+        for (const file of acceptedFiles) {
+            if (currentFileNames.has(file.name) || currentRejectedFileNames.has(file.name)) {
+                newRejections.push({
+                    file,
+                    reason: RejectionReason.DuplicateFile
+                });
+            } else {
+                filesToAdd.push(file);
+            }
+        }
+
+        const fileDataArray = await Promise.all(filesToAdd.map(file => {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const arrayBuffer = e.target.result;
+                    const binary = new Uint8Array(arrayBuffer);
+                    const fileData = {
+                        filename: file.name,
+                        binary: Array.from(binary)
+                    };
+                    resolve(fileData);
+                };
+                reader.onerror = reject;
+                reader.readAsArrayBuffer(file);
+            });
+        }));
+
+        const parsedFiles = await parseFiles(fileDataArray);
+
+        setFiles(prevFiles => [...prevFiles, ...filesToAdd]);
+        setFileRejections(prevRejections => [...prevRejections, ...newRejections]);
+    }, [files, fileRejections, setFiles, setFileRejections, parseFiles]);
 
     // Log files to console whenever they are set
     useEffect(() => {
@@ -255,14 +297,14 @@ export function AccountFileUpload({ theme }) {
                 maxSizeInBytes={maxSizeInBytes}
                 maxFiles={maxFiles}
                 onAccepted={handleAcceptedFiles}
-                onRejected={setFileRejections}
+                onRejected={(rejections) => setFileRejections(prevRejections => [...prevRejections, ...rejections])}
                 renderFile={(file, index) => {
                     const { name, size, type } = file;
                     const renderFileCountError = index === 0 && fileCountOverLimit > 0;
                     const fileRejection = fileRejections.find(
-                        (fileRejection) => fileRejection.file === file && fileRejection.reason !== RejectionReason.OverFileLimit
+                        (fileRejection) => fileRejection.file === file
                     );
-                    const { message } = fileRejection || {};
+                    const { reason } = fileRejection || {};
 
                     return (
                         <React.Fragment key={`${file.name}-${index}`}>
@@ -275,7 +317,7 @@ export function AccountFileUpload({ theme }) {
                                     onRemove={() => handleRemove(file)}
                                     sizeInBytes={size}
                                     type={type}
-                                    validationMessage={message}
+                                    validationMessage={reason}
                                 />
                                 :
                                 <AccountFileCard
@@ -284,7 +326,7 @@ export function AccountFileUpload({ theme }) {
                                     onRemove={() => handleRemove(file)}
                                     sizeInBytes={size}
                                     type={type}
-                                    validationMessage={message}
+                                    validationMessage={reason}
                                 />
                             }
                         </React.Fragment>

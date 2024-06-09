@@ -14,7 +14,7 @@ const ThemeToggle = () => {
         <Switch
             display="inline-block"
             position="relative"
-            bottom={4}
+            bottom={2}
             marginLeft={12}
             checked={checked}
             onChange={(e) => {
@@ -29,7 +29,7 @@ const SunIcon = () => {
     const imageUrl = "https://i.imgur.com/fqsvlPV_d.webp?maxwidth=760&fidelity=grand"
     return (
         <Pane display="inline-block">
-            <img height={24} src={imageUrl} alt="Description of the image" />
+            <img height={20} src={imageUrl} alt="Description of the image" />
         </Pane>
     )
 }
@@ -38,7 +38,7 @@ const MoonIcon = () => {
     const imageUrl = "https://cdn-icons-png.freepik.com/512/740/740866.png?ga=GA1.1.1100743220.1717043240"
     return (
         <Pane display="inline-block">
-            <img height={24} src={imageUrl} alt="Description of the image" />
+            <img height={20} src={imageUrl} alt="Description of the image" />
         </Pane>
     )
 }

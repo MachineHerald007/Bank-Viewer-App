@@ -84,7 +84,7 @@ fn parse<'a>(files_to_parse: &'a Files, config: &'a Config<'a>, lang: &'a str) -
 }
 
 #[tauri::command]
-pub fn parse_files(files: Files, lang: &str) -> Result<ParsedFiles, ()> {
+pub fn parse_files(files: Files, lang: &str) -> Result<String, ()> {
     let reg_ex = Regex::new(r"psobank|psoclassicbank|psochar").unwrap();
     let mut files_to_parse: Files = Vec::new();
     let config = Config::init(lang);
@@ -104,7 +104,9 @@ pub fn parse_files(files: Files, lang: &str) -> Result<ParsedFiles, ()> {
 
     let parsed_files = parse(&files_to_parse, &config, lang);
 
-    Ok(ParsedFiles {
-        files: parsed_files
-    })
+    // Ok(ParsedFiles {
+    //     files: parsed_files
+    // })
+
+    Ok(String::from(""))
 }
