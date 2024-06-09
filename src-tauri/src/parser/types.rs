@@ -1,8 +1,25 @@
+use std::fmt;
+use serde::Serialize;
 use std::collections::HashMap;
 
 pub type Inventory<'a> = HashMap<String, Vec<(String, Item<'a>, String)>>;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
+pub enum Slot<'a> {
+    Str(&'a str),
+    Usize(usize),
+}
+
+impl<'a> fmt::Display for Slot<'a> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            Slot::Str(s) => write!(f, "{}", s),
+            Slot::Usize(u) => write!(f, "{}", u),
+        }
+    }
+}
+
+#[derive(Debug, Serialize, Clone)]
 pub enum ItemData<'a> {
     Weapon {
         name: String,
@@ -90,18 +107,12 @@ pub enum ItemData<'a> {
     },
 }
 
-// #[derive(Debug)]
-// pub struct Item {
-//     item: Option<ItemData>,
-//     config: Config<'a>
-// }
-
-#[derive(Debug)]
+#[derive(Debug, Serialize, Clone)]
 pub struct Item<'a> {
     pub item: Option<ItemData<'a>>
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Clone)]
 pub struct Attribute {
     pub native: i8,
     pub a_beast: i8,
@@ -110,7 +121,7 @@ pub struct Attribute {
     pub hit: i8,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Clone)]
 pub struct Status {
     pub def: u16,
     pub pow: u16,
@@ -118,7 +129,7 @@ pub struct Status {
     pub mind: u16,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Clone)]
 pub struct Addition {
     pub def: i32,
     pub avoid: i32,
@@ -130,7 +141,7 @@ pub enum AdditionType {
     AVOID = 1,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Clone)]
 pub struct Meseta {
     pub name: String,
     pub r#type: u32,
@@ -138,7 +149,7 @@ pub struct Meseta {
     pub display: String,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct SRankWeapon {
     pub name: String,
     pub type_: u8,
@@ -146,4 +157,29 @@ pub struct SRankWeapon {
     pub grinder: u8,
     pub element: String,
     pub display: String,
+}
+
+#[derive(Debug, Serialize, Clone)]
+pub struct SharedBank<'a> {
+    pub account_type: &'static str,
+    pub mode: u8,
+    pub bank: Inventory<'a>,
+    pub lang: &'a str
+}
+
+#[derive(Debug, Serialize, Clone)]
+pub struct Character<'a> {
+    pub slot: usize,
+    pub mode: u8,
+    pub name: String,
+    pub lang: &'a str,
+    pub guild_card_number: String,
+    pub class: String,
+    pub section_id: String,
+    pub level: u8,
+    pub experience: u32,
+    pub ep1_progress: String,
+    pub ep2_progress: String,
+    pub inventory: Inventory<'a>,
+    pub bank: Inventory<'a>,
 }

@@ -2,10 +2,11 @@ use std::collections::HashMap;
 
 use crate::util::Util;
 use crate::config::config::Config;
-use crate::parser::types::Inventory;
-use crate::parser::types::Status;
+use crate::parser::types::Slot;
 use crate::parser::types::Item;
+use crate::parser::types::Status;
 use crate::parser::types::ItemData;
+use crate::parser::types::Inventory;
 use crate::parser::types::Attribute;
 use crate::parser::types::Addition;
 use crate::parser::types::AdditionType;
@@ -91,14 +92,18 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'stat
     let hit = get_hit(&item_data);
     let is_common = is_common_weapon(item_code);
     let mut element = String::new();
+    
     if item_data[4] != 0x00 && item_data[4] != 0x80 {
         element = format!(" [{}]", get_element(&item_data, config));
     }
+
     let tekked_mode = is_tekked(&item_data, item_code);
     let mut tekked_text = String::new();
+
     if !tekked_mode {
         tekked_text = "? ".to_string();
     }
+
     if !tekked_mode && is_common {
         tekked_text = "???? ".to_string();
     }
@@ -178,6 +183,7 @@ fn barrier<'a>(item_code: u32, item_data: Vec<u8>, config: &'a Config<'a>) -> It
 
 fn unit(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'static> {
     let name = get_item_name(item_code, config);
+    
     ItemData::Unit {
         name: name.clone(),
         type_: 4,
@@ -239,6 +245,7 @@ fn disk<'a>(item_code: u32, item_data: Vec<u8>, config: &'a Config<'a>) -> ItemD
         None => "No map found",
     };
     let level = item_data[2] + 1;
+    
     ItemData::Disk {
         name: format!("{} LV{} {:?}", name, level, config.disk_name),
         type_: 6,
@@ -277,6 +284,7 @@ fn tool(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'static
     } else {
         item_data[20]
     };
+    
     ItemData::Tool {
         name: name.clone(),
         type_: 7,
@@ -288,6 +296,7 @@ fn tool(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'static
 
 fn meseta(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'static> {
     let amount = item_data[5] as u32; // Assuming the amount is stored in the 5th byte, adjust as necessary
+    
     ItemData::Meseta {
         name: "Meseta".to_string(),
         r#type: 10, // Assuming 10 is the type code for Meseta, adjust as necessary
@@ -303,6 +312,7 @@ fn other(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'stati
     } else {
         item_data[20]
     };
+
     ItemData::Other {
         name: name.clone(),
         type_: 9,
@@ -322,6 +332,7 @@ fn get_item_name(item_code: u32, config: &Config) -> String {
 
 fn get_element(item_data: &[u8], config: &Config) -> String {
     let code = item_data[4];
+
     if let Some(element) = config.weapon_special_codes.clone().expect("REASON").get(&code) {
         String::from(element.clone())
     } else {
@@ -331,6 +342,7 @@ fn get_element(item_data: &[u8], config: &Config) -> String {
 
 fn get_s_rank_element(item_data: &[u8], config: &Config) -> String {
     let element_code = item_data[2];
+
     if let Some(element) = config.srank_special_codes.clone().expect("REASON").get(&element_code) {
         String::from(element.clone())
     } else {
@@ -364,11 +376,13 @@ fn get_attribute(attribute_type: u8, item_data: &[u8]) -> i8 {
         &item_data[8..10],
         &item_data[10..12],
     ];
+    
     for attr in attributes.iter() {
         if attr[0] == attribute_type {
             return attr[1] as i8;
         }
     }
+
     0
 }
 
@@ -412,11 +426,9 @@ fn grinder_label(number: u8) -> String {
 
 fn get_custom_name(custom_name_data: &[u8]) -> String {
     let mut temp = vec![];
-
-    // Adjust for lowercase to uppercase
     let mut data = custom_name_data.to_vec();
-    data[0] -= 0x04;
 
+    data[0] -= 0x04;
     temp.extend(three_letters(&data[0..2]));
     temp.extend(three_letters(&data[2..4]));
     temp.extend(three_letters(&data[4..6]));
@@ -435,6 +447,7 @@ fn three_letters(array: &[u8]) -> Vec<u8> {
     let first = array[0] / 0x04;
     let second = (((array[0] % 0x04) as u16) << 8 | array[1] as u16) / 0x20;
     let third = array[1] % 0x20;
+
     vec![first, second as u8, third]
 }
 
@@ -456,37 +469,24 @@ pub fn set_meseta<'a>(
     }
 }
 
-pub fn set_items<'a>(items_data: &[u8], slot: &str, lang: &'a str, length: usize, config: &'a Config<'a>) -> Inventory<'a> {
+pub fn set_items<'a>(items_data: &[u8], slot: Slot, lang: &'a str, length: usize, config: &'a Config<'a>) -> Inventory<'a> {
     let mut inventory = HashMap::new();
     let mut array = Vec::new();
-    for i in (0..items_data.len()).step_by(length) {
-        println!("============ item data start ============");
-        println!(
-            "item number: {}, index: {}, length: {}, end: {}",
-            i / length,
-            i,
-            length,
-            i + length
-        );
-        println!("slot: {}", slot);
 
+    for i in (0..items_data.len()).step_by(length) {
         let item_data = &items_data[i..i + length];
-        println!("itemData:");
 
         if is_blank(item_data) {
             continue;
         }
-        println!("{:?}", item_data);
 
         let item_code = Util::binary_array_to_int(&item_data[0..3]);
         let item_code_hex = Util::binary_array_to_hex(&item_data[0..3]);
-        println!("item code: {}", item_code_hex);
-
         let item = new_item(item_data.to_vec(), item_code, lang, config);
-        println!("item name: {:?}", item);
 
         array.push((item_code_hex, item, slot.to_string()));
     }
+
     inventory.insert(lang.to_string(), array);
     inventory
 }
@@ -515,8 +515,7 @@ fn create_item<'a>(item_data: Vec<u8>, item_code: u32, item_type: u32, _lang: &'
 
 pub fn new_item<'a>(item_data: Vec<u8>, item_code: u32, lang: &'a str, config: &'a Config<'a>) -> Item<'a> {
     let item_type = get_item_type(item_code);
-    println!("item type: {}", item_type);
-
     let item = create_item(item_data, item_code, item_type, lang, config);
+    
     Item { item }
 }

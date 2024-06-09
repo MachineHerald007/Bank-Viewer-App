@@ -28,7 +28,7 @@ use item_codes_ja::{
     pbs_ja
 };
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Config<'a> {
     pub item_codes: Option<HashMap<u32, &'a str>>,
     pub weapon_special_codes: Option<HashMap<u8, &'a str>>,
@@ -108,7 +108,7 @@ impl<'a> Config<'a> {
         }
     }
 
-    pub fn titles() -> HashMap<u32, &'static str> {
+    pub fn titles() -> HashMap<usize, &'static str> {
         let mut map = HashMap::new();
         map.insert(1, "Ra-GOU");
         map.insert(2, "Gi-GOU");

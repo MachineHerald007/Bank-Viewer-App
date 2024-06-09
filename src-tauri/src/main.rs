@@ -12,7 +12,7 @@ mod config {
 mod parser {
     pub mod item;
     pub mod types;
-    // pub mod character;
+    pub mod character;
     pub mod shared_bank;
 }
 mod util;
