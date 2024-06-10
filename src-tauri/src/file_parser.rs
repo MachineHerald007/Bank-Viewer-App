@@ -84,7 +84,7 @@ fn parse<'a>(files_to_parse: &'a Files, config: &'a Config<'a>, lang: &'a str) -
 }
 
 #[tauri::command]
-pub fn parse_files(files: Files, lang: &str) -> Result<String, ()> {
+pub fn parse_files(files: Files, lang: &str) -> Result<ParsedFiles, ()> {
     let reg_ex = Regex::new(r"psobank|psoclassicbank|psochar").unwrap();
     let mut files_to_parse: Files = Vec::new();
     let config = Config::init(lang);
@@ -102,11 +102,15 @@ pub fn parse_files(files: Files, lang: &str) -> Result<String, ()> {
         return Err(());
     }
 
-    let parsed_files = parse(&files_to_parse, &config, lang);
+    // boxing to create static references, so I can return values referencing
+    // local variables.
+    let files_to_parse_static: &'static Files = Box::leak(Box::new(files_to_parse));
+    let config_static: &'static Config = Box::leak(Box::new(config));
+    let lang_static: &'static str = Box::leak(Box::new(String::from(lang))).as_str();
 
-    // Ok(ParsedFiles {
-    //     files: parsed_files
-    // })
+    let parsed_files = parse(files_to_parse_static, config_static, lang_static);
 
-    Ok(String::from(""))
+    Ok(ParsedFiles {
+        files: parsed_files
+    })
 }
