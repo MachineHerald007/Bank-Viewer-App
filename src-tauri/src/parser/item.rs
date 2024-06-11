@@ -82,8 +82,8 @@ fn get_item_type(item_code: u32) -> u32 {
     }
 }
 
-fn weapon(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'static> {
-    let name = get_item_name(item_code, config);
+fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
+    let name = get_item_name(item_code, &config);
     let grinder = item_data[3];
     let native = get_native(&item_data);
     let a_beast = get_a_beast(&item_data);
@@ -94,7 +94,7 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'stat
     let mut element = String::new();
     
     if item_data[4] != 0x00 && item_data[4] != 0x80 {
-        element = format!(" [{}]", get_element(&item_data, config));
+        element = format!(" [{}]", get_element(&item_data, &config));
     }
 
     let tekked_mode = is_tekked(&item_data, item_code);
@@ -130,8 +130,8 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'stat
     }
 }
 
-fn frame<'a>(item_code: u32, item_data: Vec<u8>, config: &'a Config<'a>) -> ItemData<'a> {
-    let name = get_item_name(item_code, config);
+fn frame<'a>(item_code: u32, item_data: Vec<u8>, config: Config<'a>) -> ItemData {
+    let name = get_item_name(item_code, &config);
     let slot = item_data[5];
     let def = item_data[6];
     let def_max_addition = get_addition(&name, &config.frames, 0);
@@ -155,8 +155,8 @@ fn frame<'a>(item_code: u32, item_data: Vec<u8>, config: &'a Config<'a>) -> Item
     }
 }
 
-fn barrier<'a>(item_code: u32, item_data: Vec<u8>, config: &'a Config<'a>) -> ItemData<'a> {
-    let name = get_item_name(item_code, config);
+fn barrier<'a>(item_code: u32, item_data: Vec<u8>, config: Config<'a>) -> ItemData {
+    let name = get_item_name(item_code, &config);
     let def = item_data[6];
     let def_max_addition = get_addition(&name, &config.barriers, 0);
     let avoid = item_data[8];
@@ -181,8 +181,8 @@ fn barrier<'a>(item_code: u32, item_data: Vec<u8>, config: &'a Config<'a>) -> It
     }
 }
 
-fn unit(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'static> {
-    let name = get_item_name(item_code, config);
+fn unit(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
+    let name = get_item_name(item_code, &config);
     
     ItemData::Unit {
         name: name.clone(),
@@ -192,8 +192,8 @@ fn unit(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'static
     }
 }
 
-fn mag<'a>(item_code: u32, item_data: Vec<u8>, config: &'a Config<'a>) -> ItemData<'a> {
-    let name = get_item_name(item_code & 0xFFFF00, config);
+fn mag<'a>(item_code: u32, item_data: Vec<u8>, config: Config<'a>) -> ItemData {
+    let name = get_item_name(item_code & 0xFFFF00, &config);
     let level = item_data[2];
     let sync = item_data[16];
     let iq = item_data[17];
@@ -236,7 +236,7 @@ fn mag<'a>(item_code: u32, item_data: Vec<u8>, config: &'a Config<'a>) -> ItemDa
     }
 }
 
-fn disk<'a>(item_code: u32, item_data: Vec<u8>, config: &'a Config<'a>) -> ItemData<'a> {
+fn disk<'a>(item_code: u32, item_data: Vec<u8>, config: Config<'a>) -> ItemData {
     let name = match &config.tech_name_codes {
         Some(map) => match map.get(&(item_data[4] as u8)) {
             Some(name) => name.clone(),
@@ -255,7 +255,7 @@ fn disk<'a>(item_code: u32, item_data: Vec<u8>, config: &'a Config<'a>) -> ItemD
     }
 }
 
-fn s_rank_weapon<'a>(item_code: u32, item_data: Vec<u8>, config: &'a Config<'a>) -> ItemData<'a> {
+fn s_rank_weapon<'a>(item_code: u32, item_data: Vec<u8>, config: Config<'a>) -> ItemData {
     let custom_name = get_custom_name(&item_data[6..12]);
     let name = match &config.tech_name_codes {
         Some(map) => match map.get(&(item_data[4] as u8)) {
@@ -267,8 +267,8 @@ fn s_rank_weapon<'a>(item_code: u32, item_data: Vec<u8>, config: &'a Config<'a>)
     let grinder = item_data[3];
     let element = get_s_rank_element(&item_data, config);
 
-    ItemData::SRank_Weapon {
-        name: name.clone(),
+    ItemData::SRankWeapon {
+        name: name.clone().to_string(),
         type_: 8,
         itemdata: Util::binary_array_to_hex(&item_data),
         grinder,
@@ -277,8 +277,8 @@ fn s_rank_weapon<'a>(item_code: u32, item_data: Vec<u8>, config: &'a Config<'a>)
     }
 }
 
-fn tool(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'static> {
-    let name = get_item_name(item_code, config);
+fn tool(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
+    let name = get_item_name(item_code, &config);
     let number = if item_data.len() == 28 {
         item_data[5]
     } else {
@@ -294,7 +294,7 @@ fn tool(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'static
     }
 }
 
-fn meseta(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'static> {
+fn meseta(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let amount = item_data[5] as u32; // Assuming the amount is stored in the 5th byte, adjust as necessary
     
     ItemData::Meseta {
@@ -305,8 +305,8 @@ fn meseta(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'stat
     }
 }
 
-fn other(item_code: u32, item_data: Vec<u8>, config: &Config) -> ItemData<'static> {
-    let name = get_item_name(item_code, config);
+fn other(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
+    let name = get_item_name(item_code, &config);
     let number = if item_data.len() == 28 {
         item_data[5]
     } else {
@@ -340,7 +340,7 @@ fn get_element(item_data: &[u8], config: &Config) -> String {
     }
 }
 
-fn get_s_rank_element(item_data: &[u8], config: &Config) -> String {
+fn get_s_rank_element(item_data: &[u8], config: Config) -> String {
     let element_code = item_data[2];
 
     if let Some(element) = config.srank_special_codes.clone().expect("REASON").get(&element_code) {
@@ -398,7 +398,7 @@ fn is_tekked(item_data: &[u8], _item_code: u32) -> bool {
     item_data[4] < 0x80
 }
 
-fn get_pbs<'a>(pbs_code: &'a str, config: &Config<'a>) -> [String; 3] {
+fn get_pbs<'a>(pbs_code: &'a str, config: Config<'a>) -> [String; 3] {
     if let Some(pbs) = config.pbs.clone().expect("REASON").get(&pbs_code) {
         [pbs[0].to_string(), pbs[1].to_string(), pbs[2].to_string()]
     } else {
@@ -453,25 +453,26 @@ fn three_letters(array: &[u8]) -> Vec<u8> {
 
 pub fn set_meseta<'a>(
     meseta_data: &[u8],
-    inventory: &mut HashMap<String, Vec<(String, Item<'a>, String)>>,
+    inventory: &mut HashMap<String, Vec<(String, Item, String)>>,
     slot: &str,
     lang: &'a str,
-    config: &'a Config
+    config: Config<'a>
 ) 
 {
     let name = if lang == "EN" { "MESETA" } else { "メセタ" };
     let meseta = ((meseta_data[2] as u32) << 16) | ((meseta_data[1] as u32) << 8) | meseta_data[0] as u32;
     let meseta_code = format!("09{:07}", meseta);
-    let item = new_item(meseta_data.to_vec(), meseta, lang, config);
+    let item = new_item(meseta_data.to_vec(), meseta, config);
 
     if let Some(lang_inventory) = inventory.get_mut(lang) {
         lang_inventory.push((meseta_code, item, slot.to_string()));
     }
 }
 
-pub fn set_items<'a>(items_data: &[u8], slot: Slot, lang: &'a str, length: usize, config: &'a Config<'a>) -> Inventory<'a> {
+pub fn set_items<'a>(items_data: &[u8], slot: Slot, length: usize, config: Config<'a>) -> Inventory {
     let mut inventory = HashMap::new();
     let mut array = Vec::new();
+    let lang = config.lang.clone().unwrap();
 
     for i in (0..items_data.len()).step_by(length) {
         let item_data = &items_data[i..i + length];
@@ -482,12 +483,12 @@ pub fn set_items<'a>(items_data: &[u8], slot: Slot, lang: &'a str, length: usize
 
         let item_code = Util::binary_array_to_int(&item_data[0..3]);
         let item_code_hex = Util::binary_array_to_hex(&item_data[0..3]);
-        let item = new_item(item_data.to_vec(), item_code, lang, config);
+        let item = new_item(item_data.to_vec(), item_code, config.clone());
 
         array.push((item_code_hex, item, slot.to_string()));
     }
 
-    inventory.insert(lang.to_string(), array);
+    inventory.insert(lang, array);
     inventory
 }
 
@@ -497,7 +498,8 @@ fn is_blank(item_data: &[u8]) -> bool {
         || Util::binary_array_to_hex(item_data).contains("00FF00000000000000000000FFFFFFFF")
 }
 
-fn create_item<'a>(item_data: Vec<u8>, item_code: u32, item_type: u32, _lang: &'a str, config: &'a Config<'a>) -> Option<ItemData<'a>> {
+// removed item param here
+fn create_item<'a>(item_data: Vec<u8>, item_code: u32, item_type: u32, config: Config<'a>) -> Option<ItemData> {
     match item_type {
         1 => Some(weapon(item_code, item_data, config)),
         2 => Some(frame(item_code, item_data, config)),
@@ -513,9 +515,9 @@ fn create_item<'a>(item_data: Vec<u8>, item_code: u32, item_type: u32, _lang: &'
     }
 }
 
-pub fn new_item<'a>(item_data: Vec<u8>, item_code: u32, lang: &'a str, config: &'a Config<'a>) -> Item<'a> {
+pub fn new_item<'a>(item_data: Vec<u8>, item_code: u32, config: Config<'a>) -> Item {
     let item_type = get_item_type(item_code);
-    let item = create_item(item_data, item_code, item_type, lang, config);
+    let item = create_item(item_data, item_code, item_type, config);
     
     Item { item }
 }

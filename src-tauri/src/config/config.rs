@@ -30,6 +30,7 @@ use item_codes_ja::{
 
 #[derive(Debug, Clone)]
 pub struct Config<'a> {
+    pub lang: Option<String>,
     pub item_codes: Option<HashMap<u32, &'a str>>,
     pub weapon_special_codes: Option<HashMap<u8, &'a str>>,
     pub srank_special_codes: Option<HashMap<u8, &'a str>>,
@@ -92,19 +93,19 @@ impl<'a> Config<'a> {
         map
     }
 
-    pub fn mode(mode: &str) -> u8 {
-        match mode {
+    pub fn mode(mode: String) -> u8 {
+        match mode.as_str() {
             "NORMAL" => 0,
             "CLASSIC" => 1,
             _ => 0
         }
     }
 
-    pub fn mode_name(mode: u8) -> &'static str {
+    pub fn mode_name(mode: u8) -> String {
         match mode {
-            0 => "NORMAL",
-            1 => "CLASSIC",
-            _ => "UNKNOWN",
+            0 => String::from("NORMAL"),
+            1 => String::from("CLASSIC"),
+            _ => String::from("UNKNOWN"),
         }
     }
 
@@ -229,9 +230,10 @@ impl<'a> Config<'a> {
         map
     }
 
-    pub fn init(lang: &str) -> Self {
-        match lang {
+    pub fn init(lang: String) -> Self {
+        match lang.as_str() {
             "JA" => Config {
+                lang: Some(lang),
                 item_codes: Some(item_codes_ja()),
                 weapon_special_codes: Some(weapon_special_codes_ja()),
                 srank_special_codes: Some(srank_special_codes_ja()),
@@ -243,6 +245,7 @@ impl<'a> Config<'a> {
                 mag_color_codes: Some(mag_color_codes_ja()),
             },
             _ => Config {
+                lang: Some(lang),
                 item_codes: Some(item_codes()),
                 weapon_special_codes: Some(weapon_special_codes()),
                 srank_special_codes: Some(srank_special_codes()),

@@ -4,7 +4,7 @@ use serde::Deserialize;
 use tauri::regex::Regex;
 use std::collections::HashMap;
 
-use crate::parser::types;
+use crate::parser::types::{Character, SharedBank};
 use crate::parser::character;
 use crate::parser::shared_bank;
 use crate::config::config::Config;
@@ -19,43 +19,45 @@ pub struct FileData {
 
 #[derive(Debug, Serialize, Clone)]
 #[serde(untagged)]
-pub enum Data<'a> {
-    Character(types::Character<'a>),
-    SharedBank(types::SharedBank<'a>),
+pub enum Data {
+    Character(Character),
+    SharedBank(SharedBank),
 }
 
 #[derive(Debug, Serialize, Clone)]
-pub struct ParsedFileData<'a> {
+pub struct ParsedFileData {
     pub filename: String,
-    pub data: Data<'a>,
+    pub data: Data,
 }
 
 #[derive(Debug, Serialize)]
-pub struct ParsedFiles<'a> {
-    pub files: Vec<ParsedFileData<'a>>
+pub struct ParsedFiles {
+    pub files: Vec<ParsedFileData>
 }
 
-fn parse<'a>(files_to_parse: &'a Files, config: &'a Config<'a>, lang: &'a str) -> Vec<ParsedFileData<'a>> {
-    let mut parsed_files: Vec<ParsedFileData<'a>> = Vec::new();
+fn parse(files_to_parse: Files, config: Config) -> Vec<ParsedFileData> {
+    let mut parsed_files: Vec<ParsedFileData> = Vec::new();
     let re_psobank = Regex::new(r"psobank").unwrap();
     let re_psochar = Regex::new(r"psochar").unwrap();
     let re_psoclassicbank = Regex::new(r"psoclassicbank").unwrap();
-
-    for (i, file) in files_to_parse.iter().enumerate() {
+    
+    for file in files_to_parse.iter() {
         let binary = &file.binary;
 
         if re_psobank.is_match(&file.filename) {
+            let normal = String::from("NORMAL");
             parsed_files.push(ParsedFileData {
                 filename: String::from(&file.filename),
-                data: Data::SharedBank(shared_bank::create(&binary[8..4808], Config::mode("NORMAL"), lang, &config)),
+                data: Data::SharedBank(shared_bank::create(&binary[8..4808], Config::mode(normal), config.clone())),
             });
             continue;
         }
 
         if re_psoclassicbank.is_match(&file.filename) {
+            let classic = String::from("CLASSIC");
             parsed_files.push(ParsedFileData {
                 filename: String::from(&file.filename),
-                data: Data::SharedBank(shared_bank::create(&binary[8..4808], Config::mode("CLASSIC"), lang, &config)),
+                data: Data::SharedBank(shared_bank::create(&binary[8..4808], Config::mode(classic), config.clone())),
             });
             continue;
         }
@@ -75,7 +77,7 @@ fn parse<'a>(files_to_parse: &'a Files, config: &'a Config<'a>, lang: &'a str) -
             
             parsed_files.push(ParsedFileData {
                 filename: String::from(&file.filename.to_owned()),
-                data: Data::Character(character::create(&binary, slot + 1, lang, &config)),
+                data: Data::Character(character::create(&binary, slot + 1, config.clone())),
             });
         }
     }
@@ -84,10 +86,10 @@ fn parse<'a>(files_to_parse: &'a Files, config: &'a Config<'a>, lang: &'a str) -
 }
 
 #[tauri::command]
-pub fn parse_files(files: Files, lang: &str) -> Result<ParsedFiles, ()> {
+pub fn parse_files(files: Files, lang: String) -> Result<ParsedFiles, ()> {
     let reg_ex = Regex::new(r"psobank|psoclassicbank|psochar").unwrap();
     let mut files_to_parse: Files = Vec::new();
-    let config = Config::init(lang);
+    let config = Config::init(lang.clone());
 
     for file in &files {
         if reg_ex.is_match(&file.filename) {
@@ -102,15 +104,7 @@ pub fn parse_files(files: Files, lang: &str) -> Result<ParsedFiles, ()> {
         return Err(());
     }
 
-    // boxing to create static references, so I can return values referencing
-    // local variables.
-    let files_to_parse_static: &'static Files = Box::leak(Box::new(files_to_parse));
-    let config_static: &'static Config = Box::leak(Box::new(config));
-    let lang_static: &'static str = Box::leak(Box::new(String::from(lang))).as_str();
-
-    let parsed_files = parse(files_to_parse_static, config_static, lang_static);
-
     Ok(ParsedFiles {
-        files: parsed_files
+        files: parse(files_to_parse, config)
     })
 }

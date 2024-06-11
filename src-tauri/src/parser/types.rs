@@ -2,15 +2,45 @@ use std::fmt;
 use serde::Serialize;
 use std::collections::HashMap;
 
-pub type Inventory<'a> = HashMap<String, Vec<(String, Item<'a>, String)>>;
+pub type Inventory = HashMap<String, Vec<(String, Item, String)>>;
+
+#[derive(Debug, Serialize, Clone)]
+pub struct Item {
+    pub item: Option<ItemData>
+}
+
+#[derive(Debug, Serialize, Clone)]
+pub struct SharedBank {
+    pub account_type: String,
+    pub mode: u8,
+    pub bank: Inventory,
+    pub lang: String
+}
+
+#[derive(Debug, Serialize, Clone)]
+pub struct Character {
+    pub slot: usize,
+    pub mode: u8,
+    pub name: String,
+    pub lang: String,
+    pub guild_card_number: String,
+    pub class: String,
+    pub section_id: String,
+    pub level: u8,
+    pub experience: u32,
+    pub ep1_progress: String,
+    pub ep2_progress: String,
+    pub inventory: Inventory,
+    pub bank: Inventory,
+}
 
 #[derive(Debug, Clone)]
-pub enum Slot<'a> {
-    Str(&'a str),
+pub enum Slot {
+    Str(String),
     Usize(usize),
 }
 
-impl<'a> fmt::Display for Slot<'a> {
+impl fmt::Display for Slot {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
             Slot::Str(s) => write!(f, "{}", s),
@@ -20,7 +50,7 @@ impl<'a> fmt::Display for Slot<'a> {
 }
 
 #[derive(Debug, Serialize, Clone)]
-pub enum ItemData<'a> {
+pub enum ItemData {
     Weapon {
         name: String,
         type_: u8,
@@ -77,8 +107,8 @@ pub enum ItemData<'a> {
         level: u8,
         display: String,
     },
-    SRank_Weapon {
-        name: &'a str,
+    SRankWeapon {
+        name: String,
         type_: u8,
         itemdata: String,
         grinder: u8,
@@ -96,7 +126,7 @@ pub enum ItemData<'a> {
         name: String,
         r#type: u8,
         amount: u32,
-        display: String
+        display: String,
     },
     Other {
         name: String,
@@ -105,11 +135,6 @@ pub enum ItemData<'a> {
         number: u8,
         display: String,
     },
-}
-
-#[derive(Debug, Serialize, Clone)]
-pub struct Item<'a> {
-    pub item: Option<ItemData<'a>>
 }
 
 #[derive(Debug, Serialize, Clone)]
@@ -157,29 +182,4 @@ pub struct SRankWeapon {
     pub grinder: u8,
     pub element: String,
     pub display: String,
-}
-
-#[derive(Debug, Serialize, Clone)]
-pub struct SharedBank<'a> {
-    pub account_type: &'static str,
-    pub mode: u8,
-    pub bank: Inventory<'a>,
-    pub lang: &'a str
-}
-
-#[derive(Debug, Serialize, Clone)]
-pub struct Character<'a> {
-    pub slot: usize,
-    pub mode: u8,
-    pub name: String,
-    pub lang: &'a str,
-    pub guild_card_number: String,
-    pub class: String,
-    pub section_id: String,
-    pub level: u8,
-    pub experience: u32,
-    pub ep1_progress: String,
-    pub ep2_progress: String,
-    pub inventory: Inventory<'a>,
-    pub bank: Inventory<'a>,
 }

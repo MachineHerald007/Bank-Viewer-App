@@ -10,9 +10,9 @@ use crate::config::config::Config;
 
 fn set_mode(char_data: &[u8]) -> u8 {
     if char_data[7] == 0x40 {
-        Config::mode("CLASSIC")
+        Config::mode("CLASSIC".to_string())
     } else {
-        Config::mode("NORMAL")
+        Config::mode("NORMAL".to_string())
     }
 }
 
@@ -125,12 +125,12 @@ fn set_ep2_progress(char_data: &Vec<u8>, index: usize, number: usize) -> String 
     progress
 }
 
-pub fn create<'a>(char_data: &Vec<u8>, slot: usize, lang: &'a str, config: &'a Config<'a>) -> Character<'a> {
+pub fn create<'a>(char_data: &Vec<u8>, slot: usize, config: Config<'a>) -> Character {
     Character {
         slot: slot,
         mode: set_mode(char_data),
         name: set_name(char_data),
-        lang: lang,
+        lang: config.lang.clone().unwrap(),
         guild_card_number: set_guild_card_number(char_data),
         class: set_class(char_data),
         section_id: set_section_id(char_data),
@@ -138,7 +138,7 @@ pub fn create<'a>(char_data: &Vec<u8>, slot: usize, lang: &'a str, config: &'a C
         experience: set_experience(char_data),
         ep1_progress: set_ep1_progress(char_data, 11460, 9),
         ep2_progress: set_ep2_progress(char_data, 11496, 6),
-        inventory: item::set_items(&char_data[20..860], Slot::Usize(slot), lang, 28, config),
-        bank: item::set_items(&char_data[1800..6600], Slot::Usize(slot), lang, 24, config),
+        inventory: item::set_items(&char_data[20..860], Slot::Usize(slot), 28, config.clone()),
+        bank: item::set_items(&char_data[1800..6600], Slot::Usize(slot), 24, config.clone()),
     }
 }
