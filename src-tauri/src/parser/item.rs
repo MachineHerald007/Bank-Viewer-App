@@ -130,7 +130,7 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     }
 }
 
-fn frame<'a>(item_code: u32, item_data: Vec<u8>, config: Config<'a>) -> ItemData {
+fn frame(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let name = get_item_name(item_code, &config);
     let slot = item_data[5];
     let def = item_data[6];
@@ -155,7 +155,7 @@ fn frame<'a>(item_code: u32, item_data: Vec<u8>, config: Config<'a>) -> ItemData
     }
 }
 
-fn barrier<'a>(item_code: u32, item_data: Vec<u8>, config: Config<'a>) -> ItemData {
+fn barrier(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let name = get_item_name(item_code, &config);
     let def = item_data[6];
     let def_max_addition = get_addition(&name, &config.barriers, 0);
@@ -192,7 +192,7 @@ fn unit(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     }
 }
 
-fn mag<'a>(item_code: u32, item_data: Vec<u8>, config: Config<'a>) -> ItemData {
+fn mag(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let name = get_item_name(item_code & 0xFFFF00, &config);
     let level = item_data[2];
     let sync = item_data[16];
@@ -236,7 +236,7 @@ fn mag<'a>(item_code: u32, item_data: Vec<u8>, config: Config<'a>) -> ItemData {
     }
 }
 
-fn disk<'a>(item_code: u32, item_data: Vec<u8>, config: Config<'a>) -> ItemData {
+fn disk(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let name = match &config.tech_name_codes {
         Some(map) => match map.get(&(item_data[4] as u8)) {
             Some(name) => name.clone(),
@@ -255,7 +255,7 @@ fn disk<'a>(item_code: u32, item_data: Vec<u8>, config: Config<'a>) -> ItemData 
     }
 }
 
-fn s_rank_weapon<'a>(item_code: u32, item_data: Vec<u8>, config: Config<'a>) -> ItemData {
+fn s_rank_weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let custom_name = get_custom_name(&item_data[6..12]);
     let name = match &config.tech_name_codes {
         Some(map) => match map.get(&(item_data[4] as u8)) {
@@ -398,7 +398,7 @@ fn is_tekked(item_data: &[u8], _item_code: u32) -> bool {
     item_data[4] < 0x80
 }
 
-fn get_pbs<'a>(pbs_code: &'a str, config: Config<'a>) -> [String; 3] {
+fn get_pbs(pbs_code: &str, config: Config) -> [String; 3] {
     if let Some(pbs) = config.pbs.clone().expect("REASON").get(&pbs_code) {
         [pbs[0].to_string(), pbs[1].to_string(), pbs[2].to_string()]
     } else {
@@ -451,12 +451,12 @@ fn three_letters(array: &[u8]) -> Vec<u8> {
     vec![first, second as u8, third]
 }
 
-pub fn set_meseta<'a>(
+pub fn set_meseta(
     meseta_data: &[u8],
     inventory: &mut HashMap<String, Vec<(String, Item, String)>>,
-    slot: &str,
-    lang: &'a str,
-    config: Config<'a>
+    slot: String,
+    lang: String,
+    config: Config
 ) 
 {
     let name = if lang == "EN" { "MESETA" } else { "メセタ" };
@@ -464,12 +464,12 @@ pub fn set_meseta<'a>(
     let meseta_code = format!("09{:07}", meseta);
     let item = new_item(meseta_data.to_vec(), meseta, config);
 
-    if let Some(lang_inventory) = inventory.get_mut(lang) {
+    if let Some(lang_inventory) = inventory.get_mut(&lang) {
         lang_inventory.push((meseta_code, item, slot.to_string()));
     }
 }
 
-pub fn set_items<'a>(items_data: &[u8], slot: Slot, length: usize, config: Config<'a>) -> Inventory {
+pub fn set_items(items_data: &[u8], slot: Slot, length: usize, config: Config) -> Inventory {
     let mut inventory = HashMap::new();
     let mut array = Vec::new();
     let lang = config.lang.clone().unwrap();
@@ -498,8 +498,7 @@ fn is_blank(item_data: &[u8]) -> bool {
         || Util::binary_array_to_hex(item_data).contains("00FF00000000000000000000FFFFFFFF")
 }
 
-// removed item param here
-fn create_item<'a>(item_data: Vec<u8>, item_code: u32, item_type: u32, config: Config<'a>) -> Option<ItemData> {
+fn create_item(item_data: Vec<u8>, item_code: u32, item_type: u32, config: Config) -> Option<ItemData> {
     match item_type {
         1 => Some(weapon(item_code, item_data, config)),
         2 => Some(frame(item_code, item_data, config)),
@@ -515,7 +514,7 @@ fn create_item<'a>(item_data: Vec<u8>, item_code: u32, item_type: u32, config: C
     }
 }
 
-pub fn new_item<'a>(item_data: Vec<u8>, item_code: u32, config: Config<'a>) -> Item {
+pub fn new_item(item_data: Vec<u8>, item_code: u32, config: Config) -> Item {
     let item_type = get_item_type(item_code);
     let item = create_item(item_data, item_code, item_type, config);
     

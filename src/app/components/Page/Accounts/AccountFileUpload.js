@@ -275,6 +275,8 @@ export function AccountFileUpload({ theme }) {
 
         const parsedFiles = await parseFiles(fileDataArray);
 
+        console.log("parsedFiles: ", parsedFiles)
+
         setFiles(prevFiles => [...prevFiles, ...filesToAdd]);
         setFileRejections(prevRejections => [...prevRejections, ...newRejections]);
     }, [files, fileRejections, setFiles, setFileRejections, parseFiles]);
