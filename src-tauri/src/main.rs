@@ -16,8 +16,10 @@ mod parser {
     pub mod shared_bank;
 }
 mod util;
-mod file_parser;
-use file_parser::parse_files;
+mod command {
+    pub mod file_parser;
+}
+use command::file_parser::parse_files;
 
 fn main() {
     tauri::Builder::default()
