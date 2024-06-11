@@ -1,13 +1,14 @@
 use std::str;
-use serde::Serialize;
-use serde::Deserialize;
-use tauri::regex::Regex;
 use std::collections::HashMap;
+use tauri::regex::Regex;
+use serde::{ Serialize, Deserialize };
 
-use crate::parser::types::{Character, SharedBank};
-use crate::parser::character;
-use crate::parser::shared_bank;
 use crate::config::config::Config;
+use crate::parser::{
+    character,
+    shared_bank,
+    types::{ Character, SharedBank },
+};
 
 type Files = Vec<FileData>;
 

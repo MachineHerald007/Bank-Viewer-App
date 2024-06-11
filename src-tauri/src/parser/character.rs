@@ -1,12 +1,11 @@
 use std::collections::HashMap;
 
 use crate::util::Util;
-use crate::parser::item;
-use crate::parser::types::Item;
-use crate::parser::types::Slot;
-use crate::parser::types::Character;
-use crate::parser::types::Inventory;
 use crate::config::config::Config;
+use crate::parser::{
+    item,
+    types::{ Item, Slot, Character, Inventory }
+};
 
 fn set_mode(char_data: &[u8]) -> u8 {
     if char_data[7] == 0x40 {
