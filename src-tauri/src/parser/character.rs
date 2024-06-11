@@ -125,7 +125,7 @@ fn set_ep2_progress(char_data: &Vec<u8>, index: usize, number: usize) -> String 
     progress
 }
 
-pub fn create<'a>(char_data: &Vec<u8>, slot: usize, config: Config<'a>) -> Character {
+pub fn create(char_data: &Vec<u8>, slot: usize, config: Config) -> Character {
     Character {
         slot: slot,
         mode: set_mode(char_data),

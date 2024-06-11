@@ -11,7 +11,7 @@ fn set_account_type(mode: u8) -> String {
     Config::mode_name(mode)
 }
 
-pub fn create<'a>(char_data: &'a [u8], mode: u8, config: Config<'a>) -> SharedBank {
+pub fn create<'a>(char_data: &'a [u8], mode: u8, config: Config) -> SharedBank {
     SharedBank {
         account_type: set_account_type(mode),
         mode: mode,
