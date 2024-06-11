@@ -4,6 +4,7 @@
     windows_subsystem = "windows"
 )]
 
+mod util;
 mod config {
     pub mod config;
     pub mod item_codes;
@@ -15,10 +16,10 @@ mod parser {
     pub mod character;
     pub mod shared_bank;
 }
-mod util;
 mod command {
     pub mod file_parser;
 }
+
 use command::file_parser::parse_files;
 
 fn main() {

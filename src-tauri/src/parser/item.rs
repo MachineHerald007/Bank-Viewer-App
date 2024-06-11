@@ -11,7 +11,7 @@ use crate::parser::types::{
     Attribute,
     Addition,
     AdditionType
-}
+};
 
 fn is_s_rank_weapon(item_code: u32) -> bool {
     Config::srank_weapon_codes().contains_key(&(item_code & 0xFFF0))

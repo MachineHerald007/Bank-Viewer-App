@@ -7,7 +7,7 @@ use crate::config::config::Config;
 use crate::parser::{
     character,
     shared_bank,
-    types::{ Character, SharedBank },
+    types::{ Character, SharedBank }
 };
 
 type Files = Vec<FileData>;
