@@ -135,50 +135,50 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
 fn frame(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let name = get_item_name(item_code, &config);
     let slot = item_data[5];
-    let def = item_data[6];
-    let def_max_addition = get_addition(&name, &config.frames, 0);
-    let avoid = item_data[8];
-    let avoid_max_addition = get_addition(&name, &config.frames, 1);
+    let dfp = item_data[6];
+    let dfp_max_addition = get_addition(&name, &config.frames, 0);
+    let evp = item_data[8];
+    let evp_max_addition = get_addition(&name, &config.frames, 1);
 
     ItemData::Frame {
         name: name.clone(),
         type_: 2,
         itemdata: Util::binary_array_to_hex(&item_data),
         slot,
-        addition: Addition { def: def.into(), avoid: avoid.into() },
+        addition: Addition { dfp: dfp.into(), evp: evp.into() },
         max_addition: Addition {
-            def: def_max_addition,
-            avoid: avoid_max_addition,
+            dfp: dfp_max_addition,
+            evp: evp_max_addition,
         },
         display: format!(
             "{} [{}|{}] [{}|{}] [{}S]",
-            name, def, def_max_addition, avoid, avoid_max_addition, slot
+            name, dfp, dfp_max_addition, evp, evp_max_addition, slot
         ),
     }
 }
 
 fn barrier(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let name = get_item_name(item_code, &config);
-    let def = item_data[6];
-    let def_max_addition = get_addition(&name, &config.barriers, 0);
-    let avoid = item_data[8];
-    let avoid_max_addition = get_addition(&name, &config.barriers, 1);
+    let dfp = item_data[6];
+    let dfp_max_addition = get_addition(&name, &config.barriers, 0);
+    let evp = item_data[8];
+    let evp_max_addition = get_addition(&name, &config.barriers, 1);
 
     ItemData::Barrier {
         name: name.clone(),
         type_: 3,
         itemdata: Util::binary_array_to_hex(&item_data),
         addition: Addition {
-            def: def.into(),
-            avoid: avoid.into(),
+            dfp: dfp.into(),
+            evp: evp.into(),
         },
         max_addition: Addition {
-            def: def_max_addition,
-            avoid: avoid_max_addition,
+            dfp: dfp_max_addition,
+            evp: evp_max_addition,
         },
         display: format!(
             "{} [{}|{}] [{}|{}]",
-            name, def, def_max_addition, avoid, avoid_max_addition
+            name, dfp, dfp_max_addition, evp, evp_max_addition
         ),
     }
 }

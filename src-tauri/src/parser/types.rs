@@ -156,14 +156,14 @@ pub struct Status {
 
 #[derive(Debug, Serialize, Clone)]
 pub struct Addition {
-    pub def: i32,
-    pub avoid: i32,
+    pub dfp: i32,
+    pub evp: i32,
 }
 
 #[derive(Debug, PartialEq, Eq, Hash, Clone, Copy)]
 pub enum AdditionType {
-    DEF = 0,
-    AVOID = 1,
+    DFP = 0,
+    EVP = 1,
 }
 
 #[derive(Debug, Serialize, Clone)]

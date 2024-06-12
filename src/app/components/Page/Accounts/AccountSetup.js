@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from "styled-components"
 import { useTheme } from "../../Theme/Theme"
 import { ThemeToggler } from "../../Theme/ThemeToggler"
 import { AccountFileUpload } from "./AccountFileUpload"
+import { AccountProfileSetup } from "./AccountProfileSetup"
 
 const HoverPane = styled(Pane)`
     width: fit-content;
@@ -47,7 +48,8 @@ const CenteredPane = styled(Pane)`
 const SetUpSection = ({ theme }) => {
     return (
         <Pane>
-            <AccountFileUpload theme={theme}/>
+            {/* <AccountFileUpload theme={theme}/> */}
+            <AccountProfileSetup theme={theme} />
         </Pane>
     )
 }
@@ -58,7 +60,7 @@ export function AccountSetup() {
 
     return (
         <ThemeProvider theme={{ mode: theme }}>
-            <CenteredPane color>
+            <CenteredPane>
                 <SetUpSection theme={theme}/>
             </CenteredPane>
         </ThemeProvider>
