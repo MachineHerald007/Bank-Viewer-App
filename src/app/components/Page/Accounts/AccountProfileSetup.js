@@ -20,6 +20,11 @@ const UploadContainerPane = styled(Pane)`
      :where(.css-dev-only-do-not-override-zg0ahe).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select {
         border: 2px dashed #d9d9d9;
     }
+
+    &:where(.css-dev-only-do-not-override-zg0ahe).ant-upload-wrapper.ant-upload-picture-card-wrapper .ant-upload.ant-upload-select:not(.ant-upload-disabled):hover, 
+     :where(.css-dev-only-do-not-override-zg0ahe).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select:not(.ant-upload-disabled):hover {
+        border-color: #10A37F;
+    }
 `;
 
 const UploadWrapper = styled(Upload)`    
@@ -38,14 +43,15 @@ const UploadWrapper = styled(Upload)`
 
 const InputWrapper = styled(Input)`
     background: ${({ theme }) => (theme.mode === "light" ? "#FAFBFF" : "#282A2E")};
-    color: ${({ theme }) => (theme.mode === "light" ? "#474d66" : "#d1d1d1")};
+    color: ${({ theme }) => (theme.mode === "light" ? "#474d66" : "#bdbbbb")};
     padding: 10px;
     border-color: ${({ theme }) => (theme.mode === "light" ? "#d9d9d9" : "#1a1a1a")};
 
     ::placeholder {
-        color: ${({ theme }) => (theme.mode === "light" ? "#acafbf" : "#5d5d5d")};
+        color: ${({ theme }) => (theme.mode === "light" ? "#acafbf" : "#414141")};
     }
 
+    // Input text
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper >input.ant-input,
      :where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper >textarea.ant-input {
         font-weight: 600;
@@ -53,27 +59,27 @@ const InputWrapper = styled(Input)`
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper:not(.ant-input-disabled):hover {
         background: ${({ theme }) => (theme.mode === "light" ? "#FAFBFF" : "#282A2E")};
-        border-color: ${({ theme }) => (theme.mode === "light" ? "#838383" : "#838383")};
+        border-color: ${({ theme }) => (theme.mode === "light" ? "#959595" : "#515151")};
         box-shadow: none;
 
     }
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper:not(.ant-input-disabled):focus {
         background: ${({ theme }) => (theme.mode === "light" ? "#FAFBFF" : "#282A2E")};
-        border-color: ${({ theme }) => (theme.mode === "light" ? "#838383" : "#838383")};
+        border-color: ${({ theme }) => (theme.mode === "light" ? "#959595" : "#515151")};
         box-shadow: none;
 
     }
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper:not(.ant-input-disabled):focus-within {
         background: ${({ theme }) => (theme.mode === "light" ? "#FAFBFF" : "#282A2E")};
-        border-color: ${({ theme }) => (theme.mode === "light" ? "#838383" : "#838383")};
+        border-color: ${({ theme }) => (theme.mode === "light" ? "#959595" : "#515151")};
         box-shadow: none;
     }
 
     .ant-input {
         margin-left: 6px;
-        color: ${({ theme }) => (theme.mode === "light" ? "#474d66" : "#f3f3f3")} !important;
+        color: ${({ theme }) => (theme.mode === "light" ? "#474d66" : "#cdcdcd")} !important;
     }
 `;
 
