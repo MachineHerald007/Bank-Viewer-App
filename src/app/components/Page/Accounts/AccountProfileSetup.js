@@ -28,6 +28,9 @@ const UploadContainerPane = styled(Pane)`
 `;
 
 const UploadWrapper = styled(Upload)`    
+    color: ${({ theme }) => (theme.mode === "light" ? "#474d66" : "#f3f3f3")};
+    font-weight: 600;
+
     .ant-upload {
         button {
             &:hover {
@@ -48,7 +51,7 @@ const InputWrapper = styled(Input)`
     border-color: ${({ theme }) => (theme.mode === "light" ? "#d9d9d9" : "#1a1a1a")};
 
     ::placeholder {
-        color: ${({ theme }) => (theme.mode === "light" ? "#acafbf" : "#414141")};
+        color: ${({ theme }) => (theme.mode === "light" ? "#c0c4c7" : "#414141")};
     }
 
     // Input text
