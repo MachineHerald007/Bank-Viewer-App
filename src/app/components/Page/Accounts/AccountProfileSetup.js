@@ -38,9 +38,9 @@ const UploadWrapper = styled(Upload)`
 
 const InputWrapper = styled(Input)`
     background: ${({ theme }) => (theme.mode === "light" ? "#FAFBFF" : "#282A2E")};
-    color: ${({ theme }) => (theme.mode === "light" ? "#474d66" : "#f3f3f3")};
-    padding: 8px;
-    border-color: ${({ theme }) => (theme.mode === "light" ? "#d9d9d9" : "#100d0d")};
+    color: ${({ theme }) => (theme.mode === "light" ? "#474d66" : "#d1d1d1")};
+    padding: 10px;
+    border-color: ${({ theme }) => (theme.mode === "light" ? "#d9d9d9" : "#1a1a1a")};
 
     ::placeholder {
         color: ${({ theme }) => (theme.mode === "light" ? "#acafbf" : "#5d5d5d")};
@@ -53,19 +53,22 @@ const InputWrapper = styled(Input)`
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper:not(.ant-input-disabled):hover {
         background: ${({ theme }) => (theme.mode === "light" ? "#FAFBFF" : "#282A2E")};
-        border-color: ${({ theme }) => (theme.mode === "light" ? "#d9d9d9" : "#d9d9d9")};
+        border-color: ${({ theme }) => (theme.mode === "light" ? "#838383" : "#838383")};
+        box-shadow: none;
 
     }
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper:not(.ant-input-disabled):focus {
         background: ${({ theme }) => (theme.mode === "light" ? "#FAFBFF" : "#282A2E")};
-        border-color: ${({ theme }) => (theme.mode === "light" ? "#d9d9d9" : "#d9d9d9")};
+        border-color: ${({ theme }) => (theme.mode === "light" ? "#838383" : "#838383")};
+        box-shadow: none;
 
     }
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper:not(.ant-input-disabled):focus-within {
         background: ${({ theme }) => (theme.mode === "light" ? "#FAFBFF" : "#282A2E")};
-        border-color: ${({ theme }) => (theme.mode === "light" ? "#d9d9d9" : "#d9d9d9")};
+        border-color: ${({ theme }) => (theme.mode === "light" ? "#838383" : "#838383")};
+        box-shadow: none;
     }
 
     .ant-input {
