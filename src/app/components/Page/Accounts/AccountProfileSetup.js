@@ -172,21 +172,26 @@ export function AccountProfileSetup({ theme }) {
     const [account, setAccount] = useState([])
 
     return (
-        <Pane theme={theme} width={270}>
-            <Pane>
-                <ProfilePictureUpload />
+        <Pane>
+            <Pane textAlign="center" marginBottom={20}>
+                <Text fontSize={24}>Create User</Text>
             </Pane>
+            <Pane theme={theme} width={270}>
+                <Pane>
+                    <ProfilePictureUpload />
+                </Pane>
 
-            <Pane marginBottom={12}>
-                <InputWrapper placeholder="Profile Name" prefix={<UserOutlined style={{ marginLeft: "4px" }} />}/>    
-            </Pane>
-            
-            <Pane marginBottom={12}>
-                <InputWrapper placeholder="Discord Username" prefix={<DiscordOutlined style={{ marginLeft: "4px" }} />}/>
-            </Pane>
+                <Pane marginBottom={12}>
+                    <InputWrapper placeholder="Profile Name" prefix={<UserOutlined style={{ marginLeft: "4px" }} />}/>    
+                </Pane>
+                
+                <Pane marginBottom={12}>
+                    <InputWrapper placeholder="Discord Username" prefix={<DiscordOutlined style={{ marginLeft: "4px" }} />}/>
+                </Pane>
 
-            <Pane>
-                {/* Done section */}
+                <Pane>
+                    {/* Done section */}
+                </Pane>
             </Pane>
         </Pane>
     )
