@@ -82,7 +82,7 @@ const InputWrapper = styled(Input)`
 
     .ant-input {
         margin-left: 6px;
-        color: ${({ theme }) => (theme.mode === "light" ? "#474d66" : "#cdcdcd")} !important;
+        color: ${({ theme }) => (theme.mode === "light" ? "#474d66" : "#ede5e5")} !important;
     }
 `;
 
