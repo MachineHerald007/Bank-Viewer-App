@@ -48,7 +48,7 @@ const CenteredPane = styled(Pane)`
 const SetUpSection = ({ theme }) => {
     return (
         <Pane>
-            {/* <AccountFileUpload theme={theme}/> */}
+            {/* <AccountFileUpload theme={theme} /> */}
             <AccountProfileSetup theme={theme} />
         </Pane>
     )

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
-import { Avatar, AddIcon, PlusIcon, Text, Pane } from "evergreen-ui"
+import { Avatar, AddIcon, Button, PlusIcon, Text, Pane } from "evergreen-ui"
 import { PlusOutlined, UserOutlined, DiscordOutlined, PictureOutlined } from '@ant-design/icons';
 import { Image, Upload, Input } from 'antd';
 import ImgCrop from 'antd-img-crop';
+import { CreateUserButton } from "./CreateUserButton"
 import styled, { ThemeProvider } from "styled-components"
 import { useTheme } from "../../Theme/Theme"
 
@@ -23,7 +24,7 @@ const UploadContainerPane = styled(Pane)`
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-upload-wrapper.ant-upload-picture-card-wrapper .ant-upload.ant-upload-select:not(.ant-upload-disabled):hover, 
      :where(.css-dev-only-do-not-override-zg0ahe).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select:not(.ant-upload-disabled):hover {
-        border-color: #10A37F;
+        border-color: #3de9d3;
     }
 `;
 
@@ -62,21 +63,20 @@ const InputWrapper = styled(Input)`
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper:not(.ant-input-disabled):hover {
         background: ${({ theme }) => (theme.mode === "light" ? "#FAFBFF" : "#282A2E")};
-        border-color: ${({ theme }) => (theme.mode === "light" ? "#959595" : "#515151")};
+        border-color: ${({ theme }) => (theme.mode === "light" ? "#959595" : "#898989")};
         box-shadow: none;
-
     }
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper:not(.ant-input-disabled):focus {
         background: ${({ theme }) => (theme.mode === "light" ? "#FAFBFF" : "#282A2E")};
-        border-color: ${({ theme }) => (theme.mode === "light" ? "#959595" : "#515151")};
+        border-color: ${({ theme }) => (theme.mode === "light" ? "#959595" : "#898989")};
         box-shadow: none;
 
     }
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper:not(.ant-input-disabled):focus-within {
         background: ${({ theme }) => (theme.mode === "light" ? "#FAFBFF" : "#282A2E")};
-        border-color: ${({ theme }) => (theme.mode === "light" ? "#959595" : "#515151")};
+        border-color: ${({ theme }) => (theme.mode === "light" ? "#959595" : "#898989")};
         box-shadow: none;
     }
 
@@ -94,6 +94,12 @@ const UploadTextPane = styled(Pane)`
     color: ${({ theme }) => (theme.mode === "light" ? "#474d66" : "#f3f3f3")} !important;
     margin-top: 8px;
     font-weight: 600;
+`;
+
+const TextWrapper = styled(Text)`
+    font-size: 22px;
+    font-weight: 600;
+    color: ${({ theme }) => (theme.mode === "light" ? "#474d66" : "#f3f3f3")} !important;
 `;
 
 const DefaultPicture = {
@@ -173,8 +179,8 @@ export function AccountProfileSetup({ theme }) {
 
     return (
         <Pane>
-            <Pane textAlign="center" marginBottom={20}>
-                <Text fontSize={24}>Create User</Text>
+            <Pane textAlign="center" marginBottom={32}>
+                {/* <TextWrapper>Create User</TextWrapper> */}
             </Pane>
             <Pane theme={theme} width={270}>
                 <Pane>
@@ -189,8 +195,8 @@ export function AccountProfileSetup({ theme }) {
                     <InputWrapper placeholder="Discord Username" prefix={<DiscordOutlined style={{ marginLeft: "4px" }} />}/>
                 </Pane>
 
-                <Pane>
-                    {/* Done section */}
+                <Pane textAlign="right">
+                    <CreateUserButton />
                 </Pane>
             </Pane>
         </Pane>
