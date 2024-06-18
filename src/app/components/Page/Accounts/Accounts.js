@@ -30,11 +30,12 @@ const HoverPane = styled(Pane)`
     border: 1px solid ${({ theme }) => (theme.mode === "light" ? "#d9d9d9" : "#1c1c1c")};
     background: ${({ theme }) => 
         theme.mode === "light" 
-            ? "linear-gradient(135deg, #f3f3f3 0%, #e3e3e3 100%)"
+            ? "linear-gradient(135deg, #f7f7f7 0%, #eaeaea 100%)"
             : "linear-gradient(135deg, #282A2E 0%, #1f2023 100%)"
     };
+    color: ${({ theme }) => (theme.mode === "light" ? "#52586d" : "#ebebeb")};
     width: fit-content;
-    margin-bottom: 18px;
+    margin-bottom: 22px;
     padding: 16px;
     border-radius: 4px;
     transition: background-color 0.3s ease;
@@ -79,8 +80,8 @@ const AccountPane = styled(Pane)`
     border: 1px solid ${({ theme }) => (theme.mode === "light" ? "#d9d9d9" : "#1c1c1c")};
     background: ${({ theme }) => 
         theme.mode === "light" 
-            ? "linear-gradient(135deg, #f3f3f3 0%, #e3e3e3 100%)"
-            : "linear-gradient(135deg, #282A2E 0%, #1f2023 100%)"
+            ? "linear-gradient(135deg, #f7f7f7 0%, #eaeaea 100%)"
+            : "linear-gradient(135deg, #282A2E 0%, #242526 100%)"
     };
     height: 100px;
     width: 120px;
@@ -92,8 +93,8 @@ const AccountPane = styled(Pane)`
         cursor: pointer;
         background: ${({ theme }) => 
             theme.mode === "light" 
-                ? "linear-gradient(135deg, #e9e9e9 0%, #d9d9d9 100%)"
-                : "linear-gradient(135deg, #2e333b 0%, #272a2e 100%)"
+                ? "linear-gradient(135deg, #e9e9e9 0%, #e3e3e3 100%)"
+                : "linear-gradient(135deg, #2e333b 0%, #2a2b2e 100%)"
         };
     }
 `;
@@ -127,6 +128,7 @@ const AccountSection = ({ accounts }) => {
                 display="block"
                 color={styles.color}
                 fontSize={20}
+                fontWeight={600}
                 marginBottom={32}
                 textAlign="center"
             >
@@ -142,7 +144,7 @@ const AccountSection = ({ accounts }) => {
             >
                 <Pane
                     display="inline-block"
-                    marginBottom={16}
+                    marginBottom={14}
                     marginRight={14}
                     position="relative"
                     top={20}
@@ -165,7 +167,7 @@ const AccountSection = ({ accounts }) => {
                     <Pane
                         display="inline-block"
                         textAlign="center"
-                        marginLeft={16}
+                        marginLeft={8}
                         key={index}
                     >
                         <AccountPane>
