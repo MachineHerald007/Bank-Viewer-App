@@ -5,14 +5,13 @@ import { MoonFilled } from "@ant-design/icons"
 import { useTheme } from "./Theme"
 
 const ThemeToggle = () => {
-    const { theme, toggleTheme } = useTheme()
+    const {theme, toggleTheme} = useTheme()
     const [checked, setChecked] = React.useState(true)
 
     return (
         <Switch
             checked={checked}
             onChange={(checked) => {
-                console.log("checked: ", checked)
                 setChecked(checked)
                 toggleTheme()
             }}

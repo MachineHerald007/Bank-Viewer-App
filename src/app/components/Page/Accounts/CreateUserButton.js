@@ -69,6 +69,10 @@ const Link = styled.a`
 		width: 100%;
 		position: relative;
 		overflow: hidden;
+
+        &:active {
+            opacity: 0.8;
+        }
 		
 		& > span.base {
 			box-sizing: border-box;

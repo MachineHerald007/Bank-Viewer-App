@@ -6,7 +6,7 @@
     "distDir": "../out"
   },
   "package": {
-    "productName": "psobb-bank-viewer",
+    "productName": "psobb-dashboard",
     "version": "0.1.0"
   },
   "tauri": {
@@ -28,7 +28,7 @@
       "icon": [
         "icons/psobb.ico"
       ],
-      "identifier": "com.psobb-bankviewer",
+      "identifier": "com.psobb-dashboard",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -57,7 +57,7 @@
         "fullscreen": false,
         "height": 1400,
         "resizable": true,
-        "title": "PSOBB Bank Viewer",
+        "title": "PSOBB Dashboard",
         "width": 1400,
         "fileDropEnabled": false
       }

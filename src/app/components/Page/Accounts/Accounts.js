@@ -6,7 +6,7 @@ import {
     Text,
     Pane
 } from "evergreen-ui"
-import styled from "styled-components"
+import styled, {ThemeProvider} from "styled-components"
 import { useTheme } from "../../Theme/Theme"
 import { ThemeToggler } from "../../Theme/ThemeToggler"
 import { AccountSetup } from "./AccountSetup"
@@ -15,13 +15,11 @@ function getAccounts() {
     return [
         {
             name: "machineherald",
-            profile_pic: "https://i.imgur.com/2swHEdn_d.webp?maxwidth=760&fidelity=grand",
             characters: [],
             shared_bank: null
         },
         {
             name: "herald001",
-            profile_pic: "https://i.imgur.com/w9tCRCF_d.webp?maxwidth=760&fidelity=grand",
             characters: [],
             shared_bank: null
         }
@@ -29,17 +27,27 @@ function getAccounts() {
 }
 
 const HoverPane = styled(Pane)`
+    border: 1px solid ${({ theme }) => (theme.mode === "light" ? "#d9d9d9" : "#1c1c1c")};
+    background: ${({ theme }) => 
+        theme.mode === "light" 
+            ? "linear-gradient(135deg, #f3f3f3 0%, #e3e3e3 100%)"
+            : "linear-gradient(135deg, #282A2E 0%, #1f2023 100%)"
+    };
     width: fit-content;
-    margin-bottom: 12px;
-    border-radius: 50px;
+    margin-bottom: 18px;
+    padding: 16px;
+    border-radius: 4px;
     transition: background-color 0.3s ease;
     position: relative;
     left: 8px;
 
     &:hover {
         cursor: pointer;
-        background-color: grey;
-        color: white; /* Optional: change text color on hover */
+        background: ${({ theme }) => 
+            theme.mode === "light" 
+                ? "linear-gradient(135deg, #e9e9e9 0%, #d9d9d9 100%)"
+                : "linear-gradient(135deg, #2e333b 0%, #272a2e 100%)"
+        };
     }
 `;
 
@@ -67,14 +75,36 @@ const CenteredPane = styled(Pane)`
     }
 `;
 
-// .ub-lft_12px
+const AccountPane = styled(Pane)`
+    border: 1px solid ${({ theme }) => (theme.mode === "light" ? "#d9d9d9" : "#1c1c1c")};
+    background: ${({ theme }) => 
+        theme.mode === "light" 
+            ? "linear-gradient(135deg, #f3f3f3 0%, #e3e3e3 100%)"
+            : "linear-gradient(135deg, #282A2E 0%, #1f2023 100%)"
+    };
+    height: 100px;
+    width: 120px;
+    border-radius: 4px;
+    padding: 8px;
+    transition: background 0.3s ease;
+
+    &:hover {
+        cursor: pointer;
+        background: ${({ theme }) => 
+            theme.mode === "light" 
+                ? "linear-gradient(135deg, #e9e9e9 0%, #d9d9d9 100%)"
+                : "linear-gradient(135deg, #2e333b 0%, #272a2e 100%)"
+        };
+    }
+`;
+
 const AccountSection = ({ accounts }) => {
     const { theme } = useTheme()
     const [isOverflow, setIsOverflow] = useState(false)
     const containerRef = useRef(null)
 
     const styles = {
-        color: theme === 'light' ? '#101840' : '#fff',
+        color: theme === 'light' ? '#43454f' : '#efefef',
     }
 
     const hpane_styles = {
@@ -98,11 +128,13 @@ const AccountSection = ({ accounts }) => {
                 color={styles.color}
                 fontSize={20}
                 marginBottom={32}
+                textAlign="center"
             >
                 {accounts.length > 0 ? "Select account" : "No accounts available"}
             </Text>
             <Pane
                 display="flex"
+                height={180}
                 maxWidth="100%"
                 overflowX={isOverflow ? "scroll" : "hidden"}
                 overflowY="hidden"
@@ -111,15 +143,12 @@ const AccountSection = ({ accounts }) => {
                 <Pane
                     display="inline-block"
                     marginBottom={16}
+                    marginRight={14}
                     position="relative"
-                    top={8}
+                    top={20}
                 >
-                    <HoverPane
-                        backgroundColor={hpane_styles.background}
-                        color={hpane_styles.color}
-                        padding={16}
-                    >
-                        <PlusIcon size={32} position="relative" top={2}/>
+                    <HoverPane>
+                        <PlusIcon size={24} position="relative" top={2}/>
                     </HoverPane>
                     <Text
                         color={styles.color}
@@ -133,23 +162,27 @@ const AccountSection = ({ accounts }) => {
                     </Text>
                 </Pane>
                 {accounts.map((account, index) => (
-                    <Pane display="inline-block" textAlign="center" marginLeft={36} key={index}>
-                        <ProfileAvatar
-                            marginBottom={16}
-                            src={account.profile_pic}
-                            size={80} 
-                        />
-                        <Pane>
-                            <Text
-                                color={styles.color}
-                                fontSize={14}
-                                fontWeight={600}
+                    <Pane
+                        display="inline-block"
+                        textAlign="center"
+                        marginLeft={16}
+                        key={index}
+                    >
+                        <AccountPane>
+                            <Pane
                                 position="relative"
-                                left={12}
+                                overflow="hidden"
+                                top={30}
                             >
-                                {account.name}
-                            </Text>
-                        </Pane>
+                                <Text
+                                    color={styles.color}
+                                    fontSize={14}
+                                    fontWeight={600}
+                                >
+                                    {account.name}
+                                </Text>
+                            </Pane>
+                        </AccountPane>
                     </Pane>
                 ))}
             </Pane>
@@ -173,10 +206,12 @@ export function Accounts() {
     }
 
     return (
+    <ThemeProvider theme={{ mode: theme }}>
         <Pane style={styles}>
             <ThemeToggler />
-            {/* <AccountSection accounts={accounts}/> */}
-            <AccountSetup />
+            <AccountSection accounts={accounts}/>
+            {/* <AccountSetup /> */}
         </Pane>
+    </ThemeProvider>
     )
 }

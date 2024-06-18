@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react"
-import { Avatar, AddIcon, Button, PlusIcon, Text, Pane } from "evergreen-ui"
+import { invoke } from "@tauri-apps/api/tauri";
+import React, { useState, useEffect } from "react";
+import { Avatar, AddIcon, Button, PlusIcon, Text, Pane } from "evergreen-ui";
 import { PlusOutlined, UserOutlined, DiscordOutlined, PictureOutlined } from '@ant-design/icons';
-import { Image, Upload, Input } from 'antd';
+import { Image, Upload, Input, message } from 'antd';
 import ImgCrop from 'antd-img-crop';
-import { CreateUserButton } from "./CreateUserButton"
-import styled, { ThemeProvider } from "styled-components"
-import { useTheme } from "../../Theme/Theme"
+import { CreateUserButton } from "./CreateUserButton";
+import styled, { ThemeProvider } from "styled-components";
+import { useTheme } from "../../Theme/Theme";
 
 const UploadContainerPane = styled(Pane)`
     padding: 20px;
@@ -25,6 +26,12 @@ const UploadContainerPane = styled(Pane)`
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-upload-wrapper.ant-upload-picture-card-wrapper .ant-upload.ant-upload-select:not(.ant-upload-disabled):hover, 
      :where(.css-dev-only-do-not-override-zg0ahe).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select:not(.ant-upload-disabled):hover {
         border-color: #3de9d3;
+    }
+
+    :where(.css-dev-only-do-not-override-zg0ahe).ant-upload-wrapper .ant-upload-list.ant-upload-list-picture .ant-upload-list-item-error,
+    :where(.css-dev-only-do-not-override-zg0ahe).ant-upload-wrapper .ant-upload-list.ant-upload-list-picture-card .ant-upload-list-item-error,
+    :where(.css-dev-only-do-not-override-zg0ahe).ant-upload-wrapper .ant-upload-list.ant-upload-list-picture-circle .ant-upload-list-item-error {
+        border-color: #ff4d4f;
     }
 `;
 
@@ -50,6 +57,7 @@ const InputWrapper = styled(Input)`
     color: ${({ theme }) => (theme.mode === "light" ? "#474d66" : "#bdbbbb")};
     padding: 10px;
     border-color: ${({ theme }) => (theme.mode === "light" ? "#d9d9d9" : "#1a1a1a")};
+    border-radius: 4px;
 
     ::placeholder {
         color: ${({ theme }) => (theme.mode === "light" ? "#c0c4c7" : "#414141")};
@@ -71,7 +79,6 @@ const InputWrapper = styled(Input)`
         background: ${({ theme }) => (theme.mode === "light" ? "#FAFBFF" : "#282A2E")};
         border-color: ${({ theme }) => (theme.mode === "light" ? "#959595" : "#898989")};
         box-shadow: none;
-
     }
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-input-affix-wrapper:not(.ant-input-disabled):focus-within {
@@ -109,6 +116,40 @@ const DefaultPicture = {
     url: 'https://cdn-icons-png.freepik.com/512/8742/8742495.png?ga=GA1.1.1100743220.1717043240',
 };
 
+const getBase64 = (file) =>
+    new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+});
+
+const beforeUpload = (file) => {
+    const isPNG = file.type === 'image/png';
+    const isJPG = file.type === "image/jpeg";
+    
+    if (!isPNG && !isJPG) {
+        message.error(`${file.name} is not a png or jpg file`);
+    }
+
+    return isPNG || isJPG || Upload.LIST_IGNORE;
+};
+
+const saveUserImage = async (e) => {
+    console.log(e)
+    
+    try {
+        const result = await invoke('save_user_img', { file: e.file });
+        onSuccess(e.file)
+        
+        return result;
+    } catch (error) {
+        console.log("Error parsing file: ", error)
+        
+        e.onError(error)
+    }
+}
+
 const ProfilePictureUpload = () => {
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
@@ -122,11 +163,12 @@ const ProfilePictureUpload = () => {
         setPreviewOpen(true);
     };
 
-    const handleChange = ({ file, fileList }) => {
+    const handleChange = async ({ file, fileList }) => {
         if (!fileList.length) {
             setFileList([DefaultPicture])
             return
         }
+        console.log("ON CHANGE, FILE: ", file)
         setFileList([file])
     };
 
@@ -148,13 +190,13 @@ const ProfilePictureUpload = () => {
             <ImgCrop rotationSlider cropShape="round">
                 <UploadWrapper
                     accept=".png,.jpg"
-                    action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+                    beforeUpload={beforeUpload}
                     listType="picture-circle"
                     fileList={fileList}
                     onPreview={handlePreview}
                     onChange={handleChange}
                 >
-                    {fileList.length >= 8 ? null : uploadButton}
+                    {uploadButton}
                 </UploadWrapper>
             </ImgCrop>
             {previewImage && (
@@ -180,7 +222,6 @@ export function AccountProfileSetup({ theme }) {
     return (
         <Pane>
             <Pane textAlign="center" marginBottom={32}>
-                {/* <TextWrapper>Create User</TextWrapper> */}
             </Pane>
             <Pane theme={theme} width={270}>
                 <Pane>
