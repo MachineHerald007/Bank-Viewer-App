@@ -15,7 +15,7 @@ export function Settings() {
     const { theme } = useTheme()
 
     const styles = {
-        background: theme === 'light' ? '#F9FAFA' : '##24252B',
+        background: theme === 'light' ? '#F9FAFA' : '#24252B',
         color: theme === 'light' ? '#000' : '#fff',
     }
 

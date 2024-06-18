@@ -1,8 +1,6 @@
-import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { useTheme } from "../../Theme/Theme"
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 	body {
 		margin: 0;
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -13,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
 	margin-top: 32px;
 	display: flex;
 	align-items: center;
@@ -21,7 +19,7 @@ const Container = styled.div`
 	flex-flow: column;
 `;
 
-const Link = styled.a`
+export const Link = styled.a`
 	width: 100%;
 	max-width: 240px;
 	height: 54px;
@@ -71,7 +69,7 @@ const Link = styled.a`
 		overflow: hidden;
 
         &:active {
-            opacity: 0.8;
+            opacity: 0.90;
         }
 		
 		& > span.base {
@@ -175,20 +173,3 @@ const Link = styled.a`
 		}
 	}
 `;
-
-export const CreateUserButton = () => {
-	return (
-		<>
-			<GlobalStyle />
-			<Container>
-				<Link href="#" className="transparent">
-					<p>
-						<span className="bg"></span>
-						<span className="base"></span>
-						<span className="text">Create User_</span>
-					</p>
-				</Link>
-			</Container>
-		</>
-	);
-};
