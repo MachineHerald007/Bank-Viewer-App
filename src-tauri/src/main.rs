@@ -22,14 +22,20 @@ mod command {
 }
 
 use command::{
-    db::{init_app},
+    db::{
+        init_app,
+        create_user
+    },
     file_parser::parse_files
 };
 
-
 fn main() {
     tauri::Builder::default()
-    .invoke_handler(tauri::generate_handler![parse_files, init_app])
+    .invoke_handler(tauri::generate_handler![
+        parse_files,
+        init_app,
+        create_user
+    ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }

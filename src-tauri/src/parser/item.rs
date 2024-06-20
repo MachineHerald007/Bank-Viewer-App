@@ -86,7 +86,7 @@ fn get_item_type(item_code: u32) -> u32 {
 
 fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let name = get_item_name(item_code, &config);
-    let grinder = item_data[3];
+    let grind = item_data[3];
     let native = get_native(&item_data);
     let a_beast = get_a_beast(&item_data);
     let machine = get_machine(&item_data);
@@ -115,7 +115,7 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
         type_: 1,
         itemdata: Util::binary_array_to_hex(&item_data),
         special: special.clone(),
-        grinder,
+        grind,
         attribute: Attribute {
             native,
             a_beast,
@@ -127,7 +127,7 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
         rare: !is_common,
         display: format!(
             "{}{}{} [{}|{}]",
-            tekked_text, name, grinder_label(grinder), special, hit
+            tekked_text, name, grind_label(grind), special, hit
         ),
     }
 }
@@ -266,16 +266,16 @@ fn s_rank_weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData
         },
         None => "No map found",
     };
-    let grinder = item_data[3];
+    let grind = item_data[3];
     let special = get_s_rank_special(&item_data, config);
 
     ItemData::SRankWeapon {
         name: name.clone().to_string(),
         type_: 8,
         itemdata: Util::binary_array_to_hex(&item_data),
-        grinder,
+        grind,
         special: special.clone(),
-        display: format!("{} {} [{}]", name, grinder_label(grinder), special),
+        display: format!("{} {} [{}]", name, grind_label(grind), special),
     }
 }
 
@@ -418,7 +418,7 @@ fn number_label(number: u8) -> String {
     }
 }
 
-fn grinder_label(number: u8) -> String {
+fn grind_label(number: u8) -> String {
     if number > 0 {
         format!(" +{}", number)
     } else {
