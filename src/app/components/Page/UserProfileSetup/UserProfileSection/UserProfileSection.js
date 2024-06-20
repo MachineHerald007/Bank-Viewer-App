@@ -10,14 +10,13 @@ import { CreateUserButton } from "./CreateUserButton/CreateUserButton";
 import { useTheme } from "../../../Theme/Theme";
 import { invoke } from "@tauri-apps/api/tauri";
 
-export function AccountProfileSetup({ theme }) {
+export function UserProfileSection({ theme }) {
     const [account, setAccount] = useState([]);
     const [profilePicture, setProfilePicture] = useState("");
     const [profileName, setProfileName] = useState("");
     const [discordUsername, setDiscordUsername] = useState("");
 
     const handleProfilePictureChange = (picture) => {
-        console.log("PROFILE PIC: ", picture)
         setProfilePicture(picture);
     };
 

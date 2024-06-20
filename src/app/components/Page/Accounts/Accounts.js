@@ -4,8 +4,9 @@ import { PlusOutlined } from "@ant-design/icons";
 import styled, {ThemeProvider} from "styled-components";
 import { useTheme } from "../../Theme/Theme";
 import { ThemeToggler } from "../../Theme/ThemeToggler";
-import { AccountSetup } from "./AccountSetup/AccountSetup";
+import { UserProfileSetup } from "../UserProfileSetup/UserProfileSetup";
 import { AccountSection } from "./AccountSection/AccountSection";
+import { AccountFileUpload } from "./AccountFileUpload/AccountFileUpload";
 
 function getAccounts() {
     return [
@@ -41,8 +42,10 @@ export function Accounts() {
     <ThemeProvider theme={{ mode: theme }}>
         <Pane style={styles}>
             <ThemeToggler />
+
+            <UserProfileSetup />
             {/* <AccountSection accounts={accounts}/> */}
-            <AccountSetup />
+            {/* <AccountFileUpload /> */}
         </Pane>
     </ThemeProvider>
     )

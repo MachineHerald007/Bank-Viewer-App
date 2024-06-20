@@ -1,7 +1,7 @@
 import { invoke } from "@tauri-apps/api/tauri";
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { Pane, Alert, majorScale } from 'evergreen-ui';
-import { AccountPane, AccountFileUploader, AccountFileCard, AccountFileCardError } from "./styles";
+import { AccountPane, AccountFileUploader, AccountFileCard, AccountFileCardError, CenteredPane } from "./styles";
 
 // Custom rejection reasons
 const RejectionReason = {
@@ -153,54 +153,56 @@ export function AccountFileUpload({ theme }) {
     }, [files, fileRejections]);
 
     return (
-        <AccountPane maxWidth={654}>
-            <AccountFileUploader
-                width={654}
-                minWidth={400}
-                acceptedMimeTypes={acceptedMimeTypes}
-                label="Upload Files"
-                description="You can upload .psobank, .psoclassicbank, .psochar file formats only."
-                disabled={files.length + fileRejections.length >= maxFiles}
-                maxSizeInBytes={maxSizeInBytes}
-                maxFiles={maxFiles}
-                onAccepted={handleAcceptedFiles}
-                onRejected={(rejections) => setFileRejections(prevRejections => [...prevRejections, ...rejections])}
-                renderFile={(file, index) => {
-                    const { name, size, type } = file;
-                    const renderFileCountError = index === 0 && fileCountOverLimit > 0;
-                    const fileRejection = fileRejections.find(
-                        (fileRejection) => fileRejection.file === file
-                    );
-                    const { reason } = fileRejection || {};
+        <CenteredPane>
+            <AccountPane maxWidth={654}>
+                <AccountFileUploader
+                    width={654}
+                    minWidth={400}
+                    acceptedMimeTypes={acceptedMimeTypes}
+                    label="Upload Files"
+                    description="You can upload .psobank, .psoclassicbank, .psochar file formats only."
+                    disabled={files.length + fileRejections.length >= maxFiles}
+                    maxSizeInBytes={maxSizeInBytes}
+                    maxFiles={maxFiles}
+                    onAccepted={handleAcceptedFiles}
+                    onRejected={(rejections) => setFileRejections(prevRejections => [...prevRejections, ...rejections])}
+                    renderFile={(file, index) => {
+                        const { name, size, type } = file;
+                        const renderFileCountError = index === 0 && fileCountOverLimit > 0;
+                        const fileRejection = fileRejections.find(
+                            (fileRejection) => fileRejection.file === file
+                        );
+                        const { reason } = fileRejection || {};
 
-                    return (
-                        <React.Fragment key={`${file.name}-${index}`}>
-                            {renderFileCountError && <Alert intent="danger" marginBottom={majorScale(2)} title={fileCountError} />}
-                            {
-                                fileRejection != null ?
-                                <AccountFileCardError 
-                                    isInvalid={fileRejection != null}
-                                    name={name}
-                                    onRemove={() => handleRemove(file)}
-                                    sizeInBytes={size}
-                                    type={type}
-                                    validationMessage={reason}
-                                />
-                                :
-                                <AccountFileCard
-                                    isInvalid={fileRejection != null}
-                                    name={name}
-                                    onRemove={() => handleRemove(file)}
-                                    sizeInBytes={size}
-                                    type={type}
-                                    validationMessage={reason}
-                                />
-                            }
-                        </React.Fragment>
-                    )
-                }}
-                values={values}
-            />
-        </AccountPane>
+                        return (
+                            <React.Fragment key={`${file.name}-${index}`}>
+                                {renderFileCountError && <Alert intent="danger" marginBottom={majorScale(2)} title={fileCountError} />}
+                                {
+                                    fileRejection != null ?
+                                    <AccountFileCardError 
+                                        isInvalid={fileRejection != null}
+                                        name={name}
+                                        onRemove={() => handleRemove(file)}
+                                        sizeInBytes={size}
+                                        type={type}
+                                        validationMessage={reason}
+                                    />
+                                    :
+                                    <AccountFileCard
+                                        isInvalid={fileRejection != null}
+                                        name={name}
+                                        onRemove={() => handleRemove(file)}
+                                        sizeInBytes={size}
+                                        type={type}
+                                        validationMessage={reason}
+                                    />
+                                }
+                            </React.Fragment>
+                        )
+                    }}
+                    values={values}
+                />
+            </AccountPane>
+        </CenteredPane>
     );
 }
