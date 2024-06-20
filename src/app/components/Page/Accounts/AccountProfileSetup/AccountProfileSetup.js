@@ -1,4 +1,3 @@
-import { invoke } from "@tauri-apps/api/tauri";
 import React, { useState, useEffect } from "react";
 import { Pane } from "evergreen-ui";
 import { UserOutlined, DiscordOutlined } from '@ant-design/icons';
@@ -9,28 +8,59 @@ import {
 } from "./styles";
 import { CreateUserButton } from "./CreateUserButton/CreateUserButton";
 import { useTheme } from "../../../Theme/Theme";
+import { invoke } from "@tauri-apps/api/tauri";
 
 export function AccountProfileSetup({ theme }) {
-    const [account, setAccount] = useState([])
+    const [account, setAccount] = useState([]);
+    const [profilePicture, setProfilePicture] = useState("");
+    const [profileName, setProfileName] = useState("");
+    const [discordUsername, setDiscordUsername] = useState("");
 
+    const handleProfilePictureChange = (picture) => {
+        console.log("PROFILE PIC: ", picture)
+        setProfilePicture(picture);
+    };
+
+    const handleCreateUser = () => {
+        const userData = {
+            profile_name: profileName,
+            discord_username: discordUsername,
+            profile_picture: profilePicture
+        };
+        
+        invoke("create_user", {
+            user: userData
+        })    
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+    };
+    
     return (
         <Pane>
-            <Pane textAlign="center" marginBottom={32}>
-            </Pane>
             <Pane theme={theme} width={270}>
                 <Pane>
-                    <ProfilePictureUpload />
+                    <ProfilePictureUpload onChange={handleProfilePictureChange} />
                 </Pane>
                 <Pane marginBottom={12}>
-                    <InputWrapper placeholder="Profile Name" prefix={<UserOutlined style={{ marginLeft: "4px" }} />}/>    
+                    <InputWrapper 
+                        value={profileName}
+                        onChange={e => setProfileName(e.target.value)}
+                        placeholder="Profile Name" 
+                        prefix={<UserOutlined style={{ marginLeft: "4px" }} />} 
+                    />    
                 </Pane>
                 <Pane marginBottom={12}>
-                    <InputWrapper placeholder="Discord Username" prefix={<DiscordOutlined style={{ marginLeft: "4px" }} />}/>
+                    <InputWrapper 
+                        value={discordUsername}
+                        onChange={e => setDiscordUsername(e.target.value)}
+                        placeholder="Discord Username" 
+                        prefix={<DiscordOutlined style={{ marginLeft: "4px" }} />} 
+                    />
                 </Pane>
                 <Pane textAlign="right">
-                    <CreateUserButton />
+                    <CreateUserButton onClick={handleCreateUser} />
                 </Pane>
             </Pane>
         </Pane>
-    )
+    );
 }

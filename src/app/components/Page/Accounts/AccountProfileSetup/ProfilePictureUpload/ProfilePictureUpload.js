@@ -17,13 +17,23 @@ const DefaultPicture = {
     url: 'https://cdn-icons-png.freepik.com/512/8742/8742495.png?ga=GA1.1.1100743220.1717043240',
 };
 
-const getBase64 = (file) =>
+const getBase64 = (file) => 
     new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
         reader.onerror = (error) => reject(error);
 });
+
+const base64ToUint8Array = (base64) => {
+    const binaryString = window.atob(base64.split(',')[1]);
+    const len = binaryString.length;
+    const bytes = new Uint8Array(len);
+    for (let i = 0; i < len; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+    }
+    return bytes;
+};
 
 const beforeUpload = (file) => {
     const isPNG = file.type === 'image/png';
@@ -36,22 +46,19 @@ const beforeUpload = (file) => {
     return isPNG || isJPG || Upload.LIST_IGNORE;
 };
 
-const saveUserImage = async (e) => {
-    console.log(e)
-    
+const saveUserImage = async (e) => {    
     try {
         const result = await invoke('save_user_img', { file: e.file });
         onSuccess(e.file)
-        
+           
         return result;
     } catch (error) {
-        console.log("Error parsing file: ", error)
-        
-        e.onError(error)
+        console.log("Error parsing file: ", error);
+        e.onError(error);
     }
 }
 
-export const ProfilePictureUpload = () => {
+export const ProfilePictureUpload = ({ onChange }) => {
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
     const [fileList, setFileList] = useState([DefaultPicture]);
@@ -66,11 +73,18 @@ export const ProfilePictureUpload = () => {
 
     const handleChange = async ({ file, fileList }) => {
         if (!fileList.length) {
-            setFileList([DefaultPicture])
-            return
+            setFileList([DefaultPicture]);
+            onChange("");
+            return;
         }
-        console.log("ON CHANGE, FILE: ", file)
-        setFileList([file])
+
+        setFileList([file]);
+
+        if (file.status === "done") {
+            const base64 = await getBase64(file.originFileObj);
+            const uint8Array = base64ToUint8Array(base64);
+            onChange(Array.from(uint8Array));
+        }
     };
 
     const uploadButton = (
