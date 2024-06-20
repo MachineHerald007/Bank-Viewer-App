@@ -93,10 +93,10 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let dark = get_dark(&item_data);
     let hit = get_hit(&item_data);
     let is_common = is_common_weapon(item_code);
-    let mut element = String::new();
+    let mut special = String::new();
     
     if item_data[4] != 0x00 && item_data[4] != 0x80 {
-        element = format!(" [{}]", get_element(&item_data, &config));
+        special = format!(" [{}]", get_special(&item_data, &config));
     }
 
     let tekked_mode = is_tekked(&item_data, item_code);
@@ -114,7 +114,7 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
         name: name.clone(),
         type_: 1,
         itemdata: Util::binary_array_to_hex(&item_data),
-        element: element.clone(),
+        special: special.clone(),
         grinder,
         attribute: Attribute {
             native,
@@ -127,7 +127,7 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
         rare: !is_common,
         display: format!(
             "{}{}{} [{}|{}]",
-            tekked_text, name, grinder_label(grinder), element, hit
+            tekked_text, name, grinder_label(grinder), special, hit
         ),
     }
 }
@@ -267,15 +267,15 @@ fn s_rank_weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData
         None => "No map found",
     };
     let grinder = item_data[3];
-    let element = get_s_rank_element(&item_data, config);
+    let special = get_s_rank_special(&item_data, config);
 
     ItemData::SRankWeapon {
         name: name.clone().to_string(),
         type_: 8,
         itemdata: Util::binary_array_to_hex(&item_data),
         grinder,
-        element: element.clone(),
-        display: format!("{} {} [{}]", name, grinder_label(grinder), element),
+        special: special.clone(),
+        display: format!("{} {} [{}]", name, grinder_label(grinder), special),
     }
 }
 
@@ -332,21 +332,21 @@ fn get_item_name(item_code: u32, config: &Config) -> String {
     }
 }
 
-fn get_element(item_data: &[u8], config: &Config) -> String {
+fn get_special(item_data: &[u8], config: &Config) -> String {
     let code = item_data[4];
 
-    if let Some(element) = config.weapon_special_codes.clone().expect("REASON").get(&code) {
-        String::from(element.clone())
+    if let Some(special) = config.weapon_special_codes.clone().expect("REASON").get(&code) {
+        String::from(special.clone())
     } else {
         "undefined".to_string()
     }
 }
 
-fn get_s_rank_element(item_data: &[u8], config: Config) -> String {
-    let element_code = item_data[2];
+fn get_s_rank_special(item_data: &[u8], config: Config) -> String {
+    let special_code = item_data[2];
 
-    if let Some(element) = config.srank_special_codes.clone().expect("REASON").get(&element_code) {
-        String::from(element.clone())
+    if let Some(special) = config.srank_special_codes.clone().expect("REASON").get(&special_code) {
+        String::from(special.clone())
     } else {
         "undefined".to_string()
     }

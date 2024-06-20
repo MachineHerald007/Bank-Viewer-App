@@ -17,14 +17,19 @@ mod parser {
     pub mod shared_bank;
 }
 mod command {
+    pub mod db;
     pub mod file_parser;
 }
 
-use command::file_parser::parse_files;
+use command::{
+    db::{init_app},
+    file_parser::parse_files
+};
+
 
 fn main() {
     tauri::Builder::default()
-    .invoke_handler(tauri::generate_handler![parse_files])
+    .invoke_handler(tauri::generate_handler![parse_files, init_app])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }

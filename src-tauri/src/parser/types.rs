@@ -55,7 +55,7 @@ pub enum ItemData {
         name: String,
         type_: u8,
         itemdata: String,
-        element: String,
+        special: String,
         grinder: u8,
         attribute: Attribute,
         tekked: bool,
@@ -112,7 +112,7 @@ pub enum ItemData {
         type_: u8,
         itemdata: String,
         grinder: u8,
-        element: String,
+        special: String,
         display: String,
     },
     Tool {
@@ -180,6 +180,6 @@ pub struct SRankWeapon {
     pub type_: u8,
     pub itemdata: String,
     pub grinder: u8,
-    pub element: String,
+    pub special: String,
     pub display: String,
 }
