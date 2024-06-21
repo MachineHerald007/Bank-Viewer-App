@@ -1,7 +1,8 @@
-import { invoke } from "@tauri-apps/api/tauri";
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { Pane, Alert, majorScale } from 'evergreen-ui';
+import { UploadButton, BackButton } from "./button";
 import { AccountPane, AccountFileUploader, AccountFileCard, AccountFileCardError, CenteredPane } from "./styles";
+import { invoke } from "@tauri-apps/api/tauri";
 
 // Custom rejection reasons
 const RejectionReason = {
@@ -22,7 +23,7 @@ export function AccountFileUpload({ theme, onComplete }) {
     const maxFiles = 32;
     const maxSizeInBytes = 50 * 1024 ** 2; // 50 MB
     const [files, setFiles] = useState([]);
-    const [parsedData, setParsedData] = useState(null);
+    const [parsedFiles, setParsedFiles] = useState([]);
     const [fileRejections, setFileRejections] = useState([]);
 
     const values = useMemo(() => [...files, ...fileRejections.map((fileRejection) => fileRejection.file)], [
@@ -34,15 +35,56 @@ export function AccountFileUpload({ theme, onComplete }) {
         try {
             // Lang must be part of the User/Account context object, so it can be
             // set anywhere from the application
-            const result = await invoke('parse_files', {
+            const response = await invoke("parse_files", {
                 files: files,
                 lang: "EN"
             });
-            return result;
+
+            return response;
         } catch (error) {
             console.log("Error parsing file: ", error)
         }
-    }
+    };
+
+    const parseFilename = (parsedFiles) => {
+        const lang = parsedFiles.files[0].data.lang;
+        const acc_type = parsedFiles.files[0].data.bank[lang].length > 0 ? "NORMAL" : "CLASSIC";
+        const acc_info = parsedFiles.files[0].filename.split(".")[0].split("_");
+        const result = [];
+        let slotNumber = null;
+
+
+        for (let i = 0; i < acc_info.length; i++) {
+            if (acc_info[i].startsWith('Slot')) {
+                slotNumber = acc_info[i].split(' ')[1];
+                break;
+            }
+            result.push(acc_info[i]);
+        }
+
+        return { info: result, slot: slotNumber, type: acc_type };
+    };
+
+    const handleUpload = async () => {
+        try {
+            const account = parseFilename(parsedFiles);
+            
+            const response = await invoke("create_account", {
+                account: {
+                    account_name: account.info[1].toLowerCase(),
+                    guild_card: Number(account.info[2]),
+                    account_type: account.type,
+                    server: account.info[0]
+                },
+                files: parsedFiles.files
+            });
+
+            onComplete();
+        } catch (error) {
+            //Make an error notification come up
+            console.log("Error uploading file(s): ", error);
+        }
+    };
 
     const handleRemove = useCallback(
         (file) => {
@@ -140,8 +182,7 @@ export function AccountFileUpload({ theme, onComplete }) {
 
         const parsedFiles = await parseFiles(fileDataArray);
 
-        console.log("parsedFiles: ", parsedFiles)
-
+        setParsedFiles(parsedFiles);
         setFiles(prevFiles => [...prevFiles, ...filesToAdd]);
         setFileRejections(prevRejections => [...prevRejections, ...newRejections]);
     }, [files, fileRejections, setFiles, setFileRejections, parseFiles]);
@@ -150,7 +191,8 @@ export function AccountFileUpload({ theme, onComplete }) {
     useEffect(() => {
         console.log("Accepted files:", files);
         console.log("Rejected files:", fileRejections);
-    }, [files, fileRejections]);
+        console.log("Parsed files:", parsedFiles);
+    }, [files, fileRejections, parsedFiles]);
 
     return (
         <CenteredPane>
@@ -203,6 +245,10 @@ export function AccountFileUpload({ theme, onComplete }) {
                     values={values}
                 />
             </AccountPane>
+            <Pane marginTop={32} textAlign="right" >
+                <BackButton onComplete={onComplete} />
+                <UploadButton handleUpload={handleUpload} />
+            </Pane>
         </CenteredPane>
     );
 }

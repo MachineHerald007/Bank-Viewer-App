@@ -2,6 +2,12 @@ use serde::{Serialize, Deserialize};
 use rusqlite::{Connection, Result as SqlResult, params};
 use thiserror::Error;
 
+use crate::parser::{
+    types:: {
+        ParsedFileData
+    }
+};
+
 #[derive(Error, Debug, Serialize, Deserialize)]
 pub enum SqlError {
     #[error("Database error: {0}")]
@@ -272,7 +278,7 @@ pub struct Account {
 pub fn get_accounts() -> Result<Vec<Account>, SqlError> {
     let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
     let conn = Connection::open(my_db)?;
-
+    
     let mut stmt = conn.prepare("SELECT account_name, guild_card, account_type, server FROM account")?;
     let account_iter = stmt.query_map([], |row| {
         Ok(Account {
@@ -291,7 +297,25 @@ pub fn get_accounts() -> Result<Vec<Account>, SqlError> {
     Ok(accounts)
 }
 
+// create_account needs to also parse through the uploaded files, figure out the item type, and 
+// make insert statements to the table(determined by the item type)
 #[tauri::command]
-pub fn create_account() -> Result<(), SqlError> {
+pub fn create_account(account: Account, files: Vec<ParsedFileData>) -> Result<(), SqlError> {
+    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
+    let conn = Connection::open(my_db)?;
 
+    conn.execute(
+        "INSERT INTO account (account_name, guild_card, account_type, server)
+         VALUES (?1, ?2, ?3, ?4)",
+         params![
+            account.account_name,
+            account.guild_card,
+            account.account_type,
+            account.server
+         ]
+    )?;
+
+    println!("[Account]: {:?}", account);
+    println!("[Files]: {:?}", files);
+    Ok(())
 }

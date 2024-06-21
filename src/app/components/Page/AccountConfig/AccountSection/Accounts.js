@@ -1,14 +1,29 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useContext, useRef } from "react"
+import { AccountsContext } from "@/app/page";
 import { PlusOutlined } from "@ant-design/icons";
 import { Text, Pane } from "evergreen-ui";
 import { CenteredPane, HoverPane, AccountPane } from "./styles";
 import { useTheme } from "../../../Theme/Theme";
 import { ThemeToggler } from "../../../Theme/ThemeToggler";
 
-export function Accounts({ accounts, onAddAccountClick }) {
-    const { theme } = useTheme()
+
+function getAccounts(setAccounts) {
+    invoke("get_accounts")
+    .then(res => {
+        console.log("Accounts: ", res);
+        setAccounts(res);
+    })
+    .catch(err => {
+        console.log(err);
+        setAccounts([]);
+    }); 
+}
+
+export function Accounts({ onAddAccountClick }) {
+    const { accounts, setAccounts, getAccounts } = useContext(AccountsContext);
     const [isOverflow, setIsOverflow] = useState(false)
     const containerRef = useRef(null)
+    const { theme } = useTheme()
 
     // Refactor these into styled components, and ALL React Elements
     // that are using inline styles are to be converted into styled elements
@@ -23,7 +38,8 @@ export function Accounts({ accounts, onAddAccountClick }) {
         } else {
             setIsOverflow(false)
         }
-    }, [accounts])
+        getAccounts(setAccounts)
+    }, [])
 
     return(
         <CenteredPane>

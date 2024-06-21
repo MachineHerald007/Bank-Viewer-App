@@ -26,7 +26,8 @@ use command::{
         init_app,
         create_user,
         get_user,
-        get_accounts
+        get_accounts,
+        create_account
     },
     file_parser::parse_files
 };
@@ -38,7 +39,8 @@ fn main() {
         init_app,
         create_user,
         get_user,
-        get_accounts
+        get_accounts,
+        create_account
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");

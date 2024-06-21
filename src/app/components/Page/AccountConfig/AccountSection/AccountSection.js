@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState } from "react"
 import { PlusOutlined } from "@ant-design/icons";
 import { Pane } from "evergreen-ui";
 import { Accounts } from "./Accounts";
@@ -7,8 +7,8 @@ import { ThemeToggler } from "../../../Theme/ThemeToggler";
 import { AccountFileUpload } from "../AccountFileUpload/AccountFileUpload";
 
 export const AccountSection = ({ accounts }) => {
-    const { theme } = useTheme()
     const [showAccountFileUpload, setShowAccountFileUpload] = useState(false);
+    const { theme } = useTheme()
 
     const handleAddAccountClick = () => {
         setShowAccountFileUpload(true);
@@ -18,16 +18,12 @@ export const AccountSection = ({ accounts }) => {
         setShowAccountFileUpload(false);
     };
 
-    useEffect(() => {
-
-    }, [accounts])
-
     return (
         <Pane>
             {showAccountFileUpload ? (
                 <AccountFileUpload onComplete={handleUploadComplete} />
             ) : (
-                <Accounts accounts={accounts} onAddAccountClick={handleAddAccountClick} />
+                <Accounts onAddAccountClick={handleAddAccountClick} />
             )}
         </Pane>
     )

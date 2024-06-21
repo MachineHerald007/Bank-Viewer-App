@@ -1,15 +1,39 @@
 use std::fmt;
-use serde::Serialize;
+use serde::{ Serialize, Deserialize };
 use std::collections::HashMap;
+
+#[derive(Debug, Deserialize, Clone)]
+pub struct FileData {
+    pub filename: String,
+    pub binary: Vec<u8>,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(untagged)]
+pub enum Data {
+    Character(Character),
+    SharedBank(SharedBank),
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct ParsedFileData {
+    pub filename: String,
+    pub data: Data,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ParsedFiles {
+    pub files: Vec<ParsedFileData>
+}
 
 pub type Inventory = HashMap<String, Vec<(String, Item, String)>>;
 
-#[derive(Debug, Serialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Item {
     pub item: Option<ItemData>
 }
 
-#[derive(Debug, Serialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SharedBank {
     pub account_type: String,
     pub mode: u8,
@@ -17,7 +41,7 @@ pub struct SharedBank {
     pub lang: String
 }
 
-#[derive(Debug, Serialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Character {
     pub slot: usize,
     pub mode: u8,
@@ -49,7 +73,7 @@ impl fmt::Display for Slot {
     }
 }
 
-#[derive(Debug, Serialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum ItemData {
     Weapon {
         name: String,
@@ -137,7 +161,7 @@ pub enum ItemData {
     },
 }
 
-#[derive(Debug, Serialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Attribute {
     pub native: i8,
     pub a_beast: i8,
@@ -146,7 +170,7 @@ pub struct Attribute {
     pub hit: i8,
 }
 
-#[derive(Debug, Serialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Status {
     pub def: u16,
     pub pow: u16,
@@ -154,7 +178,7 @@ pub struct Status {
     pub mind: u16,
 }
 
-#[derive(Debug, Serialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Addition {
     pub dfp: i32,
     pub evp: i32,
@@ -166,7 +190,7 @@ pub enum AdditionType {
     EVP = 1,
 }
 
-#[derive(Debug, Serialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Meseta {
     pub name: String,
     pub r#type: u32,
@@ -174,7 +198,7 @@ pub struct Meseta {
     pub display: String,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SRankWeapon {
     pub name: String,
     pub type_: u8,

@@ -1,47 +1,21 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useContext, useState, useEffect } from "react"
+import { AccountsContext, UserContext } from "@/app/page";
 import { Pane } from "evergreen-ui";
-import { PlusOutlined } from "@ant-design/icons";
-import styled, {ThemeProvider} from "styled-components";
+import {ThemeProvider} from "styled-components";
 import { useTheme } from "../../Theme/Theme";
 import { ThemeToggler } from "../../Theme/ThemeToggler";
 import { UserProfileSetup } from "../UserProfileSetup/UserProfileSetup";
 import { AccountSection } from "./AccountSection/AccountSection";
-import { AccountFileUpload } from "./AccountFileUpload/AccountFileUpload";
 import { invoke } from "@tauri-apps/api/tauri";
 
-function getAccounts(setAccounts) {
-    invoke("get_accounts")
-    .then(res => {
-        console.log("Accounts: ", res);
-        setAccounts(res);
-    })
-    .catch(err => {
-        console.log(err);
-        setAccounts([]);
-    }); 
-}
-
-function getUser(setUser) {
-    invoke("get_user")
-    .then(res => {
-        console.log("User: ", res);
-        setUser(res);
-    })
-    .catch(err => {
-        console.log(err);
-        setUser(null);
-    });
-}
-
 export function AccountConfig() {
+    const { accounts } = useContext(AccountsContext);
+    const { user } = useContext(UserContext);
     const { theme } = useTheme()
-    const [user, setUser] = useState(null)
-    const [accounts, setAccounts] = useState([])
 
     useEffect(() => {
-        getUser(setUser);
-        getAccounts(setAccounts);
-    }, [])
+
+    }, [accounts])
 
     // styles needs to removed and replaced with theme
     const styles = {
@@ -54,7 +28,7 @@ export function AccountConfig() {
     <ThemeProvider theme={{ mode: theme }}>
         <Pane style={styles}>
             <ThemeToggler />
-            {user ? <AccountSection accounts={accounts}/> : <UserProfileSetup />}
+            {user ? <AccountSection /> : <UserProfileSetup />}
         </Pane>
     </ThemeProvider>
     )

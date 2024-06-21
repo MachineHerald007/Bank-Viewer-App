@@ -1,40 +1,22 @@
 use std::str;
 use std::collections::HashMap;
 use tauri::regex::Regex;
-use serde::{ Serialize, Deserialize };
 
 use crate::config::config::Config;
 use crate::parser::{
     character,
     shared_bank,
-    types::{ Character, SharedBank }
+    types::{
+        FileData,
+        Data,
+        ParsedFileData,
+        ParsedFiles,
+        Character,
+        SharedBank
+    }
 };
 
 type Files = Vec<FileData>;
-
-#[derive(Debug, Deserialize, Clone)]
-pub struct FileData {
-    pub filename: String,
-    pub binary: Vec<u8>,
-}
-
-#[derive(Debug, Serialize, Clone)]
-#[serde(untagged)]
-pub enum Data {
-    Character(Character),
-    SharedBank(SharedBank),
-}
-
-#[derive(Debug, Serialize, Clone)]
-pub struct ParsedFileData {
-    pub filename: String,
-    pub data: Data,
-}
-
-#[derive(Debug, Serialize)]
-pub struct ParsedFiles {
-    pub files: Vec<ParsedFileData>
-}
 
 fn parse(files_to_parse: Files, config: Config) -> Vec<ParsedFileData> {
     let mut parsed_files: Vec<ParsedFileData> = Vec::new();
