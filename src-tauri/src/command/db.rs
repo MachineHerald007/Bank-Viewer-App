@@ -27,7 +27,12 @@ pub fn init_app() -> Result<(), SqlError> {
             profile_name TEXT NOT NULL,
             discord_username TEXT NOT NULL,
             profile_picture BLOB
-        )",
+        );
+        CREATE TRIGGER IF NOT EXISTS limit_user BEFORE INSERT ON user
+        WHEN (SELECT COUNT(*) FROM user) >= 1
+        BEGIN
+            SELECT RAISE(FAIL, 'Only one row allowed');
+        END;",
         (),
     )?;
 
@@ -233,4 +238,60 @@ pub fn create_user(user: User) -> Result<(), SqlError> {
     )?;
 
     Ok(())
+}
+
+#[tauri::command]
+pub fn get_user() -> Result<User, SqlError> {
+    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
+    let conn = Connection::open(my_db)?;
+
+    let user = conn.query_row(
+        "SELECT profile_name, discord_username, profile_picture FROM user",
+        [],
+        |row| {
+            Ok(User {
+                profile_name: row.get(0)?,
+                discord_username: row.get(1)?,
+                profile_picture: row.get(2)?,
+            })
+        },
+    )?;
+
+    Ok(user)
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Account {
+    account_name: String,
+    guild_card: u32,
+    account_type: String,
+    server: String
+}
+
+#[tauri::command]
+pub fn get_accounts() -> Result<Vec<Account>, SqlError> {
+    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
+    let conn = Connection::open(my_db)?;
+
+    let mut stmt = conn.prepare("SELECT account_name, guild_card, account_type, server FROM account")?;
+    let account_iter = stmt.query_map([], |row| {
+        Ok(Account {
+            account_name: row.get(0)?,
+            guild_card: row.get(1)?,
+            account_type: row.get(2)?,
+            server: row.get(3)?
+        })
+    })?;
+
+    let mut accounts = Vec::new();
+    for account in account_iter {
+        accounts.push(account?);
+    }
+
+    Ok(accounts)
+}
+
+#[tauri::command]
+pub fn create_account() -> Result<(), SqlError> {
+
 }

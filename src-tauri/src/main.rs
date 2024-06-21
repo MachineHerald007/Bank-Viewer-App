@@ -24,7 +24,9 @@ mod command {
 use command::{
     db::{
         init_app,
-        create_user
+        create_user,
+        get_user,
+        get_accounts
     },
     file_parser::parse_files
 };
@@ -34,7 +36,9 @@ fn main() {
     .invoke_handler(tauri::generate_handler![
         parse_files,
         init_app,
-        create_user
+        create_user,
+        get_user,
+        get_accounts
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");

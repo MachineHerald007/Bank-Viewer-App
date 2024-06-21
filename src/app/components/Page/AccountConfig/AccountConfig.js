@@ -7,31 +7,43 @@ import { ThemeToggler } from "../../Theme/ThemeToggler";
 import { UserProfileSetup } from "../UserProfileSetup/UserProfileSetup";
 import { AccountSection } from "./AccountSection/AccountSection";
 import { AccountFileUpload } from "./AccountFileUpload/AccountFileUpload";
+import { invoke } from "@tauri-apps/api/tauri";
 
-function getAccounts() {
-    return [
-        {
-            name: "machineherald",
-            characters: [],
-            shared_bank: null
-        },
-        {
-            name: "herald001",
-            characters: [],
-            shared_bank: null
-        }
-    ]
+function getAccounts(setAccounts) {
+    invoke("get_accounts")
+    .then(res => {
+        console.log("Accounts: ", res);
+        setAccounts(res);
+    })
+    .catch(err => {
+        console.log(err);
+        setAccounts([]);
+    }); 
 }
 
-export function Accounts() {
+function getUser(setUser) {
+    invoke("get_user")
+    .then(res => {
+        console.log("User: ", res);
+        setUser(res);
+    })
+    .catch(err => {
+        console.log(err);
+        setUser(null);
+    });
+}
+
+export function AccountConfig() {
     const { theme } = useTheme()
+    const [user, setUser] = useState(null)
     const [accounts, setAccounts] = useState([])
 
     useEffect(() => {
-        const accounts = getAccounts()
-        setAccounts(accounts)
+        getUser(setUser);
+        getAccounts(setAccounts);
     }, [])
 
+    // styles needs to removed and replaced with theme
     const styles = {
         background: theme === 'light' ? '#FFFFFF' : '#24252B',
         color: theme === 'light' ? '#101840' : '#fff',
@@ -42,10 +54,7 @@ export function Accounts() {
     <ThemeProvider theme={{ mode: theme }}>
         <Pane style={styles}>
             <ThemeToggler />
-
-            <UserProfileSetup />
-            {/* <AccountSection accounts={accounts}/> */}
-            {/* <AccountFileUpload /> */}
+            {user ? <AccountSection accounts={accounts}/> : <UserProfileSetup />}
         </Pane>
     </ThemeProvider>
     )

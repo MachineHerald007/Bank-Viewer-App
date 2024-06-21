@@ -3,7 +3,7 @@
 import { invoke } from "@tauri-apps/api/tauri";
 import React, { createContext, useEffect } from 'react'
 import { characters } from './components/Characters'
-import { Accounts } from './components/Page/Accounts/Accounts'
+import { AccountConfig } from './components/Page/AccountConfig/AccountConfig'
 import Dashboard from './Dashboard'
 
 import "./components/Theme/styles.css"
@@ -36,7 +36,7 @@ export default function Home() {
                     <Dashboard />
                     </AccountContext.Provider>
                 ) : (
-                    <Accounts />
+                    <AccountConfig />
                 )}
             </Pane>
             </UserContext.Provider>

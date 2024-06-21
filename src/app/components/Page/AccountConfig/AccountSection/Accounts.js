@@ -5,7 +5,7 @@ import { CenteredPane, HoverPane, AccountPane } from "./styles";
 import { useTheme } from "../../../Theme/Theme";
 import { ThemeToggler } from "../../../Theme/ThemeToggler";
 
-export const AccountSection = ({ accounts }) => {
+export function Accounts({ accounts, onAddAccountClick }) {
     const { theme } = useTheme()
     const [isOverflow, setIsOverflow] = useState(false)
     const containerRef = useRef(null)
@@ -14,11 +14,6 @@ export const AccountSection = ({ accounts }) => {
     // that are using inline styles are to be converted into styled elements
     const styles = {
         color: theme === 'light' ? '#43454f' : '#efefef',
-    }
-
-    const hpane_styles = {
-        background: theme === 'light' ? '#d8dae5' : '#474649',
-        color: theme === 'light' ? '#8f95b2' : '#edeff5',
     }
 
     useEffect(() => {
@@ -30,7 +25,7 @@ export const AccountSection = ({ accounts }) => {
         }
     }, [accounts])
 
-    return (
+    return(
         <CenteredPane>
             <Text 
                 display="block"
@@ -56,6 +51,7 @@ export const AccountSection = ({ accounts }) => {
                     marginRight={14}
                     position="relative"
                     top={20}
+                    onClick={onAddAccountClick}
                 >
                     <HoverPane>
                         <PlusOutlined />
@@ -89,7 +85,7 @@ export const AccountSection = ({ accounts }) => {
                                     fontSize={14}
                                     fontWeight={600}
                                 >
-                                    {account.name}
+                                    {account.account_name}
                                 </Text>
                             </Pane>
                         </AccountPane>

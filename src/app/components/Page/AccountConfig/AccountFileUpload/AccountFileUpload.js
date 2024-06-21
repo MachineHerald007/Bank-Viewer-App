@@ -17,7 +17,7 @@ const MimeType = {
     psochar: ""
 };
 
-export function AccountFileUpload({ theme }) {
+export function AccountFileUpload({ theme, onComplete }) {
     const acceptedMimeTypes = [MimeType.psobank, MimeType.psoclassicbank, MimeType.psochar];
     const maxFiles = 32;
     const maxSizeInBytes = 50 * 1024 ** 2; // 50 MB
