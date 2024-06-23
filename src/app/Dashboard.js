@@ -9,9 +9,7 @@ export default function Dashboard() {
     useEffect(() => {
         // here use an account initialization function, which
         // loads user data as well as application state
-        invoke("greet", { name: "PSOBB Dashboard App" })
-            .then(console.log)
-            .catch(console.error)
+        
     }, [])
 
     return (

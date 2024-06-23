@@ -26,13 +26,13 @@ const selected_character = {
 export const CharacterContext = createContext()
 
 export function CharacterViewer({ characters }) {
-    const [selectedCharacter, setSelectedCharacter] = useState(selected_character)
+    const [selectedCharacter, setSelectedCharacter] = useState(selected_character);
 
     function saveSelectedCharacter(character) {
         console.log("character: ", character)
         setSelectedCharacter({
             name: character.name,
-            class:character.class,
+            class: character.class,
             sec_id: character.sec_id,
             level: character.level,
             slot: character.slot,

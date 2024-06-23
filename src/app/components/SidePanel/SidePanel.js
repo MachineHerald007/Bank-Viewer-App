@@ -42,7 +42,7 @@ export function SidePanel() {
         "Settings"
     ], [])
 
-    //hardcoded data for testing
+    //hardcoded data for testing > replace with tauri command and context
     const char = characters[0]
 
     const returnIcon = (tab) => {

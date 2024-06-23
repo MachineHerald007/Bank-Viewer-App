@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "@/app/page";
 import { Pane } from "evergreen-ui";
 import { UserOutlined, DiscordOutlined } from '@ant-design/icons';
 import { ProfilePictureUpload } from "./ProfilePictureUpload/ProfilePictureUpload";
@@ -11,6 +12,7 @@ import { useTheme } from "../../../Theme/Theme";
 import { invoke } from "@tauri-apps/api/tauri";
 
 export function UserProfileSection({ theme }) {
+    const { setUser, getUser } = useContext(UserContext)
     const [account, setAccount] = useState([]);
     const [profilePicture, setProfilePicture] = useState("");
     const [profileName, setProfileName] = useState("");
@@ -21,16 +23,16 @@ export function UserProfileSection({ theme }) {
     };
 
     const handleCreateUser = () => {
-        const userData = {
+        const user = {
             profile_name: profileName,
             discord_username: discordUsername,
             profile_picture: profilePicture
         };
         
         invoke("create_user", {
-            user: userData
-        })    
-        .then(res => console.log(res))
+            user: user
+        })
+        .then(getUser(setUser))
         .catch(err => console.log(err))
     };
     

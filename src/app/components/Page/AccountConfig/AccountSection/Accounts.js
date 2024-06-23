@@ -6,19 +6,6 @@ import { CenteredPane, HoverPane, AccountPane } from "./styles";
 import { useTheme } from "../../../Theme/Theme";
 import { ThemeToggler } from "../../../Theme/ThemeToggler";
 
-
-function getAccounts(setAccounts) {
-    invoke("get_accounts")
-    .then(res => {
-        console.log("Accounts: ", res);
-        setAccounts(res);
-    })
-    .catch(err => {
-        console.log(err);
-        setAccounts([]);
-    }); 
-}
-
 export function Accounts({ onAddAccountClick }) {
     const { accounts, setAccounts, getAccounts } = useContext(AccountsContext);
     const [isOverflow, setIsOverflow] = useState(false)

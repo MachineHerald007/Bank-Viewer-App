@@ -3,7 +3,7 @@ import React, {
     useContext,
     useState,
     useEffect
-} from "react"
+} from "react";
 import {
     Avatar,
     Heading,
@@ -12,40 +12,38 @@ import {
     Table,
     Pagination,
     Pane,
-} from 'evergreen-ui'
-import { AccountContext } from "@/app/page"
-
-import { all_inventory } from "../../inventory"
-import { shared_bank } from "../../bank"
+} from 'evergreen-ui';
+import { AccountContext } from "@/app/page";
+import { all_inventory } from "../../inventory";
+import { shared_bank } from "../../bank";
 
 function getItems(raw_items) {
     if (typeof raw_items !== 'string') {
-        throw new Error('Expected a string as raw_items')
+        throw new Error('Expected a string as raw_items');
     }
     return raw_items.split("\n")
 }
 
 function getAllItems(char) {
-    let l = char.length
+    let l = char.length;
     for (let i = 0; i < l; i++) {
         try {
-            char[i].character = char[i].character
-            char[i].inventory = getItems(char[i].inventory)
-            char[i].bank = getItems(char[i].bank)
+            char[i].character = char[i].character;
+            char[i].inventory = getItems(char[i].inventory);
+            char[i].bank = getItems(char[i].bank);
         } catch (error) {
-            console.error(`Error processing item at index ${i}: ${error.message}`)
+            console.error(`Error processing item at index ${i}: ${error.message}`);
         }
     }
-    return char
+    return char;
 }
 
 function getSharedBank(items) {
-    return getItems(items)
+    return getItems(items);
 }
 
 export function AllItems() {
     const { characters } = useContext(AccountContext)
-    // const [characters, setCharacters] = useState(getAllItems(all_inventory))
     const [sharedBank, setSharedBank] = useState(getSharedBank(shared_bank))
 
     return (
@@ -62,7 +60,7 @@ export function AllItems() {
             <Table marginTop={24}>
             <Table.Body>
                 {characters.map((char, index) => (
-                    <>
+                    <Pane key={index}>
                         <Table.Row
                             backgroundColor="#edeff5"
                             height={44}
@@ -116,7 +114,7 @@ export function AllItems() {
                                 </Table.TextCell>
                             </Table.Row>
                         ))}
-                    </>
+                    </Pane>
                 ))}
                 <Table.Row
                     backgroundColor="#edeff5"

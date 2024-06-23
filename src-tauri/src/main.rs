@@ -27,7 +27,12 @@ use command::{
         create_user,
         get_user,
         get_accounts,
-        create_account
+        create_account,
+        get_dashboard_state,
+        save_selected_account,
+        save_selected_character,
+        save_lang,
+        save_theme,
     },
     file_parser::parse_files
 };
@@ -40,7 +45,12 @@ fn main() {
         create_user,
         get_user,
         get_accounts,
-        create_account
+        create_account,
+        get_dashboard_state,
+        save_selected_account,
+        save_selected_character,
+        save_lang,
+        save_theme,
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");

@@ -216,6 +216,16 @@ pub fn init_app() -> Result<(), SqlError> {
         (),
     )?;
 
+    conn.execute(
+        "CREATE TABLE IF NOT EXISTS dashboard_state (
+            logged_in_id INTEGER DEFAULT 0,
+            selected_character_id INTEGER DEFAULT 0,
+            lang TEXT NOT NULL,
+            theme TEXT NOT NULL
+        )",
+        (),
+    )?;
+
     Ok(())
 }
 
@@ -268,6 +278,7 @@ pub fn get_user() -> Result<User, SqlError> {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Account {
+    account_id: u8,
     account_name: String,
     guild_card: u32,
     account_type: String,
@@ -279,13 +290,14 @@ pub fn get_accounts() -> Result<Vec<Account>, SqlError> {
     let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
     let conn = Connection::open(my_db)?;
     
-    let mut stmt = conn.prepare("SELECT account_name, guild_card, account_type, server FROM account")?;
+    let mut stmt = conn.prepare("SELECT ID, account_name, guild_card, account_type, server FROM account")?;
     let account_iter = stmt.query_map([], |row| {
         Ok(Account {
-            account_name: row.get(0)?,
-            guild_card: row.get(1)?,
-            account_type: row.get(2)?,
-            server: row.get(3)?
+            account_id: row.get(0)?,
+            account_name: row.get(1)?,
+            guild_card: row.get(2)?,
+            account_type: row.get(3)?,
+            server: row.get(4)?
         })
     })?;
 
@@ -317,5 +329,86 @@ pub fn create_account(account: Account, files: Vec<ParsedFileData>) -> Result<()
 
     println!("[Account]: {:?}", account);
     println!("[Files]: {:?}", files);
+    Ok(())
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct DashboardState {
+    logged_in_id: u8,
+    selected_character_id: u8,
+    lang: String,
+    theme: String
+}
+
+#[tauri::command]
+pub fn get_dashboard_state() -> Result<DashboardState, SqlError> {
+    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
+    let conn = Connection::open(my_db)?;
+
+    let dashboard_state = conn.query_row(
+        "SELECT logged_in_id, selected_character_id, lang, theme FROM dashboard_state",
+        [],
+        |row| {
+            Ok(DashboardState {
+                logged_in_id: row.get(0)?,
+                selected_character_id: row.get(1)?,
+                lang: row.get(2)?,
+                theme: row.get(3)?
+            })
+        },
+    )?;
+
+    Ok(dashboard_state)
+}
+
+#[tauri::command]
+pub fn save_selected_account(selected_account_id: u8) -> Result<(), SqlError> {
+    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
+    let conn = Connection::open(my_db)?;
+
+    conn.execute(
+        "UPDATE dashboard_state SET selected_account_id = ?1",
+        params![selected_account_id]
+    )?;
+
+    Ok(())
+}
+
+#[tauri::command]
+pub fn save_selected_character(selected_character_id: u8) -> Result<(), SqlError> {
+    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
+    let conn = Connection::open(my_db)?;
+
+    conn.execute(
+        "UPDATE dashboard_state SET selected_character_id = ?1",
+        params![selected_character_id]
+    )?;
+
+    Ok(())
+}
+
+#[tauri::command]
+pub fn save_lang(lang: String) -> Result<(), SqlError> {
+    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
+    let conn = Connection::open(my_db)?;
+
+    conn.execute(
+        "UPDATE dashboard_state SET lang = ?1",
+        params![lang]
+    )?;
+
+    Ok(())
+}
+
+#[tauri::command]
+pub fn save_theme(theme: String) -> Result<(), SqlError> {
+    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
+    let conn = Connection::open(my_db)?;
+
+    conn.execute(
+        "UPDATE dashboard_state SET theme = ?1",
+        params![theme]
+    )?;
+
     Ok(())
 }
