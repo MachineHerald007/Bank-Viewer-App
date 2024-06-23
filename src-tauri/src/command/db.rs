@@ -327,6 +327,8 @@ pub fn create_account(account: Account, files: Vec<ParsedFileData>) -> Result<()
          ]
     )?;
 
+    
+
     println!("[Account]: {:?}", account);
     println!("[Files]: {:?}", files);
     Ok(())

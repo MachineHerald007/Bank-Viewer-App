@@ -16,20 +16,17 @@ export const DashboardContext = createContext();
 export const AccountContext = createContext();
 export const AllItemsContext = createContext();
 
-function isLoggedInOrInitialized() {
-    return true
-}
-
 export default function Home() {
     const [user, setUser] = useState(null)
     const [accounts, setAccounts] = useState([])
+    const [loggedIn, setLoggedIn] = useState(false)
     const [dasboardState, setDashboardState] = useState({})
-    const isLoggedIn = isLoggedInOrInitialized()
 
-    const getDashboardState = (setDashboardState) => {
+    const getDashboardState = (setDashboardState, setLoginState) => {
         invoke("get_dashboard_state")
         .then(res => {
             console.log("Dashboard state: ", res);
+            res.logged_in_id != 0 ? setLoggedIn(true) : setLoggedIn(false);
             setDashboardState(res);
         })
         .catch(err => {
@@ -77,16 +74,19 @@ export default function Home() {
         <ThemeProvider>
             <UserContext.Provider value={{ user, setUser, getUser }}>
             <Pane>
-                {isLoggedIn ? (
+                {loggedIn ? 
+                (
                     <AccountContext.Provider value={{ characters, AllItemsContext }}>
                     <Dashboard />
                     </AccountContext.Provider>
-                ) : (
-
-                <AccountsContext.Provider value={{ accounts, setAccounts, getAccounts }}>
-                    <AccountConfig />
-                </AccountsContext.Provider>
-                )}
+                )
+                :
+                (
+                    <AccountsContext.Provider value={{ accounts, setAccounts, getAccounts }}>
+                        <AccountConfig />
+                    </AccountsContext.Provider>
+                )
+                }
             </Pane>
             </UserContext.Provider>
         </ThemeProvider>
