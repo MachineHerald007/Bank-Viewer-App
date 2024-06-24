@@ -563,9 +563,9 @@ pub fn item_codes() -> HashMap<u32, &'static str> {
     codes.insert(0x000C01, "Staff");
     codes.insert(0x000C02, "Baton");
     codes.insert(0x000C03, "Scepter");
-    codes.insert(0x000C04, "FIREcodes.insert( SCEPTER,AGNI");
-    codes.insert(0x000C05, "Icodes.insert(CE STAFF,DAGON");
-    codes.insert(0x000C06, "STcodes.insert(ORM WAND,INDRA");
+    codes.insert(0x000C04, "FIRE SCEPTER,AGNI");
+    codes.insert(0x000C05, "ICE STAFF,DAGON");
+    codes.insert(0x000C06, "STORM WAND,INDRA");
     codes.insert(0x000C07, "EARTH WAND BROWNIE");
     codes.insert(0x000D00, "PHOTON CLAW");
     codes.insert(0x000D01, "SILENCE CLAW");
