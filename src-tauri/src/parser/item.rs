@@ -61,7 +61,9 @@ fn is_meseta(item_code: u32) -> bool {
 }
 
 fn get_item_type(item_code: u32) -> u32 {
-    if is_weapon(item_code) {
+    if is_s_rank_weapon(item_code) {
+        8
+    } else if is_weapon(item_code) {
         1
     } else if is_frame(item_code) {
         2
@@ -75,8 +77,6 @@ fn get_item_type(item_code: u32) -> u32 {
         6
     } else if is_tool(item_code) {
         7
-    } else if is_s_rank_weapon(item_code) {
-        8
     } else if is_meseta(item_code) {
         10
     } else {
@@ -259,15 +259,17 @@ fn disk(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
 
 fn s_rank_weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let custom_name = get_custom_name(&item_data[6..12]);
-    let name = match &config.tech_name_codes {
-        Some(map) => match map.get(&(item_data[4] as u8)) {
-            Some(name) => name,
-            None => "No name found",
-        },
-        None => "No map found",
+    let map = Config::srank_weapon_codes();
+    let weapon_code = match map.get(&(item_code & 0xFFFF00)) {
+        Some(code) => code,
+        None => "No code found",
     };
+    let name = format!("S-RANK {} {}", custom_name, weapon_code);
     let grind = item_data[3];
     let special = get_s_rank_special(&item_data, config);
+
+    println!("CUSTOM NAME: {:?}", custom_name);
+    println!("NAME VALUE: {:?}", item_data[4]);
 
     ItemData::SRankWeapon {
         name: name.clone().to_string(),
@@ -472,8 +474,7 @@ pub fn set_meseta(
 }
 
 pub fn set_items(items_data: &[u8], slot: Slot, length: usize, config: Config) -> Inventory {
-    let mut inventory = HashMap::new();
-    let mut array = Vec::new();
+    let mut inventory = Vec::new();
     let lang = config.lang.clone().unwrap();
 
     for i in (0..items_data.len()).step_by(length) {
@@ -487,10 +488,9 @@ pub fn set_items(items_data: &[u8], slot: Slot, length: usize, config: Config) -
         let item_code_hex = Util::binary_array_to_hex(&item_data[0..3]);
         let item = new_item(item_data.to_vec(), item_code, config.clone());
 
-        array.push((item_code_hex, item, slot.to_string()));
+        inventory.push((item_code_hex, item, slot.to_string()));
     }
 
-    inventory.insert(lang, array);
     inventory
 }
 

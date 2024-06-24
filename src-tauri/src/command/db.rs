@@ -4,8 +4,17 @@ use thiserror::Error;
 
 use crate::parser::{
     types:: {
-        ParsedFileData
+        ParsedFileData,
+        Data,
+        ItemData,
+        Item,
+        SharedBank,
+        Character,
     }
+};
+
+use crate::lib::db::{
+    insert_item
 };
 
 #[derive(Error, Debug, Serialize, Deserialize)]
@@ -29,7 +38,7 @@ pub fn init_app() -> Result<(), SqlError> {
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS user (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             profile_name TEXT NOT NULL,
             discord_username TEXT NOT NULL,
             profile_picture BLOB
@@ -44,7 +53,7 @@ pub fn init_app() -> Result<(), SqlError> {
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS account (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_name TEXT NOT NULL UNIQUE,
             guild_card INTEGER NOT NULL UNIQUE,
             account_type TEXT NOT NULL,
@@ -55,7 +64,7 @@ pub fn init_app() -> Result<(), SqlError> {
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS character (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             slot INTEGER NOT NULL UNIQUE,
             mode INTEGER NOT NULL,
             guild_card INTEGER NOT NULL,
@@ -73,7 +82,10 @@ pub fn init_app() -> Result<(), SqlError> {
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS weapon (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
+            character_id INTEGER DEFAULT 0,
+            storage_type TEXT DEFAULT NULL,
             name TEXT NOT NULL,
             type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
@@ -93,7 +105,10 @@ pub fn init_app() -> Result<(), SqlError> {
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS frame (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
+            character_id INTEGER DEFAULT 0,
+            storage_type TEXT DEFAULT NULL,
             name TEXT NOT NULL,
             type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
@@ -102,14 +117,18 @@ pub fn init_app() -> Result<(), SqlError> {
             evp INTEGER NOT NULL,
             max_dfp INTEGER NOT NULL,
             max_evp INTEGER NOT NULL,
-            display TEXT NOT NULL
+            display TEXT NOT NULL,
+            lang TEXT NOT NULL
         )",
         (),
     )?;
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS barrier (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
+            character_id INTEGER DEFAULT 0,
+            storage_type TEXT DEFAULT NULL,
             name TEXT NOT NULL,
             type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
@@ -117,25 +136,33 @@ pub fn init_app() -> Result<(), SqlError> {
             evp INTEGER NOT NULL,
             max_dfp INTEGER NOT NULL,
             max_evp INTEGER NOT NULL,
-            display TEXT NOT NULL
+            display TEXT NOT NULL,
+            lang TEXT NOT NULL
         )",
         (),
     )?;
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS unit (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
+            character_id INTEGER DEFAULT 0,
+            storage_type TEXT DEFAULT NULL,
             name TEXT NOT NULL,
             type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
-            display TEXT NOT NULL
+            display TEXT NOT NULL,
+            lang TEXT NOT NULL
         )",
         (),
     )?;
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS mag (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
+            character_id INTEGER DEFAULT 0,
+            storage_type TEXT DEFAULT NULL,
             name TEXT NOT NULL,
             type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
@@ -158,60 +185,80 @@ pub fn init_app() -> Result<(), SqlError> {
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS disk (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
+            character_id INTEGER DEFAULT 0,
+            storage_type TEXT DEFAULT NULL,
             name TEXT NOT NULL,
             type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
             level INTEGER NOT NULL,
-            display TEXT NOT NULL
+            display TEXT NOT NULL,
+            lang TEXT NOT NULL
         )",
         (),
     )?;
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS s_rank_weapon (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
+            character_id INTEGER DEFAULT 0,
+            storage_type TEXT DEFAULT NULL,
             name TEXT NOT NULL,
             type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
             grind INTEGER NOT NULL,
             special TEXT NOT NULL,
-            display TEXT NOT NULL
+            display TEXT NOT NULL,
+            lang TEXT NOT NULL
         )",
         (),
     )?;
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS tool (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
+            character_id INTEGER DEFAULT 0,
+            storage_type TEXT DEFAULT NULL,
             name TEXT NOT NULL,
             type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
             number INTEGER NOT NULL,
-            display TEXT NOT NULL
+            display TEXT NOT NULL,
+            lang TEXT NOT NULL
         )",
         (),
     )?;
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS meseta (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
+            character_id INTEGER DEFAULT 0,
+            storage_type TEXT DEFAULT NULL,
             name TEXT NOT NULL,
             type INTEGER NOT NULL,
             amount INTEGER NOT NULL,
-            display TEXT NOT NULL
+            display TEXT NOT NULL,
+            lang TEXT NOT NULL
         )",
         (),
     )?;
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS other (
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
+            character_id INTEGER DEFAULT 0,
+            storage_type TEXT DEFAULT NULL,
             name TEXT NOT NULL,
             type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
             number INTEGER NOT NULL,
-            display TEXT NOT NULL
+            display TEXT NOT NULL,
+            lang TEXT NOT NULL
         )",
         (),
     )?;
@@ -309,14 +356,23 @@ pub fn get_accounts() -> Result<Vec<Account>, SqlError> {
     Ok(accounts)
 }
 
-// create_account needs to also parse through the uploaded files, figure out the item type, and 
-// make insert statements to the table(determined by the item type)
-#[tauri::command]
-pub fn create_account(account: Account, files: Vec<ParsedFileData>) -> Result<(), SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let conn = Connection::open(my_db)?;
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AccountPayload {
+    account_name: String,
+    guild_card: u32,
+    account_type: String,
+    server: String
+}
 
-    conn.execute(
+#[tauri::command]
+pub fn create_account(account: AccountPayload, files: Vec<ParsedFileData>) -> Result<(), SqlError> {
+    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
+    let mut conn = Connection::open(my_db)?;
+    let transaction = conn.transaction()?;
+
+    println!("[Account]: {:?}", account);
+
+    transaction.execute(
         "INSERT INTO account (account_name, guild_card, account_type, server)
          VALUES (?1, ?2, ?3, ?4)",
          params![
@@ -327,10 +383,71 @@ pub fn create_account(account: Account, files: Vec<ParsedFileData>) -> Result<()
          ]
     )?;
 
-    
+    let account_id = transaction.last_insert_rowid();
 
-    println!("[Account]: {:?}", account);
-    println!("[Files]: {:?}", files);
+    println!("account_id: {}", account_id);
+
+    for file in files {
+        match file.data {
+            Data::SharedBank(shared_bank) => {
+                for (str1, item, str2) in shared_bank.bank {
+                    println!("String 1: {}", str1);
+                    insert_item(&transaction, &item, account_id, 0, String::from("SHARED_BANK"));
+                    println!("String 2: {}", str2);
+                }
+            },
+            Data::Character(character) => {
+                let Character { 
+                    slot, mode, guild_card_number, name,
+                    lang, class, section_id, level, experience,
+                    ep1_progress, ep2_progress, bank, inventory
+                } = character;
+                
+                transaction.execute(
+                    "INSERT INTO character 
+                    (
+                        slot, mode, guild_card, name,
+                        class, section_id, level, experience,
+                        ep1_progress, ep2_progress, account_id
+                    )
+                    VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)
+                    ",
+                    params![
+                        slot, mode, guild_card_number, name,
+                        class, section_id, level, experience,
+                        ep1_progress, ep2_progress, account_id
+                    ]
+                )?;
+
+                let character_id = transaction.last_insert_rowid();
+
+                for (str1, item, str2) in bank {
+                    println!("String 1: {}", str1);
+                    insert_item(&transaction, &item, account_id, character_id, String::from("BANK"));
+                    println!("String 2: {}", str2);
+                }
+
+                for (str1, item, str2) in inventory {
+                    println!("String 1: {}", str1);
+                    insert_item(&transaction, &item, account_id, character_id, String::from("INVENTORY"));
+                    println!("String 2: {}", str2);
+                }
+            }
+            _ => {
+                // Handle other cases if needed
+                println!("No SharedBank or Character data in this file");
+            }
+        }
+    }
+
+    transaction.commit()?;
+
+    Ok(())
+}
+
+// Construct the ParsedFileData here
+#[tauri::command]
+pub fn get_account_data() -> Result<(), SqlError> {
     Ok(())
 }
 

@@ -26,8 +26,6 @@ pub struct ParsedFiles {
     pub files: Vec<ParsedFileData>
 }
 
-pub type Inventory = HashMap<String, Vec<(String, Item, String)>>;
-
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Item {
     pub item: Option<ItemData>
@@ -72,6 +70,8 @@ impl fmt::Display for Slot {
         }
     }
 }
+
+pub type Inventory = Vec<(String, Item, String)>;
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum ItemData {

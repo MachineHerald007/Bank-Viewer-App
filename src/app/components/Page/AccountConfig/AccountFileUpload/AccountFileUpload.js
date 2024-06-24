@@ -48,11 +48,10 @@ export function AccountFileUpload({ theme, onComplete }) {
 
     const parseFilename = (parsedFiles) => {
         const lang = parsedFiles.files[0].data.lang;
-        const acc_type = parsedFiles.files[0].data.bank[lang].length > 0 ? "NORMAL" : "CLASSIC";
+        const acc_type = parsedFiles.files[0].data.bank.length > 0 ? "NORMAL" : "CLASSIC";
         const acc_info = parsedFiles.files[0].filename.split(".")[0].split("_");
         const result = [];
         let slotNumber = null;
-
 
         for (let i = 0; i < acc_info.length; i++) {
             if (acc_info[i].startsWith('Slot')) {
@@ -68,7 +67,6 @@ export function AccountFileUpload({ theme, onComplete }) {
     const handleUpload = async () => {
         try {
             const account = parseFilename(parsedFiles);
-            
             const response = await invoke("create_account", {
                 account: {
                     account_name: account.info[1].toLowerCase(),

@@ -5,6 +5,9 @@
 )]
 
 mod util;
+mod lib {
+    pub mod db;
+}
 mod config {
     pub mod config;
     pub mod item_codes;
