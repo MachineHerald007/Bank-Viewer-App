@@ -13,7 +13,7 @@ use crate::parser::types::{
     AdditionType
 };
 
-fn is_s_rank_weapon(item_code: u32) -> bool {
+fn is_srank_weapon(item_code: u32) -> bool {
     Config::srank_weapon_codes().contains_key(&(item_code & 0xFFF0))
 }
 
@@ -61,7 +61,7 @@ fn is_meseta(item_code: u32) -> bool {
 }
 
 fn get_item_type(item_code: u32) -> u32 {
-    if is_s_rank_weapon(item_code) {
+    if is_srank_weapon(item_code) {
         8
     } else if is_weapon(item_code) {
         1
@@ -93,12 +93,11 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let dark = get_dark(&item_data);
     let hit = get_hit(&item_data);
     let is_common = is_common_weapon(item_code);
-    let mut special = String::new();
-    
-    if item_data[4] != 0x00 && item_data[4] != 0x80 {
-        special = format!(" [{}]", get_special(&item_data, &config));
-    }
-
+    let special = if item_data[4] != 0x00 && item_data[4] != 0x80 && is_common {
+        format!(" [{}]", get_special(&item_data, &config))
+    } else {
+        format!(" [{}]", get_rare_special(item_code, &config))
+    };
     let tekked_mode = is_tekked(&item_data, item_code);
     let mut tekked_text = String::new();
 
@@ -266,7 +265,7 @@ fn s_rank_weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData
     };
     let name = format!("S-RANK {} {}", custom_name, weapon_code);
     let grind = item_data[3];
-    let special = get_s_rank_special(&item_data, config);
+    let special = get_srank_special(&item_data, config);
 
     println!("CUSTOM NAME: {:?}", custom_name);
     println!("NAME VALUE: {:?}", item_data[4]);
@@ -344,7 +343,15 @@ fn get_special(item_data: &[u8], config: &Config) -> String {
     }
 }
 
-fn get_s_rank_special(item_data: &[u8], config: Config) -> String {
+fn get_rare_special(item_code: u32, config: &Config) -> String {
+    if let Some(special) = config.rare_weapon_special_codes.clone().expect("REASON").get(&item_code) {
+        String::from(special.clone())
+    } else {
+        "undefined".to_string()
+    }
+}
+
+fn get_srank_special(item_data: &[u8], config: Config) -> String {
     let special_code = item_data[2];
 
     if let Some(special) = config.srank_special_codes.clone().expect("REASON").get(&special_code) {

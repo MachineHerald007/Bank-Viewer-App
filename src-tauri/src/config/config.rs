@@ -1,10 +1,10 @@
 use std::collections::HashMap;
-
 use crate::config::{ item_codes, item_codes_ja };
 
 use item_codes::{
     mag_color_codes,
     weapon_special_codes,
+    rare_weapon_special_codes,
     srank_special_codes,
     specials_list,
     frames,
@@ -17,6 +17,7 @@ use item_codes::{
 use item_codes_ja::{
     mag_color_codes_ja,
     weapon_special_codes_ja,
+    rare_weapon_special_codes_ja,
     srank_special_codes_ja,
     specials_list_ja,
     frames_ja,
@@ -32,6 +33,7 @@ pub struct Config<'a> {
     pub lang: Option<String>,
     pub item_codes: Option<HashMap<u32, &'a str>>,
     pub weapon_special_codes: Option<HashMap<u8, &'a str>>,
+    pub rare_weapon_special_codes: Option<HashMap<u32, &'a str>>,
     pub srank_special_codes: Option<HashMap<u8, &'a str>>,
     pub frames: Option<HashMap<&'a str, [i32; 2]>>,
     pub barriers: Option<HashMap<&'a str, [i32; 2]>>,
@@ -235,6 +237,7 @@ impl<'a> Config<'a> {
                 lang: Some(lang),
                 item_codes: Some(item_codes_ja()),
                 weapon_special_codes: Some(weapon_special_codes_ja()),
+                rare_weapon_special_codes: Some(rare_weapon_special_codes_ja()),
                 srank_special_codes: Some(srank_special_codes_ja()),
                 frames: Some(frames_ja()),
                 barriers: Some(barriers_ja()),
@@ -247,6 +250,7 @@ impl<'a> Config<'a> {
                 lang: Some(lang),
                 item_codes: Some(item_codes()),
                 weapon_special_codes: Some(weapon_special_codes()),
+                rare_weapon_special_codes: Some(rare_weapon_special_codes()),
                 srank_special_codes: Some(srank_special_codes()),
                 frames: Some(frames()),
                 barriers: Some(barriers()),
