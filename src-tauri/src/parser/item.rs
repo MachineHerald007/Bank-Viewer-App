@@ -94,9 +94,9 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let hit = get_hit(&item_data);
     let is_common = is_common_weapon(item_code);
     let special = if item_data[4] != 0x00 && item_data[4] != 0x80 && is_common {
-        format!(" [{}]", get_special(&item_data, &config))
+        get_special(&item_data, &config)
     } else {
-        format!(" [{}]", get_rare_special(item_code, &config))
+        get_rare_special(item_code, &config)
     };
     let tekked_mode = is_tekked(&item_data, item_code);
     let mut tekked_text = String::new();
@@ -123,11 +123,7 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
             hit,
         },
         tekked: tekked_mode,
-        rare: !is_common,
-        display: format!(
-            "{}{}{} [{}|{}]",
-            tekked_text, name, grind_label(grind), special, hit
-        ),
+        rare: !is_common
     }
 }
 
@@ -148,11 +144,7 @@ fn frame(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
         max_addition: Addition {
             dfp: dfp_max_addition,
             evp: evp_max_addition,
-        },
-        display: format!(
-            "{} [{}|{}] [{}|{}] [{}S]",
-            name, dfp, dfp_max_addition, evp, evp_max_addition, slot
-        ),
+        }
     }
 }
 
@@ -174,11 +166,7 @@ fn barrier(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
         max_addition: Addition {
             dfp: dfp_max_addition,
             evp: evp_max_addition,
-        },
-        display: format!(
-            "{} [{}|{}] [{}|{}]",
-            name, dfp, dfp_max_addition, evp, evp_max_addition
-        ),
+        }
     }
 }
 
@@ -188,7 +176,6 @@ fn unit(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     ItemData::Unit {
         name: name.clone(),
         type_: 4,
-        display: name.clone(),
         itemdata: Util::binary_array_to_hex(&item_data),
     }
 }
@@ -224,16 +211,7 @@ fn mag(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
             dex,
             mind,
         },
-        pbs: [pbs[0].clone(), pbs[1].clone(), pbs[2].clone()],
-        display: format!(
-            "{} LV{} [{}] [{}|{}|{}|{}] [{}|{}|{}]",
-            name, level, color.0.chars().nth(1).expect("REASON").to_string(), def, pow, dex, mind, pbs[2], pbs[0], pbs[1]
-        ),
-        display_front: format!("{} LV{} [{:?}]", name, level, color.0.chars().nth(1)),
-        display_end: format!(
-            "] [{}|{}|{}|{}] [{}|{}|{}]",
-            def, pow, dex, mind, pbs[2], pbs[0], pbs[1]
-        ),
+        pbs: [pbs[0].clone(), pbs[1].clone(), pbs[2].clone()]
     }
 }
 
@@ -251,8 +229,7 @@ fn disk(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
         name: format!("{} LV{} {:?}", name, level, config.disk_name),
         type_: 6,
         itemdata: Util::binary_array_to_hex(&item_data),
-        level,
-        display: format!("{} LV{} {:?}", name, level, config.disk_name),
+        level
     }
 }
 
@@ -267,16 +244,12 @@ fn s_rank_weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData
     let grind = item_data[3];
     let special = get_srank_special(&item_data, config);
 
-    println!("CUSTOM NAME: {:?}", custom_name);
-    println!("NAME VALUE: {:?}", item_data[4]);
-
     ItemData::SRankWeapon {
         name: name.clone().to_string(),
         type_: 8,
         itemdata: Util::binary_array_to_hex(&item_data),
         grind,
-        special: special.clone(),
-        display: format!("{} {} [{}]", name, grind_label(grind), special),
+        special: special.clone()
     }
 }
 
@@ -292,8 +265,7 @@ fn tool(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
         name: name.clone(),
         type_: 7,
         itemdata: Util::binary_array_to_hex(&item_data),
-        number,
-        display: format!("{}{}", name, number_label(number)),
+        number
     }
 }
 
@@ -303,8 +275,7 @@ fn meseta(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     ItemData::Meseta {
         name: "Meseta".to_string(),
         r#type: 10, // Assuming 10 is the type code for Meseta, adjust as necessary
-        amount,
-        display: format!("Meseta x{}", amount),
+        amount
     }
 }
 
@@ -320,8 +291,7 @@ fn other(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
         name: name.clone(),
         type_: 9,
         itemdata: Util::binary_array_to_hex(&item_data),
-        number,
-        display: format!("{}{}", name, number_label(number)),
+        number
     }
 }
 

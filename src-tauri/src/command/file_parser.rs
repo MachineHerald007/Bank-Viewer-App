@@ -64,7 +64,7 @@ fn parse(files_to_parse: Files, config: Config) -> Vec<ParsedFileData> {
             });
         }
     }
-    println!("{:?}", parsed_files);
+    
     parsed_files
 }
 

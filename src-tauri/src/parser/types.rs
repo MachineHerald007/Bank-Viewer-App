@@ -83,8 +83,7 @@ pub enum ItemData {
         grind: u8,
         attribute: Attribute,
         tekked: bool,
-        rare: bool,
-        display: String,
+        rare: bool
     },
     Frame {
         name: String,
@@ -92,22 +91,19 @@ pub enum ItemData {
         itemdata: String,
         slot: u8,
         addition: Addition,
-        max_addition: Addition,
-        display: String,
+        max_addition: Addition
     },
     Barrier {
         name: String,
         type_: u8,
         itemdata: String,
         addition: Addition,
-        max_addition: Addition,
-        display: String,
+        max_addition: Addition
     },
     Unit {
         name: String,
         type_: u8,
-        itemdata: String,
-        display: String,
+        itemdata: String
     },
     Mag {
         name: String,
@@ -119,45 +115,37 @@ pub enum ItemData {
         color: String,
         rgb: String,
         status: Status,
-        pbs: [String; 3],
-        display: String,
-        display_front: String,
-        display_end: String,
+        pbs: [String; 3]
     },
     Disk {
         name: String,
         type_: u8,
         itemdata: String,
-        level: u8,
-        display: String,
+        level: u8
     },
     SRankWeapon {
         name: String,
         type_: u8,
         itemdata: String,
         grind: u8,
-        special: String,
-        display: String,
+        special: String
     },
     Tool {
         name: String,
         type_: u8,
         itemdata: String,
-        number: u8,
-        display: String,
+        number: u8
     },
     Meseta {
         name: String,
         r#type: u8,
-        amount: u32,
-        display: String,
+        amount: u32
     },
     Other {
         name: String,
         type_: u8,
         itemdata: String,
-        number: u8,
-        display: String,
+        number: u8
     },
 }
 
@@ -194,8 +182,7 @@ pub enum AdditionType {
 pub struct Meseta {
     pub name: String,
     pub r#type: u32,
-    pub amount: u32,
-    pub display: String,
+    pub amount: u32
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -204,6 +191,5 @@ pub struct SRankWeapon {
     pub type_: u8,
     pub itemdata: String,
     pub grind: u8,
-    pub special: String,
-    pub display: String,
+    pub special: String
 }

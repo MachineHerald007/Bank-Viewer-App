@@ -97,8 +97,7 @@ pub fn init_app() -> Result<(), SqlError> {
             dark INTEGER NOT NULL,
             hit INTEGER NOT NULL,
             tekked INTEGER CHECK(tekked IN (0, 1)),
-            rare INTEGER CHECK(rare IN (0, 1)),
-            display TEXT NOT NULL
+            rare INTEGER CHECK(rare IN (0, 1))
         )",
         (),
     )?;
@@ -117,7 +116,6 @@ pub fn init_app() -> Result<(), SqlError> {
             evp INTEGER NOT NULL,
             max_dfp INTEGER NOT NULL,
             max_evp INTEGER NOT NULL,
-            display TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
@@ -136,7 +134,6 @@ pub fn init_app() -> Result<(), SqlError> {
             evp INTEGER NOT NULL,
             max_dfp INTEGER NOT NULL,
             max_evp INTEGER NOT NULL,
-            display TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
@@ -151,7 +148,6 @@ pub fn init_app() -> Result<(), SqlError> {
             name TEXT NOT NULL,
             type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
-            display TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
@@ -193,7 +189,6 @@ pub fn init_app() -> Result<(), SqlError> {
             type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
             level INTEGER NOT NULL,
-            display TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
@@ -210,7 +205,6 @@ pub fn init_app() -> Result<(), SqlError> {
             item_data TEXT NOT NULL,
             grind INTEGER NOT NULL,
             special TEXT NOT NULL,
-            display TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
@@ -226,7 +220,6 @@ pub fn init_app() -> Result<(), SqlError> {
             type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
             number INTEGER NOT NULL,
-            display TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
@@ -241,7 +234,6 @@ pub fn init_app() -> Result<(), SqlError> {
             name TEXT NOT NULL,
             type INTEGER NOT NULL,
             amount INTEGER NOT NULL,
-            display TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
@@ -257,7 +249,6 @@ pub fn init_app() -> Result<(), SqlError> {
             type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
             number INTEGER NOT NULL,
-            display TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
