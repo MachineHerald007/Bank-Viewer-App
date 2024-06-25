@@ -7,19 +7,18 @@ use crate::parser::{
     character,
     shared_bank,
     types::{
-        FileData,
+        File,
+        Files,
         Data,
-        ParsedFileData,
+        ParsedFile,
         ParsedFiles,
         Character,
         SharedBank
     }
 };
 
-type Files = Vec<FileData>;
-
-fn parse(files_to_parse: Files, config: Config) -> Vec<ParsedFileData> {
-    let mut parsed_files: Vec<ParsedFileData> = Vec::new();
+fn parse(files_to_parse: Files, config: Config) -> Vec<ParsedFile> {
+    let mut parsed_files: Vec<ParsedFile> = Vec::new();
     let re_psobank = Regex::new(r"psobank").unwrap();
     let re_psochar = Regex::new(r"psochar").unwrap();
     let re_psoclassicbank = Regex::new(r"psoclassicbank").unwrap();
@@ -29,7 +28,7 @@ fn parse(files_to_parse: Files, config: Config) -> Vec<ParsedFileData> {
 
         if re_psobank.is_match(&file.filename) {
             let normal = String::from("NORMAL");
-            parsed_files.push(ParsedFileData {
+            parsed_files.push(ParsedFile {
                 filename: String::from(&file.filename),
                 data: Data::SharedBank(shared_bank::create(&binary[8..4808], Config::mode(normal), config.clone())),
             });
@@ -38,7 +37,7 @@ fn parse(files_to_parse: Files, config: Config) -> Vec<ParsedFileData> {
 
         if re_psoclassicbank.is_match(&file.filename) {
             let classic = String::from("CLASSIC");
-            parsed_files.push(ParsedFileData {
+            parsed_files.push(ParsedFile {
                 filename: String::from(&file.filename),
                 data: Data::SharedBank(shared_bank::create(&binary[8..4808], Config::mode(classic), config.clone())),
             });
@@ -58,7 +57,7 @@ fn parse(files_to_parse: Files, config: Config) -> Vec<ParsedFileData> {
                 .parse()
                 .expect("Failed to parse the slot to a number");
             
-            parsed_files.push(ParsedFileData {
+            parsed_files.push(ParsedFile {
                 filename: String::from(&file.filename.to_owned()),
                 data: Data::Character(character::create(&binary, slot + 1, config.clone())),
             });
@@ -76,7 +75,7 @@ pub fn parse_files(files: Files, lang: String) -> Result<ParsedFiles, ()> {
 
     for file in &files {
         if reg_ex.is_match(&file.filename) {
-            files_to_parse.push(FileData {
+            files_to_parse.push(File {
                 filename: file.filename.clone(),
                 binary: file.binary.clone(),
             });

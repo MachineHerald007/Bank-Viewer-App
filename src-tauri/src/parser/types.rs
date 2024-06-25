@@ -2,8 +2,10 @@ use std::fmt;
 use serde::{ Serialize, Deserialize };
 use std::collections::HashMap;
 
+pub type Files = Vec<File>;
+
 #[derive(Debug, Deserialize, Clone)]
-pub struct FileData {
+pub struct File {
     pub filename: String,
     pub binary: Vec<u8>,
 }
@@ -16,14 +18,14 @@ pub enum Data {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct ParsedFileData {
+pub struct ParsedFile {
     pub filename: String,
     pub data: Data,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ParsedFiles {
-    pub files: Vec<ParsedFileData>
+    pub files: Vec<ParsedFile>
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]

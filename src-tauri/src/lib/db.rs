@@ -15,10 +15,24 @@ pub fn insert_item(conn: &Connection, item: &Item, account_id: i64, character_id
                 println!("Attribute: {:?}", attribute);
 
                 conn.execute(
-                    "INSERT INTO weapon (account_id, character_id, storage_type, name, type, item_data, special, grind, native, a_beast, machine, dark, hit, tekked, rare)
-                    VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)
+                    "INSERT INTO weapon
+                    (
+                        account_id, character_id, storage_type, name,
+                        type, item_data, special, grind, native, a_beast,
+                        machine, dark, hit, tekked, rare
+                    )
+                    VALUES
+                    (
+                        ?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8,
+                        ?9,?10, ?11, ?12, ?13, ?14, ?15
+                    )
                     ",
-                    params![account_id, character_id, storage_type, name, type_, itemdata, special, grind, attribute.native, attribute.a_beast, attribute.machine, attribute.dark, attribute.hit, tekked, rare]
+                    params![
+                        account_id, character_id, storage_type, name,
+                        type_, itemdata, special, grind, attribute.native,
+                        attribute.a_beast, attribute.machine, attribute.dark,
+                        attribute.hit, tekked, rare
+                    ]
                 )?;
             }
             ItemData::Frame { name, type_, itemdata, slot, addition, max_addition } => {

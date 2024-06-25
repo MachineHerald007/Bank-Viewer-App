@@ -127,6 +127,26 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     }
 }
 
+fn s_rank_weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
+    let custom_name = get_custom_name(&item_data[6..12]);
+    let map = Config::srank_weapon_codes();
+    let weapon_code = match map.get(&(item_code & 0xFFFF00)) {
+        Some(code) => code,
+        None => "No code found",
+    };
+    let name = format!("S-RANK {} {}", custom_name, weapon_code);
+    let grind = item_data[3];
+    let special = get_srank_special(&item_data, config);
+
+    ItemData::SRankWeapon {
+        name: name.clone().to_string(),
+        type_: 8,
+        itemdata: Util::binary_array_to_hex(&item_data),
+        grind,
+        special: special.clone()
+    }
+}
+
 fn frame(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let name = get_item_name(item_code, &config);
     let slot = item_data[5];
@@ -233,26 +253,6 @@ fn disk(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     }
 }
 
-fn s_rank_weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
-    let custom_name = get_custom_name(&item_data[6..12]);
-    let map = Config::srank_weapon_codes();
-    let weapon_code = match map.get(&(item_code & 0xFFFF00)) {
-        Some(code) => code,
-        None => "No code found",
-    };
-    let name = format!("S-RANK {} {}", custom_name, weapon_code);
-    let grind = item_data[3];
-    let special = get_srank_special(&item_data, config);
-
-    ItemData::SRankWeapon {
-        name: name.clone().to_string(),
-        type_: 8,
-        itemdata: Util::binary_array_to_hex(&item_data),
-        grind,
-        special: special.clone()
-    }
-}
-
 fn tool(item_code: u32, item_data: Vec<u8>, config: Config) -> ItemData {
     let name = get_item_name(item_code, &config);
     let number = if item_data.len() == 28 {
@@ -309,7 +309,7 @@ fn get_special(item_data: &[u8], config: &Config) -> String {
     if let Some(special) = config.weapon_special_codes.clone().expect("REASON").get(&code) {
         String::from(special.clone())
     } else {
-        "undefined".to_string()
+        String::from("undefined")
     }
 }
 
@@ -317,7 +317,7 @@ fn get_rare_special(item_code: u32, config: &Config) -> String {
     if let Some(special) = config.rare_weapon_special_codes.clone().expect("REASON").get(&item_code) {
         String::from(special.clone())
     } else {
-        "undefined".to_string()
+        String::from("undefined")
     }
 }
 
@@ -327,7 +327,7 @@ fn get_srank_special(item_data: &[u8], config: Config) -> String {
     if let Some(special) = config.srank_special_codes.clone().expect("REASON").get(&special_code) {
         String::from(special.clone())
     } else {
-        "undefined".to_string()
+        String::from("undefined")
     }
 }
 

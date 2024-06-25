@@ -1,20 +1,19 @@
 use serde::{Serialize, Deserialize};
 use rusqlite::{Connection, Result as SqlResult, params};
 use thiserror::Error;
-
+use crate::lib::db::{
+    insert_item
+};
 use crate::parser::{
     types:: {
-        ParsedFileData,
+        ParsedFiles,
+        ParsedFile,
         Data,
         ItemData,
         Item,
         SharedBank,
         Character,
     }
-};
-
-use crate::lib::db::{
-    insert_item
 };
 
 #[derive(Error, Debug, Serialize, Deserialize)]
@@ -356,7 +355,7 @@ pub struct AccountPayload {
 }
 
 #[tauri::command]
-pub fn create_account(account: AccountPayload, files: Vec<ParsedFileData>) -> Result<(), SqlError> {
+pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result<(), SqlError> {
     let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
     let mut conn = Connection::open(my_db)?;
     let transaction = conn.transaction()?;
@@ -425,7 +424,7 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFileData>) -> Re
                 }
             }
             _ => {
-                // Handle other cases if needed
+                // Send back custom error message here
                 println!("No SharedBank or Character data in this file");
             }
         }
@@ -436,7 +435,8 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFileData>) -> Re
     Ok(())
 }
 
-// Construct the ParsedFileData here
+type AccountData = ParsedFiles;
+
 #[tauri::command]
 pub fn get_account_data() -> Result<(), SqlError> {
     Ok(())
