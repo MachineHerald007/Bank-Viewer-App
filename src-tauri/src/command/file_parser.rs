@@ -1,20 +1,16 @@
 use std::str;
 use std::collections::HashMap;
 use tauri::regex::Regex;
-
 use crate::config::config::Config;
-use crate::parser::{
-    character,
-    shared_bank,
-    types::{
-        File,
-        Files,
-        Data,
-        ParsedFile,
-        ParsedFiles,
-        Character,
-        SharedBank
-    }
+use crate::parser::{character,shared_bank}
+use crate::parser::types::{
+    File,
+    Files,
+    Data,
+    ParsedFile,
+    ParsedFiles,
+    Character,
+    SharedBank
 };
 
 fn parse(files_to_parse: Files, config: Config) -> Vec<ParsedFile> {

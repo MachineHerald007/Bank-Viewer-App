@@ -1,10 +1,6 @@
 use std::collections::HashMap;
-
 use crate::parser::item;
-use crate::parser::types::Item;
-use crate::parser::types::Slot;
-use crate::parser::types::SharedBank;
-use crate::parser::types::Inventory;
+use crate::parser::types::{Item, Slot, SharedBank, Inventory};
 use crate::config::config::Config;
 
 fn set_account_type(mode: u8) -> String {

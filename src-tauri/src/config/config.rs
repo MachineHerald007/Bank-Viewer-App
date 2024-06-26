@@ -1,6 +1,5 @@
 use std::collections::HashMap;
-use crate::config::{ item_codes, item_codes_ja };
-
+use crate::config::{item_codes, item_codes_ja};
 use item_codes::{
     mag_color_codes,
     weapon_special_codes,

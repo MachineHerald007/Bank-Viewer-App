@@ -1,8 +1,6 @@
 use rusqlite::{Connection, Result as SqlResult, params};
 use crate::command::db::SqlError;
-use crate::parser::{
-    types:: {Item, WrappedItem}
-};
+use crate::parser::types::{Item, WrappedItem};
 
 pub fn insert_item(conn: &Connection, item: &WrappedItem, account_id: i64, character_id: i64, storage_type: String, lang: String) -> Result<(), SqlError> {
     if let Some(item_type) = &item.item {

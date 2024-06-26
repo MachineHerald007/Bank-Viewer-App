@@ -1,5 +1,5 @@
 use std::fmt;
-use serde::{ Serialize, Deserialize };
+use serde::{Serialize, Deserialize};
 use std::collections::HashMap;
 
 pub type Files = Vec<File>;

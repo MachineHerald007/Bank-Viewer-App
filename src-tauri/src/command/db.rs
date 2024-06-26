@@ -1,19 +1,15 @@
 use serde::{Serialize, Deserialize};
 use rusqlite::{Connection, Result as SqlResult, params};
 use thiserror::Error;
-use crate::lib::db::{
-    insert_item
-};
-use crate::parser::{
-    types:: {
-        ParsedFiles,
-        ParsedFile,
-        Data,
-        Item,
-        WrappedItem,
-        SharedBank,
-        Character,
-    }
+use crate::lib::db::{insert_item};
+use crate::parser::types::{
+    ParsedFiles,
+    ParsedFile,
+    Data,
+    Item,
+    WrappedItem,
+    SharedBank,
+    Character,
 };
 
 #[derive(Error, Debug, Serialize, Deserialize)]

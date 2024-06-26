@@ -1,5 +1,4 @@
 use std::collections::HashMap;
-
 use crate::util::Util;
 use crate::config::config::Config;
 use crate::parser::types::{
@@ -235,7 +234,6 @@ fn mag(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     }
 }
 
-// should probably refactor this so name, level are their own fields
 fn disk(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let name = match &config.tech_codes {
         Some(map) => match map.get(&(item_data[4] as u8)) {
