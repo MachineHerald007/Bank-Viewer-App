@@ -9,8 +9,7 @@ use item_codes::{
     specials_list,
     frames,
     barriers,
-    tech_name_codes,
-    disk_name,
+    tech_codes,
     item_codes,
     pbs
 };
@@ -22,8 +21,7 @@ use item_codes_ja::{
     specials_list_ja,
     frames_ja,
     barriers_ja,
-    tech_name_codes_ja,
-    disk_name_ja,
+    tech_codes_ja,
     item_codes_ja,
     pbs_ja
 };
@@ -37,8 +35,7 @@ pub struct Config<'a> {
     pub srank_special_codes: Option<HashMap<u8, &'a str>>,
     pub frames: Option<HashMap<&'a str, [i32; 2]>>,
     pub barriers: Option<HashMap<&'a str, [i32; 2]>>,
-    pub tech_name_codes: Option<HashMap<u8, &'a str>>,
-    pub disk_name: Option<&'a str>,
+    pub tech_codes: Option<HashMap<u8, &'a str>>,
     pub pbs: Option<HashMap<&'a str, [&'a str; 3]>>,
     pub mag_color_codes: Option<HashMap<u8, (&'a str, &'a str)>>,
 }
@@ -241,8 +238,7 @@ impl<'a> Config<'a> {
                 srank_special_codes: Some(srank_special_codes_ja()),
                 frames: Some(frames_ja()),
                 barriers: Some(barriers_ja()),
-                tech_name_codes: Some(tech_name_codes_ja()),
-                disk_name: Some(disk_name_ja()),
+                tech_codes: Some(tech_codes_ja()),
                 pbs: Some(pbs_ja()),
                 mag_color_codes: Some(mag_color_codes_ja()),
             },
@@ -254,8 +250,7 @@ impl<'a> Config<'a> {
                 srank_special_codes: Some(srank_special_codes()),
                 frames: Some(frames()),
                 barriers: Some(barriers()),
-                tech_name_codes: Some(tech_name_codes()),
-                disk_name: Some(disk_name()),
+                tech_codes: Some(tech_codes()),
                 pbs: Some(pbs()),
                 mag_color_codes: Some(mag_color_codes()),
             },

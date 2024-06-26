@@ -827,7 +827,7 @@ pub fn barriers() -> HashMap<&'static str, [i32; 2]> {
     additions
 }
 
-pub fn tech_name_codes() -> HashMap<u8, &'static str> {
+pub fn tech_codes() -> HashMap<u8, &'static str> {
     let mut codes = HashMap::new();
     codes.insert(0x00, "Foie");
     codes.insert(0x01, "Gifoie");
@@ -849,10 +849,6 @@ pub fn tech_name_codes() -> HashMap<u8, &'static str> {
     codes.insert(0x11, "Reverser");
     codes.insert(0x12, "Megid");
     codes
-}
-
-pub fn disk_name() -> &'static str {
-    "Disk"
 }
 
 pub fn pbs() -> HashMap<&'static str, [&'static str; 3]> {

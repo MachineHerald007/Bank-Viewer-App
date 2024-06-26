@@ -828,7 +828,7 @@ pub fn barriers_ja() -> HashMap<&'static str, [i32; 2]> {
     map
 }
 
-pub fn tech_name_codes_ja() -> HashMap<u8, &'static str> {
+pub fn tech_codes_ja() -> HashMap<u8, &'static str> {
     let mut map = HashMap::new();
     map.insert(0x00, "フォイエ");
     map.insert(0x01, "ギフォイエ");
@@ -850,10 +850,6 @@ pub fn tech_name_codes_ja() -> HashMap<u8, &'static str> {
     map.insert(0x11, "リバーサー");
     map.insert(0x12, "メギド");
     map
-}
-
-pub fn disk_name_ja() -> &'static str {
-    "ディスク"
 }
 
 pub fn pbs_ja() -> HashMap<&'static str, [&'static str; 3]> {

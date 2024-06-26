@@ -9,8 +9,8 @@ use crate::parser::{
         ParsedFiles,
         ParsedFile,
         Data,
-        ItemData,
         Item,
+        WrappedItem,
         SharedBank,
         Character,
     }
@@ -85,9 +85,8 @@ pub fn init_app() -> Result<(), SqlError> {
             account_id INTEGER NOT NULL,
             character_id INTEGER DEFAULT 0,
             storage_type TEXT DEFAULT NULL,
-            name TEXT NOT NULL,
             type INTEGER NOT NULL,
-            item_data TEXT NOT NULL,
+            name TEXT NOT NULL,
             special TEXT NOT NULL,
             grind INTEGER NOT NULL,
             native INTEGER NOT NULL,
@@ -96,7 +95,9 @@ pub fn init_app() -> Result<(), SqlError> {
             dark INTEGER NOT NULL,
             hit INTEGER NOT NULL,
             tekked INTEGER CHECK(tekked IN (0, 1)),
-            rare INTEGER CHECK(rare IN (0, 1))
+            rare INTEGER CHECK(rare IN (0, 1)),
+            item_data TEXT NOT NULL,
+            lang TEXT NOT NULL
         )",
         (),
     )?;
@@ -107,14 +108,14 @@ pub fn init_app() -> Result<(), SqlError> {
             account_id INTEGER NOT NULL,
             character_id INTEGER DEFAULT 0,
             storage_type TEXT DEFAULT NULL,
-            name TEXT NOT NULL,
             type INTEGER NOT NULL,
-            item_data TEXT NOT NULL,
+            name TEXT NOT NULL,
             slot INTEGER NOT NULL,
             dfp INTEGER NOT NULL,
             evp INTEGER NOT NULL,
             max_dfp INTEGER NOT NULL,
             max_evp INTEGER NOT NULL,
+            item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
@@ -126,13 +127,13 @@ pub fn init_app() -> Result<(), SqlError> {
             account_id INTEGER NOT NULL,
             character_id INTEGER DEFAULT 0,
             storage_type TEXT DEFAULT NULL,
-            name TEXT NOT NULL,
             type INTEGER NOT NULL,
-            item_data TEXT NOT NULL,
+            name TEXT NOT NULL,
             dfp INTEGER NOT NULL,
             evp INTEGER NOT NULL,
             max_dfp INTEGER NOT NULL,
             max_evp INTEGER NOT NULL,
+            item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
@@ -144,8 +145,8 @@ pub fn init_app() -> Result<(), SqlError> {
             account_id INTEGER NOT NULL,
             character_id INTEGER DEFAULT 0,
             storage_type TEXT DEFAULT NULL,
-            name TEXT NOT NULL,
             type INTEGER NOT NULL,
+            name TEXT NOT NULL,
             item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
@@ -158,9 +159,8 @@ pub fn init_app() -> Result<(), SqlError> {
             account_id INTEGER NOT NULL,
             character_id INTEGER DEFAULT 0,
             storage_type TEXT DEFAULT NULL,
-            name TEXT NOT NULL,
             type INTEGER NOT NULL,
-            item_data TEXT NOT NULL,
+            name TEXT NOT NULL,
             level INTEGER NOT NULL,
             sync INTEGER NOT NULL,
             iq INTEGER NOT NULL,
@@ -171,39 +171,38 @@ pub fn init_app() -> Result<(), SqlError> {
             dex INTEGER NOT NULL,
             mind INTEGER NOT NULL,
             pbs TEXT NOT NULL,
-            display TEXT NOT NULL,
-            display_front TEXT NOT NULL,
-            display_end TEXT NOT NULL
-        )",
-        (),
-    )?;
-
-    conn.execute(
-        "CREATE TABLE IF NOT EXISTS disk (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            account_id INTEGER NOT NULL,
-            character_id INTEGER DEFAULT 0,
-            storage_type TEXT DEFAULT NULL,
-            name TEXT NOT NULL,
-            type INTEGER NOT NULL,
             item_data TEXT NOT NULL,
-            level INTEGER NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
     )?;
 
     conn.execute(
-        "CREATE TABLE IF NOT EXISTS s_rank_weapon (
+        "CREATE TABLE IF NOT EXISTS tech (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_id INTEGER NOT NULL,
             character_id INTEGER DEFAULT 0,
             storage_type TEXT DEFAULT NULL,
-            name TEXT NOT NULL,
             type INTEGER NOT NULL,
+            name TEXT NOT NULL,
+            level INTEGER NOT NULL,
             item_data TEXT NOT NULL,
+            lang TEXT NOT NULL
+        )",
+        (),
+    )?;
+
+    conn.execute(
+        "CREATE TABLE IF NOT EXISTS srank_weapon (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
+            character_id INTEGER DEFAULT 0,
+            storage_type TEXT DEFAULT NULL,
+            type INTEGER NOT NULL,
+            name TEXT NOT NULL,
             grind INTEGER NOT NULL,
             special TEXT NOT NULL,
+            item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
@@ -215,10 +214,10 @@ pub fn init_app() -> Result<(), SqlError> {
             account_id INTEGER NOT NULL,
             character_id INTEGER DEFAULT 0,
             storage_type TEXT DEFAULT NULL,
-            name TEXT NOT NULL,
             type INTEGER NOT NULL,
-            item_data TEXT NOT NULL,
+            name TEXT NOT NULL,
             number INTEGER NOT NULL,
+            item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
@@ -230,8 +229,8 @@ pub fn init_app() -> Result<(), SqlError> {
             account_id INTEGER NOT NULL,
             character_id INTEGER DEFAULT 0,
             storage_type TEXT DEFAULT NULL,
-            name TEXT NOT NULL,
             type INTEGER NOT NULL,
+            name TEXT NOT NULL,
             amount INTEGER NOT NULL,
             lang TEXT NOT NULL
         )",
@@ -244,10 +243,10 @@ pub fn init_app() -> Result<(), SqlError> {
             account_id INTEGER NOT NULL,
             character_id INTEGER DEFAULT 0,
             storage_type TEXT DEFAULT NULL,
-            name TEXT NOT NULL,
             type INTEGER NOT NULL,
-            item_data TEXT NOT NULL,
+            name TEXT NOT NULL,
             number INTEGER NOT NULL,
+            item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         (),
@@ -381,9 +380,7 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
         match file.data {
             Data::SharedBank(shared_bank) => {
                 for (str1, item, str2) in shared_bank.bank {
-                    println!("String 1: {}", str1);
-                    insert_item(&transaction, &item, account_id, 0, String::from("SHARED_BANK"));
-                    println!("String 2: {}", str2);
+                    insert_item(&transaction, &item, account_id, 0, String::from("SHARED_BANK"), String::from("EN"));
                 }
             },
             Data::Character(character) => {
@@ -412,15 +409,11 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
                 let character_id = transaction.last_insert_rowid();
 
                 for (str1, item, str2) in bank {
-                    println!("String 1: {}", str1);
-                    insert_item(&transaction, &item, account_id, character_id, String::from("BANK"));
-                    println!("String 2: {}", str2);
+                    insert_item(&transaction, &item, account_id, character_id, String::from("BANK"), String::from("EN"));
                 }
 
                 for (str1, item, str2) in inventory {
-                    println!("String 1: {}", str1);
-                    insert_item(&transaction, &item, account_id, character_id, String::from("INVENTORY"));
-                    println!("String 2: {}", str2);
+                    insert_item(&transaction, &item, account_id, character_id, String::from("INVENTORY"), String::from("EN"));
                 }
             }
             _ => {

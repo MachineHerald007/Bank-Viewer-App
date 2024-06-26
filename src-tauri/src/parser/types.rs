@@ -29,11 +29,6 @@ pub struct ParsedFiles {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct Item {
-    pub item: Option<ItemData>
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SharedBank {
     pub account_type: String,
     pub mode: u8,
@@ -73,14 +68,19 @@ impl fmt::Display for Slot {
     }
 }
 
-pub type Inventory = Vec<(String, Item, String)>;
+pub type Inventory = Vec<(String, WrappedItem, String)>;
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-pub enum ItemData {
+pub struct WrappedItem {
+    pub item: Option<Item>
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub enum Item {
     Weapon {
         name: String,
         type_: u8,
-        itemdata: String,
+        item_data: String,
         special: String,
         grind: u8,
         attribute: Attribute,
@@ -90,7 +90,7 @@ pub enum ItemData {
     Frame {
         name: String,
         type_: u8,
-        itemdata: String,
+        item_data: String,
         slot: u8,
         addition: Addition,
         max_addition: Addition
@@ -98,55 +98,55 @@ pub enum ItemData {
     Barrier {
         name: String,
         type_: u8,
-        itemdata: String,
+        item_data: String,
         addition: Addition,
         max_addition: Addition
     },
     Unit {
         name: String,
         type_: u8,
-        itemdata: String
+        item_data: String
     },
     Mag {
         name: String,
         type_: u8,
-        itemdata: String,
+        item_data: String,
         level: u8,
         sync: u8,
         iq: u8,
         color: String,
         rgb: String,
-        status: Status,
+        stats: MagStats,
         pbs: [String; 3]
     },
-    Disk {
+    Tech {
         name: String,
+        level: u8,
         type_: u8,
-        itemdata: String,
-        level: u8
+        item_data: String
     },
     SRankWeapon {
         name: String,
         type_: u8,
-        itemdata: String,
+        item_data: String,
         grind: u8,
         special: String
     },
     Tool {
         name: String,
         type_: u8,
-        itemdata: String,
+        item_data: String,
         number: u8
     },
     Meseta {
         name: String,
-        r#type: u8,
+        type_: u8,
         amount: u32
     },
     Other {
         name: String,
         type_: u8,
-        itemdata: String,
+        item_data: String,
         number: u8
     },
 }
@@ -161,7 +161,7 @@ pub struct Attribute {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct Status {
+pub struct MagStats {
     pub def: u16,
     pub pow: u16,
     pub dex: u16,
@@ -191,7 +191,7 @@ pub struct Meseta {
 pub struct SRankWeapon {
     pub name: String,
     pub type_: u8,
-    pub itemdata: String,
+    pub item_data: String,
     pub grind: u8,
     pub special: String
 }

@@ -1,70 +1,110 @@
 use rusqlite::{Connection, Result as SqlResult, params};
 use crate::command::db::SqlError;
 use crate::parser::{
-    types:: {
-        Item,
-        ItemData,
-    }
+    types:: {Item, WrappedItem}
 };
 
-pub fn insert_item(conn: &Connection, item: &Item, account_id: i64, character_id: i64, storage_type: String) -> Result<(), SqlError> {
-    if let Some(item_data) = &item.item {
-        match item_data {
-            ItemData::Weapon { name, type_, itemdata, special, grind, attribute, tekked, rare } => {
-                println!("Weapon: name: {}, type: {}, itemdata: {}, special: {}, grind: {}, tekked: {}, rare: {}", name, type_, itemdata, special, grind, tekked, rare);
-                println!("Attribute: {:?}", attribute);
-
+pub fn insert_item(conn: &Connection, item: &WrappedItem, account_id: i64, character_id: i64, storage_type: String, lang: String) -> Result<(), SqlError> {
+    if let Some(item_type) = &item.item {
+        match item_type {
+            Item::Weapon { name, type_, item_data, special, grind, attribute, tekked, rare } => {
                 conn.execute(
                     "INSERT INTO weapon
                     (
-                        account_id, character_id, storage_type, name,
-                        type, item_data, special, grind, native, a_beast,
-                        machine, dark, hit, tekked, rare
+                        account_id, character_id, storage_type, name, type, item_data, special,
+                        grind, native, a_beast, machine, dark, hit, tekked, rare, lang
                     )
-                    VALUES
-                    (
-                        ?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8,
-                        ?9,?10, ?11, ?12, ?13, ?14, ?15
-                    )
-                    ",
+                    VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9,?10, ?11, ?12, ?13, ?14, ?15, ?16)",
                     params![
-                        account_id, character_id, storage_type, name,
-                        type_, itemdata, special, grind, attribute.native,
-                        attribute.a_beast, attribute.machine, attribute.dark,
-                        attribute.hit, tekked, rare
+                        account_id, character_id, storage_type, name, type_, item_data, special,
+                        grind, attribute.native, attribute.a_beast, attribute.machine, attribute.dark,
+                        attribute.hit, tekked, rare, lang
                     ]
                 )?;
             }
-            ItemData::Frame { name, type_, itemdata, slot, addition, max_addition } => {
-                println!("Frame: name: {}, type: {}, itemdata: {}, slot: {}", name, type_, itemdata, slot);
-                println!("Addition: {:?}, Max Addition: {:?}", addition, max_addition);
+            Item::Frame { name, type_, item_data, slot, addition, max_addition } => {
+                conn.execute(
+                    "INSERT INTO frame
+                    (
+                        account_id, character_id, storage_type, name, type, item_data, slot, dfp,
+                        evp, max_dfp, max_evp, lang
+                    )
+                    VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)",
+                    params![
+                        account_id, character_id, storage_type, name, type_, item_data, slot, addition.dfp,
+                        addition.evp, max_addition.dfp, max_addition.evp, lang
+                    ]
+                )?;
             }
-            ItemData::Barrier { name, type_, itemdata, addition, max_addition } => {
-                println!("Barrier: name: {}, type: {}, itemdata: {}", name, type_, itemdata);
-                println!("Addition: {:?}, Max Addition: {:?}", addition, max_addition);
+            Item::Barrier { name, type_, item_data, addition, max_addition } => {
+                conn.execute(
+                    "INSERT INTO barrier
+                    (
+                        account_id, character_id, storage_type, name, type, dfp, evp, max_dfp, max_evp,
+                        item_data, lang
+                    )
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
+                     params![
+                        account_id, character_id, storage_type, name, type_, addition.dfp, addition.evp,
+                        max_addition.dfp, max_addition.evp, item_data, lang
+                    ]
+                )?;
             }
-            ItemData::Unit { name, type_, itemdata } => {
-                println!("Unit: name: {}, type: {}, itemdata: {}", name, type_, itemdata);
+            Item::Unit { name, type_, item_data } => {
+                conn.execute(
+                    "INSERT INTO unit (account_id, character_id, storage_type, name, type, item_data, lang)
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)",
+                     params![account_id, character_id, storage_type, name, type_, item_data, lang]
+                )?;
             }
-            ItemData::Mag { name, type_, itemdata, level, sync, iq, color, rgb, status, pbs } => {
-                println!("Mag: name: {}, type: {}, itemdata: {}, level: {}, sync: {}, iq: {}, color: {}, rgb: {}", name, type_, itemdata, level, sync, iq, color, rgb);
-                println!("Status: {:?}", status);
-                println!("PBs: {:?}", pbs);
+            Item::Mag { name, type_, item_data, level, sync, iq, color, rgb, stats, pbs } => {
+                conn.execute(
+                    "INSERT INTO mag
+                    (
+                        account_id, character_id, storage_type, name, type, level, sync, iq, color,
+                        rgb, def, pow, dex, mind, pbs, item_data, lang
+                    )
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17)",
+                     params![
+                        account_id, character_id, storage_type, name, type_, level, sync, iq, color, rgb,
+                        stats.def, stats.pow, stats.dex, stats.mind, pbs.join(","), item_data, lang
+                    ]
+                )?;
             }
-            ItemData::Disk { name, type_, itemdata, level } => {
-                println!("Disk: name: {}, type: {}, itemdata: {}, level: {}", name, type_, itemdata, level);
+            Item::Tech { name, type_, item_data, level } => {
+                conn.execute(
+                    "INSERT INTO tech (account_id, character_id, storage_type, name, type, level, item_data, lang)
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
+                     params![account_id, character_id, storage_type, name, type_, level, item_data, lang]
+                )?;
             }
-            ItemData::SRankWeapon { name, type_, itemdata, grind, special } => {
-                println!("SRankWeapon: name: {}, type: {}, itemdata: {}, grind: {}, special: {}", name, type_, itemdata, grind, special);
+            Item::SRankWeapon { name, type_, item_data, grind, special } => {
+                conn.execute(
+                    "INSERT INTO srank_weapon (account_id, character_id, storage_type, name, type, grind, special, item_data, lang)
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
+                     params![account_id, character_id, storage_type, name, type_, grind, special, item_data, lang]
+                )?;
             }
-            ItemData::Tool { name, type_, itemdata, number } => {
-                println!("Tool: name: {}, type: {}, itemdata: {}, number: {}", name, type_, itemdata, number);
+            Item::Tool { name, type_, item_data, number } => {
+                conn.execute(
+                    "INSERT INTO tool (account_id, character_id, storage_type, name, type, number, item_data, lang)
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
+                     params![account_id, character_id, storage_type, name, type_, number, item_data, lang]
+                )?;
             }
-            ItemData::Meseta { name, r#type, amount } => {
-                println!("Meseta: name: {}, type: {}, amount: {}", name, r#type, amount);
+            Item::Meseta { name, type_, amount } => {
+                conn.execute(
+                    "INSERT INTO meseta (account_id, character_id, storage_type, name, type, amount, lang)
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)",
+                     params![account_id, character_id, storage_type, name, type_, amount, lang]
+                )?;
             }
-            ItemData::Other { name, type_, itemdata, number } => {
-                println!("Other: name: {}, type: {}, itemdata: {}, number: {}", name, type_, itemdata, number);
+            Item::Other { name, type_, item_data, number } => {
+                conn.execute(
+                    "INSERT INTO other (account_id, character_id, storage_type, name, type, number, item_data, lang)
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
+                     params![account_id, character_id, storage_type, name, type_, number, item_data, lang]
+                )?;
             }
         }
     } else {
