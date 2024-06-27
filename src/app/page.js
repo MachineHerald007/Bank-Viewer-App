@@ -10,23 +10,22 @@ import "./components/Theme/styles.css";
 import { ThemeProvider, useTheme } from './components/Theme/Theme';
 import { Pane, Switch } from 'evergreen-ui';
 
-export const UserContext = createContext();
+export const AppContext = createContext();
+export const AccountContext = createContext();
 export const AccountsContext = createContext();
 export const DashboardContext = createContext();
-export const AccountContext = createContext();
-export const AllItemsContext = createContext();
 
 export default function Home() {
     const [user, setUser] = useState(null)
     const [accounts, setAccounts] = useState([])
-    const [loggedIn, setLoggedIn] = useState(false)
-    const [dasboardState, setDashboardState] = useState({})
+    const [loggedInAccount, setLoggedInAccount] = useState(false)
+    const [dashboardState, setDashboardState] = useState({})
 
     const getDashboardState = (setDashboardState, setLoginState) => {
         invoke("get_dashboard_state")
         .then(res => {
             console.log("Dashboard state: ", res);
-            res.logged_in_id != 0 ? setLoggedIn(true) : setLoggedIn(false);
+            res.logged_in_account_id != 0 ? setLoggedInAccount(true) : setLoggedInAccount(false);
             setDashboardState(res);
         })
         .catch(err => {
@@ -72,11 +71,11 @@ export default function Home() {
 
     return (
         <ThemeProvider>
-            <UserContext.Provider value={{ user, setUser, getUser }}>
+            <AppContext.Provider value={{ user, setUser, getUser, loggedInAccount, setLoggedInAccount }}>
             <Pane>
-                {loggedIn ? 
+                {loggedInAccount ? 
                 (
-                    <AccountContext.Provider value={{ characters, AllItemsContext }}>
+                    <AccountContext.Provider value={{ characters }}>
                     <Dashboard />
                     </AccountContext.Provider>
                 )
@@ -88,7 +87,7 @@ export default function Home() {
                 )
                 }
             </Pane>
-            </UserContext.Provider>
+            </AppContext.Provider>
         </ThemeProvider>
     )
 }

@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useContext } from "react"
-import { AccountContext } from "../../page"
+import { invoke } from "@tauri-apps/api";
+import React, { useState, useEffect, useContext } from "react";
+import { AppContext, AccountContext } from "../../page";
 import {
     Table,
     Pagination,
@@ -23,16 +24,20 @@ import {
     CogIcon,
     JoinTableIcon,
     DiagramTreeIcon
-} from 'evergreen-ui'
-import { ProfileSection  } from "./ProfileSection"
-import { AllItems } from "../Page/All-Items/All-Items"
-import { SharedBank } from "../Page/SharedBank/SharedBank"
-import { CharacterViewer } from "../Page/CharacterViewer/CharacterViewer"
-import { Settings } from "../Page/Settings/Settings"
+} from 'evergreen-ui';
+import {
+  SettingFilled
+} from '@ant-design/icons';
+import { ProfileSection } from "./ProfileSection";
+import { AllItems } from "../Page/All-Items/All-Items";
+import { SharedBank } from "../Page/SharedBank/SharedBank";
+import { CharacterViewer } from "../Page/CharacterViewer/CharacterViewer";
+import { Settings } from "../Page/Settings/Settings";
 
 export function SidePanel() {
-    const { characters } = useContext(AccountContext)
-    const [selectedIndex, setSelectedIndex] = React.useState(0)
+    const { user, loggedInAccount, setLoggedInAccount } = useContext(AppContext);
+    const { characters } = useContext(AccountContext);
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
     const tabs = React.useMemo(() => [
         "Analytics",
         "All Items",
@@ -40,52 +45,55 @@ export function SidePanel() {
         "Custom Item Sets",
         "Character Viewer",
         "Settings"
-    ], [])
+    ], []);
 
-    //hardcoded data for testing > replace with tauri command and context
-    const char = characters[0]
+    useEffect(() => {
+        console.log("USER: ", user);
+        console.log("LOGGED IN ACCOUNT: ", loggedInAccount);
+    }, [])
 
     const returnIcon = (tab) => {
         switch(tab) {
             case "Analytics":
                 return (
                     <Pane>
-                        <ChartIcon marginRight={16} size={20} position="relative" top={2} />
+                        {/* <ChartIcon marginRight={16} size={20} position="relative" top={2} /> */}
                         <Text position="relative" bottom={3} fontSize={16}>{tab}</Text>
                     </Pane>
                 )
             case "All Items":
                 return (
                     <Pane>
-                        <ExpandAllIcon marginRight={16} size={20} position="relative" top={2} />
+                        {/* <ExpandAllIcon marginRight={16} size={20} position="relative" top={2} /> */}
                         <Text position="relative" bottom={3} fontSize={16}>{tab}</Text>
                     </Pane>
                 )
             case "Shared Bank":
                 return (
                     <Pane>
-                        <InboxGeoIcon marginRight={16} size={20} position="relative" top={2} />
+                        {/* <InboxGeoIcon marginRight={16} size={20} position="relative" top={2} /> */}
                         <Text position="relative" bottom={3} fontSize={16}>{tab}</Text>
                     </Pane>
                 )
             case "Custom Item Sets":
                  return (
                     <Pane>
-                        <ApplicationsIcon marginRight={16} size={20} position="relative" top={2} />
+                        {/* <ApplicationsIcon marginRight={16} size={20} position="relative" top={2} /> */}
                         <Text position="relative" bottom={3} fontSize={16}>{tab}</Text>
                     </Pane>
                 )
             case "Character Viewer":
                 return (
                     <Pane>
-                        <DatabaseIcon marginRight={16} size={20} position="relative" top={2} />
+                        {/* <DatabaseIcon marginRight={16} size={20} position="relative" top={2} /> */}
                         <Text position="relative" bottom={3} fontSize={16}>{tab}</Text>
                     </Pane>
                 )
             case "Settings":
                 return (
                     <Pane>
-                        <CogIcon marginRight={16} size={20} position="relative" top={2} />
+                        {/* <CogIcon marginRight={16} size={20} position="relative" top={2} /> */}
+                        {/* <SettingFilled marginRight={16} size={20} position="relative" top={2} fontSize={22} /> */}
                         <Text position="relative" bottom={3} fontSize={16}>{tab}</Text>
                     </Pane>
                 )
@@ -120,7 +128,7 @@ export function SidePanel() {
     return (
         <Pane display="flex">
             <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
-                <ProfileSection character={char} />
+                <ProfileSection user={user} />
                 {tabs.map((tab, index) => {
                     return (
                         <Tab

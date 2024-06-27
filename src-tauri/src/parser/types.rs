@@ -42,7 +42,7 @@ pub struct Character {
     pub mode: u8,
     pub name: String,
     pub lang: String,
-    pub guild_card_number: String,
+    pub guild_card_number: u32,
     pub class: String,
     pub section_id: String,
     pub level: u8,

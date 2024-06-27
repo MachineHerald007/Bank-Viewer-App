@@ -45,8 +45,8 @@ fn is_mag(item_code: u32) -> bool {
     range.0 <= item_code && item_code <= range.1
 }
 
-fn is_disk(item_code: u32) -> bool {
-    item_code >> 8 == Config::DISK_CODE
+fn is_tech(item_code: u32) -> bool {
+    item_code >> 8 == Config::TECH_CODE
 }
 
 fn is_tool(item_code: u32) -> bool {
@@ -72,7 +72,7 @@ fn get_item_type(item_code: u32) -> u32 {
         4
     } else if is_mag(item_code) {
         5
-    } else if is_disk(item_code) {
+    } else if is_tech(item_code) {
         6
     } else if is_tool(item_code) {
         7
@@ -234,7 +234,7 @@ fn mag(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     }
 }
 
-fn disk(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
+fn tech(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let name = match &config.tech_codes {
         Some(map) => match map.get(&(item_data[4] as u8)) {
             Some(name) => name.clone(),
@@ -483,7 +483,7 @@ fn create_item(item_data: Vec<u8>, item_code: u32, item_type: u32, config: Confi
         3 => Some(barrier(item_code, item_data, config)),
         4 => Some(unit(item_code, item_data, config)),
         5 => Some(mag(item_code, item_data, config)),
-        6 => Some(disk(item_code, item_data, config)),
+        6 => Some(tech(item_code, item_data, config)),
         7 => Some(tool(item_code, item_data, config)),
         8 => Some(s_rank_weapon(item_code, item_data, config)),
         9 => Some(other(item_code, item_data, config)),

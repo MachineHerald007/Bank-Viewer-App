@@ -250,7 +250,7 @@ pub fn init_app() -> Result<(), SqlError> {
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS dashboard_state (
-            logged_in_id INTEGER DEFAULT 0,
+            logged_in_account_id INTEGER DEFAULT 0,
             selected_character_id INTEGER DEFAULT 0,
             lang TEXT NOT NULL,
             theme TEXT NOT NULL
@@ -272,8 +272,6 @@ pub struct User {
 pub fn create_user(user: User) -> Result<(), SqlError> {
     let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
     let conn = Connection::open(my_db)?;
-
-    println!("User: {:?}", user);
 
     conn.execute(
         "INSERT INTO user (profile_name, discord_username, profile_picture)
@@ -355,8 +353,6 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
     let mut conn = Connection::open(my_db)?;
     let transaction = conn.transaction()?;
 
-    println!("[Account]: {:?}", account);
-
     transaction.execute(
         "INSERT INTO account (account_name, guild_card, account_type, server)
          VALUES (?1, ?2, ?3, ?4)",
@@ -420,7 +416,6 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
     }
 
     transaction.commit()?;
-
     Ok(())
 }
 
@@ -433,7 +428,7 @@ pub fn get_account_data() -> Result<(), SqlError> {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct DashboardState {
-    logged_in_id: u8,
+    logged_in_account_id: u8,
     selected_character_id: u8,
     lang: String,
     theme: String
@@ -445,11 +440,11 @@ pub fn get_dashboard_state() -> Result<DashboardState, SqlError> {
     let conn = Connection::open(my_db)?;
 
     let dashboard_state = conn.query_row(
-        "SELECT logged_in_id, selected_character_id, lang, theme FROM dashboard_state",
+        "SELECT logged_in_account_id, selected_character_id, lang, theme FROM dashboard_state",
         [],
         |row| {
             Ok(DashboardState {
-                logged_in_id: row.get(0)?,
+                logged_in_account_id: row.get(0)?,
                 selected_character_id: row.get(1)?,
                 lang: row.get(2)?,
                 theme: row.get(3)?

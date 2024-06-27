@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use crate::util::Util;
 use crate::parser::item;
-use crate::parser::types::{ Item, Slot, Character, Inventory };
+use crate::parser::types::{Item, Slot, Character, Inventory};
 use crate::config::config::Config;
 
 fn set_mode(char_data: &[u8]) -> u8 {
@@ -26,15 +26,10 @@ fn set_name(char_data: &[u8]) -> String {
     name
 }
 
-fn set_guild_card_number(char_data: &[u8]) -> String {
+fn set_guild_card_number(char_data: &[u8]) -> u32 {
     let array = &char_data[888..896];
-    let mut guild_card_number = String::new();
-    
-    for &value in array {
-        guild_card_number.push_str(&format!("{}", value & 0x0F));
-    }
-    
-    guild_card_number
+    let guild_card_str: String = array.iter().map(|&b| (b & 0x0F).to_string()).collect();
+    guild_card_str.parse::<u32>().expect("Failed to parse guild card number")
 }
 
 fn set_class(char_data: &[u8]) -> String {

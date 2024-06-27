@@ -1,22 +1,32 @@
+import { invoke } from "@tauri-apps/api/tauri";
 import React, { useState, useEffect, useContext, useRef } from "react"
-import { AccountsContext } from "@/app/page";
+import { AppContext, AccountsContext } from "@/app/page";
 import { PlusOutlined } from "@ant-design/icons";
 import { Text, Pane } from "evergreen-ui";
 import { CenteredPane, HoverPane, AccountPane } from "./styles";
 import { useTheme } from "../../../Theme/Theme";
 import { ThemeToggler } from "../../../Theme/ThemeToggler";
 
+
 export function Accounts({ onAddAccountClick }) {
+    const { loggedInAccount, setLoggedInAccount } = useContext(AppContext);
     const { accounts, setAccounts, getAccounts } = useContext(AccountsContext);
-    const [isOverflow, setIsOverflow] = useState(false)
-    const containerRef = useRef(null)
-    const { theme } = useTheme()
+    const [isOverflow, setIsOverflow] = useState(false);
+    const containerRef = useRef(null);
+    const { theme } = useTheme();
 
     // Refactor these into styled components, and ALL React Elements
     // that are using inline styles are to be converted into styled elements
     const styles = {
         color: theme === 'light' ? '#43454f' : '#efefef',
-    }
+    };
+
+    //also make a db request here that saves the selected account id in dashboard_state table
+    const handleClick = (account) => {
+        console.log("clicked account: ", account);
+
+        setLoggedInAccount(account);
+    };
 
     useEffect(() => {
         const container = containerRef.current
@@ -77,7 +87,7 @@ export function Accounts({ onAddAccountClick }) {
                         marginLeft={8}
                         key={index}
                     >
-                        <AccountPane>
+                        <AccountPane onClick={() => handleClick(account)}>
                             <Pane
                                 position="relative"
                                 overflow="hidden"

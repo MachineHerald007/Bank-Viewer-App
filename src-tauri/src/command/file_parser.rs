@@ -2,7 +2,7 @@ use std::str;
 use std::collections::HashMap;
 use tauri::regex::Regex;
 use crate::config::config::Config;
-use crate::parser::{character,shared_bank}
+use crate::parser::{character,shared_bank};
 use crate::parser::types::{
     File,
     Files,

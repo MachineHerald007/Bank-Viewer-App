@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { UserContext } from "@/app/page";
+import { AppContext } from "@/app/page";
 import { Pane } from "evergreen-ui";
 import { UserOutlined, DiscordOutlined } from '@ant-design/icons';
 import { ProfilePictureUpload } from "./ProfilePictureUpload/ProfilePictureUpload";
@@ -12,7 +12,7 @@ import { useTheme } from "../../../Theme/Theme";
 import { invoke } from "@tauri-apps/api/tauri";
 
 export function UserProfileSection({ theme }) {
-    const { setUser, getUser } = useContext(UserContext)
+    const { setUser, getUser } = useContext(AppContext)
     const [account, setAccount] = useState([]);
     const [profilePicture, setProfilePicture] = useState("");
     const [profileName, setProfileName] = useState("");

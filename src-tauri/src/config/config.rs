@@ -47,9 +47,9 @@ impl<'a> Config<'a> {
     pub const MAG_RANGE: (u32, u32) = (0x020000, 0x025200);
     pub const TOOL_RANGE: (u32, u32) = (0x030000, 0x030900);
     pub const MESETA_RANGE: (u32, u32) = (0x040000, 0x040000);
-    pub const DISK_RANGE: (u32, u32) = (0x050000, 0x05121D);
+    pub const TECH_RANGE: (u32, u32) = (0x050000, 0x05121D);
     pub const EPHINEA_RANGE: (u32, u32) = (0x031005, 0x031810);
-    pub const DISK_CODE: u32 = 0x0302;
+    pub const TECH_CODE: u32 = 0x0302;
 
     pub fn item_type() -> HashMap<&'static str, u32> {
         let mut map = HashMap::new();
@@ -58,7 +58,7 @@ impl<'a> Config<'a> {
         map.insert("BARRIER", 3);
         map.insert("UNIT", 4);
         map.insert("MAG", 5);
-        map.insert("DISK", 6);
+        map.insert("TECH", 6);
         map.insert("TOOL", 7);
         map.insert("SRANK_WEAPON", 8);
         map.insert("OTHER", 9);

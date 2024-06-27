@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { UserContext } from "@/app/page";
+import { AppContext } from "@/app/page";
 import { Pane } from "evergreen-ui";
 import {ThemeProvider} from "styled-components";
 import { useTheme } from "../../Theme/Theme";
@@ -8,7 +8,7 @@ import { AccountSection } from "./AccountSection/AccountSection";
 import { ThemeToggler } from "../../Theme/ThemeToggler";
 
 export function AccountConfig() {
-    const { user } = useContext(UserContext);
+    const { user } = useContext(AppContext);
     const { theme } = useTheme()
 
     return (
