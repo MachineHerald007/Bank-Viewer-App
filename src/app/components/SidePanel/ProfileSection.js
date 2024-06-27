@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Pane, Avatar, Heading } from 'evergreen-ui'
+import { ProfileHeading } from './styles'
+import { useTheme } from '../Theme/Theme'
 
 export const ProfilePicture = ({ user }) => {
     let fileSignature = user.profile_picture.slice(0, 8);
@@ -35,11 +37,19 @@ export const ProfilePicture = ({ user }) => {
     )
 }
 
-export function ProfileSection({ user }) {
+export function ProfileSection({ user, account }) {
+    const { theme } = useTheme();
     return (
         <Pane display="flex">
             <ProfilePicture user={user} />
-            <Heading is="h3" marginTop={32} color="#474d66">{user.profile_name}</Heading>
+            <ProfileHeading
+                is="h3"
+                marginTop={32}
+                color="#474d66"
+                theme={theme}
+            >
+                {account.account_name}
+            </ProfileHeading>
         </Pane>
     )
 }

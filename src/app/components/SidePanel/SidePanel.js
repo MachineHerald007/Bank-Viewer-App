@@ -1,4 +1,4 @@
-import { invoke } from "@tauri-apps/api";
+import { invoke } from "@tauri-apps/api/tauri";
 import React, { useState, useEffect, useContext } from "react";
 import { AppContext, AccountContext } from "../../page";
 import {
@@ -28,16 +28,20 @@ import {
 import {
   SettingFilled
 } from '@ant-design/icons';
+import { SidePanelTab, SidePanelText } from "./styles";
 import { ProfileSection } from "./ProfileSection";
 import { AllItems } from "../Page/All-Items/All-Items";
 import { SharedBank } from "../Page/SharedBank/SharedBank";
 import { CharacterViewer } from "../Page/CharacterViewer/CharacterViewer";
 import { Settings } from "../Page/Settings/Settings";
+import { useTheme } from "../Theme/Theme";
 
 export function SidePanel() {
     const { user, loggedInAccount, setLoggedInAccount } = useContext(AppContext);
     const { characters } = useContext(AccountContext);
     const [selectedIndex, setSelectedIndex] = React.useState(0);
+    const { theme } = useTheme();
+
     const tabs = React.useMemo(() => [
         "Analytics",
         "All Items",
@@ -57,44 +61,37 @@ export function SidePanel() {
             case "Analytics":
                 return (
                     <Pane>
-                        {/* <ChartIcon marginRight={16} size={20} position="relative" top={2} /> */}
-                        <Text position="relative" bottom={3} fontSize={16}>{tab}</Text>
+                        <SidePanelText theme={theme}>{tab}</SidePanelText>
                     </Pane>
                 )
             case "All Items":
                 return (
                     <Pane>
-                        {/* <ExpandAllIcon marginRight={16} size={20} position="relative" top={2} /> */}
-                        <Text position="relative" bottom={3} fontSize={16}>{tab}</Text>
+                        <SidePanelText theme={theme}>{tab}</SidePanelText>
                     </Pane>
                 )
             case "Shared Bank":
                 return (
                     <Pane>
-                        {/* <InboxGeoIcon marginRight={16} size={20} position="relative" top={2} /> */}
-                        <Text position="relative" bottom={3} fontSize={16}>{tab}</Text>
+                        <SidePanelText theme={theme}>{tab}</SidePanelText>
                     </Pane>
                 )
             case "Custom Item Sets":
                  return (
                     <Pane>
-                        {/* <ApplicationsIcon marginRight={16} size={20} position="relative" top={2} /> */}
-                        <Text position="relative" bottom={3} fontSize={16}>{tab}</Text>
+                        <SidePanelText theme={theme}>{tab}</SidePanelText>
                     </Pane>
                 )
             case "Character Viewer":
                 return (
                     <Pane>
-                        {/* <DatabaseIcon marginRight={16} size={20} position="relative" top={2} /> */}
-                        <Text position="relative" bottom={3} fontSize={16}>{tab}</Text>
+                        <SidePanelText theme={theme}>{tab}</SidePanelText>
                     </Pane>
                 )
             case "Settings":
                 return (
                     <Pane>
-                        {/* <CogIcon marginRight={16} size={20} position="relative" top={2} /> */}
-                        {/* <SettingFilled marginRight={16} size={20} position="relative" top={2} fontSize={22} /> */}
-                        <Text position="relative" bottom={3} fontSize={16}>{tab}</Text>
+                        <SidePanelText theme={theme}>{tab}</SidePanelText>
                     </Pane>
                 )
         }
@@ -128,10 +125,10 @@ export function SidePanel() {
     return (
         <Pane display="flex">
             <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
-                <ProfileSection user={user} />
+                <ProfileSection user={user} account={loggedInAccount} />
                 {tabs.map((tab, index) => {
                     return (
-                        <Tab
+                        <SidePanelTab
                             aria-controls={`panel-${tab}`}
                             direction="vertical"
                             isSelected={index === selectedIndex}
@@ -140,7 +137,7 @@ export function SidePanel() {
                             height={44}
                         >
                         {returnIcon(tab)}
-                        </Tab>
+                        </SidePanelTab>
                     )
                 })}
             </Tablist>
