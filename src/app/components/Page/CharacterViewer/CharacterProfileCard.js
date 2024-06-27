@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from "react"
-import { CharacterContext } from "../CharacterViewer/CharacterViewer"
+import React, { useContext, useState, useEffect } from "react";
+import { CharacterContext } from "../CharacterViewer/CharacterViewer";
 import {
     UserIcon,
     Avatar,
@@ -7,23 +7,15 @@ import {
     Table,
     Pagination,
     Pane,
-} from 'evergreen-ui'
+} from 'evergreen-ui';
+import { CharacterProfileCardPane, ProfileCardText } from "./styles";
+import { useTheme } from "../../Theme/Theme";
 
 export function CharacterProfileCard({ character }) {
-    const { selectedCharacter } = useContext(CharacterContext)
+    const { selectedCharacter } = useContext(CharacterContext);
+    const { theme } = useTheme();
     return (
-        <Pane
-            width={374}
-            height={220}
-            padding={24}
-            marginTop={24}
-            marginRight={24}
-            borderRadius={4}
-            border="1px solid #E6E8F0"
-            backgroundColor="#FFFFFF"
-            display="inline-block"
-            boxShadow="rgba(145, 158, 171, 0.08) 0px 0px 2px 0px, rgba(145, 158, 171, 0.08) 0px 12px 24px -4px"
-        >
+        <CharacterProfileCardPane theme={theme}>
             <Avatar
                 position="relative"
                 top={22}
@@ -35,12 +27,27 @@ export function CharacterProfileCard({ character }) {
                 display="inline-block"
                 marginLeft={24}
             >
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>NAME:</Text> {selectedCharacter.name}</Text>
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>LEVEL:</Text> {selectedCharacter.level}</Text>
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>CLASS:</Text> {selectedCharacter.class}</Text>
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>SECTION ID:</Text> {selectedCharacter.sec_id}</Text>
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>SLOT:</Text> {selectedCharacter.slot}</Text>
+                <ProfileCardText theme={theme} display="block" fontSize={16}>
+                    <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>NAME:</ProfileCardText>
+                    {selectedCharacter.name}
+                </ProfileCardText>
+                <ProfileCardText theme={theme} display="block" fontSize={16}>
+                    <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>LEVEL:</ProfileCardText>
+                    {selectedCharacter.level}
+                </ProfileCardText>
+                <ProfileCardText theme={theme} display="block" fontSize={16}>
+                    <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>CLASS:</ProfileCardText>
+                    {selectedCharacter.class}
+                </ProfileCardText>
+                <ProfileCardText theme={theme} display="block" fontSize={16}>
+                    <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>SECTION ID:</ProfileCardText>
+                    {selectedCharacter.sec_id}
+                </ProfileCardText>
+                <ProfileCardText theme={theme} display="block" fontSize={16}>
+                    <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>SLOT:</ProfileCardText>
+                    {selectedCharacter.slot}
+                </ProfileCardText>
             </Pane>
-        </Pane>
+        </CharacterProfileCardPane>
     )
 }

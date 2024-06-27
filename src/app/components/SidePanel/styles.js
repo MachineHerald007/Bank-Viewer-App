@@ -37,16 +37,8 @@ export const SidePanelTab = styled(Tab)`
 
 `;
 
-// background: #26272d; --subtle dark
-// background: #202125; --subtle darker
-// #1e1f23
-
 export const PanelPageContainer = styled(Pane)`
     padding: 16px;
     background: ${({ theme }) => (theme === "light" ? "#f7f7f7" : "#1f2025")};
+    border-left: 1px solid ${({ theme }) => (theme === "light" ? "#ebebeb" : "#1c1c1c")};
 `;
-
-
-// #232427 -- good character viewer section background color
-
-// #121212 -- border color(make lighter)

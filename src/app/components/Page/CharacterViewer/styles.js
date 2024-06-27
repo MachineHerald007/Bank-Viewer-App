@@ -13,7 +13,6 @@ export const StyledTableHead = styled(Table.Head)`
 
 export const StyledTableRow = styled(Table.Row)`
     background: ${({ theme }) => (theme === "light" ? "#fff" : "#232427")};
-    // color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
     border-color: ${({ theme }) => (theme === "light" ? "#edeff5" : "#121212")};
 
     &:hover {
@@ -50,3 +49,26 @@ export const StyledPagination = styled(Pagination)`
     }
 `;
 
+// background: #26272d; --subtle dark
+// background: #202125; --subtle darker
+// #1e1f23
+
+// #232427 -- good character viewer section background color
+// #121212 -- border color(make lighter)
+
+export const CharacterProfileCardPane = styled(Pane)`
+    background: ${({ theme }) => (theme === "light" ? "#fff" : "#232427")};
+    width: 374px;
+    height: 220px;
+    padding: 24px;
+    margin-top: 24px;
+    margin-right: 24px;
+    border-radius: 4px;
+    border: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
+    display: inline-block;
+    boxShadow: rgba(145, 158, 171, 0.08) 0px 0px 2px 0px, rgba(145, 158, 171, 0.08) 0px 12px 24px -4px;
+`;
+
+export const ProfileCardText = styled(Text)`
+    color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
+`;
