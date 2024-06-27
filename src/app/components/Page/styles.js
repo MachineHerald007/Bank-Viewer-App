@@ -15,7 +15,6 @@ export const ExpandButton = styled(IconButton)`
 
 export const ItemPane = styled(Pane)`
     color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
-    height:720px;
     padding: 24px;
     margin-bottom: 24px;
     border-radius: 4px;
@@ -24,7 +23,12 @@ export const ItemPane = styled(Pane)`
 `;
 
 export const ItemTable = styled(Table)`
+    margin-top: 24px;
     border: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
+`;
+
+export const ItemTitleRow = styled(Table.Row)`
+
 `;
 
 export const ItemRow = styled(Table.Row)`

@@ -37,7 +37,7 @@ export function CharacterInventory({ character, inventory }) {
     }, [inventory]);
 
     return (
-        <ItemPane theme={theme}>
+        <ItemPane theme={theme} height={720}>
             <Heading size={600} color={theme === "light" ? "#52586d" : "#fff"}>Inventory</Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Inventory..." />
             <ExpandButton
@@ -47,7 +47,7 @@ export function CharacterInventory({ character, inventory }) {
                 position="relative"
                 top={26}
             />
-            <ItemTable theme={theme} marginTop={24}>
+            <ItemTable theme={theme}>
                 <Table.Body height={500}>
                     {items.map((item, index) => (
                         <ItemRow

@@ -41,7 +41,7 @@ export function CharacterBank({ character, bank }) {
     }, [bank])
 
     return (
-        <ItemPane theme={theme}>
+        <ItemPane theme={theme} height={720}>
             <Heading size={600} color={theme === "light" ? "#52586d" : "#fff"}>Bank</Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Bank..." />
             <ExpandButton
@@ -51,12 +51,11 @@ export function CharacterBank({ character, bank }) {
                 position="relative"
                 top={26}
             />
-            <ItemTable theme={theme}  marginTop={24}>
+            <ItemTable theme={theme}>
                 <Table.Body height={500}>
                     {items.map((item, index) => (
                         <ItemRow
                             theme={theme}
-                            height={44}
                             key={index} isSelectable onSelect={() => console.log(item)}
                         >
                             <Table.TextCell>

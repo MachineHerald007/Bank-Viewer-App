@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react"
+import React, { createContext, useState, useEffect } from "react";
 import {
     Avatar,
     Heading,
@@ -7,51 +7,53 @@ import {
     Table,
     Pagination,
     Pane,
-} from 'evergreen-ui'
-
-import { shared_bank } from "../../bank"
+} from 'evergreen-ui';
+import {
+    ItemPane,
+    ItemRow,
+    StyledText,
+    ItemTable,
+    SearchBar,
+    ExpandButton
+} from "../styles";
+import { shared_bank } from "../../bank";
+import { useTheme } from "../../Theme/Theme";
 
 function getItems(raw_items) {
     if (typeof raw_items !== 'string') {
-        throw new Error('Expected a string as raw_items')
+        throw new Error('Expected a string as raw_items');
     }
-    return raw_items.split("\n")
+    return raw_items.split("\n");
 }
 
 function getSharedBank(items) {
-    return getItems(items)
+    return getItems(items);
 }
 
 export function SharedBank() {
-    const [sharedBank, setSharedBank] = useState(getSharedBank(shared_bank))
+    const [sharedBank, setSharedBank] = useState(getSharedBank(shared_bank));
+    const { theme } = useTheme();
 
     return (
-        <Pane
-            padding={24}
-            marginBottom={24}
-            borderRadius={4}
-            border="1px solid #E6E8F0"
-            backgroundColor="#FFFFFF"
-            boxShadow="rgba(145, 158, 171, 0.08) 0px 0px 2px 0px, rgba(145, 158, 171, 0.08) 0px 12px 24px -4px"
-        >
-            <Heading size={600} color="#474d66">Shared Bank</Heading>
-            <SearchInput marginTop={24} placeholder="Search Items..." />
-            <Table marginTop={24}>
-            <Table.Body>
-                {sharedBank.map((item, index) => (
-                    <Table.Row
-                        height={44}
-                        key={`shared_bank-${index}`}
-                        isSelectable
-                        onSelect={() => console.log(item)}
-                    >
-                        <Table.TextCell>
-                            <Text fontSize={16}>{item}</Text>
-                        </Table.TextCell>
-                    </Table.Row>
-                ))}
-            </Table.Body>
-            </Table>
-        </Pane>
+        <ItemPane theme={theme}>
+            <Heading size={600}color={theme === "light" ? "#52586d" : "#fff"}>Shared Bank</Heading>
+            <SearchBar theme={theme} marginTop={24} placeholder="Search Items..." />
+            <ItemTable theme={theme}>
+                <Table.Body>
+                    {sharedBank.map((item, index) => (
+                        <ItemRow
+                            theme={theme}
+                            key={`shared_bank-${index}`}
+                            isSelectable
+                            onSelect={() => console.log(item)}
+                        >
+                            <Table.TextCell>
+                                <StyledText theme={theme} fontSize={16}>{item}</StyledText>
+                            </Table.TextCell>
+                        </ItemRow>
+                    ))}
+                </Table.Body>
+            </ItemTable>
+        </ItemPane>
     )
 }
