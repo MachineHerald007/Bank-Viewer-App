@@ -17,11 +17,11 @@ import {
     ItemTable,
     SearchBar,
     ExpandButton
-} from "./styles";
+} from "../styles";
 import { useTheme } from "../../Theme/Theme";
 
 function getBankItems(raw_bank) {
-    return raw_bank.split("\n")
+    return raw_bank.split("\n");
 }
 
 export function CharacterBank({ character, bank }) {
@@ -45,6 +45,7 @@ export function CharacterBank({ character, bank }) {
             <Heading size={600} color={theme === "light" ? "#52586d" : "#fff"}>Bank</Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Bank..." />
             <ExpandButton
+                theme={theme}
                 icon={MaximizeIcon}
                 float="right"
                 position="relative"

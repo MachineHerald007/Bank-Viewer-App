@@ -16,7 +16,7 @@ import {
     ItemTable,
     SearchBar,
     ExpandButton
-} from "./styles";
+} from "../styles";
 import { useTheme } from "../../Theme/Theme";
 
 function getInventoryItems(raw_inventory) {
@@ -47,7 +47,7 @@ export function CharacterInventory({ character, inventory }) {
                 position="relative"
                 top={26}
             />
-            <ItemTable marginTop={24}>
+            <ItemTable theme={theme} marginTop={24}>
                 <Table.Body height={500}>
                     {items.map((item, index) => (
                         <ItemRow

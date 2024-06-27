@@ -34,7 +34,6 @@ export const SidePanelTab = styled(Tab)`
             color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")}; 
         }
     }
-
 `;
 
 export const PanelPageContainer = styled(Pane)`
