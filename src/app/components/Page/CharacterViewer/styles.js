@@ -13,15 +13,15 @@ export const StyledTableHead = styled(Table.Head)`
 
 export const StyledTableRow = styled(Table.Row)`
     background: ${({ theme }) => (theme === "light" ? "#fff" : "#232427")};
-    color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
+    // color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
     border-color: ${({ theme }) => (theme === "light" ? "#edeff5" : "#121212")};
 
     &:hover {
-        background: #00ffd0 !important;
+        background: ${({ theme }) => (theme === "light" ? "#F9FAFC" : "#00ffd0")} !important;
     }
 
     &:focus {
-        background: #00ffd0 !important;
+        background: ${({ theme }) => (theme === "light" ? "#F9FAFC" : "#00ffd0")} !important;
     }
 `;
 
@@ -49,3 +49,4 @@ export const StyledPagination = styled(Pagination)`
         }
     }
 `;
+
