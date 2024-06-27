@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 import {
     IconButton,
     SearchInput,
@@ -9,15 +9,25 @@ import {
     Table,
     Pagination,
     Pane,
-} from 'evergreen-ui'
+} from 'evergreen-ui';
+import {
+    ItemPane,
+    ItemRow,
+    StyledText,
+    ItemTable,
+    SearchBar,
+    ExpandButton
+} from "./styles";
+import { useTheme } from "../../Theme/Theme";
 
 function getBankItems(raw_bank) {
     return raw_bank.split("\n")
 }
 
 export function CharacterBank({ character, bank }) {
-    const [items, setItems] = useState(() => getBankItems(bank))
-    const [expandBank, setExpandBank] = useState(false)
+    const [items, setItems] = useState(() => getBankItems(bank));
+    const [expandBank, setExpandBank] = useState(false);
+    const { theme } = useTheme();
 
     // Debugging logs
     useEffect(() => {
@@ -31,37 +41,30 @@ export function CharacterBank({ character, bank }) {
     }, [bank])
 
     return (
-        <Pane
-            height={720}
-            padding={24}
-            marginBottom={24}
-            borderRadius={4}
-            border="1px solid #E6E8F0"
-            backgroundColor="#FFFFFF"
-            boxShadow="rgba(145, 158, 171, 0.08) 0px 0px 2px 0px, rgba(145, 158, 171, 0.08) 0px 12px 24px -4px"
-        >
-            <Heading size={600} color="#474d66">Bank</Heading>
-            <SearchInput marginTop={24} placeholder="Search Bank..." />
-            <IconButton
+        <ItemPane theme={theme}>
+            <Heading size={600} color={theme === "light" ? "#52586d" : "#fff"}>Bank</Heading>
+            <SearchBar theme={theme} marginTop={24} placeholder="Search Bank..." />
+            <ExpandButton
                 icon={MaximizeIcon}
                 float="right"
                 position="relative"
                 top={26}
             />
-            <Table marginTop={24}>
+            <ItemTable theme={theme}  marginTop={24}>
                 <Table.Body height={500}>
                     {items.map((item, index) => (
-                        <Table.Row
+                        <ItemRow
+                            theme={theme}
                             height={44}
                             key={index} isSelectable onSelect={() => console.log(item)}
                         >
                             <Table.TextCell>
-                                <Text fontSize={16}>{item}</Text>
+                                <StyledText theme={theme} fontSize={16}>{item}</StyledText>
                             </Table.TextCell>
-                        </Table.Row>
+                        </ItemRow>
                     ))}
                 </Table.Body>
-            </Table>
-        </Pane>
+            </ItemTable>
+        </ItemPane>
     )
 }

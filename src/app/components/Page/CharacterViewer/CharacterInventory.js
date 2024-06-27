@@ -10,10 +10,10 @@ import {
     Pane,
 } from 'evergreen-ui';
 import {
-    CharacterInventoryPane,
-    InventoryRow,
+    ItemPane,
+    ItemRow,
     StyledText,
-    CharacterInventoryTable,
+    ItemTable,
     SearchBar,
     ExpandButton
 } from "./styles";
@@ -37,7 +37,7 @@ export function CharacterInventory({ character, inventory }) {
     }, [inventory]);
 
     return (
-        <CharacterInventoryPane theme={theme}>
+        <ItemPane theme={theme}>
             <Heading size={600} color={theme === "light" ? "#52586d" : "#fff"}>Inventory</Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Inventory..." />
             <ExpandButton
@@ -47,20 +47,20 @@ export function CharacterInventory({ character, inventory }) {
                 position="relative"
                 top={26}
             />
-            <CharacterInventoryTable marginTop={24}>
+            <ItemTable marginTop={24}>
                 <Table.Body height={500}>
                     {items.map((item, index) => (
-                        <InventoryRow
+                        <ItemRow
                             theme={theme}
                             key={index} isSelectable onSelect={() => console.log("item: ", item)}
                         >
                             <Table.TextCell>
                                 <StyledText theme={theme} fontSize={16}>{item}</StyledText>
                             </Table.TextCell>
-                        </InventoryRow>
+                        </ItemRow>
                     ))}
                 </Table.Body>
-            </CharacterInventoryTable>
-        </CharacterInventoryPane>
+            </ItemTable>
+        </ItemPane>
     )
 }

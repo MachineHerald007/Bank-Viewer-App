@@ -66,7 +66,6 @@ export const CharacterProfileCardPane = styled(Pane)`
     border-radius: 4px;
     border: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
     background: ${({ theme }) => (theme === "light" ? "#fff" : "#232427")};
-    boxShadow: rgba(145, 158, 171, 0.08) 0px 0px 2px 0px, rgba(145, 158, 171, 0.08) 0px 12px 24px -4px;
 `;
 
 export const ProfileCardText = styled(Text)`
@@ -85,7 +84,7 @@ export const ExpandButton = styled(IconButton)`
     border: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
 `;
 
-export const CharacterInventoryPane = styled(Pane)`
+export const ItemPane = styled(Pane)`
     color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
     height:720px;
     padding: 24px;
@@ -93,14 +92,15 @@ export const CharacterInventoryPane = styled(Pane)`
     border-radius: 4px;
     border: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
     background: ${({ theme }) => (theme === "light" ? "#fff" : "#232427")};
-    box-shadow: rgba(145, 158, 171, 0.08) 0px 0px 2px 0px, rgba(145, 158, 171, 0.08) 0px 12px 24px -4px;
 `;
 
-export const CharacterInventoryTable = styled(Table)`
+export const ItemTable = styled(Table)`
     border: none;
+    border-top: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
+    border-bottom: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
 `;
 
-export const InventoryRow = styled(Table.Row)`
+export const ItemRow = styled(Table.Row)`
     height: 44px;
     background: ${({ theme }) => (theme === "light" ? "#fff" : "#232427")};
     border: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
