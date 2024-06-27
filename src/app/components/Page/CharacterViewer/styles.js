@@ -1,4 +1,4 @@
-import { Text, Pane, Table, Pagination } from "evergreen-ui";
+import { Text, Pane, Table, Pagination, SearchInput, IconButton } from "evergreen-ui";
 import styled from "styled-components";
 
 export const StyledTable = styled(Table)`
@@ -57,18 +57,63 @@ export const StyledPagination = styled(Pagination)`
 // #121212 -- border color(make lighter)
 
 export const CharacterProfileCardPane = styled(Pane)`
-    background: ${({ theme }) => (theme === "light" ? "#fff" : "#232427")};
     width: 374px;
     height: 220px;
     padding: 24px;
     margin-top: 24px;
     margin-right: 24px;
+    display: inline-block
     border-radius: 4px;
     border: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
-    display: inline-block;
+    background: ${({ theme }) => (theme === "light" ? "#fff" : "#232427")};
     boxShadow: rgba(145, 158, 171, 0.08) 0px 0px 2px 0px, rgba(145, 158, 171, 0.08) 0px 12px 24px -4px;
 `;
 
 export const ProfileCardText = styled(Text)`
+    color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
+`;
+
+export const SearchBar = styled(SearchInput)`
+    color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
+    background: ${({ theme }) => (theme === "light" ? "#fff" : "#232427")};
+    border: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
+`;
+
+export const ExpandButton = styled(IconButton)`
+    color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
+    background: ${({ theme }) => (theme === "light" ? "#fff" : "#232427")};
+    border: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
+`;
+
+export const CharacterInventoryPane = styled(Pane)`
+    color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
+    height:720px;
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: 4px;
+    border: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
+    background: ${({ theme }) => (theme === "light" ? "#fff" : "#232427")};
+    box-shadow: rgba(145, 158, 171, 0.08) 0px 0px 2px 0px, rgba(145, 158, 171, 0.08) 0px 12px 24px -4px;
+`;
+
+export const CharacterInventoryTable = styled(Table)`
+    border: none;
+`;
+
+export const InventoryRow = styled(Table.Row)`
+    height: 44px;
+    background: ${({ theme }) => (theme === "light" ? "#fff" : "#232427")};
+    border: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
+
+    &:hover {
+        background: ${({ theme }) => (theme === "light" ? "#F9FAFC" : "#00ffd0")} !important;
+    }
+
+    &:focus {
+        background: ${({ theme }) => (theme === "light" ? "#F9FAFC" : "#00ffd0")} !important;
+    }
+`;
+
+export const StyledText = styled(Text)`
     color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
 `;
