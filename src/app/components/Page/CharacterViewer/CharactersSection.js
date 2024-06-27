@@ -12,25 +12,36 @@ import {
     Pane,
 } from 'evergreen-ui'
 import { CharacterContext } from "./CharacterViewer"
+import {
+    StyledTable,
+    StyledTableRow,
+    StyledTableHead,
+    StyledPagination,
+    StyledPaginationPane
+} from "./styles";
+import { useTheme } from "../../Theme/Theme";
 
 function divideAndRoundUp(num) {
   return Math.ceil(num / 4)
 }
 
 const CharacterCards = ({ characters }) => {
-    const { selectedCharacter, saveSelectedCharacter } = useContext(CharacterContext)
+    const { selectedCharacter, saveSelectedCharacter } = useContext(CharacterContext);
+    const { theme } = useTheme();
+
     return (
-        <Table>
-            <Table.Head>
+        <StyledTable theme={theme}>
+            <StyledTableHead theme={theme}>
                 <Table.TextHeaderCell marginLeft={12}>Name</Table.TextHeaderCell>
                 <Table.TextHeaderCell>Level</Table.TextHeaderCell>
                 <Table.TextHeaderCell>Class</Table.TextHeaderCell>
                 <Table.TextHeaderCell>Section ID</Table.TextHeaderCell>
                 <Table.TextHeaderCell>Slot</Table.TextHeaderCell>
-            </Table.Head>
+            </StyledTableHead>
             <Table.Body>
                 {characters.map((character, index) => (
-                <Table.Row
+                <StyledTableRow
+                    theme={theme}
                     height={72}
                     key={index}
                     isSelectable onSelect={() => {
@@ -46,16 +57,24 @@ const CharacterCards = ({ characters }) => {
                             name={character.name}
                             size={44}
                         />
-                        <Text position="relative" bottom={14} fontWeight={600}>{character.name}</Text>
+                        <Text position="relative" bottom={14} fontWeight={600} color={theme === "light" ? "#52586d" : "#fff"}>{character.name}</Text>
                     </Table.TextCell>
-                    <Table.TextCell textProps={{ size: 400, fontWeight: 600 }}>{character.level}</Table.TextCell>
-                    <Table.TextCell textProps={{ size: 400, fontWeight: 600 }}>{character.class}</Table.TextCell>
-                    <Table.TextCell textProps={{ size: 400, fontWeight: 600 }}>{character.sec_id}</Table.TextCell>
-                    <Table.TextCell textProps={{ size: 400, fontWeight: 600 }}>{character.slot}</Table.TextCell>
-                </Table.Row>
+                    <Table.TextCell>
+                        <Text size={400} fontWeight={600} color={theme === "light" ? "#52586d" : "#fff"}>{character.level}</Text>
+                    </Table.TextCell>
+                    <Table.TextCell>
+                        <Text size={400} fontWeight={600} color={theme === "light" ? "#52586d" : "#fff"}>{character.class}</Text>
+                    </Table.TextCell>
+                    <Table.TextCell>
+                        <Text size={400} fontWeight={600} color={theme === "light" ? "#52586d" : "#fff"}>{character.sec_id}</Text>
+                    </Table.TextCell>
+                    <Table.TextCell>
+                        <Text size={400} fontWeight={600} color={theme === "light" ? "#52586d" : "#fff"}>{character.slot}</Text>
+                    </Table.TextCell>
+                </StyledTableRow>
                 ))}
             </Table.Body>
-        </Table>
+        </StyledTable>
     )
 }
 
@@ -69,16 +88,17 @@ export function CharactersSection({ characters }) {
         const indexOfLastCharacter = currentPage * charactersPerPage
         const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage
         const currentCharacters = characters.slice(indexOfFirstCharacter, indexOfLastCharacter)
+        const { theme } = useTheme();
 
         return (
             <Pane>
                 <CharacterCards characters={currentCharacters} />
-                <Pane
+                <StyledPaginationPane
+                    theme={theme}
                     height={64}
                     position="relative"s
                     bottom={2}
                     paddingTop={1}
-                    backgroundColor="white"
                     borderTop="1px solid #E6E8F0"
                     borderRight="1px solid #E6E8F0"
                     borderLeft="1px solid #E6E8F0"
@@ -86,7 +106,8 @@ export function CharactersSection({ characters }) {
                     borderBottomLeftRadius={4}
                     borderBottomRightRadius={4}
                 >
-                    <Pagination
+                    <StyledPagination
+                        theme={theme}
                         float="right"
                         marginRight={12}
                         page={currentPage}
@@ -95,7 +116,7 @@ export function CharactersSection({ characters }) {
                         onNextPage={() => setCurrentPage(currentPage + 1)}
                         onPreviousPage={() => setCurrentPage(currentPage - 1)}
                     />
-                </Pane>
+                </StyledPaginationPane>
             </Pane>
         ) 
 }

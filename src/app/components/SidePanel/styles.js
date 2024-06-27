@@ -1,5 +1,5 @@
 import { Text, Pane, Tab, Heading } from "evergreen-ui";
-import styled, {ThemeProvider} from "styled-components";
+import styled from "styled-components";
 
 export const ProfileHeading = styled(Heading)`
     color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
@@ -36,3 +36,17 @@ export const SidePanelTab = styled(Tab)`
     }
 
 `;
+
+// background: #26272d; --subtle dark
+// background: #202125; --subtle darker
+// #1e1f23
+
+export const PanelPageContainer = styled(Pane)`
+    padding: 16px;
+    background: ${({ theme }) => (theme === "light" ? "#f7f7f7" : "#1f2025")};
+`;
+
+
+// #232427 -- good character viewer section background color
+
+// #121212 -- border color(make lighter)

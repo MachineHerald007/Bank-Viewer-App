@@ -1,16 +1,17 @@
-import React, { createContext, useState, useEffect } from "react"
+import React, { createContext, useContext, useState, useEffect } from "react";
 import {
     Avatar,
     Text,
     Table,
     Pagination,
     Pane,
-} from 'evergreen-ui'
-import { CharactersSection } from "./CharactersSection"
-import { CharacterProfileCard } from "./CharacterProfileCard"
-import { CharacterProfileAnalytics } from "./CharacterProfileAnalytics"
-import { CharacterInventory } from "./CharacterInventory"
-import { CharacterBank } from "./CharacterBank"
+} from 'evergreen-ui';
+import { CharactersSection } from "./CharactersSection";
+import { CharacterProfileCard } from "./CharacterProfileCard";
+import { CharacterProfileAnalytics } from "./CharacterProfileAnalytics";
+import { CharacterInventory } from "./CharacterInventory";
+import { CharacterBank } from "./CharacterBank";
+import { useTheme } from "../../Theme/Theme";
 
 const selected_character = {
     name: "",
@@ -21,8 +22,10 @@ const selected_character = {
     img: "",
     inventory: "",
     bank: ""
-}
+};
 
+// create a function that queries tauri backend via invoke command to save 
+// selected charater. on startup, query db to check if dashboard state for selected char
 export const CharacterContext = createContext()
 
 export function CharacterViewer({ characters }) {
@@ -40,7 +43,11 @@ export function CharacterViewer({ characters }) {
             inventory: character.inventory,
             bank: character.bank
         })
-    }
+    };
+
+    useEffect(() => {
+        // console.log("CHARACTER")
+    }, [])
 
     return (
         <CharacterContext.Provider value={{ selectedCharacter, saveSelectedCharacter }}>

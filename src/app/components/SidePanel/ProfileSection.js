@@ -30,7 +30,7 @@ export const ProfilePicture = ({ user }) => {
         <Avatar
             src={profile_pic}
             name={user.profile_name}
-            size={40}
+            size={48}
             margin={24}
             marginLeft={8}
         />
@@ -44,7 +44,7 @@ export function ProfileSection({ user, account }) {
             <ProfilePicture user={user} />
             <ProfileHeading
                 is="h3"
-                marginTop={32}
+                marginTop={36}
                 color="#474d66"
                 theme={theme}
             >

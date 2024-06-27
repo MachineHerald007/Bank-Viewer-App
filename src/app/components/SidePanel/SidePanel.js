@@ -28,7 +28,7 @@ import {
 import {
   SettingFilled
 } from '@ant-design/icons';
-import { SidePanelTab, SidePanelText } from "./styles";
+import { SidePanelTab, SidePanelText, PanelPageContainer } from "./styles";
 import { ProfileSection } from "./ProfileSection";
 import { AllItems } from "../Page/All-Items/All-Items";
 import { SharedBank } from "../Page/SharedBank/SharedBank";
@@ -141,7 +141,7 @@ export function SidePanel() {
                     )
                 })}
             </Tablist>
-            <Pane padding={16} background="#F9FAFA" flex="1">
+            <PanelPageContainer theme={theme} flex="1">
                 {tabs.map((tab, index) => (
                     <Pane
                         aria-labelledby={tab}
@@ -159,7 +159,7 @@ export function SidePanel() {
                         </Pane>
                     </Pane>
                 ))}
-            </Pane>
+            </PanelPageContainer>
         </Pane>
     )
 }
