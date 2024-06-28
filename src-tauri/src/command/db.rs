@@ -250,13 +250,25 @@ pub fn init_app() -> Result<(), SqlError> {
 
     conn.execute(
         "CREATE TABLE IF NOT EXISTS dashboard_state (
+            id INTEGER PRIMARY KEY CHECK (id = 1),
             logged_in_account_id INTEGER DEFAULT 0,
             selected_character_id INTEGER DEFAULT 0,
             lang TEXT NOT NULL,
             theme TEXT NOT NULL
         )",
-        (),
+        [],
     )?;
+
+    let mut stmt = conn.prepare("SELECT COUNT(*) FROM dashboard_state")?;
+    let count: i64 = stmt.query_row([], |row| row.get(0))?;
+
+    if count == 0 {
+        conn.execute(
+            "INSERT INTO dashboard_state (id, logged_in_account_id, selected_character_id, lang, theme)
+             VALUES (1, ?1, ?2, ?3, ?4)",
+            params![0, 0, "EN", "DARK"],
+        )?;
+    }
 
     Ok(())
 }
@@ -431,7 +443,8 @@ pub struct DashboardState {
     logged_in_account_id: u8,
     selected_character_id: u8,
     lang: String,
-    theme: String
+    theme: String,
+    account: AccountPayload
 }
 
 #[tauri::command]
@@ -440,14 +453,30 @@ pub fn get_dashboard_state() -> Result<DashboardState, SqlError> {
     let conn = Connection::open(my_db)?;
 
     let dashboard_state = conn.query_row(
-        "SELECT logged_in_account_id, selected_character_id, lang, theme FROM dashboard_state",
+        "SELECT 
+            ds.logged_in_account_id, 
+            ds.selected_character_id, 
+            ds.lang, 
+            ds.theme, 
+            a.account_name, 
+            a.guild_card, 
+            a.account_type,
+            a.server
+        FROM dashboard_state ds
+        LEFT JOIN account a ON ds.logged_in_account_id = a.id",
         [],
         |row| {
             Ok(DashboardState {
                 logged_in_account_id: row.get(0)?,
                 selected_character_id: row.get(1)?,
                 lang: row.get(2)?,
-                theme: row.get(3)?
+                theme: row.get(3)?,
+                account: AccountPayload {
+                    account_name: row.get(4)?,
+                    guild_card: row.get(5)?,
+                    account_type: row.get(6)?,
+                    server: row.get(7)?
+                }
             })
         },
     )?;
@@ -461,7 +490,7 @@ pub fn save_selected_account(selected_account_id: u8) -> Result<(), SqlError> {
     let conn = Connection::open(my_db)?;
 
     conn.execute(
-        "UPDATE dashboard_state SET selected_account_id = ?1",
+        "UPDATE dashboard_state SET logged_in_account_id = ?1",
         params![selected_account_id]
     )?;
 

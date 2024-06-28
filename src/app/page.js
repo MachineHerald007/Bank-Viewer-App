@@ -18,14 +18,18 @@ export const DashboardContext = createContext();
 export default function Home() {
     const [user, setUser] = useState(null)
     const [accounts, setAccounts] = useState([])
-    const [loggedInAccount, setLoggedInAccount] = useState(false)
+    const [loggedInAccount, setLoggedInAccount] = useState({})
     const [dashboardState, setDashboardState] = useState({})
+
+    const isEmpty = (obj) => {
+        return Object.keys(obj).length === 0 && obj.constructor === Object;
+    }
 
     const getDashboardState = (setDashboardState, setLoginState) => {
         invoke("get_dashboard_state")
         .then(res => {
             console.log("Dashboard state: ", res);
-            res.logged_in_account_id != 0 ? setLoggedInAccount(true) : setLoggedInAccount(false);
+            setLoggedInAccount(res.account);
             setDashboardState(res);
         })
         .catch(err => {
@@ -73,7 +77,7 @@ export default function Home() {
         <ThemeProvider>
             <AppContext.Provider value={{ user, setUser, getUser, loggedInAccount, setLoggedInAccount }}>
             <Pane>
-                {loggedInAccount ? 
+                {!isEmpty(loggedInAccount) && loggedInAccount.logged_in_account_id != 0 ? 
                 (
                     <AccountContext.Provider value={{ characters }}>
                     <Dashboard />

@@ -1,10 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Pane, Avatar, Heading } from 'evergreen-ui'
-import { ProfileHeading } from './styles'
-import { useTheme } from '../Theme/Theme'
+import React, {useEffect, useContext} from 'react';
+import { AppContext } from '@/app/page';
+import { Pane, Avatar, Heading } from 'evergreen-ui';
+import { ProfileHeading } from './styles';
+import { useTheme } from '../Theme/Theme';
 
 export const ProfilePicture = ({ user }) => {
+    if (!user || !user.profile_picture) {
+        return null;
+    }
+
     let fileSignature = user.profile_picture.slice(0, 8);
     let fileType;
 
@@ -38,7 +42,14 @@ export const ProfilePicture = ({ user }) => {
 }
 
 export function ProfileSection({ user, account }) {
+    const { loggedInAccount } = useContext(AppContext);
     const { theme } = useTheme();
+
+    useEffect(() => {
+        console.log("LOGGED IN ACCOUNT: ", loggedInAccount)
+        console.log("PROFILE SECTION: ", account.account_name)
+    }, [])
+
     return (
         <Pane display="flex">
             <ProfilePicture user={user} />

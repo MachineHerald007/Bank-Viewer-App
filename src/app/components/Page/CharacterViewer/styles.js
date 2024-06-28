@@ -49,13 +49,6 @@ export const StyledPagination = styled(Pagination)`
     }
 `;
 
-// background: #26272d; --subtle dark
-// background: #202125; --subtle darker
-// #1e1f23
-
-// #232427 -- good character viewer section background color
-// #121212 -- border color(make lighter)
-
 export const CharacterProfileCardPane = styled(Pane)`
     width: 374px;
     height: 220px;

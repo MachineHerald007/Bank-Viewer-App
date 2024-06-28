@@ -25,7 +25,14 @@ export function Accounts({ onAddAccountClick }) {
     const handleClick = (account) => {
         console.log("clicked account: ", account);
 
-        setLoggedInAccount(account);
+        invoke("save_selected_account", {
+            selectedAccountId: account.account_id
+        })
+        .then(res => {
+            console.log("account saved: ", res);
+            setLoggedInAccount(account);
+        })
+        .catch(err => console.log(err))
     };
 
     useEffect(() => {
