@@ -20,7 +20,7 @@ export const UploadContainerPane = styled(Pane)`
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-upload-wrapper.ant-upload-picture-card-wrapper .ant-upload.ant-upload-select:not(.ant-upload-disabled):hover, 
      :where(.css-dev-only-do-not-override-zg0ahe).ant-upload-wrapper.ant-upload-picture-circle-wrapper .ant-upload.ant-upload-select:not(.ant-upload-disabled):hover {
-        border-color: #3de9d3;
+        border-color: ${({ theme }) => (theme.mode === 'light' ? '#f57800' : '#00ff95')} !important;
     }
 
     :where(.css-dev-only-do-not-override-zg0ahe).ant-upload-wrapper .ant-upload-list.ant-upload-list-picture .ant-upload-list-item-error,

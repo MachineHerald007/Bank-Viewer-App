@@ -1,4 +1,3 @@
-/* styles.css */
 :root {
     --background-color: #ffffff;
     --text-color: #000000;
@@ -10,7 +9,6 @@ body.light {
 }
 
 body.dark {
-    /* --background-color: #333333; */
     --background-color: #24252B;
     --text-color: #ffffff;
 }

@@ -37,7 +37,7 @@ export const AccountFileUploader = styled(FileUploader)`
         border-color: ${({ theme }) => (theme.mode === 'light' ? '#8f95b2' : '#35394b')} !important;
 
         .ub-color_5C85FF {
-            color: ${({ theme }) => (theme.mode === 'light' ? '#3366FF' : '#6ff3e2')} !important;
+            color: ${({ theme }) => (theme.mode === 'light' ? '#3366FF' : '#21e795')} !important;
         }
         .ub-color_696f8c {
             color: ${({ theme }) => (theme.mode === 'light' ? '#101840' : '#fff')} !important;
@@ -54,7 +54,7 @@ export const AccountFileUploader = styled(FileUploader)`
     }
 
     .ub-color_5C85FF {
-        color: ${({ theme }) => (theme.mode === 'light' ? '#3366FF' : '#6ff3e2')};
+        color: ${({ theme }) => (theme.mode === 'light' ? '#3366FF' : '#21e795')};
     }
 
     .ub-color_696f8c {

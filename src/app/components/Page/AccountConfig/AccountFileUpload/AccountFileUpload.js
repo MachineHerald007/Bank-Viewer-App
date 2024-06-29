@@ -33,8 +33,6 @@ export function AccountFileUpload({ theme, onComplete }) {
 
     const parseFiles = async (files) => {
         try {
-            // Lang must be part of the User/Account context object, so it can be
-            // set anywhere from the application
             const response = await invoke("parse_files", {
                 files: files,
                 lang: "EN"
