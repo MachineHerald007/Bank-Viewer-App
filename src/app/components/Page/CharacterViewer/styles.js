@@ -1,6 +1,11 @@
 import { Text, Pane, Table, Pagination, SearchInput, IconButton } from "evergreen-ui";
 import styled from "styled-components";
 
+export const StyledText = styled(Text)`
+    font-weight: 600;
+    color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")} !important;
+`;
+
 export const StyledTable = styled(Table)`
     border-color: ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
 `;
@@ -16,11 +21,17 @@ export const StyledTableRow = styled(Table.Row)`
     border-color: ${({ theme }) => (theme === "light" ? "#edeff5" : "#121212")};
 
     &:hover {
-        background: ${({ theme }) => (theme === "light" ? "#F9FAFC" : "#00ff95")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#f57800" : "#00ff95")} !important;
+        ${StyledText} {
+            color: #fff !important;
+        }
     }
 
     &:focus {
-        background: ${({ theme }) => (theme === "light" ? "#F9FAFC" : "#00ff95")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#f57800" : "#00ff95")} !important;
+        ${StyledText} {
+            color: #fff !important;
+        }
     }
 `;
 

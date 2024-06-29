@@ -13,6 +13,7 @@ import {
 } from 'evergreen-ui'
 import { CharacterContext } from "./CharacterViewer"
 import {
+    StyledText,
     StyledTable,
     StyledTableRow,
     StyledTableHead,
@@ -57,19 +58,19 @@ const CharacterCards = ({ characters }) => {
                             name={character.name}
                             size={44}
                         />
-                        <Text position="relative" bottom={14} fontWeight={600} color={theme === "light" ? "#52586d" : "#fff"}>{character.name}</Text>
+                        <StyledText theme={theme} position="relative" bottom={14}>{character.name}</StyledText>
                     </Table.TextCell>
                     <Table.TextCell>
-                        <Text size={400} fontWeight={600} color={theme === "light" ? "#52586d" : "#fff"}>{character.level}</Text>
+                        <StyledText theme={theme}>{character.level}</StyledText>
                     </Table.TextCell>
                     <Table.TextCell>
-                        <Text size={400} fontWeight={600} color={theme === "light" ? "#52586d" : "#fff"}>{character.class}</Text>
+                        <StyledText theme={theme}>{character.class}</StyledText>
                     </Table.TextCell>
                     <Table.TextCell>
-                        <Text size={400} fontWeight={600} color={theme === "light" ? "#52586d" : "#fff"}>{character.sec_id}</Text>
+                        <StyledText theme={theme}>{character.sec_id}</StyledText>
                     </Table.TextCell>
                     <Table.TextCell>
-                        <Text size={400} fontWeight={600} color={theme === "light" ? "#52586d" : "#fff"}>{character.slot}</Text>
+                        <StyledText theme={theme}>{character.slot}</StyledText>
                     </Table.TextCell>
                 </StyledTableRow>
                 ))}
