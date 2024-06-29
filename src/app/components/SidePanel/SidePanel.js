@@ -37,7 +37,7 @@ import { Settings } from "../Page/Settings/Settings";
 import { useTheme } from "../Theme/Theme";
 
 export function SidePanel() {
-    const { user, loggedInAccount, setLoggedInAccount } = useContext(AppContext);
+    const { user, loggedInAccount, setLoggedInAccount, dashboardState } = useContext(AppContext);
     const { characters } = useContext(AccountContext);
     const [selectedIndex, setSelectedIndex] = React.useState(0);
     const { theme } = useTheme();
@@ -51,9 +51,48 @@ export function SidePanel() {
         "Settings"
     ], []);
 
+    const saveSelectedTab = (tab) => {
+        invoke("save_selected_tab", {
+            selectedTab: tab
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+    };
+
+    const setSelectedTab = (tab, index) => {
+        console.log("SELECTED TAB: ", tab);
+        setSelectedIndex(index);
+        saveSelectedTab(tab);
+    };
+
+    const getSelectedTab = (tab) => {
+        switch(tab) {
+            case "Analytics":
+                setSelectedIndex(0);
+                break;
+            case "All Items":
+                setSelectedIndex(1);
+                break;
+            case "Shared Bank":
+                setSelectedIndex(2);
+                break;
+            case "Custom Item Sets":
+                setSelectedIndex(3);
+                break;
+            case "Character Viewer":
+                setSelectedIndex(4);
+                break;
+            case "Settings":
+                setSelectedIndex(5);
+                break;
+        }
+    };
+
     useEffect(() => {
         console.log("USER: ", user);
         console.log("LOGGED IN ACCOUNT: ", loggedInAccount);
+        console.log("DASHBOARD STATE: ", dashboardState);
+        getSelectedTab(dashboardState.selected_tab);
     }, [])
 
     const returnIcon = (tab) => {
@@ -134,7 +173,7 @@ export function SidePanel() {
                             direction="vertical"
                             isSelected={index === selectedIndex}
                             key={tab}
-                            onSelect={() => setSelectedIndex(index)}
+                            onSelect={() => setSelectedTab(tab, index)}
                             height={44}
                         >
                         {returnIcon(tab)}

@@ -487,6 +487,7 @@ pub fn get_account_data(account_id: i64) -> Result<AccountData, SqlError> {
 pub struct DashboardState {
     logged_in_account_id: u8,
     selected_character_id: u8,
+    selected_tab: String,
     lang: String,
     theme: String,
     account: AccountPayload
@@ -501,6 +502,7 @@ pub fn get_dashboard_state() -> Result<DashboardState, SqlError> {
         "SELECT 
             ds.logged_in_account_id, 
             ds.selected_character_id, 
+            ds.selected_tab,
             ds.lang, 
             ds.theme, 
             a.account_name, 
@@ -514,13 +516,14 @@ pub fn get_dashboard_state() -> Result<DashboardState, SqlError> {
             Ok(DashboardState {
                 logged_in_account_id: row.get(0)?,
                 selected_character_id: row.get(1)?,
-                lang: row.get(2)?,
-                theme: row.get(3)?,
+                selected_tab: row.get(2)?,
+                lang: row.get(3)?,
+                theme: row.get(4)?,
                 account: AccountPayload {
-                    account_name: row.get(4)?,
-                    guild_card: row.get(5)?,
-                    account_type: row.get(6)?,
-                    server: row.get(7)?
+                    account_name: row.get(5)?,
+                    guild_card: row.get(6)?,
+                    account_type: row.get(7)?,
+                    server: row.get(8)?
                 }
             })
         }

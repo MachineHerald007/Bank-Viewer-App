@@ -75,7 +75,10 @@ export default function Home() {
 
     return (
         <ThemeProvider>
-            <AppContext.Provider value={{ user, setUser, getUser, loggedInAccount, setLoggedInAccount }}>
+            <AppContext.Provider value={{
+                user, setUser, getUser, loggedInAccount,setLoggedInAccount,
+                dashboardState, setDashboardState
+            }}>
             <Pane>
                 {!isEmpty(loggedInAccount) && loggedInAccount.logged_in_account_id != 0 ? 
                 (
