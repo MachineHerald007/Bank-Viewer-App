@@ -250,11 +250,11 @@ pub enum DBItem {
     }
 }
 
-pub fn get_items(conn: &Connection, character_id: i64) -> Result<Vec<DBItem>, SqlError> {
+pub fn get_items(conn: &Connection, account_id: i64, character_id: i64) -> Result<Vec<DBItem>, SqlError> {
     let mut items = Vec::new();
     
-    let mut wep_stmt = conn.prepare("SELECT * FROM weapon WHERE character_id = ?1")?;
-    let wep_itr = wep_stmt.query_map([character_id], |row| {
+    let mut wep_stmt = conn.prepare("SELECT * FROM weapon WHERE account_id = ?1 AND character_id = ?2")?;
+    let wep_itr = wep_stmt.query_map([account_id, character_id], |row| {
         Ok(DBItem::Weapon {
             id: row.get(0)?,
             account_id: row.get(1)?,
@@ -280,8 +280,8 @@ pub fn get_items(conn: &Connection, character_id: i64) -> Result<Vec<DBItem>, Sq
         items.push(wep?);
     }
 
-    let mut srank_stmt = conn.prepare("SELECT * FROM srank_weapon WHERE character_id = ?1")?;
-    let srank_itr = srank_stmt.query_map([character_id], |row| {
+    let mut srank_stmt = conn.prepare("SELECT * FROM srank_weapon WHERE account_id = ?1 AND character_id = ?2")?;
+    let srank_itr = srank_stmt.query_map([account_id, character_id], |row| {
         Ok(DBItem::SRankWeapon {
             id: row.get(0)?,
             account_id: row.get(1)?,
@@ -300,8 +300,8 @@ pub fn get_items(conn: &Connection, character_id: i64) -> Result<Vec<DBItem>, Sq
         items.push(srank?);
     }
 
-    let mut frame_stmt = conn.prepare("SELECT * FROM frame WHERE character_id = ?1")?;
-    let frame_itr = frame_stmt.query_map([character_id], |row| {
+    let mut frame_stmt = conn.prepare("SELECT * FROM frame WHERE account_id = ?1 AND character_id = ?2")?;
+    let frame_itr = frame_stmt.query_map([account_id, character_id], |row| {
         Ok(DBItem::Frame {
             id: row.get(0)?,
             account_id: row.get(1)?,
@@ -323,8 +323,8 @@ pub fn get_items(conn: &Connection, character_id: i64) -> Result<Vec<DBItem>, Sq
         items.push(frame?);
     }
 
-    let mut barrier_stmt = conn.prepare("SELECT * FROM barrier WHERE character_id = ?1")?;
-    let barrier_itr = barrier_stmt.query_map([character_id], |row| {
+    let mut barrier_stmt = conn.prepare("SELECT * FROM barrier WHERE account_id = ?1 AND character_id = ?2")?;
+    let barrier_itr = barrier_stmt.query_map([account_id, character_id], |row| {
         Ok(DBItem::Barrier {
             id: row.get(0)?,
             account_id: row.get(1)?,
@@ -345,8 +345,8 @@ pub fn get_items(conn: &Connection, character_id: i64) -> Result<Vec<DBItem>, Sq
         items.push(barrier?);
     }
 
-    let mut unit_stmt = conn.prepare("SELECT * FROM unit WHERE character_id = ?1")?;
-    let unit_itr = unit_stmt.query_map([character_id], |row| {
+    let mut unit_stmt = conn.prepare("SELECT * FROM unit WHERE account_id = ?1 AND character_id = ?2")?;
+    let unit_itr = unit_stmt.query_map([account_id, character_id], |row| {
         Ok(DBItem::Unit {
             id: row.get(0)?,
             account_id: row.get(1)?,
@@ -363,8 +363,8 @@ pub fn get_items(conn: &Connection, character_id: i64) -> Result<Vec<DBItem>, Sq
         items.push(unit?);
     }
 
-    let mut mag_stmt = conn.prepare("SELECT * FROM mag WHERE character_id = ?1")?;
-    let mag_itr = mag_stmt.query_map([character_id], |row| {
+    let mut mag_stmt = conn.prepare("SELECT * FROM mag WHERE account_id = ?1 AND character_id = ?2")?;
+    let mag_itr = mag_stmt.query_map([account_id, character_id], |row| {
         Ok(DBItem::Mag {
             id: row.get(0)?,
             account_id: row.get(1)?,
@@ -391,8 +391,8 @@ pub fn get_items(conn: &Connection, character_id: i64) -> Result<Vec<DBItem>, Sq
         items.push(mag?);
     }
 
-    let mut tech_stmt = conn.prepare("SELECT * FROM tech WHERE character_id = ?1")?;
-    let tech_itr = tech_stmt.query_map([character_id], |row| {
+    let mut tech_stmt = conn.prepare("SELECT * FROM tech WHERE account_id = ?1 AND character_id = ?2")?;
+    let tech_itr = tech_stmt.query_map([account_id, character_id], |row| {
         Ok(DBItem::Tech {
             id: row.get(0)?,
             account_id: row.get(1)?,
@@ -410,8 +410,8 @@ pub fn get_items(conn: &Connection, character_id: i64) -> Result<Vec<DBItem>, Sq
         items.push(tech?);
     }
 
-    let mut tool_stmt = conn.prepare("SELECT * FROM tool WHERE character_id = ?1")?;
-    let tool_itr = tool_stmt.query_map([character_id], |row| {
+    let mut tool_stmt = conn.prepare("SELECT * FROM tool WHERE account_id = ?1 AND character_id = ?2")?;
+    let tool_itr = tool_stmt.query_map([account_id, character_id], |row| {
         Ok(DBItem::Tool {
             id: row.get(0)?,
             account_id: row.get(1)?,
@@ -429,8 +429,8 @@ pub fn get_items(conn: &Connection, character_id: i64) -> Result<Vec<DBItem>, Sq
         items.push(tool?);
     }
 
-    let mut meseta_stmt = conn.prepare("SELECT * FROM meseta WHERE character_id = ?1")?;
-    let meseta_itr = meseta_stmt.query_map([character_id], |row| {
+    let mut meseta_stmt = conn.prepare("SELECT * FROM meseta WHERE account_id = ?1 AND character_id = ?2")?;
+    let meseta_itr = meseta_stmt.query_map([account_id, character_id], |row| {
         Ok(DBItem::Meseta {
             id: row.get(0)?,
             account_id: row.get(1)?,
@@ -447,8 +447,8 @@ pub fn get_items(conn: &Connection, character_id: i64) -> Result<Vec<DBItem>, Sq
         items.push(meseta?);
     }
     
-    let mut other_stmt = conn.prepare("SELECT * FROM other WHERE character_id = ?1")?;
-    let other_itr = other_stmt.query_map([character_id], |row| {
+    let mut other_stmt = conn.prepare("SELECT * FROM other WHERE account_id = ?1 AND character_id = ?2")?;
+    let other_itr = other_stmt.query_map([account_id, character_id], |row| {
         Ok(DBItem::Other {
             id: row.get(0)?,
             account_id: row.get(1)?,
@@ -490,7 +490,7 @@ pub fn get_character_data(conn: &Connection, account_id: i64) -> Result<Vec<Char
                 experience: row.get(9)?,
                 ep1_progress: row.get(10)?,
                 ep2_progress: row.get(11)?,
-                items: get_items(conn, character_id).expect("REASON")
+                items: get_items(conn, account_id, character_id).expect("REASON")
             })
         }
     )?;

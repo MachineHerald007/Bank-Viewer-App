@@ -439,7 +439,13 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
     Ok(())
 }
 
-type AccountData = ParsedFiles;
+#[derive(Debug, Serialize, Deserialize)]
+pub struct AccountData {
+    pub shared_bank: SharedBankData,
+    pub characters: Vec<CharacterData>
+}
+
+pub type SharedBankData = Vec<DBItem>;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CharacterData {
@@ -459,16 +465,21 @@ pub struct CharacterData {
 }
 
 #[tauri::command]
-pub fn get_account_data(account_id: i64) -> Result<(), SqlError> {
+pub fn get_account_data(account_id: i64) -> Result<AccountData, SqlError> {
     let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
     let mut conn = Connection::open(my_db)?;
     let transaction = conn.transaction()?;
     
-    let characters = get_character_data(&transaction, account_id);
+    let shared_bank_id = 0;
+    let shared_bank: SharedBankData = get_items(&transaction, account_id, shared_bank_id)?;
+    let characters: Vec<CharacterData> = get_character_data(&transaction, account_id)?;
 
     transaction.commit()?;
     
-    Ok(())
+    Ok(AccountData {
+        shared_bank: shared_bank,
+        characters: characters
+    })
 }
 
 #[derive(Debug, Serialize, Deserialize)]
