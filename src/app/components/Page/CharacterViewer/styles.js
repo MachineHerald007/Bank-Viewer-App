@@ -16,11 +16,11 @@ export const StyledTableRow = styled(Table.Row)`
     border-color: ${({ theme }) => (theme === "light" ? "#edeff5" : "#121212")};
 
     &:hover {
-        background: ${({ theme }) => (theme === "light" ? "#F9FAFC" : "#00ffd0")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#F9FAFC" : "#00ff95")} !important;
     }
 
     &:focus {
-        background: ${({ theme }) => (theme === "light" ? "#F9FAFC" : "#00ffd0")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#F9FAFC" : "#00ff95")} !important;
     }
 `;
 

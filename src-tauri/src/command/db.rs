@@ -255,6 +255,7 @@ pub fn init_app() -> Result<(), SqlError> {
             id INTEGER PRIMARY KEY CHECK (id = 1),
             logged_in_account_id INTEGER DEFAULT 0,
             selected_character_id INTEGER DEFAULT 0,
+            selected_tab TEXT DEFAULT 'Analytics',
             lang TEXT NOT NULL,
             theme TEXT NOT NULL
         )",
@@ -549,6 +550,19 @@ pub fn save_selected_character(selected_character_id: u8) -> Result<(), SqlError
     conn.execute(
         "UPDATE dashboard_state SET selected_character_id = ?1",
         params![selected_character_id]
+    )?;
+
+    Ok(())
+}
+
+#[tauri::command]
+pub fn save_selected_tab(selected_tab: String) -> Result<(), SqlError> {
+    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
+    let conn = Connection::open(my_db)?;
+
+    conn.execute(
+        "UPDATE dashboard_state SET selected_tab = ?1",
+        params![selected_tab]
     )?;
 
     Ok(())

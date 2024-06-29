@@ -15,20 +15,22 @@ export const SidePanelText = styled(Pane)`
 `;
 
 export const SidePanelTab = styled(Tab)`
+    border-radius: 0px;
+
     &:hover {
-        background-color: #00ffd0;
+        background-color: #00ff95;
         ${SidePanelText} {
             color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")}; 
         }
     }
 
     &:focus {
-        background-color: #00ffd0;
+        background-color: #00b96d;
         box-shadow: none;
     }
     
     &[aria-selected="true"] {
-        background-color: #00ffd0;
+        background-color: #00ff95;
 
         ${SidePanelText} {
             color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")}; 
