@@ -1,12 +1,24 @@
-import React, { createContext, useState, useEffect } from "react"
-import { Pane } from 'evergreen-ui'
-import { Switch } from "antd"
-import { MoonFilled } from "@ant-design/icons"
-import { useTheme } from "./Theme"
+import { invoke } from "@tauri-apps/api/tauri";
+import React, { createContext, useState, useEffect } from "react";
+import { Pane } from 'evergreen-ui';
+import { Switch } from "antd";
+import { MoonFilled } from "@ant-design/icons";
+import { useTheme } from "./Theme";
 
 const ThemeToggle = () => {
-    const {theme, toggleTheme} = useTheme()
-    const [checked, setChecked] = React.useState(true)
+    const {theme, toggleTheme} = useTheme();
+    const [checked, setChecked] = React.useState(true);
+
+    useEffect(() => {
+        console.log("[ThemeToggler] THEME: ", theme);
+        theme === "light" ? setChecked(true) : setChecked(false);
+        
+        invoke("save_theme", {
+            theme: theme
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+    }, [theme])
 
     return (
         <Switch
@@ -23,7 +35,7 @@ const ThemeToggle = () => {
 }
 
 const SunIcon = () => {
-    const imageUrl = "https://i.imgur.com/fqsvlPV_d.webp?maxwidth=760&fidelity=grand"
+    const imageUrl = "https://i.imgur.com/fqsvlPV_d.webp?maxwidth=760&fidelity=grand";
     return (
         <Pane display="inline-block" position="relative" top={2}>
             <img height={12} src={imageUrl} alt="Description of the image" />
@@ -32,12 +44,12 @@ const SunIcon = () => {
 }
 
 export function ThemeToggler() {
-    const { theme } = useTheme()
+    const { theme } = useTheme();
 
     const styles = {
         background: theme === 'light' ? '#F9FAFA' : '#F9FAFA',
         color: theme === 'light' ? '#000' : '#fff',
-    }
+    };
 
     return (
         <Pane

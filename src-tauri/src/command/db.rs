@@ -272,7 +272,7 @@ pub fn init_app() -> Result<(), SqlError> {
         transaction.execute(
             "INSERT INTO dashboard_state (id, logged_in_account_id, selected_character_id, lang, theme)
              VALUES (1, ?1, ?2, ?3, ?4)",
-            params![0, 0, "EN", "DARK"],
+            params![0, 0, "EN", "light"],
         )?;
     }
 
@@ -527,6 +527,22 @@ pub fn get_dashboard_state() -> Result<DashboardState, SqlError> {
     )?;
 
     Ok(dashboard_state)
+}
+
+#[tauri::command]
+pub fn get_theme() -> Result<String, SqlError> {
+    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
+    let conn = Connection::open(my_db)?;
+
+    let theme = conn.query_row(
+        "Select theme FROM dashboard_state",
+        [],
+        |row| {
+            Ok(row.get(0)?)
+        }
+    )?;
+
+    Ok(theme)
 }
 
 #[tauri::command]
