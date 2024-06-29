@@ -28,7 +28,13 @@ export const ItemTable = styled(Table)`
 `;
 
 export const ItemTitleRow = styled(Table.Row)`
+    height: 44px;
+    background-color: ${({ theme }) => (theme === "light" ? "#e77406" : "#00cd78")} !important;
+    border: none;
+`;
 
+export const StyledText = styled(Text)`
+    color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
 `;
 
 export const ItemRow = styled(Table.Row)`
@@ -37,14 +43,16 @@ export const ItemRow = styled(Table.Row)`
     border-bottom: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
 
     &:hover {
-        background: ${({ theme }) => (theme === "light" ? "#F9FAFC" : "#00ff95")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#f57800" : "#00ff95")} !important;
+        ${StyledText} {
+            color: ${({ theme }) => (theme === "light" ? "#fff" : "#fff")};
+        }
     }
 
     &:focus {
-        background: ${({ theme }) => (theme === "light" ? "#F9FAFC" : "#00ff95")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#f57800" : "#00ff95")} !important;
+        ${StyledText} {
+            color: ${({ theme }) => (theme === "light" ? "#fff" : "#fff")};
+        }
     }
-`;
-
-export const StyledText = styled(Text)`
-    color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
 `;

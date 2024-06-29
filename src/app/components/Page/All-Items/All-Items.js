@@ -16,6 +16,7 @@ import {
 import {
     ItemPane,
     ItemRow,
+    ItemTitleRow,
     StyledText,
     ItemTable,
     SearchBar,
@@ -64,21 +65,20 @@ export function AllItems() {
                 <Table.Body>
                     {characters.map((char, index) => (
                         <Pane key={index}>
-                            <Table.Row
-                                backgroundColor="#edeff5"
-                                height={44}
+                            <ItemTitleRow
+                                theme={theme}
                                 key={`${char.slot} - ${char.name}`}
                                 isSelectable
                                 onSelect={() => console.log(char)}
                             >
                                 <Table.TextCell>
-                                    <Text fontSize={16} marginLeft={16}><b>Character Slot: {char.slot}</b></Text>
-                                    <Text fontSize={16} marginLeft={4}> | <b>{char.name}</b></Text>
-                                    <Text fontSize={16} marginLeft={4}> | <b>{char.level}</b></Text>
-                                    <Text fontSize={16} marginLeft={4}> | <b>{char.sec_id}</b></Text>
-                                    <Text fontSize={16} marginLeft={4}> | <b>{char.class}</b></Text>
+                                    <StyledText fontSize={16} marginLeft={16}><b>Character Slot: {char.slot}</b></StyledText>
+                                    <StyledText fontSize={16} marginLeft={4}> | <b>{char.name}</b></StyledText>
+                                    <StyledText fontSize={16} marginLeft={4}> | <b>{char.level}</b></StyledText>
+                                    <StyledText fontSize={16} marginLeft={4}> | <b>{char.sec_id}</b></StyledText>
+                                    <StyledText fontSize={16} marginLeft={4}> | <b>{char.class}</b></StyledText>
                                 </Table.TextCell>
-                            </Table.Row>
+                            </ItemTitleRow>
                             {char.inventory.split("\n").map((item, i) => (
                                 <ItemRow
                                     theme={theme}
@@ -94,17 +94,16 @@ export function AllItems() {
                             <ItemRow theme={theme} height={44} isSelectable >
                                 <Table.TextCell></Table.TextCell>
                             </ItemRow>
-                            <Table.Row
-                                backgroundColor="#edeff5"
-                                height={44}
+                            <ItemTitleRow
+                                theme={theme}
                                 key={char.slot}
                                 isSelectable
                                 onSelect={() => console.log(char)}
                             >
                                 <Table.TextCell>
-                                    <Text fontSize={16} marginLeft={16}><b>Character Bank</b></Text>
+                                    <StyledText fontSize={16} marginLeft={16}><b>Character Bank</b></StyledText>
                                 </Table.TextCell>
-                            </Table.Row>
+                            </ItemTitleRow>
                             {char.bank.split("\n").map((item, i) => (
                                 <ItemRow
                                     theme={theme}
@@ -119,15 +118,14 @@ export function AllItems() {
                             ))}
                         </Pane>
                     ))}
-                    <Table.Row
-                        backgroundColor="#edeff5"
-                        height={44}
+                    <ItemTitleRow
+                        theme={theme}
                         isSelectable
                     >
                         <Table.TextCell>
-                            <Text fontSize={16} marginLeft={16}><b>Shared Bank - Normal</b></Text>
+                            <StyledText fontSize={16} marginLeft={16}><b>Shared Bank - Normal</b></StyledText>
                         </Table.TextCell>
-                    </Table.Row>
+                    </ItemTitleRow>
                     {sharedBank.map((item, index) => (
                         <ItemRow
                             theme={theme}

@@ -129,6 +129,7 @@ export function SidePanel() {
                 {tabs.map((tab, index) => {
                     return (
                         <SidePanelTab
+                            theme={theme}
                             aria-controls={`panel-${tab}`}
                             direction="vertical"
                             isSelected={index === selectedIndex}

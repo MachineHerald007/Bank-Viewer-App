@@ -18,22 +18,22 @@ export const SidePanelTab = styled(Tab)`
     border-radius: 0px;
 
     &:hover {
-        background-color: #00ff95;
+        background-color: ${({ theme }) => (theme === "light" ? "#f57800" : "#00ff95")};
         ${SidePanelText} {
-            color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")}; 
+            color: ${({ theme }) => (theme === "light" ? "#fff" : "#fff")}; 
         }
     }
 
     &:focus {
-        background-color: #00b96d;
+        opacity: 0.9;
         box-shadow: none;
     }
     
     &[aria-selected="true"] {
-        background-color: #00ff95;
+        background-color: ${({ theme }) => (theme === "light" ? "#f57800" : "#00ff95")};
 
         ${SidePanelText} {
-            color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")}; 
+            color: ${({ theme }) => (theme === "light" ? "#fff" : "#fff")}; 
         }
     }
 `;
