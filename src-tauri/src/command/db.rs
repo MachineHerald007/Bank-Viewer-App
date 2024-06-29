@@ -386,8 +386,6 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
 
     let account_id = transaction.last_insert_rowid();
 
-    println!("account_id: {}", account_id);
-
     for file in files {
         match file.data {
             Data::SharedBank(shared_bank) => {
