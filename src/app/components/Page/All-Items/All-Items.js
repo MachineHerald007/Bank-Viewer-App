@@ -136,7 +136,7 @@ export function AllItems() {
                             onSelect={() => console.log(item)}
                         >
                             <Table.TextCell>
-                                <StyledText fontSize={16}>{item}</StyledText>
+                                <StyledText theme={theme} fontSize={16}>{item}</StyledText>
                             </Table.TextCell>
                         </ItemRow>
                     ))}

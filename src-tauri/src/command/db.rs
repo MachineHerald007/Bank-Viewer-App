@@ -1,7 +1,8 @@
 use serde::{Serialize, Deserialize};
 use rusqlite::{Connection, Result as SqlResult, params};
 use thiserror::Error;
-use crate::lib::db::{insert_item};
+use crate::lib::db::DBItem;
+use crate::lib::db::{insert_item, get_items, get_character_data};
 use crate::parser::types::{
     ParsedFiles,
     ParsedFile,
@@ -29,9 +30,10 @@ impl From<rusqlite::Error> for SqlError {
 #[tauri::command]
 pub fn init_app() -> Result<(), SqlError> {
     let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let conn = Connection::open(my_db)?;
+    let mut conn = Connection::open(my_db)?;
+    let transaction = conn.transaction()?;
 
-    conn.execute(
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS user (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             profile_name TEXT NOT NULL,
@@ -43,10 +45,10 @@ pub fn init_app() -> Result<(), SqlError> {
         BEGIN
             SELECT RAISE(FAIL, 'Only one row allowed');
         END;",
-        (),
+        [],
     )?;
 
-    conn.execute(
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS account (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_name TEXT NOT NULL UNIQUE,
@@ -54,12 +56,13 @@ pub fn init_app() -> Result<(), SqlError> {
             account_type TEXT NOT NULL,
             server TEXT NOT NULL
         )",
-        (),
+        [],
     )?;
 
-    conn.execute(
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS character (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
             slot INTEGER NOT NULL UNIQUE,
             mode INTEGER NOT NULL,
             guild_card INTEGER NOT NULL,
@@ -69,13 +72,12 @@ pub fn init_app() -> Result<(), SqlError> {
             level INTEGER NOT NULL,
             experience INTEGER NOT NULL,
             ep1_progress TEXT NOT NULL,
-            ep2_progress TEXT NOT NULL,
-            account_id INTEGER NOT NULL
+            ep2_progress TEXT NOT NULL
         )",
-        (),
+        [],
     )?;
 
-    conn.execute(
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS weapon (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_id INTEGER NOT NULL,
@@ -95,10 +97,26 @@ pub fn init_app() -> Result<(), SqlError> {
             item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
-        (),
+        [],
     )?;
 
-    conn.execute(
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS srank_weapon (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
+            character_id INTEGER DEFAULT 0,
+            storage_type TEXT DEFAULT NULL,
+            type INTEGER NOT NULL,
+            name TEXT NOT NULL,
+            grind INTEGER NOT NULL,
+            special TEXT NOT NULL,
+            item_data TEXT NOT NULL,
+            lang TEXT NOT NULL
+        )",
+        [],
+    )?;
+
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS frame (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_id INTEGER NOT NULL,
@@ -114,10 +132,10 @@ pub fn init_app() -> Result<(), SqlError> {
             item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
-        (),
+        [],
     )?;
 
-    conn.execute(
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS barrier (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_id INTEGER NOT NULL,
@@ -132,10 +150,10 @@ pub fn init_app() -> Result<(), SqlError> {
             item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
-        (),
+        [],
     )?;
 
-    conn.execute(
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS unit (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_id INTEGER NOT NULL,
@@ -146,10 +164,10 @@ pub fn init_app() -> Result<(), SqlError> {
             item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
-        (),
+        [],
     )?;
 
-    conn.execute(
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS mag (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_id INTEGER NOT NULL,
@@ -170,10 +188,10 @@ pub fn init_app() -> Result<(), SqlError> {
             item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
-        (),
+        [],
     )?;
 
-    conn.execute(
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS tech (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_id INTEGER NOT NULL,
@@ -185,26 +203,10 @@ pub fn init_app() -> Result<(), SqlError> {
             item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
-        (),
+        [],
     )?;
 
-    conn.execute(
-        "CREATE TABLE IF NOT EXISTS srank_weapon (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            account_id INTEGER NOT NULL,
-            character_id INTEGER DEFAULT 0,
-            storage_type TEXT DEFAULT NULL,
-            type INTEGER NOT NULL,
-            name TEXT NOT NULL,
-            grind INTEGER NOT NULL,
-            special TEXT NOT NULL,
-            item_data TEXT NOT NULL,
-            lang TEXT NOT NULL
-        )",
-        (),
-    )?;
-
-    conn.execute(
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS tool (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_id INTEGER NOT NULL,
@@ -216,10 +218,10 @@ pub fn init_app() -> Result<(), SqlError> {
             item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
-        (),
+        [],
     )?;
 
-    conn.execute(
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS meseta (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_id INTEGER NOT NULL,
@@ -230,10 +232,10 @@ pub fn init_app() -> Result<(), SqlError> {
             amount INTEGER NOT NULL,
             lang TEXT NOT NULL
         )",
-        (),
+        [],
     )?;
 
-    conn.execute(
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS other (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_id INTEGER NOT NULL,
@@ -245,10 +247,10 @@ pub fn init_app() -> Result<(), SqlError> {
             item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
-        (),
+        [],
     )?;
 
-    conn.execute(
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS dashboard_state (
             id INTEGER PRIMARY KEY CHECK (id = 1),
             logged_in_account_id INTEGER DEFAULT 0,
@@ -259,16 +261,21 @@ pub fn init_app() -> Result<(), SqlError> {
         [],
     )?;
 
-    let mut stmt = conn.prepare("SELECT COUNT(*) FROM dashboard_state")?;
-    let count: i64 = stmt.query_row([], |row| row.get(0))?;
+    let count: i64 = transaction.query_row(
+        "SELECT COUNT(*) FROM dashboard_state",
+        [],
+        |row| row.get(0),
+    )?;
 
     if count == 0 {
-        conn.execute(
+        transaction.execute(
             "INSERT INTO dashboard_state (id, logged_in_account_id, selected_character_id, lang, theme)
              VALUES (1, ?1, ?2, ?3, ?4)",
             params![0, 0, "EN", "DARK"],
         )?;
     }
+
+    transaction.commit()?;
 
     Ok(())
 }
@@ -428,13 +435,39 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
     }
 
     transaction.commit()?;
+
     Ok(())
 }
 
 type AccountData = ParsedFiles;
 
+#[derive(Debug, Serialize, Deserialize)]
+pub struct CharacterData {
+    pub id: i64,
+    pub account_id: i64,
+    pub slot: u8,
+    pub mode: u8,
+    pub guild_card: u64,
+    pub name: String,
+    pub class: String,
+    pub section_id: String,
+    pub level: u8,
+    pub experience: u64,
+    pub ep1_progress: String,
+    pub ep2_progress: String,
+    pub items: Vec<DBItem>
+}
+
 #[tauri::command]
-pub fn get_account_data() -> Result<(), SqlError> {
+pub fn get_account_data(account_id: i64) -> Result<(), SqlError> {
+    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
+    let mut conn = Connection::open(my_db)?;
+    let transaction = conn.transaction()?;
+    
+    let characters = get_character_data(&transaction, account_id);
+
+    transaction.commit()?;
+    
     Ok(())
 }
 
@@ -478,7 +511,7 @@ pub fn get_dashboard_state() -> Result<DashboardState, SqlError> {
                     server: row.get(7)?
                 }
             })
-        },
+        }
     )?;
 
     Ok(dashboard_state)
