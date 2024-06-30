@@ -506,7 +506,8 @@ pub struct CharacterData {
     pub ep1_progress: String,
     pub ep2_progress: String,
     pub image: Vec<u8>,
-    pub items: Vec<DBItem>
+    pub inventory: Vec<DBItem>,
+    pub bank: Vec<DBItem> 
 }
 
 #[tauri::command]
@@ -514,7 +515,6 @@ pub fn get_account_data(account_id: i64) -> Result<AccountData, SqlError> {
     let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
     let mut conn = Connection::open(my_db)?;
     let transaction = conn.transaction()?;
-    
     let shared_bank_id = 0;
     let shared_bank: SharedBankData = get_items(&transaction, account_id, shared_bank_id)?;
     let characters: Vec<CharacterData> = get_character_data(&transaction, account_id)?;

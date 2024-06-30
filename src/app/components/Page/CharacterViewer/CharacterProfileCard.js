@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
-import { CharacterContext } from "../CharacterViewer/CharacterViewer";
+import React, { useState, useEffect } from "react";
 import {
     UserIcon,
     Avatar,
@@ -11,17 +10,29 @@ import {
 import { CharacterProfileCardPane, ProfileCardText } from "./styles";
 import { useTheme } from "../../Theme/Theme";
 
+function encodeToBase64(binaryImg) {
+    let fileType = "png";
+    let base64String = btoa(
+        new Uint8Array(binaryImg)
+            .reduce((data, byte) => data + String.fromCharCode(byte), '')
+    );
+    return `data:${fileType};base64,${base64String}`;
+}
+
 export function CharacterProfileCard({ character }) {
-    const { selectedCharacter } = useContext(CharacterContext);
     const { theme } = useTheme();
+
+    useEffect(() => {}, [character])
+    
     return (
         <CharacterProfileCardPane theme={theme}>
             <Avatar
+                key={character.id}
                 position="relative"
                 top={22}
                 size={128}
-                src={selectedCharacter.img}
-                name={selectedCharacter.name}
+                src={encodeToBase64(character.image)}
+                name={character.name}
             />
             <Pane
                 display="inline-block"
@@ -29,23 +40,23 @@ export function CharacterProfileCard({ character }) {
             >
                 <ProfileCardText theme={theme} display="block" fontSize={16}>
                     <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>NAME:</ProfileCardText>
-                    {selectedCharacter.name}
+                    {character.name}
                 </ProfileCardText>
                 <ProfileCardText theme={theme} display="block" fontSize={16}>
                     <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>LEVEL:</ProfileCardText>
-                    {selectedCharacter.level}
+                    {character.level}
                 </ProfileCardText>
                 <ProfileCardText theme={theme} display="block" fontSize={16}>
                     <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>CLASS:</ProfileCardText>
-                    {selectedCharacter.class}
+                    {character.class}
                 </ProfileCardText>
                 <ProfileCardText theme={theme} display="block" fontSize={16}>
                     <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>SECTION ID:</ProfileCardText>
-                    {selectedCharacter.sec_id}
+                    {character.section_id}
                 </ProfileCardText>
                 <ProfileCardText theme={theme} display="block" fontSize={16}>
                     <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>SLOT:</ProfileCardText>
-                    {selectedCharacter.slot}
+                    {character.slot}
                 </ProfileCardText>
             </Pane>
         </CharacterProfileCardPane>

@@ -20,25 +20,27 @@ import {
 } from "../styles";
 import { useTheme } from "../../Theme/Theme";
 
-function getBankItems(raw_bank) {
-    return raw_bank.split("\n");
-}
-
-export function CharacterBank({ character, bank }) {
-    const [items, setItems] = useState(() => getBankItems(bank));
+export function CharacterBank({ character }) {
+    const [items, setItems] = useState([]);
     const [expandBank, setExpandBank] = useState(false);
     const { theme } = useTheme();
 
-    // Debugging logs
-    useEffect(() => {
-        console.log("Received bank prop: ", bank)
-        console.log("Initialized items state: ", items)
-    }, [bank, items])
+    const displayItem = (item, prop) => {
+        let str = ""
+        Object.keys(item).map(key => {
+            str = item[key][prop]
+        })
+        return str;
+    };
 
-    // Effect to handle updates to the bank prop
     useEffect(() => {
-        setItems(getBankItems(bank))
-    }, [bank])
+        console.log("Received bank prop: ", character.bank)
+        console.log("Initialized items state: ", items)
+    }, [character, items])
+
+    useEffect(() => {
+        setItems(character.bank)
+    }, [character])
 
     return (
         <ItemPane theme={theme} height={720}>
@@ -56,10 +58,13 @@ export function CharacterBank({ character, bank }) {
                     {items.map((item, index) => (
                         <ItemRow
                             theme={theme}
-                            key={index} isSelectable onSelect={() => console.log(item)}
+                            key={index}
+                            isSelectable onSelect={() => console.log(item)}
                         >
                             <Table.TextCell>
-                                <StyledText theme={theme} fontSize={16}>{item}</StyledText>
+                                <StyledText theme={theme} fontSize={16}>{
+                                    displayItem(item, "name")
+                                }</StyledText>
                             </Table.TextCell>
                         </ItemRow>
                     ))}

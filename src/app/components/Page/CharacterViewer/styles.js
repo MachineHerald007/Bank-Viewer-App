@@ -61,7 +61,7 @@ export const StyledPagination = styled(Pagination)`
 `;
 
 export const CharacterProfileCardPane = styled(Pane)`
-    width: 374px;
+    width: 386px;
     height: 220px;
     padding: 24px;
     margin-top: 24px;

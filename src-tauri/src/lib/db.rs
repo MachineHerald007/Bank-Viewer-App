@@ -1,6 +1,5 @@
 use serde::{Serialize, Deserialize};
 use rusqlite::{Connection, Result as SqlResult, params};
-use base64;
 use std::fs;
 use std::io::Read;
 use std::path::Path;
@@ -522,6 +521,30 @@ pub fn get_character_data(conn: &Connection, account_id: i64) -> Result<Vec<Char
         [account_id],
         |row| {
             let character_id: i64 = row.get(0)?;
+            let items: Vec<DBItem> = get_items(conn, account_id, character_id).expect("get_items error");
+            let mut inventory = Vec::new();
+            let mut bank = Vec::new();
+
+            for item in items {
+                let storage_type = match &item {
+                    DBItem::Weapon { storage_type, .. }
+                    | DBItem::SRankWeapon { storage_type, .. }
+                    | DBItem::Frame { storage_type, .. }
+                    | DBItem::Barrier { storage_type, .. }
+                    | DBItem::Unit { storage_type, .. }
+                    | DBItem::Mag { storage_type, .. }
+                    | DBItem::Tech { storage_type, .. }
+                    | DBItem::Tool { storage_type, .. }
+                    | DBItem::Meseta { storage_type, .. }
+                    | DBItem::Other { storage_type, .. } => storage_type.clone(),
+                };
+
+                match storage_type.as_str() {
+                    "INVENTORY" => inventory.push(item),
+                    "BANK" => bank.push(item),
+                    _ => println!("Unknown storage type for item: {:?}", item),
+                }
+            }
 
             Ok(CharacterData {
                 id: row.get(0)?,
@@ -537,7 +560,8 @@ pub fn get_character_data(conn: &Connection, account_id: i64) -> Result<Vec<Char
                 ep1_progress: row.get(10)?,
                 ep2_progress: row.get(11)?,
                 image: row.get(12)?,
-                items: get_items(conn, account_id, character_id).expect("get_items error")
+                inventory: inventory,
+                bank: bank
             })
         }
     )?;

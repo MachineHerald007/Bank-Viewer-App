@@ -19,22 +19,27 @@ import {
 } from "../styles";
 import { useTheme } from "../../Theme/Theme";
 
-function getInventoryItems(raw_inventory) {
-    return raw_inventory.split("\n");
-}
-
-export function CharacterInventory({ character, inventory }) {
-    const [items, setItems] = useState(() => getInventoryItems(inventory));
+export function CharacterInventory({ character }) {
+    const [items, setItems] = useState([]);
+    const [expandInventory, setExpandInventory] = useState(false);
     const { theme } = useTheme();
 
-    useEffect(() => {
-        console.log("Received inventory prop: ", inventory);
-        console.log("Initialized items state: ", items);
-    }, [inventory, items]);
+    const displayItem = (item, prop) => {
+        let str = ""
+        Object.keys(item).map(key => {
+            str = item[key][prop]
+        })
+        return str;
+    };
 
     useEffect(() => {
-        setItems(getInventoryItems(inventory));
-    }, [inventory]);
+        console.log("Received inventory prop: ", character.inventory);
+        console.log("Initialized items state: ", items);
+    }, [character, items]);
+
+    useEffect(() => {
+        setItems(character.inventory);
+    }, [character]);
 
     return (
         <ItemPane theme={theme} height={720}>
@@ -55,7 +60,9 @@ export function CharacterInventory({ character, inventory }) {
                             key={index} isSelectable onSelect={() => console.log("item: ", item)}
                         >
                             <Table.TextCell>
-                                <StyledText theme={theme} fontSize={16}>{item}</StyledText>
+                                <StyledText theme={theme} fontSize={16}>{
+                                    displayItem(item, "name")
+                                }</StyledText>
                             </Table.TextCell>
                         </ItemRow>
                     ))}
