@@ -1,8 +1,15 @@
+use std::fmt;
+use std::path::PathBuf;
 use serde::{Serialize, Deserialize};
 use rusqlite::{Connection, Result as SqlResult, params};
 use thiserror::Error;
 use crate::lib::db::DBItem;
-use crate::lib::db::{insert_item, get_items, get_character_data};
+use crate::lib::db::{
+    insert_item,
+    get_items,
+    get_character_data,
+    seed_class_default_image,
+};
 use crate::parser::types::{
     ParsedFiles,
     ParsedFile,
@@ -15,15 +22,36 @@ use crate::parser::types::{
 
 #[derive(Error, Debug, Serialize, Deserialize)]
 pub enum SqlError {
-    #[error("Database error: {0}")]
     DatabaseError(String),
-    #[error("Unknown error")]
-    Unknown,
+    IOError(String),
+    SerdeError(String),
+}
+
+impl fmt::Display for SqlError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            SqlError::DatabaseError(msg) => write!(f, "Database error: {}", msg),
+            SqlError::IOError(msg) => write!(f, "IO error: {}", msg),
+            SqlError::SerdeError(msg) => write!(f, "Serialization error: {}", msg),
+        }
+    }
 }
 
 impl From<rusqlite::Error> for SqlError {
     fn from(error: rusqlite::Error) -> Self {
         SqlError::DatabaseError(error.to_string())
+    }
+}
+
+impl From<std::io::Error> for SqlError {
+    fn from(error: std::io::Error) -> Self {
+        SqlError::IOError(error.to_string())
+    }
+}
+
+impl From<base64::DecodeError> for SqlError {
+    fn from(error: base64::DecodeError) -> Self {
+        SqlError::SerdeError(error.to_string())
     }
 }
 
@@ -72,7 +100,8 @@ pub fn init_app() -> Result<(), SqlError> {
             level INTEGER NOT NULL,
             experience INTEGER NOT NULL,
             ep1_progress TEXT NOT NULL,
-            ep2_progress TEXT NOT NULL
+            ep2_progress TEXT NOT NULL,
+            image BLOB
         )",
         [],
     )?;
@@ -276,6 +305,22 @@ pub fn init_app() -> Result<(), SqlError> {
         )?;
     }
 
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS class_default_image (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            class TEXT NOT NULL UNIQUE,
+            image BLOB
+        )",
+        []
+    )?;
+
+    let mut path = PathBuf::new();
+    path.push("images");
+    path.push("class_defaults");
+    let path_str = path.to_string_lossy().into_owned();
+
+    seed_class_default_image(&transaction, &path_str);
+
     transaction.commit()?;
 
     Ok(())
@@ -460,6 +505,7 @@ pub struct CharacterData {
     pub experience: u64,
     pub ep1_progress: String,
     pub ep2_progress: String,
+    pub image: Vec<u8>,
     pub items: Vec<DBItem>
 }
 

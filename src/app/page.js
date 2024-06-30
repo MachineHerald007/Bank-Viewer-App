@@ -2,7 +2,6 @@
 
 import { invoke } from "@tauri-apps/api/tauri";
 import React, { createContext, useEffect, useState } from 'react';
-import { characters } from './components/Characters';
 import { AccountConfig } from './components/Page/AccountConfig/AccountConfig';
 import Dashboard from './Dashboard';
 
@@ -11,7 +10,6 @@ import { ThemeProvider, useTheme } from './components/Theme/Theme';
 import { Pane, Switch } from 'evergreen-ui';
 
 export const AppContext = createContext();
-export const AccountContext = createContext();
 export const AccountsContext = createContext();
 export const DashboardContext = createContext();
 
@@ -25,16 +23,15 @@ export default function Home() {
         return Object.keys(obj).length === 0 && obj.constructor === Object;
     }
 
-    const getDashboardState = (setDashboardState, setLoginState) => {
-        invoke("get_dashboard_state")
+    const getUser = (setUser) => {
+        invoke("get_user")
         .then(res => {
-            console.log("Dashboard state: ", res);
-            setLoggedInAccount(res.account);
-            setDashboardState(res);
+            console.log("User: ", res);
+            setUser(res);
         })
         .catch(err => {
             console.log(err);
-            setDashboardState({});
+            setUser(null);
         });
     };
 
@@ -50,15 +47,16 @@ export default function Home() {
         }); 
     };
 
-    const getUser = (setUser) => {
-        invoke("get_user")
+    const getDashboardState = (setDashboardState, setLoginState) => {
+        invoke("get_dashboard_state")
         .then(res => {
-            console.log("User: ", res);
-            setUser(res);
+            console.log("Dashboard state: ", res);
+            setLoggedInAccount(res.account);
+            setDashboardState(res);
         })
         .catch(err => {
             console.log(err);
-            setUser(null);
+            setDashboardState({});
         });
     };
 
@@ -66,9 +64,9 @@ export default function Home() {
         invoke("init_app")
             .then(res => {
                 console.log(res);
-                getDashboardState(setDashboardState);
                 getUser(setUser);
                 getAccounts(setAccounts);
+                getDashboardState(setDashboardState);
             })
             .catch(console.error)
     }, []);
@@ -82,9 +80,7 @@ export default function Home() {
             <Pane>
                 {!isEmpty(loggedInAccount) && loggedInAccount.logged_in_account_id != 0 ? 
                 (
-                    <AccountContext.Provider value={{ characters }}>
                     <Dashboard />
-                    </AccountContext.Provider>
                 )
                 :
                 (

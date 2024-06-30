@@ -26,6 +26,21 @@ function divideAndRoundUp(num) {
   return Math.ceil(num / 4)
 }
 
+function encodeToBase64(binary_img) {
+    let fileType = "png";
+    let uint8Array = new Uint8Array(binary_img);
+    let binaryString = '';
+    
+    for (let i = 0; i < uint8Array.length; i++) {
+        binaryString += String.fromCharCode(uint8Array[i]);
+    }
+
+    let base64String = btoa(binaryString);
+    let image = `data:${fileType};base64,${base64String}`;
+
+    return image;
+}
+
 const CharacterCards = ({ characters }) => {
     const { selectedCharacter, saveSelectedCharacter } = useContext(CharacterContext);
     const { theme } = useTheme();
@@ -54,7 +69,7 @@ const CharacterCards = ({ characters }) => {
                             position="relative"
                             top={2}
                             marginRight={16}
-                            src={character.img}
+                            src={encodeToBase64(character.image)}
                             name={character.name}
                             size={44}
                         />
@@ -67,7 +82,7 @@ const CharacterCards = ({ characters }) => {
                         <StyledText theme={theme}>{character.class}</StyledText>
                     </Table.TextCell>
                     <Table.TextCell>
-                        <StyledText theme={theme}>{character.sec_id}</StyledText>
+                        <StyledText theme={theme}>{character.section_id}</StyledText>
                     </Table.TextCell>
                     <Table.TextCell>
                         <StyledText theme={theme}>{character.slot}</StyledText>
@@ -80,16 +95,19 @@ const CharacterCards = ({ characters }) => {
 }
 
 export function CharactersSection({ characters }) {
-        // const [characters, setcharacters] = useState([]);
         const [loading, setLoading] = useState(false)
         const [currentPage, setCurrentPage] = useState(1)
-        const [characterPages, setcharacterPages] = useState(divideAndRoundUp(characters.length))
+        const [characterPages, setcharacterPages] = useState(0)
 
         const charactersPerPage = 4
         const indexOfLastCharacter = currentPage * charactersPerPage
         const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage
         const currentCharacters = characters.slice(indexOfFirstCharacter, indexOfLastCharacter)
         const { theme } = useTheme();
+
+        useEffect(() => {
+            setcharacterPages(divideAndRoundUp(characters.length))
+        }, [characters])
 
         return (
             <Pane>

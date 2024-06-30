@@ -13,6 +13,22 @@ import { CharacterInventory } from "./CharacterInventory";
 import { CharacterBank } from "./CharacterBank";
 import { useTheme } from "../../Theme/Theme";
 
+function getInventory(items) {
+    for (let item of items) {
+        for (let key in item) {
+            if (typeof item[key] === 'object' && item[key] !== null) {
+                console.log(`Key: ${key}, Value:`, item[key]);
+            } else {
+                console.log(`Key: ${key}, Value: ${item[key]}`);
+            }
+        }
+    }
+}
+
+function getBank(items) {
+
+}
+
 const selected_character = {
     name: "",
     class: "",
@@ -24,25 +40,24 @@ const selected_character = {
     bank: ""
 };
 
-// create a function that queries tauri backend via invoke command to save 
-// selected charater. on startup, query db to check if dashboard state for selected char
 export const CharacterContext = createContext()
 
 export function CharacterViewer({ characters }) {
     const [selectedCharacter, setSelectedCharacter] = useState(selected_character);
 
-    function saveSelectedCharacter(character) {
-        console.log("character: ", character)
+    const saveSelectedCharacter = (character) => {
+        console.log("z haracter: ", character);
+        getInventory(character.items);
         setSelectedCharacter({
             name: character.name,
             class: character.class,
-            sec_id: character.sec_id,
+            sec_id: character.section_id,
             level: character.level,
             slot: character.slot,
-            img: character.img,
+            img: character.image,
             inventory: character.inventory,
             bank: character.bank
-        })
+        });
     };
 
     useEffect(() => {

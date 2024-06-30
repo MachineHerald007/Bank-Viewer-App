@@ -22,8 +22,6 @@ import {
     SearchBar,
     ExpandButton
 } from "../styles";
-import { AccountContext } from "@/app/page";
-import { all_inventory } from "../../inventory";
 import { shared_bank } from "../../bank";
 import { useTheme } from "../../Theme/Theme";
 
@@ -53,8 +51,9 @@ function getSharedBank(items) {
 }
 
 export function AllItems() {
-    const { characters } = useContext(AccountContext);
-    const [sharedBank, setSharedBank] = useState(getSharedBank(shared_bank));
+    const [characters, setCharacters] = useState([]);
+    const [sharedBank, setSharedBank] = useState([]);
+    // const [sharedBank, setSharedBank] = useState(getSharedBank(shared_bank));
     const { theme } = useTheme();
 
     return (

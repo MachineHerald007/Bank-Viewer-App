@@ -37,9 +37,9 @@ import { Settings } from "../Page/Settings/Settings";
 import { useTheme } from "../Theme/Theme";
 
 export function SidePanel() {
-    const [accountData, setAccountData] = useState({});
     const { user, loggedInAccount, setLoggedInAccount, dashboardState } = useContext(AppContext);
-    const { characters } = useContext(AccountContext);
+    const [accountData, setAccountData] = useState({});
+    const [characters, setCharacters] = useState([]);
     const [selectedIndex, setSelectedIndex] = React.useState(0);
     const { theme } = useTheme();
 
@@ -61,7 +61,6 @@ export function SidePanel() {
     };
 
     const setSelectedTab = (tab, index) => {
-        console.log("SELECTED TAB: ", tab);
         setSelectedIndex(index);
         saveSelectedTab(tab);
     };
@@ -100,14 +99,16 @@ export function SidePanel() {
         })
         .then(res => {
             setAccountData(res);
-            console.log("account data: ", res)
+            setCharacters(res.characters)
+            console.log("account data: ", res);
         })
         .catch(err => console.log(err))
     }, [])
 
     useEffect(() => {
-        console.log("ACCOUNT DATA: ", accountData)
-    }, [accountData])
+        console.log("ACCOUNT DATA: ", accountData);
+        console.log("CHARACTER DATA: ", characters);
+    }, [accountData, characters])
 
     const returnIcon = (tab) => {
         switch(tab) {

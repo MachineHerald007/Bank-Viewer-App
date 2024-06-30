@@ -1,7 +1,41 @@
 use serde::{Serialize, Deserialize};
 use rusqlite::{Connection, Result as SqlResult, params};
+use base64;
+use std::fs;
+use std::io::Read;
+use std::path::Path;
 use crate::command::db::{SqlError, CharacterData};
 use crate::parser::types::{Item, WrappedItem};
+
+pub fn seed_class_default_image(conn: &Connection, directory: &str) -> Result<(), SqlError> {    
+    let path = Path::new(directory);
+    
+    if !path.exists() {
+        println!("DIR \"{}\" DOESN'T EXIST", directory);
+    }
+    
+    let absolute_path = path.canonicalize()?;
+    
+    for entry in fs::read_dir(absolute_path)? {
+        let entry = entry?;
+        let path = entry.path();
+        
+        if path.is_file() {
+            let file_name = path.file_name().unwrap().to_string_lossy().into_owned();
+            let class_name = file_name.split('.').next().unwrap();
+            let mut file = fs::File::open(&path)?;
+            let mut buffer = Vec::new();
+            file.read_to_end(&mut buffer)?;
+            
+            conn.execute(
+                "INSERT INTO class_default_image (class, image) VALUES (?1, ?2)",
+                params![class_name, buffer],
+            )?;
+        }
+    }
+
+    Ok(())
+}
 
 pub fn insert_item(conn: &Connection, item: &WrappedItem, account_id: i64, character_id: i64, storage_type: String, lang: String) -> Result<(), SqlError> {
     if let Some(item_type) = &item.item {
@@ -471,7 +505,19 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64) -> Resul
 
 pub fn get_character_data(conn: &Connection, account_id: i64) -> Result<Vec<CharacterData>, SqlError> {
     let mut characters = Vec::new();
-    let mut stmt = conn.prepare("SELECT * FROM character WHERE account_id = ?1")?;
+    let mut stmt = conn.prepare(
+        "SELECT
+            id, account_id, slot, mode, guild_card, name, class,
+            section_id, level, experience, ep1_progress, ep2_progress,
+            COALESCE(
+                image,
+                (SELECT image FROM class_default_image WHERE class = character.class)
+            ) as image
+        FROM
+        character
+        WHERE account_id = ?1;"
+    )?;   
+    
     let character_itr = stmt.query_map(
         [account_id],
         |row| {
@@ -490,7 +536,8 @@ pub fn get_character_data(conn: &Connection, account_id: i64) -> Result<Vec<Char
                 experience: row.get(9)?,
                 ep1_progress: row.get(10)?,
                 ep2_progress: row.get(11)?,
-                items: get_items(conn, account_id, character_id).expect("REASON")
+                image: row.get(12)?,
+                items: get_items(conn, account_id, character_id).expect("get_items error")
             })
         }
     )?;
