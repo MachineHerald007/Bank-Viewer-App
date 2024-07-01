@@ -39,6 +39,7 @@ import { useTheme } from "../Theme/Theme";
 export function SidePanel() {
     const { user, loggedInAccount, setLoggedInAccount, dashboardState } = useContext(AppContext);
     const [accountData, setAccountData] = useState({});
+    const [sharedBank, setSharedBank] = useState([])
     const [characters, setCharacters] = useState([]);
     const [selectedIndex, setSelectedIndex] = React.useState(0);
     const { theme } = useTheme();
@@ -99,8 +100,8 @@ export function SidePanel() {
         })
         .then(res => {
             setAccountData(res);
-            setCharacters(res.characters)
-            console.log("account data: ", res);
+            setSharedBank(res.shared_bank);
+            setCharacters(res.characters);
         })
         .catch(err => console.log(err))
     }, [])
@@ -108,7 +109,7 @@ export function SidePanel() {
     useEffect(() => {
         console.log("ACCOUNT DATA: ", accountData);
         console.log("CHARACTER DATA: ", characters);
-    }, [accountData, characters])
+    }, [accountData, sharedBank, characters])
 
     const returnIcon = (tab) => {
         switch(tab) {
@@ -162,7 +163,7 @@ export function SidePanel() {
             case "All Items":
                 return <AllItems />
             case "Shared Bank":
-                return <SharedBank />
+                return <SharedBank sharedBank={sharedBank} />
             case "Custom Item Sets":
                  return (
                     <Pane>

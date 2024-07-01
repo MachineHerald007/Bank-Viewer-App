@@ -16,23 +16,21 @@ import {
     SearchBar,
     ExpandButton
 } from "../styles";
-import { shared_bank } from "../../bank";
+import { renderItemRow } from "@/app/util";
 import { useTheme } from "../../Theme/Theme";
 
-function getItems(raw_items) {
-    if (typeof raw_items !== 'string') {
-        throw new Error('Expected a string as raw_items');
-    }
-    return raw_items.split("\n");
-}
-
-function getSharedBank(items) {
-    return getItems(items);
-}
-
-export function SharedBank() {
-    const [sharedBank, setSharedBank] = useState(getSharedBank(shared_bank));
+export function SharedBank({ sharedBank }) {
+    const [items, setItems] = useState([])
     const { theme } = useTheme();
+
+    useEffect(() => {
+        console.log("Received shared_bank prop: ", sharedBank)
+        console.log("Initialized items state: ", items)
+    }, [sharedBank, items])
+
+    useEffect(() => {
+        setItems(sharedBank)
+    }, [sharedBank])
 
     return (
         <ItemPane theme={theme}>
@@ -40,7 +38,7 @@ export function SharedBank() {
             <SearchBar theme={theme} marginTop={24} placeholder="Search Items..." />
             <ItemTable theme={theme}>
                 <Table.Body>
-                    {sharedBank.map((item, index) => (
+                    {items.map((item, index) => (
                         <ItemRow
                             theme={theme}
                             key={`shared_bank-${index}`}
@@ -48,7 +46,7 @@ export function SharedBank() {
                             onSelect={() => console.log(item)}
                         >
                             <Table.TextCell>
-                                <StyledText theme={theme} fontSize={16}>{item}</StyledText>
+                                {renderItemRow(item, theme)}
                             </Table.TextCell>
                         </ItemRow>
                     ))}

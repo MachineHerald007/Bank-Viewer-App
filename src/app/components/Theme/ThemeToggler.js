@@ -10,9 +10,7 @@ const ThemeToggle = () => {
     const [checked, setChecked] = React.useState(true);
 
     useEffect(() => {
-        console.log("[ThemeToggler] THEME: ", theme);
         theme === "light" ? setChecked(true) : setChecked(false);
-        
         invoke("save_theme", {
             theme: theme
         })

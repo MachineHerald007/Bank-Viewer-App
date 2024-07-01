@@ -22,7 +22,6 @@ import {
     SearchBar,
     ExpandButton
 } from "../styles";
-import { shared_bank } from "../../bank";
 import { useTheme } from "../../Theme/Theme";
 
 function getItems(raw_items) {
@@ -44,10 +43,6 @@ function getAllItems(char) {
         }
     }
     return char;
-}
-
-function getSharedBank(items) {
-    return getItems(items);
 }
 
 export function AllItems() {
