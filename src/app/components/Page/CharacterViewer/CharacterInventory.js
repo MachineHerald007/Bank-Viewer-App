@@ -4,33 +4,22 @@ import {
     Heading,
     MaximizeIcon,
     MinimizeIcon,
-    Text,
     Table,
-    Pagination,
     Pane,
 } from 'evergreen-ui';
 import {
     ItemPane,
     ItemRow,
-    StyledText,
     ItemTable,
     SearchBar,
     ExpandButton
 } from "../styles";
+import { renderItemRow } from "@/app/util";
 import { useTheme } from "../../Theme/Theme";
 
 export function CharacterInventory({ character }) {
     const [items, setItems] = useState([]);
-    const [expandInventory, setExpandInventory] = useState(false);
     const { theme } = useTheme();
-
-    const displayItem = (item, prop) => {
-        let str = ""
-        Object.keys(item).map(key => {
-            str = item[key][prop]
-        })
-        return str;
-    };
 
     useEffect(() => {
         console.log("Received inventory prop: ", character.inventory);
@@ -60,14 +49,12 @@ export function CharacterInventory({ character }) {
                             key={index} isSelectable onSelect={() => console.log("item: ", item)}
                         >
                             <Table.TextCell>
-                                <StyledText theme={theme} fontSize={16}>{
-                                    displayItem(item, "name")
-                                }</StyledText>
+                                {renderItemRow(item, theme)}
                             </Table.TextCell>
                         </ItemRow>
                     ))}
                 </Table.Body>
             </ItemTable>
         </ItemPane>
-    )
+    );
 }

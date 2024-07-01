@@ -15,7 +15,7 @@ export const SidePanelText = styled(Pane)`
 `;
 
 export const SidePanelTab = styled(Tab)`
-    border-radius: 0px;
+    border-radius: 2px;
 
     &:hover {
         background-color: ${({ theme }) => (theme === "light" ? "#f57800" : "#00ff95")};
@@ -24,8 +24,11 @@ export const SidePanelTab = styled(Tab)`
         }
     }
 
-    &:focus {
+    &:active {
         opacity: 0.9;
+    }
+
+    &:focus {
         box-shadow: none;
     }
     
