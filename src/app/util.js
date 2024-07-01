@@ -54,6 +54,8 @@ export function displayItem(item, prop, theme) {
             )
         case "number":
             return " x" + str;
+        case "level":
+            return " LV" + str + " disk";
         default:
             return str;
     }
@@ -65,10 +67,10 @@ function displayWeapon(item, theme) {
         <StyledText theme={theme} fontSize={16}>{displayItem(item, "tekked")} </StyledText>
         <StyledText theme={theme} fontSize={16}>{displayItem(item, "name")}</StyledText>
         <StyledText theme={theme} fontSize={16}>{displayItem(item, "grind")} </StyledText>
-        <StyledText theme={theme} fontSize={16}> [ </StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "special")} </StyledText>
-        <StyledText theme={theme} fontSize={16}> ] </StyledText>
-        <StyledText theme={theme} fontSize={16}> [ </StyledText>
+        <StyledText theme={theme} fontSize={16}> [</StyledText>
+        <StyledText theme={theme} fontSize={16}>{displayItem(item, "special")}</StyledText>
+        <StyledText theme={theme} fontSize={16}>] </StyledText>
+        <StyledText theme={theme} fontSize={16}> [</StyledText>
         <StyledText theme={theme} fontSize={16}>{displayItem(item, "native")}</StyledText>
         <StyledText theme={theme} fontSize={16}>/</StyledText>
         <StyledText theme={theme} fontSize={16}>{displayItem(item, "a_beast")}</StyledText>
@@ -78,7 +80,7 @@ function displayWeapon(item, theme) {
         <StyledText theme={theme} fontSize={16}>{displayItem(item, "dark")}</StyledText>
         <StyledText theme={theme} fontSize={16}> | </StyledText>
         <StyledText theme={theme} fontSize={16}>{displayItem(item, "hit")}</StyledText>
-        <StyledText theme={theme} fontSize={16}> ] </StyledText>
+        <StyledText theme={theme} fontSize={16}>] </StyledText>
     </>
     );
 }
@@ -151,7 +153,10 @@ function displayMag(item, theme) {
 
 function displayTech(item, theme) {
     return (
+    <>
         <StyledText theme={theme} fontSize={16}>{displayItem(item, "name")}</StyledText>
+        <StyledText theme={theme} fontSize={16}>{displayItem(item, "level")}</StyledText>
+    </>
     );
 }
 
@@ -166,13 +171,19 @@ function displayTool(item, theme) {
 
 function displayOther(item, theme) {
     return (
+    <>
         <StyledText theme={theme} fontSize={16}>{displayItem(item, "name")}</StyledText>
+        <StyledText theme={theme} fontSize={16}>{displayItem(item, "number")}</StyledText>
+    </>
     );
 }
 
 function displayMeseta(item, theme) {
     return (
+    <>
         <StyledText theme={theme} fontSize={16}>{displayItem(item, "name")}</StyledText>
+        <StyledText theme={theme} fontSize={16}>{displayItem(item, "number")}</StyledText>
+    </>
     );
 }
 

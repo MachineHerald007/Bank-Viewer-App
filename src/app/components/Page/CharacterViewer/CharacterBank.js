@@ -18,20 +18,13 @@ import {
     SearchBar,
     ExpandButton
 } from "../styles";
+import { renderItemRow } from "@/app/util";
 import { useTheme } from "../../Theme/Theme";
 
 export function CharacterBank({ character }) {
     const [items, setItems] = useState([]);
     const [expandBank, setExpandBank] = useState(false);
     const { theme } = useTheme();
-
-    const displayItem = (item, prop) => {
-        let str = ""
-        Object.keys(item).map(key => {
-            str = item[key][prop]
-        })
-        return str;
-    };
 
     useEffect(() => {
         console.log("Received bank prop: ", character.bank)
@@ -62,9 +55,7 @@ export function CharacterBank({ character }) {
                             isSelectable onSelect={() => console.log(item)}
                         >
                             <Table.TextCell>
-                                <StyledText theme={theme} fontSize={16}>{
-                                    displayItem(item, "name")
-                                }</StyledText>
+                                {renderItemRow(item, theme)}
                             </Table.TextCell>
                         </ItemRow>
                     ))}
