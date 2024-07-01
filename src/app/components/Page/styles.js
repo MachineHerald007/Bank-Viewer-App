@@ -27,10 +27,20 @@ export const ItemTable = styled(Table)`
     border: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
 `;
 
+export const CharacterTitleRow = styled(Table.Row)`
+    height: 44px;
+    background-color: ${({ theme }) => (theme === "light" ? "#d36700" : "#05b16a")} !important;
+    border: none;
+    border-radius: 0px !important;
+    border-bottom: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")} !important;
+`;
+
 export const ItemTitleRow = styled(Table.Row)`
     height: 44px;
     background-color: ${({ theme }) => (theme === "light" ? "#e77406" : "#00cd78")} !important;
     border: none;
+    border-radius: 0px !important;
+    border-bottom: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")} !important;
 `;
 
 export const StyledText = styled(Text)`

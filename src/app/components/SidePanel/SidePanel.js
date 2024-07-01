@@ -161,7 +161,7 @@ export function SidePanel() {
                     </Pane>
                 )
             case "All Items":
-                return <AllItems />
+                return <AllItems accountData={accountData} />
             case "Shared Bank":
                 return <SharedBank sharedBank={sharedBank} />
             case "Custom Item Sets":
