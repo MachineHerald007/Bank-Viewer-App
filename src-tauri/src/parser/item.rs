@@ -216,13 +216,13 @@ fn mag(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let pbs = get_pbs(&hex_data, config);
 
     Item::Mag {
-        name: format!("{} LV{} [{:?}]", name, level, color.1),
+        name: name,
         type_: 5,
         item_data: Util::binary_array_to_hex(&item_data),
         level,
         sync,
         iq,
-        color: color.0.chars().nth(1).expect("REASON").to_string(),
+        color: String::from(color.1),
         rgb: color.0.chars().nth(0).expect("REASON").to_string(),
         stats: MagStats {
             def,
