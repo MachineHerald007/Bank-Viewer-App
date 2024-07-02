@@ -21,14 +21,14 @@ export const StyledTableRow = styled(Table.Row)`
     border-color: ${({ theme }) => (theme === "light" ? "#edeff5" : "#121212")};
 
     &:hover {
-        background: ${({ theme }) => (theme === "light" ? "#f57800" : "#00ff95")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#373636" : "#00ff95")} !important;
         ${StyledText} {
             color: #fff !important;
         }
     }
 
     &:focus {
-        background: ${({ theme }) => (theme === "light" ? "#f57800" : "#00ff95")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#373636" : "#00ff95")} !important;
         ${StyledText} {
             color: #fff !important;
         }

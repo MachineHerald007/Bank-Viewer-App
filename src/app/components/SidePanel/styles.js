@@ -18,7 +18,7 @@ export const SidePanelTab = styled(Tab)`
     border-radius: 2px;
 
     &:hover {
-        background-color: ${({ theme }) => (theme === "light" ? "#f57800" : "#00ff95")};
+        background-color: ${({ theme }) => (theme === "light" ? "#373636" : "#00ff95")};
         ${SidePanelText} {
             color: ${({ theme }) => (theme === "light" ? "#fff" : "#fff")}; 
         }
@@ -33,7 +33,7 @@ export const SidePanelTab = styled(Tab)`
     }
     
     &[aria-selected="true"] {
-        background-color: ${({ theme }) => (theme === "light" ? "#f57800" : "#00ff95")};
+        background-color: ${({ theme }) => (theme === "light" ? "#373636" : "#00ff95")};
 
         ${SidePanelText} {
             color: ${({ theme }) => (theme === "light" ? "#fff" : "#fff")}; 
