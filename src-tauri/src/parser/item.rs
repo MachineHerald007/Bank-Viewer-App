@@ -458,8 +458,6 @@ pub fn set_items(items_data: &[u8], slot: Slot, length: usize, meseta_data: &[u8
     let meseta_hex_code = format!("0x{:06x}", meseta_amount);
     let item = set_meseta(meseta_amount, config.clone());
 
-    println!("meseta item: {:?}", item);
-
     inventory.push((meseta_hex_code, WrappedItem { item }, slot.to_string()));
     inventory
 }

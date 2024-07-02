@@ -461,24 +461,6 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64) -> Resul
     for tool in tool_itr {
         items.push(tool?);
     }
-
-    let mut meseta_stmt = conn.prepare("SELECT * FROM meseta WHERE account_id = ?1 AND character_id = ?2")?;
-    let meseta_itr = meseta_stmt.query_map([account_id, character_id], |row| {
-        Ok(DBItem::Meseta {
-            id: row.get(0)?,
-            account_id: row.get(1)?,
-            character_id: row.get(2)?,
-            storage_type: row.get(3)?,
-            type_: row.get(4)?,
-            name: row.get(5)?,
-            amount: row.get(6)?,
-            lang: row.get(7)?
-        })
-    })?;
-
-    for meseta in meseta_itr {
-        items.push(meseta?);
-    }
     
     let mut other_stmt = conn.prepare("SELECT * FROM other WHERE account_id = ?1 AND character_id = ?2")?;
     let other_itr = other_stmt.query_map([account_id, character_id], |row| {
@@ -497,6 +479,24 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64) -> Resul
 
     for other in other_itr {
         items.push(other?);
+    }
+
+    let mut meseta_stmt = conn.prepare("SELECT * FROM meseta WHERE account_id = ?1 AND character_id = ?2")?;
+    let meseta_itr = meseta_stmt.query_map([account_id, character_id], |row| {
+        Ok(DBItem::Meseta {
+            id: row.get(0)?,
+            account_id: row.get(1)?,
+            character_id: row.get(2)?,
+            storage_type: row.get(3)?,
+            type_: row.get(4)?,
+            name: row.get(5)?,
+            amount: row.get(6)?,
+            lang: row.get(7)?
+        })
+    })?;
+
+    for meseta in meseta_itr {
+        items.push(meseta?);
     }
 
     Ok(items)
