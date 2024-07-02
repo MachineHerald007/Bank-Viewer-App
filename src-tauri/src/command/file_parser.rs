@@ -26,7 +26,7 @@ fn parse(files_to_parse: Files, config: Config) -> Vec<ParsedFile> {
             let normal = String::from("NORMAL");
             parsed_files.push(ParsedFile {
                 filename: String::from(&file.filename),
-                data: Data::SharedBank(shared_bank::create(&binary[8..4808], Config::mode(normal), config.clone())),
+                data: Data::SharedBank(shared_bank::create(&binary, Config::mode(normal), config.clone())),
             });
             continue;
         }
@@ -35,7 +35,7 @@ fn parse(files_to_parse: Files, config: Config) -> Vec<ParsedFile> {
             let classic = String::from("CLASSIC");
             parsed_files.push(ParsedFile {
                 filename: String::from(&file.filename),
-                data: Data::SharedBank(shared_bank::create(&binary[8..4808], Config::mode(classic), config.clone())),
+                data: Data::SharedBank(shared_bank::create(&binary, Config::mode(classic), config.clone())),
             });
             continue;
         }

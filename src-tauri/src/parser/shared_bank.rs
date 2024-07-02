@@ -7,11 +7,11 @@ fn set_account_type(mode: u8) -> String {
     Config::mode_name(mode)
 }
 
-pub fn create(char_data: &[u8], mode: u8, config: Config) -> SharedBank {
+pub fn create(pso_bank: &Vec<u8>, mode: u8, config: Config) -> SharedBank {
     SharedBank {
         account_type: set_account_type(mode),
         mode: mode,
-        bank: item::set_items(char_data, Slot::Str(set_account_type(mode)), 24, config.clone()),
+        bank: item::set_items(&pso_bank[8..4808], Slot::Str(set_account_type(mode)), 24, &pso_bank[4..7], config.clone()),
         lang: config.lang.unwrap()
     }
 }

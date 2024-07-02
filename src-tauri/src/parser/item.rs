@@ -268,12 +268,13 @@ fn tool(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     }
 }
 
-fn meseta(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
-    let amount = item_data[5] as u32; // Assuming the amount is stored in the 5th byte, adjust as necessary
+fn meseta(amount: u32, config: Config) -> Item {
+    let lang = config.lang.clone().unwrap();
+    let name = if lang == "EN" { "MESETA" } else { "メセタ" };
     
     Item::Meseta {
-        name: "Meseta".to_string(),
-        type_: 10, // Assuming 10 is the type code for Meseta, adjust as necessary
+        name: String::from(name),
+        type_: 10,
         amount
     }
 }
@@ -431,25 +432,11 @@ fn three_letters(array: &[u8]) -> Vec<u8> {
     vec![first, second as u8, third]
 }
 
-pub fn set_meseta(
-    meseta_data: &[u8],
-    inventory: &mut HashMap<String, Vec<(String, WrappedItem, String)>>,
-    slot: String,
-    lang: String,
-    config: Config
-) 
-{
-    let name = if lang == "EN" { "MESETA" } else { "メセタ" };
-    let meseta = ((meseta_data[2] as u32) << 16) | ((meseta_data[1] as u32) << 8) | meseta_data[0] as u32;
-    let meseta_code = format!("09{:07}", meseta);
-    let item = new_item(meseta_data.to_vec(), meseta, config);
-
-    if let Some(lang_inventory) = inventory.get_mut(&lang) {
-        lang_inventory.push((meseta_code, item, slot.to_string()));
-    }
+fn set_meseta(amount: u32, config: Config) -> Option<Item> {
+    Some(meseta(amount, config))
 }
 
-pub fn set_items(items_data: &[u8], slot: Slot, length: usize, config: Config) -> Inventory {
+pub fn set_items(items_data: &[u8], slot: Slot, length: usize, meseta_data: &[u8], config: Config) -> Inventory {
     let mut inventory = Vec::new();
     let lang = config.lang.clone().unwrap();
 
@@ -461,12 +448,19 @@ pub fn set_items(items_data: &[u8], slot: Slot, length: usize, config: Config) -
         }
 
         let item_code = Util::binary_array_to_int(&item_data[0..3]);
-        let item_code_hex = Util::binary_array_to_hex(&item_data[0..3]);
+        let item_hex_code = Util::binary_array_to_hex(&item_data[0..3]);
         let item = new_item(item_data.to_vec(), item_code, config.clone());
 
-        inventory.push((item_code_hex, item, slot.to_string()));
+        inventory.push((item_hex_code, item, slot.to_string()));
     }
 
+    let meseta_amount = ((meseta_data[2] as u32) << 16) | ((meseta_data[1] as u32) << 8) | meseta_data[0] as u32;
+    let meseta_hex_code = format!("0x{:06x}", meseta_amount);
+    let item = set_meseta(meseta_amount, config.clone());
+
+    println!("meseta item: {:?}", item);
+
+    inventory.push((meseta_hex_code, WrappedItem { item }, slot.to_string()));
     inventory
 }
 
@@ -487,7 +481,6 @@ fn create_item(item_data: Vec<u8>, item_code: u32, item_type: u32, config: Confi
         7 => Some(tool(item_code, item_data, config)),
         8 => Some(s_rank_weapon(item_code, item_data, config)),
         9 => Some(other(item_code, item_data, config)),
-        10 => Some(meseta(item_code, item_data, config)),
         _ => None,
     }
 }

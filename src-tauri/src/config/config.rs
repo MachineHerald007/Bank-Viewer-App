@@ -68,8 +68,8 @@ impl<'a> Config<'a> {
 
     pub fn addition_type() -> HashMap<&'static str, u32> {
         let mut map = HashMap::new();
-        map.insert("DEF", 0);
-        map.insert("AVOID", 1);
+        map.insert("DFP", 0);
+        map.insert("EVP", 1);
         map
     }
 
@@ -150,7 +150,7 @@ impl<'a> Config<'a> {
     pub fn attribute_type() -> HashMap<&'static str, u8> {
         let mut map = HashMap::new();
         map.insert("native", 0x01);
-        map.insert("aBeast", 0x02);
+        map.insert("a_beast", 0x02);
         map.insert("machine", 0x03);
         map.insert("dark", 0x04);
         map.insert("hit", 0x05);

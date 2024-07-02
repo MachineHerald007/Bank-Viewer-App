@@ -116,20 +116,20 @@ fn set_ep2_progress(char_data: &Vec<u8>, index: usize, number: usize) -> String 
     progress
 }
 
-pub fn create(char_data: &Vec<u8>, slot: usize, config: Config) -> Character {
+pub fn create(pso_char: &Vec<u8>, slot: usize, config: Config) -> Character {
     Character {
         slot: slot,
-        mode: set_mode(char_data),
-        name: set_name(char_data),
+        mode: set_mode(pso_char),
+        name: set_name(pso_char),
         lang: config.lang.clone().unwrap(),
-        guild_card_number: set_guild_card_number(char_data),
-        class: set_class(char_data),
-        section_id: set_section_id(char_data),
-        level: set_level(char_data),
-        experience: set_experience(char_data),
-        ep1_progress: set_ep1_progress(char_data, 11460, 9),
-        ep2_progress: set_ep2_progress(char_data, 11496, 6),
-        inventory: item::set_items(&char_data[20..860], Slot::Usize(slot), 28, config.clone()),
-        bank: item::set_items(&char_data[1800..6600], Slot::Usize(slot), 24, config.clone()),
+        guild_card_number: set_guild_card_number(pso_char),
+        class: set_class(pso_char),
+        section_id: set_section_id(pso_char),
+        level: set_level(pso_char),
+        experience: set_experience(pso_char),
+        ep1_progress: set_ep1_progress(pso_char, 11460, 9),
+        ep2_progress: set_ep2_progress(pso_char, 11496, 6),
+        inventory: item::set_items(&pso_char[20..860], Slot::Usize(slot), 28, &pso_char[884..887], config.clone()),
+        bank: item::set_items(&pso_char[1800..6600], Slot::Usize(slot), 24, &pso_char[1795..1799], config.clone()),
     }
 }

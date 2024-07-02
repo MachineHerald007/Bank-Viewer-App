@@ -54,6 +54,11 @@ export function displayItem(item, prop, theme) {
             )
         case "number":
             return " x" + str;
+        case "amount":
+            if (!str) {
+                str = "0";
+            }
+            return ": " + str;
         case "level":
             return " LV" + str + " disk";
         default:
@@ -182,7 +187,7 @@ function displayMeseta(item, theme) {
     return (
     <>
         <StyledText theme={theme} fontSize={16}>{displayItem(item, "name")}</StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "number")}</StyledText>
+        <StyledText theme={theme} fontSize={16}>{displayItem(item, "amount")}</StyledText>
     </>
     );
 }
