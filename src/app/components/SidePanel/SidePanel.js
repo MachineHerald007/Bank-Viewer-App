@@ -37,7 +37,8 @@ import { Settings } from "../Page/Settings/Settings";
 import { useTheme } from "../Theme/Theme";
 
 export function SidePanel() {
-    const { user, loggedInAccount, setLoggedInAccount, dashboardState } = useContext(AppContext);
+    const { user, loggedInAccount, setLoggedInAccount } = useContext(AppContext);
+    const [dashboardState, setDashboardState] = useState({})
     const [accountData, setAccountData] = useState({});
     const [sharedBank, setSharedBank] = useState([])
     const [characters, setCharacters] = useState([]);
@@ -90,11 +91,17 @@ export function SidePanel() {
     };
 
     useEffect(() => {
-        console.log("USER: ", user);
-        console.log("LOGGED IN ACCOUNT: ", loggedInAccount);
-        console.log("DASHBOARD STATE: ", dashboardState);
-        getSelectedTab(dashboardState.selected_tab);
-        
+        invoke("get_dashboard_state")
+        .then(dashboard_state => {
+            setDashboardState(dashboard_state);
+            getSelectedTab(dashboard_state.selected_tab);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }, [])
+
+    useEffect(() => {
         invoke("get_account_data", {
             accountId: dashboardState.logged_in_account_id
         })
@@ -104,10 +111,12 @@ export function SidePanel() {
             setCharacters(res.characters);
         })
         .catch(err => console.log(err))
-    }, [])
+
+    }, [dashboardState])
 
     useEffect(() => {
         console.log("ACCOUNT DATA: ", accountData);
+        console.log("SHARED BANK DATA: ", sharedBank);
         console.log("CHARACTER DATA: ", characters);
     }, [accountData, sharedBank, characters])
 

@@ -26,7 +26,6 @@ export default function Home() {
     const getUser = (setUser) => {
         invoke("get_user")
         .then(res => {
-            console.log("User: ", res);
             setUser(res);
         })
         .catch(err => {
@@ -38,7 +37,6 @@ export default function Home() {
     const getAccounts = (setAccounts) => {
         invoke("get_accounts")
         .then(res => {
-            console.log("Accounts: ", res);
             setAccounts(res);
         })
         .catch(err => {
@@ -50,7 +48,6 @@ export default function Home() {
     const getDashboardState = (setDashboardState, setLoginState) => {
         invoke("get_dashboard_state")
         .then(res => {
-            console.log("Dashboard state: ", res);
             setLoggedInAccount(res.account);
             setDashboardState(res);
         })
@@ -74,8 +71,7 @@ export default function Home() {
     return (
         <ThemeProvider>
             <AppContext.Provider value={{
-                user, setUser, getUser, loggedInAccount,setLoggedInAccount,
-                dashboardState, setDashboardState
+                user, setUser, getUser, loggedInAccount,setLoggedInAccount
             }}>
             <Pane>
                 {!isEmpty(loggedInAccount) && loggedInAccount.logged_in_account_id != 0 ? 
