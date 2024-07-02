@@ -21,16 +21,16 @@ export const StyledTableRow = styled(Table.Row)`
     border-color: ${({ theme }) => (theme === "light" ? "#edeff5" : "#121212")};
 
     &:hover {
-        background: ${({ theme }) => (theme === "light" ? "#373636" : "#00ff95")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#373636" : "#e9e9e9")} !important;
         ${StyledText} {
-            color: #fff !important;
+             color: ${({ theme }) => (theme === "light" ? "#fff" : "#161616")} !important; 
         }
     }
 
     &:focus {
-        background: ${({ theme }) => (theme === "light" ? "#373636" : "#00ff95")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#373636" : "#e9e9e9")} !important;
         ${StyledText} {
-            color: #fff !important;
+             color: ${({ theme }) => (theme === "light" ? "#fff" : "#161616")} !important; 
         }
     }
 `;
@@ -48,13 +48,22 @@ export const StyledPagination = styled(Pagination)`
         color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
         background: ${({ theme }) => (theme === "light" ? "#fff" : "#232427")};
 
+        &:not([disabled]):focus {
+            box-shadow: none !important;
+        }
+
+        &:hover {
+            color: ${({ theme }) => (theme === "light" ? "#fff" : "#161616")}; 
+            background: ${({ theme }) => (theme === "light" ? "#373636" : "#e9e9e9")} !important;
+        }
+
         &[aria-current="true"] {
-            color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
-            background: ${({ theme }) => (theme === "light" ? "#e9eaeb" : "#3c3d41")};
+            color: ${({ theme }) => (theme === "light" ? "#fff" : "#161616")};
+            background: ${({ theme }) => (theme === "light" ? "#373636" : "#e9e9e9")};
 
             &:hover {
-                color: white;
-                background: #00ffd0;
+                color: ${({ theme }) => (theme === "light" ? "#fff" : "#161616")} !important;
+                background:  ${({ theme }) => (theme === "light" ? "#00ffd0" : "#e9e9e9")};
             }
         }
     }

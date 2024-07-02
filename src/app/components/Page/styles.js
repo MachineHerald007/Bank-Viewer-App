@@ -29,7 +29,7 @@ export const ItemTable = styled(Table)`
 
 export const CharacterTitleRow = styled(Table.Row)`
     height: 44px;
-    background-color: ${({ theme }) => (theme === "light" ? "#d36700" : "#05b16a")} !important;
+    background-color: ${({ theme }) => (theme === "light" ? "#2b2b2b" : "#05b16a")} !important;
     border: none;
     border-radius: 0px !important;
     border-bottom: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")} !important;
@@ -37,7 +37,7 @@ export const CharacterTitleRow = styled(Table.Row)`
 
 export const ItemTitleRow = styled(Table.Row)`
     height: 44px;
-    background-color: ${({ theme }) => (theme === "light" ? "#373636" : "#00cd78")} !important;
+    background-color: ${({ theme }) => (theme === "light" ? "#3d3d3d" : "#00cd78")} !important;
     border: none;
     border-radius: 0px !important;
     border-bottom: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")} !important;
@@ -53,16 +53,16 @@ export const ItemRow = styled(Table.Row)`
     border-bottom: 1px solid ${({ theme }) => (theme === "light" ? "#E6E8F0" : "#121212")};
 
     &:hover {
-        background: ${({ theme }) => (theme === "light" ? "#373636" : "#00ff95")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#e3e3e3" : "#161616")} !important;
         ${StyledText} {
-            color: ${({ theme }) => (theme === "light" ? "#fff" : "#fff")};
+            color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
         }
     }
 
     &:focus {
-        background: ${({ theme }) => (theme === "light" ? "#373636" : "#00ff95")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#e3e3e3" : "#161616")} !important;
         ${StyledText} {
-            color: ${({ theme }) => (theme === "light" ? "#fff" : "#fff")};
+            color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
         }
     }
 `;

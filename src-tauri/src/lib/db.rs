@@ -260,16 +260,6 @@ pub enum DBItem {
         item_data: String,
         lang: String
     },
-    Meseta {
-        id: i64,
-        account_id: i64,
-        character_id: i64,
-        storage_type: String,
-        type_: u8,
-        name: String,
-        amount: u32,
-        lang: String
-    },
     Other {
         id: i64,
         account_id: i64,
@@ -279,6 +269,16 @@ pub enum DBItem {
         name: String,
         number: u32,
         item_data: String,
+        lang: String
+    },
+    Meseta {
+        id: i64,
+        account_id: i64,
+        character_id: i64,
+        storage_type: String,
+        type_: u8,
+        name: String,
+        amount: u32,
         lang: String
     }
 }
