@@ -115,6 +115,7 @@ pub fn init_app() -> Result<(), SqlError> {
             type INTEGER NOT NULL,
             name TEXT NOT NULL,
             special TEXT NOT NULL,
+            special_code TEXT NOT NULL,
             grind INTEGER NOT NULL,
             native INTEGER NOT NULL,
             a_beast INTEGER NOT NULL,
@@ -139,6 +140,7 @@ pub fn init_app() -> Result<(), SqlError> {
             name TEXT NOT NULL,
             grind INTEGER NOT NULL,
             special TEXT NOT NULL,
+            special_code TEXT NOT NULL,
             item_data TEXT NOT NULL,
             lang TEXT NOT NULL
         )",

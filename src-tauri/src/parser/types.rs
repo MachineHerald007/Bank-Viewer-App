@@ -82,6 +82,7 @@ pub enum Item {
         type_: u8,
         item_data: String,
         special: String,
+        special_code: String,
         grind: u8,
         attribute: Attribute,
         tekked: bool,
@@ -130,9 +131,16 @@ pub enum Item {
         type_: u8,
         item_data: String,
         grind: u8,
-        special: String
+        special: String,
+        special_code: String
     },
     Tool {
+        name: String,
+        type_: u8,
+        item_data: String,
+        number: u8
+    },
+    Other {
         name: String,
         type_: u8,
         item_data: String,
@@ -142,12 +150,6 @@ pub enum Item {
         name: String,
         type_: u8,
         amount: u32
-    },
-    Other {
-        name: String,
-        type_: u8,
-        item_data: String,
-        number: u8
     },
 }
 

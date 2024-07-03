@@ -35,7 +35,7 @@ export function AccountFileUpload({ theme, onComplete }) {
         try {
             const response = await invoke("parse_files", {
                 files: files,
-                lang: "JA"
+                lang: "EN"
             });
 
             return response;

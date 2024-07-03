@@ -136,7 +136,7 @@ pub fn rare_weapon_special_codes() -> HashMap<u32, &'static str> {
     codes.insert(0x000308, "Blizzard");
     codes.insert(0x000309, "Zalure(Lv.5)");
     codes.insert(0x000405, "Soul");
-    codes.insert(0x000406, "Charge++");
+    codes.insert(0x000406, "Charge+");
     codes.insert(0x000407, "Freeze");
     codes.insert(0x000408, "Hell");
     codes.insert(0x000505, "Dark");
@@ -256,8 +256,8 @@ pub fn rare_weapon_special_codes() -> HashMap<u32, &'static str> {
     codes.insert(0x004300, "Fill");
     codes.insert(0x004301, "Lord's");
     codes.insert(0x004400, "Storm");
-    codes.insert(0x004500, "Blizzard++");
-    codes.insert(0x004501, "Piercing Blizzard++");
+    codes.insert(0x004500, "Blizzard+");
+    codes.insert(0x004501, "Piercing Blizzard+");
     codes.insert(0x004600, "Tempest");
     codes.insert(0x004700, "Burning");
     codes.insert(0x004800, "Havoc");
@@ -459,9 +459,9 @@ pub fn rare_weapon_special_codes() -> HashMap<u32, &'static str> {
     codes.insert(0x00EC00, "None");
  // Ephinea Original
     codes.insert(0x00040C, "Hell");
-    codes.insert(0x00040D, "Charge++");
-    codes.insert(0x00040E, "Charge++");
-    codes.insert(0x00040F, "Charge++");
+    codes.insert(0x00040D, "Charge+");
+    codes.insert(0x00040E, "Charge+");
+    codes.insert(0x00040F, "Charge+");
     codes.insert(0x000410, "Hell");
     codes.insert(0x000411, "Hell");
     codes.insert(0x00050C, "Berserk");
@@ -490,12 +490,12 @@ pub fn rare_weapon_special_codes() -> HashMap<u32, &'static str> {
     codes.insert(0x003204, "PB Wave");
     codes.insert(0x003401, "Seize");
     codes.insert(0x003402, "Seize");
-    codes.insert(0x004502, "Blizzard++");
-    codes.insert(0x004503, "Blizzard++");
-    codes.insert(0x004504, "Piercing Blizzard++");
-    codes.insert(0x004505, "Blizzard++");
-    codes.insert(0x004506, "Piercing Blizzard++");
-    codes.insert(0x004507, "Piercing Blizzard++");
+    codes.insert(0x004502, "Blizzard+");
+    codes.insert(0x004503, "Blizzard+");
+    codes.insert(0x004504, "Piercing Blizzard+");
+    codes.insert(0x004505, "Blizzard+");
+    codes.insert(0x004506, "Piercing Blizzard+");
+    codes.insert(0x004507, "Piercing Blizzard+");
     codes.insert(0x004B02, "Gush");
     codes.insert(0x004B03, "King's");
     codes.insert(0x004B04, "Gush");

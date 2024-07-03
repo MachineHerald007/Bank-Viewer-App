@@ -136,7 +136,7 @@ pub fn rare_weapon_special_codes_ja() -> HashMap<u32, &'static str> {
     codes.insert(0x000308, "ブリザード");
     codes.insert(0x000309, "Zalure(Lv.5)");
     codes.insert(0x000405, "ソウル");
-    codes.insert(0x000406, "チャージ++");
+    codes.insert(0x000406, "チャージ+");
     codes.insert(0x000407, "フリーズ");
     codes.insert(0x000408, "ヘル");
     codes.insert(0x000505, "ダーク");
@@ -256,8 +256,8 @@ pub fn rare_weapon_special_codes_ja() -> HashMap<u32, &'static str> {
     codes.insert(0x004300, "フィル");
     codes.insert(0x004301, "ロード");
     codes.insert(0x004400, "ストーム");
-    codes.insert(0x004500, "ブリザード++");
-    codes.insert(0x004501, "Piercing ブリザード++");
+    codes.insert(0x004500, "ブリザード+");
+    codes.insert(0x004501, "Piercing ブリザード+");
     codes.insert(0x004600, "テンペスト");
     codes.insert(0x004700, "バーニング");
     codes.insert(0x004800, "ハブック");
@@ -459,9 +459,9 @@ pub fn rare_weapon_special_codes_ja() -> HashMap<u32, &'static str> {
     codes.insert(0x00EC00, "None");
  // Ephinea Original
     codes.insert(0x00040C, "ヘル");
-    codes.insert(0x00040D, "チャージ++");
-    codes.insert(0x00040E, "チャージ++");
-    codes.insert(0x00040F, "チャージ++");
+    codes.insert(0x00040D, "チャージ+");
+    codes.insert(0x00040E, "チャージ+");
+    codes.insert(0x00040F, "チャージ+");
     codes.insert(0x000410, "ヘル");
     codes.insert(0x000411, "ヘル");
     codes.insert(0x00050C, "バーサーク");
@@ -490,12 +490,12 @@ pub fn rare_weapon_special_codes_ja() -> HashMap<u32, &'static str> {
     codes.insert(0x003204, "PB Wave");
     codes.insert(0x003401, "シーズ");
     codes.insert(0x003402, "シーズ");
-    codes.insert(0x004502, "ブリザード++");
-    codes.insert(0x004503, "ブリザード++");
-    codes.insert(0x004504, "Piercing ブリザード++");
-    codes.insert(0x004505, "ブリザード++");
-    codes.insert(0x004506, "Piercing ブリザード++");
-    codes.insert(0x004507, "Piercing ブリザード++");
+    codes.insert(0x004502, "ブリザード+");
+    codes.insert(0x004503, "ブリザード+");
+    codes.insert(0x004504, "Piercing ブリザード+");
+    codes.insert(0x004505, "ブリザード+");
+    codes.insert(0x004506, "Piercing ブリザード+");
+    codes.insert(0x004507, "Piercing ブリザード+");
     codes.insert(0x004B02, "ガッシュ");
     codes.insert(0x004B03, "キング");
     codes.insert(0x004B04, "ガッシュ");

@@ -92,9 +92,12 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let dark = get_dark(&item_data);
     let hit = get_hit(&item_data);
     let is_common = is_common_weapon(item_code);
+    let mut special_code = String::new();
     let special = if item_data[4] != 0x00 && item_data[4] != 0x80 && is_common {
+        special_code = format!("0x{:02X}", item_data[4]);
         get_special(&item_data, &config)
     } else {
+        special_code = format!("0x{:06X}", item_code);
         get_rare_special(item_code, &config)
     };
     let tekked_mode = is_tekked(&item_data, item_code);
@@ -113,6 +116,7 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
         type_: 1,
         item_data: Util::binary_array_to_hex(&item_data),
         special: special.clone(),
+        special_code: special_code,
         grind,
         attribute: Attribute {
             native,
@@ -142,7 +146,8 @@ fn s_rank_weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
         type_: 8,
         item_data: Util::binary_array_to_hex(&item_data),
         grind,
-        special: special.clone()
+        special: special.clone(),
+        special_code: format!("0x{:02X}", item_data[2])
     }
 }
 

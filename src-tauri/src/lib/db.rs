@@ -39,16 +39,16 @@ pub fn seed_class_default_image(conn: &Connection, directory: &str) -> Result<()
 pub fn insert_item(conn: &Connection, item: &WrappedItem, account_id: i64, character_id: i64, storage_type: String, lang: String) -> Result<(), SqlError> {
     if let Some(item_type) = &item.item {
         match item_type {
-            Item::Weapon { name, type_, item_data, special, grind, attribute, tekked, rare } => {
+            Item::Weapon { name, type_, item_data, special, special_code, grind, attribute, tekked, rare } => {
                 conn.execute(
                     "INSERT INTO weapon
                     (
                         account_id, character_id, storage_type, name, type, item_data, special,
-                        grind, native, a_beast, machine, dark, hit, tekked, rare, lang
+                        special_code, grind, native, a_beast, machine, dark, hit, tekked, rare, lang
                     )
-                    VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9,?10, ?11, ?12, ?13, ?14, ?15, ?16)",
+                    VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9,?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17)",
                     params![
-                        account_id, character_id, storage_type, name, type_, item_data, special,
+                        account_id, character_id, storage_type, name, type_, item_data, special, special_code,
                         grind, attribute.native, attribute.a_beast, attribute.machine, attribute.dark,
                         attribute.hit, tekked, rare, lang
                     ]
@@ -110,11 +110,13 @@ pub fn insert_item(conn: &Connection, item: &WrappedItem, account_id: i64, chara
                      params![account_id, character_id, storage_type, name, type_, level, item_data, lang]
                 )?;
             }
-            Item::SRankWeapon { name, type_, item_data, grind, special } => {
+            Item::SRankWeapon { name, type_, item_data, grind, special, special_code } => {
                 conn.execute(
-                    "INSERT INTO srank_weapon (account_id, character_id, storage_type, name, type, grind, special, item_data, lang)
-                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
-                     params![account_id, character_id, storage_type, name, type_, grind, special, item_data, lang]
+                    "INSERT INTO srank_weapon (
+                        account_id, character_id, storage_type, name, type, grind, special, special_code, item_data, lang
+                     )
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)",
+                     params![account_id, character_id, storage_type, name, type_, grind, special, special_code, item_data, lang]
                 )?;
             }
             Item::Tool { name, type_, item_data, number } => {
@@ -156,6 +158,7 @@ pub enum DBItem {
         type_: u8,
         name: String,
         special: String,
+        special_code: String,
         grind: u8,
         native: u8,
         a_beast: u8,
@@ -176,6 +179,7 @@ pub enum DBItem {
         name: String,
         grind: u8,
         special: String,
+        special_code: String,
         item_data: String,
         lang: String
     },
@@ -296,16 +300,17 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64) -> Resul
             type_: row.get(4)?,
             name: row.get(5)?,
             special: row.get(6)?,
-            grind: row.get(7)?,
-            native: row.get(8)?,
-            a_beast: row.get(9)?,
-            machine: row.get(10)?,
-            dark: row.get(11)?,
-            hit: row.get(12)?,
-            tekked: row.get(13)?,
-            rare: row.get(14)?,
-            item_data: row.get(15)?,
-            lang: row.get(16)?
+            special_code: row.get(7)?,
+            grind: row.get(8)?,
+            native: row.get(9)?,
+            a_beast: row.get(10)?,
+            machine: row.get(11)?,
+            dark: row.get(12)?,
+            hit: row.get(13)?,
+            tekked: row.get(14)?,
+            rare: row.get(15)?,
+            item_data: row.get(16)?,
+            lang: row.get(17)?
         })
     })?;
 
@@ -324,8 +329,9 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64) -> Resul
             name: row.get(5)?,
             grind: row.get(6)?,
             special: row.get(7)?,
-            item_data: row.get(8)?,
-            lang: row.get(9)?
+            special_code: row.get(8)?,
+            item_data: row.get(9)?,
+            lang: row.get(10)?
         })
     })?;
 
