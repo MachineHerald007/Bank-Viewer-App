@@ -37,7 +37,7 @@ export function CharacterBank({ character }) {
 
     return (
         <ItemPane theme={theme} height={720}>
-            <Heading size={600} color={theme === "light" ? "#52586d" : "#fff"}>Bank</Heading>
+            <Heading size={600} color={theme === "light" ? "#fff" : "#fff"}>Bank</Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Bank..." />
             <ExpandButton
                 theme={theme}

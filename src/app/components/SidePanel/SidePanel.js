@@ -28,7 +28,7 @@ import {
 import {
   SettingFilled
 } from '@ant-design/icons';
-import { SidePanelTab, SidePanelText, PanelPageContainer } from "./styles";
+import { SidePanelPane, SidePanelTab, SidePanelText, PanelPageContainer } from "./styles";
 import { ProfileSection } from "./ProfileSection";
 import { AllItems } from "../Page/All-Items/All-Items";
 import { SharedBank } from "../Page/SharedBank/SharedBank";
@@ -187,7 +187,7 @@ export function SidePanel() {
     }
 
     return (
-        <Pane display="flex">
+        <SidePanelPane theme={theme} display="flex" paddingLeft={24}>
             <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
                 <ProfileSection user={user} account={loggedInAccount} />
                 {tabs.map((tab, index) => {
@@ -225,6 +225,6 @@ export function SidePanel() {
                     </Pane>
                 ))}
             </PanelPageContainer>
-        </Pane>
+        </SidePanelPane>
     )
 }

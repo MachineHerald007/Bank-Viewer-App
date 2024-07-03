@@ -141,6 +141,8 @@ function color(special) {
             return "pink !important";
         case "TP Regeneration":
             return "pink !important";
+
+        // JA Specials
         default:
             return "#fff !important";
     }
@@ -236,7 +238,7 @@ function displaySrankWeapon(item, theme) {
         <StyledText theme={theme} fontSize={16}>/</StyledText>
         <StyledText theme={theme} fontSize={16}>{displayItem(item, "dark")}</StyledText>
         <StyledText theme={theme} fontSize={16} fontWeight={600}> | </StyledText>
-        <StyledText theme={theme} fontSize={16} fontWeight={600}>{displayItem(item, "hit")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#ff7875 !important">{displayItem(item, "hit")}</StyledText>
         <StyledText theme={theme} fontSize={16} fontWeight={600}>] </StyledText>
     </>
     );
@@ -256,15 +258,15 @@ function displayWeapon(item, theme) {
         <StyledText theme={theme} fontSize={16}>{displayItem(item, "special")}</StyledText>
         <StyledText theme={theme} fontSize={16} fontWeight={600}>] </StyledText>
         <StyledText theme={theme} fontSize={16} fontWeight={600}> [</StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "native")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#25e17b !important">{displayItem(item, "native")}</StyledText>
         <StyledText theme={theme} fontSize={16}>/</StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "a_beast")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#25e17b !important">{displayItem(item, "a_beast")}</StyledText>
         <StyledText theme={theme} fontSize={16}>/</StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "machine")}</StyledText>
+        <StyledText theme={theme} fontSize={16}  fontWeight={600} color="#25e17b !important">{displayItem(item, "machine")}</StyledText>
         <StyledText theme={theme} fontSize={16}>/</StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "dark")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#25e17b !important">{displayItem(item, "dark")}</StyledText>
         <StyledText theme={theme} fontSize={16} fontWeight={600}> | </StyledText>
-        <StyledText theme={theme} fontSize={16} fontWeight={600}>{displayItem(item, "hit")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#ff7875 !important">{displayItem(item, "hit")}</StyledText>
         <StyledText theme={theme} fontSize={16} fontWeight={600}>] </StyledText>
     </>
     );
@@ -275,16 +277,16 @@ function displayFrame(item, theme) {
     <>
         <StyledText theme={theme} fontSize={16} fontWeight={600} color="yellow !important" >{displayItem(item, "name")}</StyledText>
         <StyledText theme={theme} fontSize={16} fontWeight={600}> [</StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "dfp")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#25e17b !important">{displayItem(item, "dfp")}</StyledText>
         <StyledText theme={theme} fontSize={16}>/</StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "max_dfp")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#25e17b !important">{displayItem(item, "max_dfp")}</StyledText>
         <StyledText theme={theme} fontSize={16} fontWeight={600}> | </StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "evp")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#25e17b !important">{displayItem(item, "evp")}</StyledText>
         <StyledText theme={theme} fontSize={16}>/</StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "max_evp")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#25e17b !important">{displayItem(item, "max_evp")}</StyledText>
         <StyledText theme={theme} fontSize={16} fontWeight={600}>]</StyledText>
         <StyledText theme={theme} fontSize={16} fontWeight={600}> [</StyledText>
-        <StyledText theme={theme} fontSize={16} fontWeight={600}>{displayItem(item, "slot")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#ff7875 !important">{displayItem(item, "slot")}</StyledText>
         <StyledText theme={theme} fontSize={16} fontWeight={600}>]</StyledText>
     </>
     );
@@ -295,13 +297,13 @@ function displayBarrier(item, theme) {
     <>
         <StyledText theme={theme} fontSize={16} fontWeight={600} color="yellow !important" >{displayItem(item, "name")}</StyledText>
         <StyledText theme={theme} fontSize={16}> [</StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "dfp")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#25e17b !important">{displayItem(item, "dfp")}</StyledText>
         <StyledText theme={theme} fontSize={16}>/</StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "max_dfp")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#25e17b !important">{displayItem(item, "max_dfp")}</StyledText>
         <StyledText theme={theme} fontSize={16}> | </StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "evp")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#25e17b !important">{displayItem(item, "evp")}</StyledText>
         <StyledText theme={theme} fontSize={16}>/</StyledText>
-        <StyledText theme={theme} fontSize={16}>{displayItem(item, "max_evp")}</StyledText>
+        <StyledText theme={theme} fontSize={16} fontWeight={600} color="#25e17b !important">{displayItem(item, "max_evp")}</StyledText>
         <StyledText theme={theme} fontSize={16}>]</StyledText>
     </>
     );

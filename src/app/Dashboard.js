@@ -12,7 +12,7 @@ export default function Dashboard() {
     }, [])
 
     return (
-        <Pane marginLeft={24}>
+        <Pane>
             <SidePanel />
         </Pane>
     )

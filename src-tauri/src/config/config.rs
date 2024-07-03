@@ -219,7 +219,7 @@ impl<'a> Config<'a> {
         map.insert(0x008600, "HARISEN");
         map.insert(0x008700, "J-BLADE");
         map.insert(0x008800, "J-CUTTER");
-        map.insert(0x00A500, "SOWRDS");
+        map.insert(0x00A500, "SWORDS");
         map.insert(0x00A600, "LAUNCHER");
         map.insert(0x00A700, "CARDS");
         map.insert(0x00A800, "KNUCKLE");

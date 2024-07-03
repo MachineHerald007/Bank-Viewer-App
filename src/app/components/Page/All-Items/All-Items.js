@@ -46,7 +46,7 @@ export function AllItems({ accountData }) {
 
     return (
         <ItemPane theme={theme}>
-            <Heading size={600} color={theme === "light" ? "#52586d" : "#fff"}>All Items</Heading>
+            <Heading size={600} color={theme === "light" ? "#efefef" : "#fff"}>All Items</Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Items..." />
             <ItemTable theme={theme}>
                 <Table.Body>

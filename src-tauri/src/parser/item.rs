@@ -268,17 +268,6 @@ fn tool(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     }
 }
 
-fn meseta(amount: u32, config: Config) -> Item {
-    let lang = config.lang.clone().unwrap();
-    let name = if lang == "EN" { "MESETA" } else { "メセタ" };
-    
-    Item::Meseta {
-        name: String::from(name),
-        type_: 10,
-        amount
-    }
-}
-
 fn other(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let name = get_item_name(item_code, &config);
     let number = if item_data.len() == 28 {
@@ -292,6 +281,17 @@ fn other(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
         type_: 9,
         item_data: Util::binary_array_to_hex(&item_data),
         number
+    }
+}
+
+fn meseta(amount: u32, config: Config) -> Item {
+    let lang = config.lang.clone().unwrap();
+    let name = if lang == "EN" { "MESETA" } else { "メセタ" };
+    
+    Item::Meseta {
+        name: String::from(name),
+        type_: 10,
+        amount
     }
 }
 
@@ -432,10 +432,6 @@ fn three_letters(array: &[u8]) -> Vec<u8> {
     vec![first, second as u8, third]
 }
 
-fn set_meseta(amount: u32, config: Config) -> Option<Item> {
-    Some(meseta(amount, config))
-}
-
 pub fn set_items(items_data: &[u8], slot: Slot, length: usize, meseta_data: &[u8], config: Config) -> Inventory {
     let mut inventory = Vec::new();
     let lang = config.lang.clone().unwrap();
@@ -460,6 +456,10 @@ pub fn set_items(items_data: &[u8], slot: Slot, length: usize, meseta_data: &[u8
 
     inventory.push((meseta_hex_code, WrappedItem { item }, slot.to_string()));
     inventory
+}
+
+fn set_meseta(amount: u32, config: Config) -> Option<Item> {
+    Some(meseta(amount, config))
 }
 
 fn is_blank(item_data: &[u8]) -> bool {

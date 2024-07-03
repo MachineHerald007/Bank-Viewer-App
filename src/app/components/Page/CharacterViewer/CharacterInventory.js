@@ -32,7 +32,7 @@ export function CharacterInventory({ character }) {
 
     return (
         <ItemPane theme={theme} height={720}>
-            <Heading size={600} color={theme === "light" ? "#52586d" : "#fff"}>Inventory</Heading>
+            <Heading size={600} color={theme === "light" ? "#fff" : "#fff"}>Inventory</Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Inventory..." />
             <ExpandButton
                 theme={theme}
