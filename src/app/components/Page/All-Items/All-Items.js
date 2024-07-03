@@ -98,7 +98,7 @@ export function AllItems({ accountData }) {
                                 onSelect={() => console.log(char)}
                             >
                                 <Table.TextCell>
-                                    <StyledText fontSize={16} marginLeft={16}><b>Bank - {char.name}</b></StyledText>
+                                    <StyledText fontSize={16} marginLeft={16}><b>Bank</b></StyledText>
                                 </Table.TextCell>
                             </ItemTitleRow>
                             {char.bank.map((item, i) => (
@@ -118,14 +118,18 @@ export function AllItems({ accountData }) {
                             </ItemRow>
                         </Pane>
                     ))}
-                    <ItemTitleRow
-                        theme={theme}
-                        isSelectable
-                    >
-                        <Table.TextCell>
-                            <StyledText fontSize={16} marginLeft={16}><b>Shared Bank - Normal</b></StyledText>
-                        </Table.TextCell>
-                    </ItemTitleRow>
+                    {sharedBank.length > 0 ?
+                        <ItemTitleRow
+                            theme={theme}
+                            isSelectable
+                        >
+                            <Table.TextCell>
+                                <StyledText fontSize={16} marginLeft={16}><b>Shared Bank - Normal</b></StyledText>
+                            </Table.TextCell>
+                        </ItemTitleRow>
+                        :
+                        <></>
+                    }
                     {sharedBank.map((item, index) => (
                         <ItemRow
                             theme={theme}
