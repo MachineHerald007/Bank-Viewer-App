@@ -59,11 +59,11 @@ export function AllItems({ accountData }) {
                                 onSelect={() => console.log(char)}
                             >
                                 <Table.TextCell>
-                                    <StyledText fontSize={16} marginLeft={16}><b>Slot: {char.slot}</b></StyledText>
-                                    <StyledText fontSize={16} marginLeft={4}> | <b>{char.name}</b></StyledText>
-                                    <StyledText fontSize={16} marginLeft={4}> | <b>{char.level}</b></StyledText>
-                                    <StyledText fontSize={16} marginLeft={4}> | <b>{char.section_id}</b></StyledText>
-                                    <StyledText fontSize={16} marginLeft={4}> | <b>{char.class}</b></StyledText>
+                                    <StyledText marginLeft={16}><b>Slot: {char.slot}</b></StyledText>
+                                    <StyledText marginLeft={4}> | <b>{char.name}</b></StyledText>
+                                    <StyledText marginLeft={4}> | <b>{char.level}</b></StyledText>
+                                    <StyledText marginLeft={4}> | <b>{char.section_id}</b></StyledText>
+                                    <StyledText marginLeft={4}> | <b>{char.class}</b></StyledText>
                                 </Table.TextCell>
                             </CharacterTitleRow>
                             <ItemTitleRow
@@ -73,7 +73,7 @@ export function AllItems({ accountData }) {
                                 onSelect={() => console.log(char)}
                             >
                                 <Table.TextCell>
-                                    <StyledText fontSize={16} marginLeft={16}><b>Inventory</b></StyledText>
+                                    <StyledText marginLeft={16}><b>Inventory</b></StyledText>
                                 </Table.TextCell>
                             </ItemTitleRow>
                             {char.inventory.map((item, i) => (
@@ -98,7 +98,7 @@ export function AllItems({ accountData }) {
                                 onSelect={() => console.log(char)}
                             >
                                 <Table.TextCell>
-                                    <StyledText fontSize={16} marginLeft={16}><b>Bank</b></StyledText>
+                                    <StyledText marginLeft={16}><b>Bank</b></StyledText>
                                 </Table.TextCell>
                             </ItemTitleRow>
                             {char.bank.map((item, i) => (
@@ -124,7 +124,7 @@ export function AllItems({ accountData }) {
                             isSelectable
                         >
                             <Table.TextCell>
-                                <StyledText fontSize={16} marginLeft={16}><b>Shared Bank - Normal</b></StyledText>
+                                <StyledText marginLeft={16}><b>Shared Bank - Normal</b></StyledText>
                             </Table.TextCell>
                         </ItemTitleRow>
                         :

@@ -23,11 +23,11 @@ export function CharacterProfileAnalytics({ character }) {
                 display="inline-block"
                 marginLeft={24}
             >
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>NAME:</Text> {character.name}</Text>
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>LEVEL:</Text> {character.level}</Text>
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>CLASS:</Text> {character.class}</Text>
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>SECTION ID:</Text> {character.sec_id}</Text>
-                <Text display="block" fontSize={16}><Text fontWeight={600} marginRight={8}>SLOT:</Text> {character.slot}</Text>
+                <Text display="block" fontSize={14}><Text fontWeight={600} marginRight={8}>NAME:</Text> {character.name}</Text>
+                <Text display="block" fontSize={14}><Text fontWeight={600} marginRight={8}>LEVEL:</Text> {character.level}</Text>
+                <Text display="block" fontSize={14}><Text fontWeight={600} marginRight={8}>CLASS:</Text> {character.class}</Text>
+                <Text display="block" fontSize={14}><Text fontWeight={600} marginRight={8}>SECTION ID:</Text> {character.sec_id}</Text>
+                <Text display="block" fontSize={14}><Text fontWeight={600} marginRight={8}>SLOT:</Text> {character.slot}</Text>
             </Pane>
         </Pane>
     )

@@ -7,18 +7,18 @@ export const StyledText = styled(Text)`
 `;
 
 export const StyledTable = styled(Table)`
-    border-color: ${({ theme }) => (theme === "light" ? "#2a5459" : "#121212")};
+    border-color: ${({ theme }) => (theme === "light" ? "#193337" : "#121212")};
 `;
 
 export const StyledTableHead = styled(Table.Head)`
     background: ${({ theme }) => (theme === "light" ? "#065d67" : "#232427")};
     color: ${({ theme }) => (theme === "light" ? "#fff" : "#fff")};
-    border-color: ${({ theme }) => (theme === "light" ? "#2a5459" : "#121212")};
+    border-color: ${({ theme }) => (theme === "light" ? "#193337" : "#121212")};
 `;
 
 export const StyledTableRow = styled(Table.Row)`
     background: ${({ theme }) => (theme === "light" ? "#0d6b75" : "#232427")};
-    border-color: ${({ theme }) => (theme === "light" ? "#2a5459" : "#121212")};
+    border-color: ${({ theme }) => (theme === "light" ? "#26494f" : "#121212")};
 
     &:hover {
         background: ${({ theme }) => (theme === "light" ? "#e98423" : "#e9e9e9")} !important;
@@ -38,7 +38,8 @@ export const StyledTableRow = styled(Table.Row)`
 export const StyledPaginationPane = styled(Pane)`
     background: ${({ theme }) => (theme === "light" ? "#0d6b75" : "#232427")};
     color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
-    border-color: ${({ theme }) => (theme === "light" ? "#2a5459" : "#121212")};
+    border-color: ${({ theme }) => (theme === "light" ? "#193337" : "#121212")};
+    border-top-color: #26494f;
 `;
 
 export const StyledPagination = styled(Pagination)`
@@ -81,7 +82,7 @@ export const CharacterProfileCardPane = styled(Pane)`
     margin-right: 24px;
     display: inline-block
     border-radius: 4px;
-    border: 1px solid ${({ theme }) => (theme === "light" ? "#2a5459" : "#121212")};
+    border: 1px solid ${({ theme }) => (theme === "light" ? "#193337" : "#121212")};
     background: ${({ theme }) => (theme === "light" ? "#0d6b75" : "#232427")};
 `;
 
