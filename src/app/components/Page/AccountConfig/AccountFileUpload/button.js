@@ -1,125 +1,63 @@
 import React from 'react';
+import { Button, CircleArrowLeftIcon, FloppyDiskIcon } from "evergreen-ui";
+import { useTheme } from '@/app/components/Theme/Theme';
 import styled from 'styled-components';
 
-const StyledUploadButton = styled.button`
-    appearance: none;
-    background-color: #FAFBFC;
-    border: 1px solid rgba(27, 31, 35, 0.15);
-    border-radius: 6px;
-    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-    box-sizing: border-box;
-    color: #24292E;
-    cursor: pointer;
-    display: inline-block;
-    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    list-style: none;
-    padding: 6px 16px;
-    position: relative;
-    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    white-space: nowrap;
-    word-wrap: break-word;
-
-    &:hover {
-        background-color: #F3F4F6;
-        text-decoration: none;
-        transition-duration: 0.1s;
-    }
-
-    &:disabled {
-        background-color: #FAFBFC;
-        border-color: rgba(27, 31, 35, 0.15);
-        color: #959DA5;
-        cursor: default;
-    }
-
+const StyledUploadButton = styled(Button)`
+    color: ${({ theme }) => (theme === "light" ? "#101840" : "#efefef")} !important;
+    padding: 20px 24px;
+    margin-left: 12px;
+    background: ${({ theme }) => (theme === "light" ? "#fff" : "#21e795")};
+    border-color: ${({ theme }) => (theme === "light" ? "#c1c4d6" : "#000000")};
+    
     &:active {
-        background-color: #EDEFF2;
-        box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-        transition: none 0s;
+        background: ${({ theme }) => (theme === "light" ? "#fff" : "#21e795")};
     }
 
     &:focus {
-        outline: 1px transparent;
+        box-shadow: none !important;
     }
 
-    &::before {
-        display: none;
+    &:hover {
+        background: ${({ theme }) => (theme === "light" ? "#FAFBFF" : "#20c17e")} !important;
+        border-color: ${({ theme }) => (theme === "light" ? "#8f95b2" : "#000000")} !important;
+        text-decoration: none !important;
+        transition-duration: 0.1s;
     }
 
-    &::-webkit-details-marker {
-        display: none;
+    svg{
+        // fill: ${({ theme }) => (theme === "light" ? "#101840" : "#101840")};
     }
 `;
 
-const StyledBackButton = styled.button`
-    appearance: none;
-    background-color: #FAFBFC;
-    border: 1px solid rgba(27, 31, 35, 0.15);
-    border-radius: 6px;
-    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-    box-sizing: border-box;
-    color: #24292E;
-    cursor: pointer;
-    display: inline-block;
-    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    list-style: none;
-    padding: 6px 16px;
-    margin-right: 12px;
-    position: relative;
-    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    white-space: nowrap;
-    word-wrap: break-word;
-
-    &:hover {
-        background-color: #F3F4F6;
-        text-decoration: none;
-        transition-duration: 0.1s;
-    }
-
-    &:disabled {
-        background-color: #FAFBFC;
-        border-color: rgba(27, 31, 35, 0.15);
-        color: #959DA5;
-        cursor: default;
-    }
+const StyledBackButton = styled(Button)`
+    color: ${({ theme }) => (theme === "light" ? "#101840" : "#efefef")} !important;
+    padding: 20px 24px;
+    background: ${({ theme }) => (theme === "light" ? "#fff" : "#ff3939")};
+    border-color: ${({ theme }) => (theme === "light" ? "#c1c4d6" : "#000000")};
 
     &:active {
-        background-color: #EDEFF2;
-        box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-        transition: none 0s;
+        background: ${({ theme }) => (theme === "light" ? "#fff" : "#ff3939")} !important;
     }
 
     &:focus {
-        outline: 1px transparent;
+        box-shadow: none !important;
     }
 
-    &::before {
-        display: none;
-    }
-
-    &::-webkit-details-marker {
-        display: none;
+    &:hover {
+        background: ${({ theme }) => (theme === "light" ? "#fff" : "#dd3333")} !important;
+        border-color: ${({ theme }) => (theme === "light" ? "#8f95b2" : "#000000")} !important;
+        text-decoration: none !important;
+        transition-duration: 0.1s;
     }
 `;
 
 export const UploadButton = ({ handleUpload }) => {
-    return <StyledUploadButton role="button" onClick={handleUpload}>Upload</StyledUploadButton>;
+    const { theme } = useTheme();
+    return <StyledUploadButton theme={theme} onClick={handleUpload} iconBefore={FloppyDiskIcon}>SAVE</StyledUploadButton>;
 };
 
 export const BackButton = ({ onComplete }) => {
-    return <StyledBackButton role="button" onClick={onComplete}>Back</StyledBackButton>;
+    const { theme } = useTheme();
+    return <StyledBackButton theme={theme} onClick={onComplete} iconBefore={CircleArrowLeftIcon}>BACK</StyledBackButton>;
 };

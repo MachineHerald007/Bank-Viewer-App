@@ -659,7 +659,7 @@ function displaySrankWeapon(item, theme) {
 
 function displayWeapon(item, theme) {
     const nameColor = (item) => {
-        return item.Weapon.rare ? "yellow !important" : "#c33bc3 !important";
+        return item.Weapon.rare ? "yellow !important" : "#e704e7 !important";
     }
 
     const specialColor = (item) => {

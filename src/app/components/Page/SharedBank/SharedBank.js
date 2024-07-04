@@ -34,7 +34,7 @@ export function SharedBank({ sharedBank }) {
 
     return (
         <ItemPane theme={theme}>
-            <Heading size={600}color={theme === "light" ? "#52586d" : "#fff"}>Shared Bank</Heading>
+            <Heading size={600}color={theme === "light" ? "#efefef" : "#fff"}>Shared Bank</Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Items..." />
             <ItemTable theme={theme}>
                 <Table.Body>
