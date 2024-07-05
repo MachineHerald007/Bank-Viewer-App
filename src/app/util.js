@@ -639,9 +639,9 @@ function displaySrankWeapon(item, theme) {
         <StyledText theme={theme} fontWeight={600}>{displayItem(item, "tekked")} </StyledText>
         <StyledText theme={theme} fontWeight={600} color="#eb0000 !important">{displayItem(item, "name")}</StyledText>
         <StyledText theme={theme} fontWeight={600} color="#25e17b !important">{displayItem(item, "grind")} </StyledText>
-        <StyledText theme={theme} fontWeight={600}> [</StyledText>
-        <StyledText theme={theme} fontWeight={600} color={sRankWeaponColor(item.SRankWeapon.special_code)}> {displayItem(item, "special")} </StyledText>
-        <StyledText theme={theme} fontWeight={600}>] </StyledText>
+        <StyledText theme={theme} fontWeight={600} marginRight={1}> [</StyledText>
+        <StyledText theme={theme} fontWeight={600} color={sRankWeaponColor(item.SRankWeapon.special_code)}>{displayItem(item, "special")}</StyledText>
+        <StyledText theme={theme} fontWeight={600} marginLeft={1}>] </StyledText>
         <StyledText theme={theme} fontWeight={600}> [</StyledText>
         <StyledText theme={theme}>{displayItem(item, "native")}</StyledText>
         <StyledText theme={theme}>/</StyledText>
@@ -671,9 +671,9 @@ function displayWeapon(item, theme) {
         <StyledText theme={theme} fontWeight={600}>{displayItem(item, "tekked")} </StyledText>
         <StyledText theme={theme} fontWeight={600} color={nameColor(item)}>{displayItem(item, "name")}</StyledText>
         <StyledText theme={theme} fontWeight={600} color="#25e17b !important">{displayItem(item, "grind")} </StyledText>
-        <StyledText theme={theme} fontWeight={600}> [</StyledText>
+        <StyledText theme={theme} fontWeight={600} marginRight={1}> [</StyledText>
         <StyledText theme={theme} fontWeight={600} color={specialColor(item)}>{displayItem(item, "special")}</StyledText>
-        <StyledText theme={theme} fontWeight={600}>] </StyledText>
+        <StyledText theme={theme} fontWeight={600} marginLeft={1}>] </StyledText>
         <StyledText theme={theme} fontWeight={600}> [</StyledText>
         <StyledText theme={theme} fontWeight={600} color="#25e17b !important">{displayItem(item, "native")}</StyledText>
         <StyledText theme={theme}>/</StyledText>
