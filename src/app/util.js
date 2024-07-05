@@ -794,27 +794,16 @@ function displayMeseta(item, theme) {
 export function renderItemRow(item, theme) {
     const itemType = Object.keys(item)[0];
     switch (itemType) {
-        case "SRankWeapon":
-            return displaySrankWeapon(item, theme);
-        case "Weapon":
-            return displayWeapon(item, theme);
-        case "Frame":
-            return displayFrame(item, theme); 
-        case "Barrier":
-            return displayBarrier(item, theme);
-        case "Unit":
-            return displayUnit(item, theme);
-        case "Mag":
-            return displayMag(item, theme);
-        case "Tech":
-            return displayTech(item, theme);
-        case "Tool":
-            return displayTool(item, theme);
-        case "Other":
-            return displayOther(item, theme);
-        case "Meseta":
-            return displayMeseta(item, theme);
-        default:
-            return null;
+        case "SRankWeapon": return displaySrankWeapon(item, theme);
+        case "Weapon":      return displayWeapon(item, theme);
+        case "Frame":       return displayFrame(item, theme); 
+        case "Barrier":     return displayBarrier(item, theme);
+        case "Unit":        return displayUnit(item, theme);
+        case "Mag":         return displayMag(item, theme);
+        case "Tech":        return displayTech(item, theme);
+        case "Tool":        return displayTool(item, theme);
+        case "Other":       return displayOther(item, theme);
+        case "Meseta":      return displayMeseta(item, theme);
+        default:            return null;
     }
 }

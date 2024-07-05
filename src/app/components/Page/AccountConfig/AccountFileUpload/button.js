@@ -24,10 +24,6 @@ const StyledUploadButton = styled(Button)`
         text-decoration: none !important;
         transition-duration: 0.1s;
     }
-
-    svg{
-        // fill: ${({ theme }) => (theme === "light" ? "#101840" : "#101840")};
-    }
 `;
 
 const StyledBackButton = styled(Button)`

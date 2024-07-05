@@ -6,6 +6,7 @@ import { useTheme } from "../../Theme/Theme";
 import { UserProfileSetup } from "../UserProfileSetup/UserProfileSetup";
 import { AccountSection } from "./AccountSection/AccountSection";
 import { ThemeToggler } from "../../Theme/ThemeToggler";
+import { StickyMenu } from "../../StickyMenu/StickyMenu";
 
 export function AccountConfig() {
     const { user } = useContext(AppContext);
@@ -14,7 +15,7 @@ export function AccountConfig() {
     return (
     <ThemeProvider theme={{ mode: theme }}>
         <Pane>
-            <ThemeToggler />
+            <StickyMenu />
             {user ? <AccountSection /> : <UserProfileSetup />}
         </Pane>
     </ThemeProvider>

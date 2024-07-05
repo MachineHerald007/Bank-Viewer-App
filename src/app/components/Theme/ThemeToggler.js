@@ -2,6 +2,7 @@ import { invoke } from "@tauri-apps/api/tauri";
 import React, { createContext, useState, useEffect } from "react";
 import { Pane } from 'evergreen-ui';
 import { Switch } from "antd";
+import { ThemeToggleSwitch } from './styles';
 import { MoonFilled } from "@ant-design/icons";
 import { useTheme } from "./Theme";
 
@@ -19,14 +20,14 @@ const ThemeToggle = () => {
     }, [theme])
 
     return (
-        <Switch
+        <ThemeToggleSwitch
             checked={checked}
             onChange={(checked) => {
                 setChecked(checked)
                 toggleTheme()
             }}
             checkedChildren={<SunIcon />}
-            unCheckedChildren={<MoonFilled style={{ color: "yellow" }} />}
+            unCheckedChildren={<MoonFilled style={{ color: "yellow", position: "relative", top: "3px", fontSize: "14px" }} />}
             defaultValue
         />
     )
@@ -35,8 +36,8 @@ const ThemeToggle = () => {
 const SunIcon = () => {
     const imageUrl = "https://i.imgur.com/fqsvlPV_d.webp?maxwidth=760&fidelity=grand";
     return (
-        <Pane display="inline-block" position="relative" top={2}>
-            <img height={12} src={imageUrl} alt="Description of the image" />
+        <Pane display="inline-block" position="relative" top={5}>
+            <img height={16} src={imageUrl} alt="Description of the image" />
         </Pane>
     )
 }
@@ -50,11 +51,7 @@ export function ThemeToggler() {
     };
 
     return (
-        <Pane
-            float="right"
-            margin={12}
-            marginTop={8}
-        >
+        <Pane display="inline-block">
             <ThemeToggle />
         </Pane>
     )
