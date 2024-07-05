@@ -485,6 +485,12 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
     Ok(())
 }
 
+#[tauri::command]
+pub fn translate_text(account_id: i64) -> Result<(), SqlError> {
+    
+    Ok(())
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AccountData {
     pub shared_bank: SharedBankData,

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
     IconButton,
     SearchInput,
@@ -27,13 +27,24 @@ export function CharacterBank({ character }) {
     const { theme } = useTheme();
 
     useEffect(() => {
-        console.log("Received bank prop: ", character.bank)
-        console.log("Initialized items state: ", items)
-    }, [character, items])
+        console.log("Received bank prop: ", character.bank);
+        setItems(character.bank);
+    }, [character.bank]);
 
-    useEffect(() => {
-        setItems(character.bank)
-    }, [character])
+    const renderedItems = useMemo(() => (
+        items.map((item, index) => (
+            <ItemRow
+                theme={theme}
+                key={index}
+                isSelectable
+                onSelect={() => console.log(item)}
+            >
+                <Table.TextCell>
+                    {renderItemRow(item, theme)}
+                </Table.TextCell>
+            </ItemRow>
+        ))
+    ), [items, theme]);
 
     return (
         <ItemPane theme={theme} height={720}>
@@ -41,26 +52,17 @@ export function CharacterBank({ character }) {
             <SearchBar theme={theme} marginTop={24} placeholder="Search Bank..." />
             <ExpandButton
                 theme={theme}
-                icon={MaximizeIcon}
+                icon={expandBank ? MinimizeIcon : MaximizeIcon}
                 float="right"
                 position="relative"
                 top={26}
+                onClick={() => setExpandBank(!expandBank)}
             />
             <ItemTable theme={theme}>
                 <Table.Body height={500}>
-                    {items.map((item, index) => (
-                        <ItemRow
-                            theme={theme}
-                            key={index}
-                            isSelectable onSelect={() => console.log(item)}
-                        >
-                            <Table.TextCell>
-                                {renderItemRow(item, theme)}
-                            </Table.TextCell>
-                        </ItemRow>
-                    ))}
+                    {renderedItems}
                 </Table.Body>
             </ItemTable>
         </ItemPane>
-    )
+    );
 }
