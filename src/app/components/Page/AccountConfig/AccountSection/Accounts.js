@@ -5,8 +5,6 @@ import { PlusOutlined } from "@ant-design/icons";
 import { Text, Pane } from "evergreen-ui";
 import { CenteredPane, HoverPane, AccountPane } from "./styles";
 import { useTheme } from "../../../Theme/Theme";
-import { ThemeToggler } from "../../../Theme/ThemeToggler";
-
 
 export function Accounts({ onAddAccountClick }) {
     const { loggedInAccount, setLoggedInAccount } = useContext(AppContext);

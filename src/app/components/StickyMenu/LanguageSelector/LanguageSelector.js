@@ -7,11 +7,16 @@ const handleChange = (value) => {
   console.log(`selected ${value}`);
 };
 
-export function LanguageSelector() {
+export function LanguageSelector({ context }) {
     const [value, setValue] = React.useState("EN");
     const { theme } = useTheme();
+
+    useEffect(() => {
+        console.log("context: ", context);
+    }, [context])
+
     return (
-        <LanguageSelectorPane theme={theme}>
+        <LanguageSelectorPane theme={theme} context={context}>
             <Space wrap>
                 <Select
                     defaultValue="EN"

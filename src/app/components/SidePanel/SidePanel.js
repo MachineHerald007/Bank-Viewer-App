@@ -29,6 +29,7 @@ import {
   SettingFilled
 } from '@ant-design/icons';
 import { SidePanelPane, SidePanelTab, SidePanelText, PanelPageContainer } from "./styles";
+import { StickyMenu } from "../StickyMenu/StickyMenu";
 import { ProfileSection } from "./ProfileSection";
 import { AllItems } from "../Page/All-Items/All-Items";
 import { SharedBank } from "../Page/SharedBank/SharedBank";
@@ -69,24 +70,12 @@ export function SidePanel() {
 
     const getSelectedTab = (tab) => {
         switch(tab) {
-            case "Analytics":
-                setSelectedIndex(0);
-                break;
-            case "All Items":
-                setSelectedIndex(1);
-                break;
-            case "Shared Bank":
-                setSelectedIndex(2);
-                break;
-            case "Custom Item Sets":
-                setSelectedIndex(3);
-                break;
-            case "Character Viewer":
-                setSelectedIndex(4);
-                break;
-            case "Settings":
-                setSelectedIndex(5);
-                break;
+            case "Analytics": setSelectedIndex(0); break;
+            case "All Items": setSelectedIndex(1); break;
+            case "Shared Bank": setSelectedIndex(2); break;
+            case "Custom Item Sets": setSelectedIndex(3); break;
+            case "Character Viewer": setSelectedIndex(4); break;
+            case "Settings": setSelectedIndex(5); break;
         }
     };
 
@@ -127,39 +116,39 @@ export function SidePanel() {
                     <Pane>
                         <SidePanelText theme={theme}>{tab}</SidePanelText>
                     </Pane>
-                )
+                );
             case "All Items":
                 return (
                     <Pane>
                         <SidePanelText theme={theme}>{tab}</SidePanelText>
                     </Pane>
-                )
+                );
             case "Shared Bank":
                 return (
                     <Pane>
                         <SidePanelText theme={theme}>{tab}</SidePanelText>
                     </Pane>
-                )
+                );
             case "Custom Item Sets":
                  return (
                     <Pane>
                         <SidePanelText theme={theme}>{tab}</SidePanelText>
                     </Pane>
-                )
+                );
             case "Character Viewer":
                 return (
                     <Pane>
                         <SidePanelText theme={theme}>{tab}</SidePanelText>
                     </Pane>
-                )
+                );
             case "Settings":
                 return (
                     <Pane>
                         <SidePanelText theme={theme}>{tab}</SidePanelText>
                     </Pane>
-                )
+                );
         }
-    }
+    };
 
     const handlePanelPage = (tab) => {
         switch(tab) {
@@ -168,23 +157,43 @@ export function SidePanel() {
                     <Pane>
                         <Text>{tab}</Text>
                     </Pane>
-                )
+                );
             case "All Items":
-                return <AllItems accountData={accountData} />
+                return (
+                    <Pane>
+                        <StickyMenu context="sidepanel-page" />
+                        <AllItems accountData={accountData} />
+                    </Pane>
+                );
             case "Shared Bank":
-                return <SharedBank sharedBank={sharedBank} />
+                return (
+                    <Pane>
+                        <StickyMenu context="sidepanel-page" />
+                        <SharedBank sharedBank={sharedBank} />
+                    </Pane>
+                );
             case "Custom Item Sets":
                  return (
                     <Pane>
                         <Text>{tab}</Text>
                     </Pane>
-                )
+                );
             case "Character Viewer":
-                return <CharacterViewer characters={characters}/>
+                return (
+                    <Pane>
+                        <StickyMenu context="sidepanel-page" />
+                        <CharacterViewer characters={characters}/>
+                    </Pane>
+                );
             case "Settings":
-                return <Settings />
+                return (
+                    <Pane>
+                        <StickyMenu context="sidepanel-page" />
+                        <Settings />
+                    </Pane>
+                );
         }
-    }
+    };
 
     return (
         <SidePanelPane theme={theme} display="flex" paddingLeft={24}>

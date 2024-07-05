@@ -10,8 +10,8 @@ export const ThemeToggleSwitch = styled(Switch)`
     font-size: 14px;
     line-height: 22px;
     list-style: none;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     display: inline-block;
     min-width: 44px;
     height: 28px;
@@ -49,4 +49,13 @@ export const ThemeToggleSwitch = styled(Switch)`
         content: "";
         height: 24px;
     }
+
+    &:where(.css-dev-only-do-not-override-zg0ahe).ant-switch.ant-switch-checked {
+        background: ${({ context }) => (context === "sidepanel-page" ? "darkturquoise" : "#1677ff")};
+
+        &:hover {
+            background: ${({ context }) => (context === "sidepanel-page" ? "#00b8bb" : "#1677ff")};
+        }
+    }
+    
 `;

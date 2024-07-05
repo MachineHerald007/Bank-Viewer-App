@@ -2,11 +2,11 @@ import { invoke } from "@tauri-apps/api/tauri";
 import React, { createContext, useState, useEffect } from "react";
 import { Pane } from 'evergreen-ui';
 import { Switch } from "antd";
-import { ThemeToggleSwitch } from './styles';
+import { ThemeToggleSwitch } from "./styles";
 import { MoonFilled } from "@ant-design/icons";
-import { useTheme } from "./Theme";
+import { useTheme } from "../../Theme/Theme";
 
-const ThemeToggle = () => {
+const ThemeToggle = ({ context }) => {
     const {theme, toggleTheme} = useTheme();
     const [checked, setChecked] = React.useState(true);
 
@@ -21,6 +21,8 @@ const ThemeToggle = () => {
 
     return (
         <ThemeToggleSwitch
+            theme={theme}
+            context={context}
             checked={checked}
             onChange={(checked) => {
                 setChecked(checked)
@@ -42,17 +44,10 @@ const SunIcon = () => {
     )
 }
 
-export function ThemeToggler() {
-    const { theme } = useTheme();
-
-    const styles = {
-        background: theme === 'light' ? '#F9FAFA' : '#F9FAFA',
-        color: theme === 'light' ? '#000' : '#fff',
-    };
-
+export function ThemeToggler({ context }) {
     return (
         <Pane display="inline-block">
-            <ThemeToggle />
+            <ThemeToggle context={context} />
         </Pane>
     )
 }

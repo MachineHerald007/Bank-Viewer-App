@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react"
+import React, { createContext, useState, useEffect } from "react";
 import {
     Switch,
     Heading,
@@ -7,23 +7,14 @@ import {
     MinimizeIcon,
     Text,
     Pane
-} from 'evergreen-ui'
-import { useTheme } from "../../Theme/Theme"
-import { ThemeToggler } from "../../Theme/ThemeToggler"
+} from 'evergreen-ui';
+import { SettingsPane } from "./styles";
+import { useTheme } from "../../Theme/Theme";
 
 export function Settings() {
-    const { theme } = useTheme()
-
-    const styles = {
-        background: theme === 'light' ? '#F9FAFA' : '#24252B',
-        color: theme === 'light' ? '#000' : '#fff',
-    }
-
+    const { theme } = useTheme();
     return (
-        <Pane
-            style={styles}
-        >
-            <ThemeToggler />
-        </Pane>
-    )
+        <SettingsPane theme={theme}>
+        </SettingsPane>
+    );
 }
