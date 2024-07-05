@@ -10,7 +10,7 @@ export const HoverPane = styled(Pane)`
     &:hover {
         cursor: pointer;
         background-color: grey;
-        color: white; /* Optional: change text color on hover */
+        color: white;
     }
 `;
 

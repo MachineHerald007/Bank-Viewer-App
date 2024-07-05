@@ -39,7 +39,7 @@ export const StyledPaginationPane = styled(Pane)`
     background: ${({ theme }) => (theme === "light" ? "#0d6b75" : "#232427")};
     color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
     border-color: ${({ theme }) => (theme === "light" ? "#193337" : "#121212")};
-    border-top-color: #26494f;
+    border-top-color: ${({ theme }) => (theme === "light" ? "#26494f" : "#121212")};
 `;
 
 export const StyledPagination = styled(Pagination)`

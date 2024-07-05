@@ -99,7 +99,7 @@ export const Link = styled.a`
     & > span.bg {
       left: -5%;
       position: absolute;
-      background: ${({ theme }) => (theme.mode === 'light' ? '#f57800' : '#00ff95')} !important;
+      background: ${({ theme }) => (theme.mode === 'light' ? '#00cde3' : '#00ff95')} !important;
       width: 0;
       height: 100%;
       z-index: 3;

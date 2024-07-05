@@ -19,8 +19,8 @@ export const SidePanelText = styled(Pane)`
 `;
 
 export const SidePanelTab = styled(Tab)`
-    border-radius: 2px;
-    
+    border-radius: 0px;
+
     &:hover {
         background-color: ${({ theme }) => (theme === "light" ? "#F4F5F9" : "#1a1919")};
         ${SidePanelText} {
@@ -38,6 +38,17 @@ export const SidePanelTab = styled(Tab)`
     
     &[aria-selected="true"] {
         background-color: ${({ theme }) => (theme === "light" ? "#F4F5F9" : "#1a1919")};
+
+        &:before {
+            content: "";
+            display: block;
+            height: 44px;
+            width: 4px;
+            position: relative;
+            right: 18px;
+            background-color: ${({ theme }) => (theme === "light" ? "#367f87" : "#efefef")};
+            transform: scaleX(1);
+        }
 
         ${SidePanelText} {
             color: ${({ theme }) => (theme === "light" ? "#474d66" : "#efefef")}; 
