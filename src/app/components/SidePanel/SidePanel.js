@@ -1,5 +1,5 @@
 import { invoke } from "@tauri-apps/api/tauri";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useMemo, useCallback } from "react";
 import { AppContext, AccountContext } from "../../page";
 import {
     Table,
@@ -25,9 +25,7 @@ import {
     JoinTableIcon,
     DiagramTreeIcon
 } from 'evergreen-ui';
-import {
-  SettingFilled
-} from '@ant-design/icons';
+import { SettingFilled } from '@ant-design/icons';
 import { SidePanelPane, SidePanelTab, SidePanelText, PanelPageContainer } from "./styles";
 import { StickyMenu } from "../StickyMenu/StickyMenu";
 import { ProfileSection } from "./ProfileSection";
@@ -39,14 +37,14 @@ import { useTheme } from "../Theme/Theme";
 
 export function SidePanel() {
     const { user, loggedInAccount, setLoggedInAccount } = useContext(AppContext);
-    const [dashboardState, setDashboardState] = useState({})
+    const [dashboardState, setDashboardState] = useState({});
     const [accountData, setAccountData] = useState({});
-    const [sharedBank, setSharedBank] = useState([])
+    const [sharedBank, setSharedBank] = useState([]);
     const [characters, setCharacters] = useState([]);
-    const [selectedIndex, setSelectedIndex] = React.useState(0);
+    const [selectedIndex, setSelectedIndex] = useState(0);
     const { theme } = useTheme();
 
-    const tabs = React.useMemo(() => [
+    const tabs = useMemo(() => [
         "Analytics",
         "All Items",
         "Shared Bank",
@@ -55,20 +53,18 @@ export function SidePanel() {
         "Settings"
     ], []);
 
-    const saveSelectedTab = (tab) => {
-        invoke("save_selected_tab", {
-            selectedTab: tab
-        })
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-    };
+    const saveSelectedTab = useCallback((tab) => {
+        invoke("save_selected_tab", { selectedTab: tab })
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    }, []);
 
-    const setSelectedTab = (tab, index) => {
+    const handleTabSelect = useCallback((tab, index) => {
         setSelectedIndex(index);
         saveSelectedTab(tab);
-    };
+    }, [saveSelectedTab]);
 
-    const getSelectedTab = (tab) => {
+    const getSelectedTab = useCallback((tab) => {
         switch(tab) {
             case "Analytics": setSelectedIndex(0); break;
             case "All Items": setSelectedIndex(1); break;
@@ -76,118 +72,54 @@ export function SidePanel() {
             case "Custom Item Sets": setSelectedIndex(3); break;
             case "Character Viewer": setSelectedIndex(4); break;
             case "Settings": setSelectedIndex(5); break;
+            default: setSelectedIndex(0);
         }
-    };
+    }, []);
 
     useEffect(() => {
         invoke("get_dashboard_state")
-        .then(dashboard_state => {
-            setDashboardState(dashboard_state);
-            getSelectedTab(dashboard_state.selected_tab);
-        })
-        .catch(err => {
-            console.log(err);
-        });
-    }, [])
+            .then(dashboard_state => {
+                setDashboardState(dashboard_state);
+                getSelectedTab(dashboard_state.selected_tab);
+            })
+            .catch(err => console.log(err));
+    }, [getSelectedTab]);
 
     useEffect(() => {
-        invoke("get_account_data", {
-            accountId: dashboardState.logged_in_account_id
-        })
-        .then(res => {
-            setAccountData(res);
-            setSharedBank(res.shared_bank);
-            setCharacters(res.characters);
-        })
-        .catch(err => console.log(err))
-
-    }, [dashboardState])
+        if (dashboardState.logged_in_account_id) {
+            invoke("get_account_data", { accountId: dashboardState.logged_in_account_id })
+                .then(res => {
+                    setAccountData(res);
+                    setSharedBank(res.shared_bank);
+                    setCharacters(res.characters);
+                })
+                .catch(err => console.log(err));
+        }
+    }, [dashboardState]);
 
     useEffect(() => {
         console.log("ACCOUNT DATA: ", accountData);
         console.log("SHARED BANK DATA: ", sharedBank);
         console.log("CHARACTER DATA: ", characters);
-    }, [accountData, sharedBank, characters])
+    }, [accountData, sharedBank, characters]);
 
     const returnIcon = (tab) => {
-        switch(tab) {
-            case "Analytics":
-                return (
-                    <Pane>
-                        <SidePanelText theme={theme}>{tab}</SidePanelText>
-                    </Pane>
-                );
-            case "All Items":
-                return (
-                    <Pane>
-                        <SidePanelText theme={theme}>{tab}</SidePanelText>
-                    </Pane>
-                );
-            case "Shared Bank":
-                return (
-                    <Pane>
-                        <SidePanelText theme={theme}>{tab}</SidePanelText>
-                    </Pane>
-                );
-            case "Custom Item Sets":
-                 return (
-                    <Pane>
-                        <SidePanelText theme={theme}>{tab}</SidePanelText>
-                    </Pane>
-                );
-            case "Character Viewer":
-                return (
-                    <Pane>
-                        <SidePanelText theme={theme}>{tab}</SidePanelText>
-                    </Pane>
-                );
-            case "Settings":
-                return (
-                    <Pane>
-                        <SidePanelText theme={theme}>{tab}</SidePanelText>
-                    </Pane>
-                );
-        }
+        return (
+            <Pane>
+                <SidePanelText theme={theme}>{tab}</SidePanelText>
+            </Pane>
+        );
     };
 
     const handlePanelPage = (tab) => {
         switch(tab) {
-            case "Analytics":
-                return (
-                    <Pane>
-                        <Text>{tab}</Text>
-                    </Pane>
-                );
-            case "All Items":
-                return (
-                    <Pane>
-                        <AllItems accountData={accountData} />
-                    </Pane>
-                );
-            case "Shared Bank":
-                return (
-                    <Pane>
-                        <SharedBank sharedBank={sharedBank} />
-                    </Pane>
-                );
-            case "Custom Item Sets":
-                 return (
-                    <Pane>
-                        <Text>{tab}</Text>
-                    </Pane>
-                );
-            case "Character Viewer":
-                return (
-                    <Pane>
-                        <CharacterViewer characters={characters}/>
-                    </Pane>
-                );
-            case "Settings":
-                return (
-                    <Pane>
-                        <Settings />
-                    </Pane>
-                );
+            case "Analytics": return <Pane><Text>{tab}</Text></Pane>;
+            case "All Items": return <Pane><AllItems accountData={accountData} /></Pane>;
+            case "Shared Bank": return <Pane><SharedBank sharedBank={sharedBank} /></Pane>;
+            case "Custom Item Sets": return <Pane><Text>{tab}</Text></Pane>;
+            case "Character Viewer": return <Pane><CharacterViewer characters={characters} /></Pane>;
+            case "Settings": return <Pane><Settings /></Pane>;
+            default: return null;
         }
     };
 
@@ -195,21 +127,19 @@ export function SidePanel() {
         <SidePanelPane theme={theme} display="flex" paddingLeft={24}>
             <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
                 <ProfileSection user={user} account={loggedInAccount} />
-                {tabs.map((tab, index) => {
-                    return (
-                        <SidePanelTab
-                            theme={theme}
-                            aria-controls={`panel-${tab}`}
-                            direction="vertical"
-                            isSelected={index === selectedIndex}
-                            key={tab}
-                            onSelect={() => setSelectedTab(tab, index)}
-                            height={44}
-                        >
+                {tabs.map((tab, index) => (
+                    <SidePanelTab
+                        theme={theme}
+                        aria-controls={`panel-${tab}`}
+                        direction="vertical"
+                        isSelected={index === selectedIndex}
+                        key={tab}
+                        onSelect={() => handleTabSelect(tab, index)}
+                        height={44}
+                    >
                         {returnIcon(tab)}
-                        </SidePanelTab>
-                    )
-                })}
+                    </SidePanelTab>
+                ))}
             </Tablist>
             <PanelPageContainer theme={theme} flex="1">
                 <StickyMenu context="sidepanel-page" />
@@ -225,12 +155,10 @@ export function SidePanel() {
                         paddingBottom={24}
                         style={{ minHeight: "100vh", height: "fit-content" }}
                     >
-                        <Pane>
-                            {handlePanelPage(tab)}
-                        </Pane>
+                        {handlePanelPage(tab)}
                     </Pane>
                 ))}
             </PanelPageContainer>
         </SidePanelPane>
-    )
+    );
 }
