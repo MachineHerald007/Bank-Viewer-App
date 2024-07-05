@@ -161,14 +161,12 @@ export function SidePanel() {
             case "All Items":
                 return (
                     <Pane>
-                        <StickyMenu context="sidepanel-page" />
                         <AllItems accountData={accountData} />
                     </Pane>
                 );
             case "Shared Bank":
                 return (
                     <Pane>
-                        <StickyMenu context="sidepanel-page" />
                         <SharedBank sharedBank={sharedBank} />
                     </Pane>
                 );
@@ -181,14 +179,12 @@ export function SidePanel() {
             case "Character Viewer":
                 return (
                     <Pane>
-                        <StickyMenu context="sidepanel-page" />
                         <CharacterViewer characters={characters}/>
                     </Pane>
                 );
             case "Settings":
                 return (
                     <Pane>
-                        <StickyMenu context="sidepanel-page" />
                         <Settings />
                     </Pane>
                 );
@@ -216,6 +212,7 @@ export function SidePanel() {
                 })}
             </Tablist>
             <PanelPageContainer theme={theme} flex="1">
+                <StickyMenu context="sidepanel-page" />
                 {tabs.map((tab, index) => (
                     <Pane
                         aria-labelledby={tab}
