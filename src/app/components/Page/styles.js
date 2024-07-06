@@ -8,14 +8,28 @@ export const StyledText = styled(Text)`
 
 export const SearchBar = styled(SearchInput)`
     color: ${({ theme }) => (theme === "light" ? "#fff" : "#fff")};
-    background: ${({ theme }) => (theme === "light" ? "#0d6b75" : "#232427")};
+    background: ${({ theme }) => (theme === "light" ? "#085e69" : "#212121")};
     border: 1px solid ${({ theme }) => (theme === "light" ? "#26494f" : "#121212")};
+
+    &:focus {
+        box-shadow: none;
+        border-color: ${({ theme }) => (theme === "light" ? "#26494f" : "#121212")};
+    }
+
+    &:hover {
+        background: ${({ theme }) => (theme === "light" ? "#006c79" : "#1e1e1e")};
+    }
 `;
 
 export const ExpandButton = styled(IconButton)`
     color: ${({ theme }) => (theme === "light" ? "#52586d" : "#fff")};
     background: ${({ theme }) => (theme === "light" ? "#0d6b75" : "#232427")};
     border: 1px solid ${({ theme }) => (theme === "light" ? "#193337" : "#121212")};
+
+    &:hover {
+        border-color:  ${({ theme }) => (theme === "light" ? "#000000": "#000000")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#0e6069" : "#1c1c1c")} !important;
+    }
 
     svg {
         fill: ${({ theme }) => (theme === "light" ? "#efefef" : "#fff")};
