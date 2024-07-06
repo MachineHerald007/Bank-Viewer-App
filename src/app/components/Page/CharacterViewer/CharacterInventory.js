@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
     IconButton,
     Heading,
     MaximizeIcon,
-    MinimizeIcon,
     Table,
     Pane,
 } from 'evergreen-ui';
@@ -18,21 +17,20 @@ import { renderItemRow } from "@/app/util";
 import { useTheme } from "../../Theme/Theme";
 
 export function CharacterInventory({ character }) {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(character.inventory);
     const { theme } = useTheme();
 
     useEffect(() => {
-        console.log("Received inventory prop: ", character.inventory);
-        console.log("Initialized items state: ", items);
-    }, [character, items]);
-
-    useEffect(() => {
-        setItems(character.inventory);
+        if (items !== character.inventory) {
+            setItems(character.inventory);
+        }
     }, [character]);
+
+    const headerColor = useMemo(() => theme === "light" ? "#fff" : "#fff", [theme]);
 
     return (
         <ItemPane theme={theme} height={720}>
-            <Heading size={600} color={theme === "light" ? "#fff" : "#fff"}>Inventory</Heading>
+            <Heading size={600} color={headerColor}>Inventory</Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Inventory..." />
             <ExpandButton
                 theme={theme}

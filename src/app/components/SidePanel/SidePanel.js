@@ -1,6 +1,6 @@
 import { invoke } from "@tauri-apps/api/tauri";
-import React, { useState, useEffect, useContext, useMemo, useCallback } from "react";
-import { AppContext, AccountContext } from "../../page";
+import React, { useState, useEffect, useContext, createContext, useMemo, useCallback } from "react";
+import { AppContext } from "../../page";
 import {
     Table,
     Pagination,
@@ -35,8 +35,10 @@ import { CharacterViewer } from "../Page/CharacterViewer/CharacterViewer";
 import { Settings } from "../Page/Settings/Settings";
 import { useTheme } from "../Theme/Theme";
 
+export const AccountContext = createContext();
+
 export function SidePanel() {
-    const { user, loggedInAccount, setLoggedInAccount } = useContext(AppContext);
+    const { user, loggedInAccount } = useContext(AppContext);
     const [dashboardState, setDashboardState] = useState({});
     const [accountData, setAccountData] = useState({});
     const [sharedBank, setSharedBank] = useState([]);
@@ -97,19 +99,11 @@ export function SidePanel() {
         }
     }, [dashboardState]);
 
-    useEffect(() => {
-        console.log("ACCOUNT DATA: ", accountData);
-        console.log("SHARED BANK DATA: ", sharedBank);
-        console.log("CHARACTER DATA: ", characters);
-    }, [accountData, sharedBank, characters]);
-
-    const returnIcon = (tab) => {
-        return (
-            <Pane>
-                <SidePanelText theme={theme}>{tab}</SidePanelText>
-            </Pane>
-        );
-    };
+    const returnIcon = (tab) => (
+        <Pane>
+            <SidePanelText theme={theme}>{tab}</SidePanelText>
+        </Pane>
+    );
 
     const handlePanelPage = (tab) => {
         switch(tab) {
@@ -124,41 +118,43 @@ export function SidePanel() {
     };
 
     return (
-        <SidePanelPane theme={theme} display="flex" paddingLeft={24}>
-            <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
-                <ProfileSection user={user} account={loggedInAccount} />
-                {tabs.map((tab, index) => (
-                    <SidePanelTab
-                        theme={theme}
-                        aria-controls={`panel-${tab}`}
-                        direction="vertical"
-                        isSelected={index === selectedIndex}
-                        key={tab}
-                        onSelect={() => handleTabSelect(tab, index)}
-                        height={44}
-                    >
-                        {returnIcon(tab)}
-                    </SidePanelTab>
-                ))}
-            </Tablist>
-            <PanelPageContainer theme={theme} flex="1">
-                <StickyMenu context="sidepanel-page" />
-                {tabs.map((tab, index) => (
-                    <Pane
-                        aria-labelledby={tab}
-                        aria-hidden={index !== selectedIndex}
-                        display={index === selectedIndex ? 'block' : 'none'}
-                        key={tab}
-                        role="tabpanel"
-                        paddingLeft={24}
-                        paddingRight={24}
-                        paddingBottom={24}
-                        style={{ minHeight: "100vh", height: "fit-content" }}
-                    >
-                        {handlePanelPage(tab)}
-                    </Pane>
-                ))}
-            </PanelPageContainer>
-        </SidePanelPane>
+        <AccountContext.Provider value={{ accountData, setAccountData }}>
+            <SidePanelPane theme={theme} display="flex" paddingLeft={24}>
+                <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
+                    <ProfileSection user={user} account={loggedInAccount} />
+                    {tabs.map((tab, index) => (
+                        <SidePanelTab
+                            theme={theme}
+                            aria-controls={`panel-${tab}`}
+                            direction="vertical"
+                            isSelected={index === selectedIndex}
+                            key={tab}
+                            onSelect={() => handleTabSelect(tab, index)}
+                            height={44}
+                        >
+                            {returnIcon(tab)}
+                        </SidePanelTab>
+                    ))}
+                </Tablist>
+                <PanelPageContainer theme={theme} flex="1">
+                    <StickyMenu context="sidepanel-page" />
+                    {tabs.map((tab, index) => (
+                        <Pane
+                            aria-labelledby={tab}
+                            aria-hidden={index !== selectedIndex}
+                            display={index === selectedIndex ? 'block' : 'none'}
+                            key={tab}
+                            role="tabpanel"
+                            paddingLeft={24}
+                            paddingRight={24}
+                            paddingBottom={24}
+                            style={{ minHeight: "100vh", height: "fit-content" }}
+                        >
+                            {handlePanelPage(tab)}
+                        </Pane>
+                    ))}
+                </PanelPageContainer>
+            </SidePanelPane>
+        </AccountContext.Provider>
     );
 }

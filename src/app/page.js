@@ -11,7 +11,6 @@ import { Pane, Switch } from 'evergreen-ui';
 
 export const AppContext = createContext();
 export const AccountsContext = createContext();
-export const DashboardContext = createContext();
 
 export default function Home() {
     const [user, setUser] = useState(null)

@@ -486,7 +486,7 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
 }
 
 #[tauri::command]
-pub fn translate_text(account_id: i64) -> Result<(), SqlError> {
+pub fn translate_account_data(account_id: i64) -> Result<(), SqlError> {
     
     Ok(())
 }
