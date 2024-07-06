@@ -287,7 +287,7 @@ pub enum DBItem {
     }
 }
 
-pub fn get_items(conn: &Connection, account_id: i64, character_id: i64) -> Result<Vec<DBItem>, SqlError> {
+pub fn get_items(conn: &Connection, account_id: i64, character_id: i64, lang: &String) -> Result<Vec<DBItem>, SqlError> {
     let mut items = Vec::new();
     
     let mut wep_stmt = conn.prepare("SELECT * FROM weapon WHERE account_id = ?1 AND character_id = ?2")?;
@@ -508,7 +508,7 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64) -> Resul
     Ok(items)
 }
 
-pub fn get_character_data(conn: &Connection, account_id: i64) -> Result<Vec<CharacterData>, SqlError> {
+pub fn get_character_data(conn: &Connection, account_id: i64, lang: &String) -> Result<Vec<CharacterData>, SqlError> {
     let mut characters = Vec::new();
     let mut stmt = conn.prepare(
         "SELECT
@@ -527,7 +527,7 @@ pub fn get_character_data(conn: &Connection, account_id: i64) -> Result<Vec<Char
         [account_id],
         |row| {
             let character_id: i64 = row.get(0)?;
-            let items: Vec<DBItem> = get_items(conn, account_id, character_id).expect("get_items error");
+            let items: Vec<DBItem> = get_items(conn, account_id, character_id, lang).expect("get_items error");
             let mut inventory = Vec::new();
             let mut bank = Vec::new();
 

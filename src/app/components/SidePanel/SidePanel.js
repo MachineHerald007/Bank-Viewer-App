@@ -57,7 +57,7 @@ export function SidePanel() {
 
     const saveSelectedTab = useCallback((tab) => {
         invoke("save_selected_tab", { selectedTab: tab })
-            .then(res => console.log(res))
+            .then(res => {})
             .catch(err => console.log(err));
     }, []);
 
@@ -89,13 +89,16 @@ export function SidePanel() {
 
     useEffect(() => {
         if (dashboardState.logged_in_account_id) {
-            invoke("get_account_data", { accountId: dashboardState.logged_in_account_id })
-                .then(res => {
-                    setAccountData(res);
-                    setSharedBank(res.shared_bank);
-                    setCharacters(res.characters);
-                })
-                .catch(err => console.log(err));
+            invoke("get_account_data", {
+                accountId: dashboardState.logged_in_account_id,
+                lang: dashboardState.lang
+            })
+            .then(res => {
+                setAccountData(res);
+                setSharedBank(res.shared_bank);
+                setCharacters(res.characters);
+            })
+            .catch(err => console.log(err));
         }
     }, [dashboardState]);
 

@@ -1,41 +1,36 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import { AppContext } from "@/app/page";
 import { Pane } from "evergreen-ui";
 import { UserOutlined, DiscordOutlined } from '@ant-design/icons';
 import { ProfilePictureUpload } from "./ProfilePictureUpload/ProfilePictureUpload";
-import { 
-    TextWrapper,
-    InputWrapper
-} from "./styles";
+import { TextWrapper, InputWrapper } from "./styles";
 import { CreateUserButton } from "./CreateUserButton/CreateUserButton";
 import { useTheme } from "../../../Theme/Theme";
 import { invoke } from "@tauri-apps/api/tauri";
 
-export function UserProfileSection({ theme }) {
-    const { setUser, getUser } = useContext(AppContext)
-    const [account, setAccount] = useState([]);
+export function UserProfileSection() {
+    const { setUser, getUser } = useContext(AppContext);
+    const theme = useTheme();
     const [profilePicture, setProfilePicture] = useState("");
     const [profileName, setProfileName] = useState("");
     const [discordUsername, setDiscordUsername] = useState("");
 
-    const handleProfilePictureChange = (picture) => {
+    const handleProfilePictureChange = useCallback((picture) => {
         setProfilePicture(picture);
-    };
+    }, []);
 
-    const handleCreateUser = () => {
+    const handleCreateUser = useCallback(() => {
         const user = {
             profile_name: profileName,
             discord_username: discordUsername,
-            profile_picture: profilePicture
+            profile_picture: profilePicture,
         };
-        
-        invoke("create_user", {
-            user: user
-        })
-        .then(getUser(setUser))
-        .catch(err => console.log(err))
-    };
-    
+
+        invoke("create_user", { user })
+            .then(() => getUser(setUser))
+            .catch(err => console.log(err));
+    }, [profileName, discordUsername, profilePicture, getUser, setUser]);
+
     return (
         <Pane>
             <Pane theme={theme} width={270}>
@@ -43,19 +38,19 @@ export function UserProfileSection({ theme }) {
                     <ProfilePictureUpload onChange={handleProfilePictureChange} />
                 </Pane>
                 <Pane marginBottom={12}>
-                    <InputWrapper 
+                    <InputWrapper
                         value={profileName}
                         onChange={e => setProfileName(e.target.value)}
-                        placeholder="Profile Name" 
-                        prefix={<UserOutlined style={{ marginLeft: "4px" }} />} 
-                    />    
+                        placeholder="Profile Name"
+                        prefix={<UserOutlined style={{ marginLeft: "4px" }} />}
+                    />
                 </Pane>
                 <Pane marginBottom={12}>
-                    <InputWrapper 
+                    <InputWrapper
                         value={discordUsername}
                         onChange={e => setDiscordUsername(e.target.value)}
-                        placeholder="Discord Username" 
-                        prefix={<DiscordOutlined style={{ marginLeft: "4px" }} />} 
+                        placeholder="Discord Username"
+                        prefix={<DiscordOutlined style={{ marginLeft: "4px" }} />}
                     />
                 </Pane>
                 <Pane textAlign="right">

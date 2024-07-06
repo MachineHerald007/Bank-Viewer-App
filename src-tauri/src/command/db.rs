@@ -88,6 +88,15 @@ pub fn init_app() -> Result<(), SqlError> {
     )?;
 
     transaction.execute(
+        "CREATE TABLE IF NOT EXISTS account_languages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            account_id INTEGER NOT NULL,
+            lang TEXT NOT NULL
+        )",
+        []
+    )?;
+
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS character (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_id INTEGER NOT NULL,
@@ -293,13 +302,13 @@ pub fn init_app() -> Result<(), SqlError> {
         [],
     )?;
 
-    let count: i64 = transaction.query_row(
+    let dashboard_count: u8 = transaction.query_row(
         "SELECT COUNT(*) FROM dashboard_state",
         [],
         |row| row.get(0),
     )?;
 
-    if count == 0 {
+    if dashboard_count == 0 {
         transaction.execute(
             "INSERT INTO dashboard_state (id, logged_in_account_id, selected_character_id, lang, theme)
              VALUES (1, ?1, ?2, ?3, ?4)",
@@ -411,7 +420,8 @@ pub struct AccountPayload {
     account_name: String,
     guild_card: u32,
     account_type: String,
-    server: String
+    server: String,
+    lang: String
 }
 
 #[tauri::command]
@@ -432,6 +442,12 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
     )?;
 
     let account_id = transaction.last_insert_rowid();
+
+    transaction.execute(
+        "INSERT INTO account_languages (account_id, lang)
+            VALUES (?1, ?2)",
+        params![account_id, account.lang],
+    )?;
 
     for file in files {
         match file.data {
@@ -486,8 +502,8 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
 }
 
 #[tauri::command]
-pub fn translate_account_data(account_id: i64) -> Result<(), SqlError> {
-    
+pub fn translate_account_data(account_data: AccountData) -> Result<(), SqlError> {
+    println!("ze account data: {:?}", account_data);
     Ok(())
 }
 
@@ -519,14 +535,14 @@ pub struct CharacterData {
 }
 
 #[tauri::command]
-pub fn get_account_data(account_id: i64) -> Result<AccountData, SqlError> {
+pub fn get_account_data(account_id: i64, lang: String) -> Result<AccountData, SqlError> {
     let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
     let mut conn = Connection::open(my_db)?;
     let transaction = conn.transaction()?;
     let shared_bank_id = 0;
     
-    let shared_bank: SharedBankData = get_items(&transaction, account_id, shared_bank_id)?;
-    let characters: Vec<CharacterData> = get_character_data(&transaction, account_id)?;
+    let shared_bank: SharedBankData = get_items(&transaction, account_id, shared_bank_id, &lang)?;
+    let characters: Vec<CharacterData> = get_character_data(&transaction, account_id, &lang)?;
 
     transaction.commit()?;
     
@@ -576,7 +592,8 @@ pub fn get_dashboard_state() -> Result<DashboardState, SqlError> {
                     account_name: row.get(5)?,
                     guild_card: row.get(6)?,
                     account_type: row.get(7)?,
-                    server: row.get(8)?
+                    server: row.get(8)?,
+                    lang: row.get(3)?
                 }
             })
         }

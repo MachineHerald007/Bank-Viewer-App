@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useContext, useMemo, useCallback } from "react";
 import { Pane, Alert, majorScale } from 'evergreen-ui';
 import { UploadButton, BackButton } from "./button";
+import { AppContext } from "@/app/page";
 import { AccountPane, AccountFileUploader, AccountFileCard, AccountFileCardError, CenteredPane } from "./styles";
 import { invoke } from "@tauri-apps/api/tauri";
 
@@ -19,6 +20,7 @@ const MimeType = {
 };
 
 export function AccountFileUpload({ theme, onComplete }) {
+    const { dashboardState } = useContext(AppContext);
     const acceptedMimeTypes = [MimeType.psobank, MimeType.psoclassicbank, MimeType.psochar];
     const maxFiles = 32;
     const maxSizeInBytes = 50 * 1024 ** 2; // 50 MB
@@ -26,25 +28,21 @@ export function AccountFileUpload({ theme, onComplete }) {
     const [parsedFiles, setParsedFiles] = useState([]);
     const [fileRejections, setFileRejections] = useState([]);
 
-    const values = useMemo(() => [...files, ...fileRejections.map((fileRejection) => fileRejection.file)], [
-        files,
-        fileRejections,
-    ]);
+    const values = useMemo(() => [...files, ...fileRejections.map(fileRejection => fileRejection.file)], [files, fileRejections]);
 
-    const parseFiles = async (files) => {
+    const parseFiles = useCallback(async (files) => {
         try {
             const response = await invoke("parse_files", {
                 files: files,
-                lang: "EN"
+                lang: dashboardState.lang
             });
-
             return response;
         } catch (error) {
-            console.log("Error parsing file: ", error)
+            console.log("Error parsing file: ", error);
         }
-    };
+    }, [dashboardState.lang]);
 
-    const parseFilename = (parsedFiles) => {
+    const parseFilename = useCallback((parsedFiles) => {
         const lang = parsedFiles.files[0].data.lang;
         const acc_type = parsedFiles.files[0].data.bank.length > 0 ? "NORMAL" : "CLASSIC";
         const acc_info = parsedFiles.files[0].filename.split(".")[0].split("_");
@@ -60,32 +58,31 @@ export function AccountFileUpload({ theme, onComplete }) {
         }
 
         return { info: result, slot: slotNumber, type: acc_type };
-    };
+    }, []);
 
-    const handleUpload = async () => {
+    const handleUpload = useCallback(async () => {
         try {
             const account = parseFilename(parsedFiles);
-            const response = await invoke("create_account", {
+            await invoke("create_account", {
                 account: {
                     account_name: account.info[1].toLowerCase(),
                     guild_card: Number(account.info[2]),
                     account_type: account.type,
-                    server: account.info[0]
+                    server: account.info[0],
+                    lang: dashboardState.lang
                 },
                 files: parsedFiles.files
             });
-
             onComplete();
         } catch (error) {
-            //Make an error notification come up
             console.log("Error uploading file(s): ", error);
         }
-    };
+    }, [parseFilename, parsedFiles, dashboardState.lang, onComplete]);
 
     const handleRemove = useCallback(
         (file) => {
-            const updatedFiles = files.filter((existingFile) => existingFile !== file);
-            const updatedFileRejections = fileRejections.filter((fileRejection) => fileRejection.file !== file);
+            const updatedFiles = files.filter(existingFile => existingFile !== file);
+            const updatedFileRejections = fileRejections.filter(fileRejection => fileRejection.file !== file);
 
             const { accepted, rejected } = rebaseFiles(
                 [...updatedFiles],
@@ -102,11 +99,9 @@ export function AccountFileUpload({ theme, onComplete }) {
         const accepted = [];
         const rejected = [];
 
-        // Track file names to detect duplicates
         const seenFileNames = new Set();
 
-        allFiles.forEach((file) => {
-            // Check if the file has already been seen (to handle duplicates)
+        allFiles.forEach(file => {
             if (seenFileNames.has(file.name)) {
                 rejected.push({
                     file,
@@ -115,7 +110,7 @@ export function AccountFileUpload({ theme, onComplete }) {
             } else if (accepted.length < maxFiles) {
                 if (acceptedMimeTypes.includes(file.type) && file.size <= maxSizeInBytes) {
                     accepted.push(file);
-                    seenFileNames.add(file.name); // Mark this file as seen
+                    seenFileNames.add(file.name);
                 } else {
                     rejected.push({
                         file,
@@ -123,14 +118,14 @@ export function AccountFileUpload({ theme, onComplete }) {
                             ? RejectionReason.InvalidMimeType
                             : RejectionReason.FileTooLarge
                     });
-                    seenFileNames.add(file.name); // Mark this file as seen
+                    seenFileNames.add(file.name);
                 }
             } else {
                 rejected.push({
                     file,
                     reason: RejectionReason.OverFileLimit
                 });
-                seenFileNames.add(file.name); // Mark this file as seen
+                seenFileNames.add(file.name);
             }
         });
 
@@ -138,9 +133,7 @@ export function AccountFileUpload({ theme, onComplete }) {
     };
 
     const fileCountOverLimit = files.length + fileRejections.length - maxFiles;
-    const fileCountError = `You can upload up to ${maxFiles} files. Please remove ${fileCountOverLimit} ${
-        fileCountOverLimit === 1 ? 'file' : 'files'
-    }.`
+    const fileCountError = `You can upload up to ${maxFiles} files. Please remove ${fileCountOverLimit} ${fileCountOverLimit === 1 ? 'file' : 'files'}.`;
 
     const handleAcceptedFiles = useCallback(async (acceptedFiles) => {
         const filesToAdd = [];
@@ -183,7 +176,6 @@ export function AccountFileUpload({ theme, onComplete }) {
         setFileRejections(prevRejections => [...prevRejections, ...newRejections]);
     }, [files, fileRejections, setFiles, setFileRejections, parseFiles]);
 
-    // Log files to console whenever they are set
     useEffect(() => {
         console.log("Accepted files:", files);
         console.log("Rejected files:", fileRejections);
@@ -207,9 +199,7 @@ export function AccountFileUpload({ theme, onComplete }) {
                     renderFile={(file, index) => {
                         const { name, size, type } = file;
                         const renderFileCountError = index === 0 && fileCountOverLimit > 0;
-                        const fileRejection = fileRejections.find(
-                            (fileRejection) => fileRejection.file === file
-                        );
+                        const fileRejection = fileRejections.find(fileRejection => fileRejection.file === file);
                         const { reason } = fileRejection || {};
 
                         return (
