@@ -36,7 +36,7 @@ pub fn seed_class_default_image(conn: &Connection, directory: &str) -> Result<()
     Ok(())
 }
 
-pub fn insert_item(conn: &Connection, item: &WrappedItem, account_id: i64, character_id: i64, storage_type: String, lang: String) -> Result<(), SqlError> {
+pub fn insert_item(conn: &Connection, item: &WrappedItem, account_id: i64, character_id: i64, storage_type: String, lang: &String) -> Result<(), SqlError> {
     if let Some(item_type) = &item.item {
         match item_type {
             Item::Weapon { name, type_, item_data, special, special_code, grind, attribute, tekked, rare } => {

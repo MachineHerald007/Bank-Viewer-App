@@ -453,7 +453,7 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
         match file.data {
             Data::SharedBank(shared_bank) => {
                 for (str1, item, str2) in shared_bank.bank {
-                    insert_item(&transaction, &item, account_id, 0, String::from("SHARED_BANK"), String::from("EN"));
+                    insert_item(&transaction, &item, account_id, 0, String::from("SHARED_BANK"), &account.lang);
                 }
             },
             Data::Character(character) => {
@@ -482,11 +482,11 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
                 let character_id = transaction.last_insert_rowid();
 
                 for (str1, item, str2) in bank {
-                    insert_item(&transaction, &item, account_id, character_id, String::from("BANK"), String::from("EN"));
+                    insert_item(&transaction, &item, account_id, character_id, String::from("BANK"), &account.lang);
                 }
 
                 for (str1, item, str2) in inventory {
-                    insert_item(&transaction, &item, account_id, character_id, String::from("INVENTORY"), String::from("EN"));
+                    insert_item(&transaction, &item, account_id, character_id, String::from("INVENTORY"), &account.lang);
                 }
             }
             _ => {

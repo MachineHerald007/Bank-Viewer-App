@@ -30,7 +30,7 @@ export function LanguageSelector({ context }) {
         if (dashboardState?.lang && dashboardState.lang !== value) {
             setValue(dashboardState.lang);
         } else if (!dashboardState?.lang) {
-            setValue('EN'); // or your preferred default language code
+            setValue('EN');
         }
     }, [dashboardState?.lang]);
 
