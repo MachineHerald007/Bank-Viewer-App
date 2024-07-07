@@ -538,6 +538,13 @@ pub fn translate_account_data(account_id: i64, account_data: AccountData, lang: 
     )?;
 
     if account_language_count == 0 {
+        transaction.execute(
+            "INSERT INTO account_languages
+             (account_id, lang)
+             VALUES (?1, ?2)",
+             params![account_id, lang]
+        )?;
+
         translate_items(&transaction, account_id, 0, &account_data.shared_bank, String::from("SHARED_BANK"), config.clone()).unwrap();
 
         for character in account_data.characters {
