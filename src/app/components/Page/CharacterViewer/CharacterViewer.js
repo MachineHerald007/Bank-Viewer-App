@@ -1,3 +1,4 @@
+import { invoke } from "@tauri-apps/api";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import {
     Pane,
@@ -6,6 +7,7 @@ import { CharactersSection } from "./CharactersSection";
 import { CharacterProfileCard } from "./CharacterProfileCard";
 import { CharacterInventory } from "./CharacterInventory";
 import { CharacterBank } from "./CharacterBank";
+import { AppContext } from "@/app/page";
 
 const selected_character = {
     id: "",
@@ -22,6 +24,7 @@ const selected_character = {
 export const CharacterContext = createContext();
 
 export function CharacterViewer({ characters }) {
+    const { dashboardState } = useContext(AppContext);
     const [selectedCharacter, setSelectedCharacter] = useState(selected_character);
 
     const saveSelectedCharacter = (character) => {
@@ -37,11 +40,35 @@ export function CharacterViewer({ characters }) {
             inventory: character.inventory,
             bank: character.bank
         });
+
+        invoke("save_selected_character", {
+            selectedCharacterId: character.id
+        })
+        .then(res => {})
+        .catch(err => console.log(err))
     };
 
     useEffect(() => {
-        if (characters.length > 0) {
-            setSelectedCharacter(characters[0]);
+        if (dashboardState.selected_character_id && characters.length > 0) {
+            const selected = characters.find(character => character.id === dashboardState.selected_character_id);
+            if (selected) {
+                setSelectedCharacter(selected);
+            } else {
+                setSelectedCharacter(selected_character);
+            }
+        } else {
+            setSelectedCharacter(selected_character);
+        }
+    }, [characters, dashboardState.selected_character_id]);
+
+    useEffect(() => {
+        if (dashboardState.selected_character_id && characters.length > 0) {
+            const selected = characters.find(character => character.id === dashboardState.selected_character_id);
+            if (selected) {
+                setSelectedCharacter(selected);
+            } else {
+                setSelectedCharacter(selected_character);
+            }
         } else {
             setSelectedCharacter(selected_character);
         }
