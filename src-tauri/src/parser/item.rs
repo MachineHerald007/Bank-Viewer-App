@@ -242,18 +242,18 @@ pub fn mag(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
 pub fn tech(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let name = match &config.tech_codes {
         Some(map) => match map.get(&(item_data[4] as u8)) {
-            Some(name) => name.clone(),
-            None => "No name found",
+            Some(name) => String::from(*name),
+            None => String::from("No name found"),
         },
-        None => "No map found",
+        None => String::from("No map found"),
     };
     let level = item_data[2] + 1;
     
     Item::Tech {
-        name: String::from(name),
-        level: level,
+        name,
+        level,
         type_: 6,
-        item_data: Util::binary_array_to_hex(&item_data)
+        item_data: Util::binary_array_to_hex(&item_data),
     }
 }
 
@@ -302,7 +302,7 @@ pub fn meseta(amount: u32, config: Config) -> Item {
 
 fn get_item_name(item_code: u32, config: &Config) -> String {
     if let Some(name) = config.item_codes.clone().expect("REASON").get(&item_code) {
-        String::from(name.clone())
+        String::from(*name)
     } else {
         format!("undefined. ({})", Util::int_to_hex(item_code))
     }
@@ -312,7 +312,7 @@ fn get_special(item_data: &[u8], config: &Config) -> String {
     let code = item_data[4];
 
     if let Some(special) = config.weapon_special_codes.clone().expect("REASON").get(&code) {
-        String::from(special.clone())
+        String::from(*special)
     } else {
         String::from("None")
     }
@@ -320,7 +320,7 @@ fn get_special(item_data: &[u8], config: &Config) -> String {
 
 fn get_rare_special(item_code: u32, config: &Config) -> String {
     if let Some(special) = config.rare_weapon_special_codes.clone().expect("REASON").get(&item_code) {
-        String::from(special.clone())
+        String::from(*special)
     } else {
         String::from("None")
     }
@@ -330,7 +330,8 @@ fn get_srank_special(item_data: &[u8], config: Config) -> String {
     let special_code = item_data[2];
 
     if let Some(special) = config.srank_special_codes.clone().expect("REASON").get(&special_code) {
-        String::from(special.clone())
+        String::from(*special)
+
     } else {
         String::from("None")
     }

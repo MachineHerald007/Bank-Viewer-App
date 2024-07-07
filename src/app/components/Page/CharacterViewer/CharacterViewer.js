@@ -1,4 +1,4 @@
-import { invoke } from "@tauri-apps/api";
+import { invoke } from "@tauri-apps/api/tauri";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { Pane } from 'evergreen-ui';
 import { CharactersSection } from "./CharactersSection";
