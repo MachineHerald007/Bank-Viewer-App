@@ -1,8 +1,6 @@
 import { invoke } from "@tauri-apps/api";
 import React, { createContext, useContext, useState, useEffect } from "react";
-import {
-    Pane,
-} from 'evergreen-ui';
+import { Pane } from 'evergreen-ui';
 import { CharactersSection } from "./CharactersSection";
 import { CharacterProfileCard } from "./CharacterProfileCard";
 import { CharacterInventory } from "./CharacterInventory";
