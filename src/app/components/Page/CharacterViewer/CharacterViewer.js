@@ -1,17 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import {
-    Avatar,
-    Text,
-    Table,
-    Pagination,
     Pane,
 } from 'evergreen-ui';
 import { CharactersSection } from "./CharactersSection";
 import { CharacterProfileCard } from "./CharacterProfileCard";
-import { CharacterProfileAnalytics } from "./CharacterProfileAnalytics";
 import { CharacterInventory } from "./CharacterInventory";
 import { CharacterBank } from "./CharacterBank";
-import { useTheme } from "../../Theme/Theme";
 
 const selected_character = {
     id: "",
@@ -25,10 +19,11 @@ const selected_character = {
     bank: []
 };
 
-export const CharacterContext = createContext()
+export const CharacterContext = createContext();
 
 export function CharacterViewer({ characters }) {
     const [selectedCharacter, setSelectedCharacter] = useState(selected_character);
+
     const saveSelectedCharacter = (character) => {
         console.log("selected character: ", character);
         setSelectedCharacter({
@@ -45,8 +40,12 @@ export function CharacterViewer({ characters }) {
     };
 
     useEffect(() => {
-        // console.log("CHARACTER")
-    }, [characters])
+        if (characters.length > 0) {
+            setSelectedCharacter(characters[0]);
+        } else {
+            setSelectedCharacter(selected_character);
+        }
+    }, [characters]);
 
     return (
         <CharacterContext.Provider value={{ selectedCharacter, saveSelectedCharacter }}>
@@ -59,5 +58,5 @@ export function CharacterViewer({ characters }) {
                 <CharacterBank display="inline-block" character={selectedCharacter} />
             </Pane>
         </CharacterContext.Provider>
-    )
+    );
 }

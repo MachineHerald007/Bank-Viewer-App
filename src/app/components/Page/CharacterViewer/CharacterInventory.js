@@ -21,9 +21,7 @@ export function CharacterInventory({ character }) {
     const { theme } = useTheme();
 
     useEffect(() => {
-        if (items !== character.inventory) {
-            setItems(character.inventory);
-        }
+        setItems(character.inventory);
     }, [character]);
 
     const headerColor = useMemo(() => theme === "light" ? "#fff" : "#fff", [theme]);
