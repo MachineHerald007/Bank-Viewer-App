@@ -3,8 +3,23 @@ use rusqlite::{Connection, Result as SqlResult, params};
 use std::fs;
 use std::io::Read;
 use std::path::Path;
+use crate::util::Util;
+use crate::config::config::Config;
 use crate::command::db::{SqlError, CharacterData};
 use crate::parser::types::{Item, WrappedItem};
+use crate::parser::item::{
+    weapon,
+    frame,
+    barrier,
+    unit,
+    mag,
+    tech,
+    tool,
+    s_rank_weapon,
+    meseta,
+    new_item,
+    set_meseta
+};
 
 pub fn seed_class_default_image(conn: &Connection, directory: &str) -> Result<(), SqlError> {    
     let path = Path::new(directory);
@@ -577,4 +592,69 @@ pub fn get_character_data(conn: &Connection, account_id: i64, lang: &String) -> 
     }
 
     Ok(characters)
+}
+
+fn translate_item(item_data: &String, config: &Config) -> WrappedItem {
+    let _item_data = Util::hex_string_to_array(&item_data);
+    let item_code = Util::binary_array_to_int(&_item_data[0..3]);
+    let item_hex_code = Util::binary_array_to_hex(&_item_data[0..3]);
+    let item = new_item(_item_data.to_vec(), item_code, config.clone());
+    
+    item
+}
+
+fn translate_meseta(amount: u32, config: &Config) -> WrappedItem {
+    let item = set_meseta(amount, config.clone());
+    println!("meseta: {:?}", item);
+
+    WrappedItem { item }
+}
+
+pub fn translate_items(conn: &Connection, account_id: i64, character_id: i64, items: &Vec<DBItem>, storage_type: String,  config: Config) -> Result<(), SqlError> {
+    for _item in items {
+        match _item {
+            DBItem::Weapon { item_data, .. } => {
+                let item = translate_item(item_data, &config);
+                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
+            }
+            DBItem::SRankWeapon { item_data, .. } => {
+                let item = translate_item(item_data, &config);
+                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
+            }
+            DBItem::Frame { item_data, .. } => {
+                let item = translate_item(item_data, &config);
+                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
+            }
+            DBItem::Barrier { item_data, .. } => {
+                let item = translate_item(item_data, &config);
+                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
+            }
+            DBItem::Unit { item_data, .. } => {
+                let item = translate_item(item_data, &config);
+                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
+            }
+            DBItem::Mag { item_data, .. } => {
+                let item = translate_item(item_data, &config);
+                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
+            }
+            DBItem::Tech { item_data, .. } => {
+                let item = translate_item(item_data, &config);
+                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
+            }
+            DBItem::Tool { item_data, .. } => {
+                let item = translate_item(item_data, &config);
+                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
+            }
+            DBItem::Other { item_data, .. } => {
+                let item = translate_item(item_data, &config);
+                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
+            }
+            DBItem::Meseta { amount, .. } => {
+                let item = translate_meseta(*amount, &config);
+                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
+            }
+        }
+    }
+
+    Ok(())
 }

@@ -83,7 +83,7 @@ fn get_item_type(item_code: u32) -> u32 {
     }
 }
 
-fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
+pub fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let name = get_item_name(item_code, &config);
     let grind = item_data[3];
     let native = get_native(&item_data);
@@ -130,7 +130,7 @@ fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     }
 }
 
-fn s_rank_weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
+pub fn s_rank_weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let custom_name = get_custom_name(&item_data[6..12]);
     let map = Config::srank_weapon_codes();
     let weapon_code = match map.get(&(item_code & 0xFFFF00)) {
@@ -151,7 +151,7 @@ fn s_rank_weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     }
 }
 
-fn frame(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
+pub fn frame(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let name = get_item_name(item_code, &config);
     let slot = item_data[5];
     let dfp = item_data[6];
@@ -172,7 +172,7 @@ fn frame(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     }
 }
 
-fn barrier(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
+pub fn barrier(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let name = get_item_name(item_code, &config);
     let dfp = item_data[6];
     let dfp_max_addition = get_addition(&name, &config.barriers, 0);
@@ -194,7 +194,7 @@ fn barrier(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     }
 }
 
-fn unit(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
+pub fn unit(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let name = get_item_name(item_code, &config);
     
     Item::Unit {
@@ -204,7 +204,7 @@ fn unit(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     }
 }
 
-fn mag(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
+pub fn mag(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let name = get_item_name(item_code & 0xFFFF00, &config);
     let level = item_data[2];
     let sync = item_data[16];
@@ -239,7 +239,7 @@ fn mag(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     }
 }
 
-fn tech(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
+pub fn tech(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let name = match &config.tech_codes {
         Some(map) => match map.get(&(item_data[4] as u8)) {
             Some(name) => name.clone(),
@@ -257,7 +257,7 @@ fn tech(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     }
 }
 
-fn tool(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
+pub fn tool(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let name = get_item_name(item_code, &config);
     let number = if item_data.len() == 28 {
         item_data[5]
@@ -273,7 +273,7 @@ fn tool(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     }
 }
 
-fn other(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
+pub fn other(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     let name = get_item_name(item_code, &config);
     let number = if item_data.len() == 28 {
         item_data[5]
@@ -289,7 +289,7 @@ fn other(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
     }
 }
 
-fn meseta(amount: u32, config: Config) -> Item {
+pub fn meseta(amount: u32, config: Config) -> Item {
     let lang = config.lang.clone().unwrap();
     let name = if lang == "EN" { "MESETA" } else { "メセタ" };
     
@@ -452,18 +452,18 @@ pub fn set_items(items_data: &[u8], slot: Slot, length: usize, meseta_data: &[u8
         let item_hex_code = Util::binary_array_to_hex(&item_data[0..3]);
         let item = new_item(item_data.to_vec(), item_code, config.clone());
 
-        inventory.push((item_hex_code, item, slot.to_string()));
+        inventory.push(item);
     }
 
     let meseta_amount = ((meseta_data[2] as u32) << 16) | ((meseta_data[1] as u32) << 8) | meseta_data[0] as u32;
     let meseta_hex_code = format!("0x{:06x}", meseta_amount);
     let item = set_meseta(meseta_amount, config.clone());
 
-    inventory.push((meseta_hex_code, WrappedItem { item }, slot.to_string()));
+    inventory.push(WrappedItem { item });
     inventory
 }
 
-fn set_meseta(amount: u32, config: Config) -> Option<Item> {
+pub fn set_meseta(amount: u32, config: Config) -> Option<Item> {
     Some(meseta(amount, config))
 }
 

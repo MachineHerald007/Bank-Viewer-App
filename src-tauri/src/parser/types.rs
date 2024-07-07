@@ -68,7 +68,7 @@ impl fmt::Display for Slot {
     }
 }
 
-pub type Inventory = Vec<(String, WrappedItem, String)>;
+pub type Inventory = Vec<WrappedItem>;
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct WrappedItem {

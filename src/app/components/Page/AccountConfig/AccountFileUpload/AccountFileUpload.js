@@ -182,6 +182,33 @@ export function AccountFileUpload({ theme, onComplete }) {
         console.log("Parsed files:", parsedFiles);
     }, [files, fileRejections, parsedFiles]);
 
+    // Ensure parsedFiles updates if dashboardState.lang changes
+    useEffect(() => {
+        if (files.length > 0) {
+            (async () => {
+                const fileDataArray = await Promise.all(files.map(file => {
+                    return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            const arrayBuffer = e.target.result;
+                            const binary = new Uint8Array(arrayBuffer);
+                            const fileData = {
+                                filename: file.name,
+                                binary: Array.from(binary)
+                            };
+                            resolve(fileData);
+                        };
+                        reader.onerror = reject;
+                        reader.readAsArrayBuffer(file);
+                    });
+                }));
+
+                const parsedFiles = await parseFiles(fileDataArray);
+                setParsedFiles(parsedFiles);
+            })();
+        }
+    }, [dashboardState.lang, files, parseFiles]);
+
     return (
         <CenteredPane>
             <AccountPane maxWidth={654}>

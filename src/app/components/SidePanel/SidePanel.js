@@ -1,6 +1,5 @@
 import { invoke } from "@tauri-apps/api/tauri";
 import React, { useState, useEffect, useContext, createContext, useMemo, useCallback } from "react";
-import { AppContext } from "../../page";
 import {
     Table,
     Pagination,
@@ -34,12 +33,12 @@ import { SharedBank } from "../Page/SharedBank/SharedBank";
 import { CharacterViewer } from "../Page/CharacterViewer/CharacterViewer";
 import { Settings } from "../Page/Settings/Settings";
 import { useTheme } from "../Theme/Theme";
+import { AppContext } from "../../page"; // Ensure correct path
 
 export const AccountContext = createContext();
 
 export function SidePanel() {
-    const { user, loggedInAccount } = useContext(AppContext);
-    const [dashboardState, setDashboardState] = useState({});
+    const { user, loggedInAccount, dashboardState, setDashboardState } = useContext(AppContext);
     const [accountData, setAccountData] = useState({});
     const [sharedBank, setSharedBank] = useState([]);
     const [characters, setCharacters] = useState([]);
@@ -85,7 +84,7 @@ export function SidePanel() {
                 getSelectedTab(dashboard_state.selected_tab);
             })
             .catch(err => console.log(err));
-    }, [getSelectedTab]);
+    }, [getSelectedTab, setDashboardState]);
 
     useEffect(() => {
         if (dashboardState.logged_in_account_id) {

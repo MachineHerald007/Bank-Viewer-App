@@ -1,6 +1,6 @@
 import { invoke } from '@tauri-apps/api/tauri';
 import { Select, Space } from 'antd';
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { AppContext } from '@/app/page';
 import { AccountContext } from '../../SidePanel/SidePanel';
 import { LanguageSelectorPane } from './styles';
@@ -10,30 +10,40 @@ export function LanguageSelector({ context }) {
     const { dashboardState, setDashboardState } = useContext(AppContext);
     const accountContext = useContext(AccountContext);
     const accountData = accountContext ? accountContext.accountData : {};
-    const [value, setValue] = useState(dashboardState.lang);
     const { theme } = useTheme();
+    const [value, setValue] = useState(dashboardState.lang);
 
-    const handleChange = (lang) => {
+    const handleChange = useCallback((lang) => {
         setValue(lang);
         console.log("language selector > send this: ", accountData);
+        console.log(dashboardState);
         if (context === "sidepanel-page") {
             invoke("translate_account_data", {
-                accountData: accountData
+                accountId: dashboardState.logged_in_account_id,
+                accountData: accountData,
+                lang: lang
             })
-            .then(res => {
+            .then(() => {
                 console.log("translated account data");
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
         }
-    };
+    }, [accountData, context, dashboardState.logged_in_account_id]);
 
     useEffect(() => {
-        setValue(dashboardState.lang);
-    }, [context, dashboardState, accountData]);
+        invoke("get_dashboard_state")
+        .then(res => {
+            console.log("the res: ", res)
+            setValue(res.lang);
+        })
+        .catch(err => {
+            setValue("EN");
+        });
+    }, [])
 
     useEffect(() => {
         invoke("save_lang", { lang: value })
-            .then(res => {
+            .then(() => {
                 setDashboardState(prevDashboardState => ({
                     ...prevDashboardState,
                     lang: value
@@ -46,7 +56,7 @@ export function LanguageSelector({ context }) {
         <LanguageSelectorPane theme={theme} context={context}>
             <Space wrap>
                 <Select
-                    defaultValue={context === "sidepanel-page" ? value : "EN"}
+                    value={value}
                     style={{ width: 60 }}
                     onChange={handleChange}
                     options={[

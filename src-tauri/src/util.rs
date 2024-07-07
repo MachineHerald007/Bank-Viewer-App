@@ -20,8 +20,17 @@ impl Util {
         char_codes
     }
 
-    // Convert an integer to a hexadecimal string with a '0x' prefix
     pub fn int_to_hex(value: u32) -> String {
         format!("0x{:06X}", value)
+    }
+
+    pub fn hex_string_to_array(s: &str) -> Vec<u8> {
+        let mut arr = Vec::new();
+        for i in 0..s.len() / 2 {
+            let byte_str = &s[i * 2..(i + 1) * 2];
+            let byte = u8::from_str_radix(byte_str, 16).unwrap();
+            arr.push(byte);
+        }
+        arr
     }
 }

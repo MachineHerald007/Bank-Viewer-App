@@ -3,8 +3,10 @@ use std::path::PathBuf;
 use serde::{Serialize, Deserialize};
 use rusqlite::{Connection, Result as SqlResult, params};
 use thiserror::Error;
+use crate::config::config::Config;
 use crate::lib::db::DBItem;
 use crate::lib::db::{
+    translate_items,
     insert_item,
     get_items,
     get_character_data,
@@ -55,10 +57,11 @@ impl From<base64::DecodeError> for SqlError {
     }
 }
 
+static DB_CONN: &'static str = "PSOBB_DB.sqlite";
+
 #[tauri::command]
 pub fn init_app() -> Result<(), SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let mut conn = Connection::open(my_db)?;
+    let mut conn = Connection::open(DB_CONN)?;
     let transaction = conn.transaction()?;
 
     transaction.execute(
@@ -346,8 +349,7 @@ pub struct User {
 
 #[tauri::command]
 pub fn create_user(user: User) -> Result<(), SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let conn = Connection::open(my_db)?;
+    let conn = Connection::open(DB_CONN)?;
 
     conn.execute(
         "INSERT INTO user (profile_name, discord_username, profile_picture)
@@ -364,8 +366,7 @@ pub fn create_user(user: User) -> Result<(), SqlError> {
 
 #[tauri::command]
 pub fn get_user() -> Result<User, SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let conn = Connection::open(my_db)?;
+    let conn = Connection::open(DB_CONN)?;
 
     let user = conn.query_row(
         "SELECT profile_name, discord_username, profile_picture FROM user",
@@ -393,8 +394,7 @@ pub struct Account {
 
 #[tauri::command]
 pub fn get_accounts() -> Result<Vec<Account>, SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let conn = Connection::open(my_db)?;
+    let conn = Connection::open(DB_CONN)?;
     
     let mut stmt = conn.prepare("SELECT ID, account_name, guild_card, account_type, server FROM account")?;
     let account_iter = stmt.query_map([], |row| {
@@ -426,8 +426,7 @@ pub struct AccountPayload {
 
 #[tauri::command]
 pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result<(), SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let mut conn = Connection::open(my_db)?;
+    let mut conn = Connection::open(DB_CONN)?;
     let transaction = conn.transaction()?;
 
     transaction.execute(
@@ -452,7 +451,7 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
     for file in files {
         match file.data {
             Data::SharedBank(shared_bank) => {
-                for (str1, item, str2) in shared_bank.bank {
+                for item in shared_bank.bank {
                     insert_item(&transaction, &item, account_id, 0, String::from("SHARED_BANK"), &account.lang);
                 }
             },
@@ -481,11 +480,11 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
 
                 let character_id = transaction.last_insert_rowid();
 
-                for (str1, item, str2) in bank {
+                for item in bank {
                     insert_item(&transaction, &item, account_id, character_id, String::from("BANK"), &account.lang);
                 }
 
-                for (str1, item, str2) in inventory {
+                for item in inventory {
                     insert_item(&transaction, &item, account_id, character_id, String::from("INVENTORY"), &account.lang);
                 }
             }
@@ -501,19 +500,11 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
     Ok(())
 }
 
-#[tauri::command]
-pub fn translate_account_data(account_data: AccountData) -> Result<(), SqlError> {
-    println!("ze account data: {:?}", account_data);
-    Ok(())
-}
-
 #[derive(Debug, Serialize, Deserialize)]
 pub struct AccountData {
-    pub shared_bank: SharedBankData,
+    pub shared_bank: Vec<DBItem>,
     pub characters: Vec<CharacterData>
 }
-
-pub type SharedBankData = Vec<DBItem>;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CharacterData {
@@ -535,13 +526,38 @@ pub struct CharacterData {
 }
 
 #[tauri::command]
+pub fn translate_account_data(account_id: i64, account_data: AccountData, lang: String) -> Result<(), SqlError> {
+    let mut conn = Connection::open(DB_CONN)?;
+    let transaction = conn.transaction()?;
+    let config = Config::init(lang.clone());
+
+    let account_language_count: u8 = transaction.query_row(
+        "SELECT COUNT(*) FROM account_languages WHERE account_id = ?1 AND lang = ?2",
+        params![account_id, lang],
+        |row| row.get(0),
+    )?;
+
+    if account_language_count == 0 {
+        translate_items(&transaction, account_id, 0, &account_data.shared_bank, String::from("SHARED_BANK"), config.clone()).unwrap();
+
+        for character in account_data.characters {
+            translate_items(&transaction, account_id, character.id, &character.bank, String::from("BANK"), config.clone()).unwrap();
+            translate_items(&transaction, account_id, character.id, &character.inventory, String::from("INVENTORY"), config.clone()).unwrap();
+        }
+
+        transaction.commit()?;
+    }
+
+    Ok(())
+}
+
+#[tauri::command]
 pub fn get_account_data(account_id: i64, lang: String) -> Result<AccountData, SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let mut conn = Connection::open(my_db)?;
+    let mut conn = Connection::open(DB_CONN)?;
     let transaction = conn.transaction()?;
     let shared_bank_id = 0;
     
-    let shared_bank: SharedBankData = get_items(&transaction, account_id, shared_bank_id, &lang)?;
+    let shared_bank: Vec<DBItem> = get_items(&transaction, account_id, shared_bank_id, &lang)?;
     let characters: Vec<CharacterData> = get_character_data(&transaction, account_id, &lang)?;
 
     transaction.commit()?;
@@ -564,8 +580,7 @@ pub struct DashboardState {
 
 #[tauri::command]
 pub fn get_dashboard_state() -> Result<DashboardState, SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let conn = Connection::open(my_db)?;
+    let conn = Connection::open(DB_CONN)?;
 
     let dashboard_state = conn.query_row(
         "SELECT 
@@ -604,8 +619,7 @@ pub fn get_dashboard_state() -> Result<DashboardState, SqlError> {
 
 #[tauri::command]
 pub fn get_theme() -> Result<String, SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let conn = Connection::open(my_db)?;
+    let conn = Connection::open(DB_CONN)?;
 
     let theme = conn.query_row(
         "Select theme FROM dashboard_state",
@@ -620,8 +634,7 @@ pub fn get_theme() -> Result<String, SqlError> {
 
 #[tauri::command]
 pub fn save_selected_account(selected_account_id: u8) -> Result<(), SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let conn = Connection::open(my_db)?;
+    let conn = Connection::open(DB_CONN)?;
 
     conn.execute(
         "UPDATE dashboard_state SET logged_in_account_id = ?1",
@@ -633,8 +646,7 @@ pub fn save_selected_account(selected_account_id: u8) -> Result<(), SqlError> {
 
 #[tauri::command]
 pub fn save_selected_character(selected_character_id: u8) -> Result<(), SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let conn = Connection::open(my_db)?;
+    let conn = Connection::open(DB_CONN)?;
 
     conn.execute(
         "UPDATE dashboard_state SET selected_character_id = ?1",
@@ -646,8 +658,7 @@ pub fn save_selected_character(selected_character_id: u8) -> Result<(), SqlError
 
 #[tauri::command]
 pub fn save_selected_tab(selected_tab: String) -> Result<(), SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let conn = Connection::open(my_db)?;
+    let conn = Connection::open(DB_CONN)?;
 
     conn.execute(
         "UPDATE dashboard_state SET selected_tab = ?1",
@@ -659,8 +670,7 @@ pub fn save_selected_tab(selected_tab: String) -> Result<(), SqlError> {
 
 #[tauri::command]
 pub fn save_lang(lang: String) -> Result<(), SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let conn = Connection::open(my_db)?;
+    let conn = Connection::open(DB_CONN)?;
 
     conn.execute(
         "UPDATE dashboard_state SET lang = ?1",
@@ -672,8 +682,7 @@ pub fn save_lang(lang: String) -> Result<(), SqlError> {
 
 #[tauri::command]
 pub fn save_theme(theme: String) -> Result<(), SqlError> {
-    let my_db = "C:\\Users\\Spike\\Downloads\\db_dev\\db_dev";
-    let conn = Connection::open(my_db)?;
+    let conn = Connection::open(DB_CONN)?;
 
     conn.execute(
         "UPDATE dashboard_state SET theme = ?1",
