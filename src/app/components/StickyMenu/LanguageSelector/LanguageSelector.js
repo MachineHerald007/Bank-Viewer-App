@@ -25,6 +25,11 @@ export function LanguageSelector({ context }) {
             })
             .then(() => {
                 console.log("translated account data");
+                return invoke("get_dashboard_state")
+            })
+            .then(res => {
+                console.log("the res: ", res);
+                setDashboardState(res);
             })
             .catch(err => console.log(err));
         }

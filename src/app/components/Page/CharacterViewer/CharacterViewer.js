@@ -59,19 +59,6 @@ export function CharacterViewer({ characters }) {
         }
     }, [characters, dashboardState.selected_character_id]);
 
-    useEffect(() => {
-        if (dashboardState.selected_character_id && characters.length > 0) {
-            const selected = characters.find(character => character.id === dashboardState.selected_character_id);
-            if (selected) {
-                setSelectedCharacter(selected);
-            } else {
-                setSelectedCharacter(selected_character);
-            }
-        } else {
-            setSelectedCharacter(selected_character);
-        }
-    }, [characters]);
-
     return (
         <CharacterContext.Provider value={{ selectedCharacter, saveSelectedCharacter }}>
             <Pane>

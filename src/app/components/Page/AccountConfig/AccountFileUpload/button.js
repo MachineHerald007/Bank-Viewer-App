@@ -7,11 +7,11 @@ const StyledUploadButton = styled(Button)`
     color: ${({ theme }) => (theme === "light" ? "#101840" : "#efefef")} !important;
     padding: 20px 24px;
     margin-left: 12px;
-    background: ${({ theme }) => (theme === "light" ? "#fff" : "#21e795")};
+    background: ${({ theme }) => (theme === "light" ? "#fff" : "#15c77e")};
     border-color: ${({ theme }) => (theme === "light" ? "#c1c4d6" : "#000000")};
     
     &:active {
-        background: ${({ theme }) => (theme === "light" ? "#fff" : "#21e795")};
+        background: ${({ theme }) => (theme === "light" ? "#fff" : "#11e18c")};
     }
 
     &:focus {
@@ -19,7 +19,7 @@ const StyledUploadButton = styled(Button)`
     }
 
     &:hover {
-        background: ${({ theme }) => (theme === "light" ? "#FAFBFF" : "#20c17e")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#FAFBFF" : "#11e18c")} !important;
         border-color: ${({ theme }) => (theme === "light" ? "#8f95b2" : "#000000")} !important;
         text-decoration: none !important;
         transition-duration: 0.1s;
@@ -29,11 +29,11 @@ const StyledUploadButton = styled(Button)`
 const StyledBackButton = styled(Button)`
     color: ${({ theme }) => (theme === "light" ? "#101840" : "#efefef")} !important;
     padding: 20px 24px;
-    background: ${({ theme }) => (theme === "light" ? "#fff" : "#ff3939")};
+    background: ${({ theme }) => (theme === "light" ? "#fff" : "#d11515")};
     border-color: ${({ theme }) => (theme === "light" ? "#c1c4d6" : "#000000")};
 
     &:active {
-        background: ${({ theme }) => (theme === "light" ? "#fff" : "#ff3939")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#fff" : "#d11515")} !important;
     }
 
     &:focus {
@@ -41,7 +41,7 @@ const StyledBackButton = styled(Button)`
     }
 
     &:hover {
-        background: ${({ theme }) => (theme === "light" ? "#fff" : "#dd3333")} !important;
+        background: ${({ theme }) => (theme === "light" ? "#fff" : "#ff0202")} !important;
         border-color: ${({ theme }) => (theme === "light" ? "#8f95b2" : "#000000")} !important;
         text-decoration: none !important;
         transition-duration: 0.1s;
