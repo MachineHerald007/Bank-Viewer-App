@@ -548,7 +548,7 @@ pub fn get_character_data(conn: &Connection, account_id: i64, lang: &String) -> 
 
             for item in items {
                 let storage_type = match &item {
-                    DBItem::Weapon { storage_type, .. }
+                      DBItem::Weapon { storage_type, .. }
                     | DBItem::SRankWeapon { storage_type, .. }
                     | DBItem::Frame { storage_type, .. }
                     | DBItem::Barrier { storage_type, .. }
@@ -612,48 +612,19 @@ fn translate_meseta(amount: u32, config: &Config) -> WrappedItem {
 
 pub fn translate_items(conn: &Connection, account_id: i64, character_id: i64, items: &Vec<DBItem>, storage_type: String,  config: Config) -> Result<(), SqlError> {
     for _item in items {
-        match _item {
-            DBItem::Weapon { item_data, .. } => {
-                let item = translate_item(item_data, &config);
-                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
-            }
-            DBItem::SRankWeapon { item_data, .. } => {
-                let item = translate_item(item_data, &config);
-                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
-            }
-            DBItem::Frame { item_data, .. } => {
-                let item = translate_item(item_data, &config);
-                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
-            }
-            DBItem::Barrier { item_data, .. } => {
-                let item = translate_item(item_data, &config);
-                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
-            }
-            DBItem::Unit { item_data, .. } => {
-                let item = translate_item(item_data, &config);
-                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
-            }
-            DBItem::Mag { item_data, .. } => {
-                let item = translate_item(item_data, &config);
-                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
-            }
-            DBItem::Tech { item_data, .. } => {
-                let item = translate_item(item_data, &config);
-                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
-            }
-            DBItem::Tool { item_data, .. } => {
-                let item = translate_item(item_data, &config);
-                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
-            }
-            DBItem::Other { item_data, .. } => {
-                let item = translate_item(item_data, &config);
-                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
-            }
-            DBItem::Meseta { amount, .. } => {
-                let item = translate_meseta(*amount, &config);
-                insert_item(conn, &item, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
-            }
-        }
+        let item_data = match _item {
+              DBItem::Weapon { item_data, .. }
+            | DBItem::SRankWeapon { item_data, .. }
+            | DBItem::Frame { item_data, .. }
+            | DBItem::Barrier { item_data, .. }
+            | DBItem::Unit { item_data, .. }
+            | DBItem::Mag { item_data, .. }
+            | DBItem::Tech { item_data, .. }
+            | DBItem::Tool { item_data, .. }
+            | DBItem::Other { item_data, .. } => translate_item(item_data, &config),
+            DBItem::Meseta { amount, .. } => translate_meseta(*amount, &config),
+        };
+        insert_item(conn, &item_data, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
     }
 
     Ok(())

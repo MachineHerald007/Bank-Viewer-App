@@ -4,6 +4,9 @@
     windows_subsystem = "windows"
 )]
 
+use tauri::Manager;
+use std::fs::create_dir_all;
+
 mod util;
 mod lib {
     pub mod db;
@@ -46,6 +49,21 @@ use command::{
 
 fn main() {
     tauri::Builder::default()
+    .setup(|app| {
+        let path = app.path_resolver().app_data_dir().expect("This should never be None");
+        let path = path.join(".images/class_defaults");
+
+        create_dir_all(&path);
+
+        #[cfg(debug_assertions)] // only include this code on debug builds
+        {
+            let window = app.get_window("main").unwrap();
+            window.open_devtools();
+            window.close_devtools();
+        }
+        
+        Ok(())
+    })
     .plugin(tauri_plugin_window_state::Builder::default().build())
     .invoke_handler(tauri::generate_handler![
         parse_files,

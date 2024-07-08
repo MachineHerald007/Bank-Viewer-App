@@ -3,58 +3,58 @@ import { Switch } from "antd";
 import styled from 'styled-components';
 
 export const ThemeToggleSwitch = styled(Switch)`
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    color: #1677ff;
-    font-size: 14px;
-    line-height: 22px;
-    list-style: none;
-    position: relative;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    display: inline-block;
-    min-width: 44px;
-    height: 28px;
-    vertical-align: middle;
-    background: rgba(0, 0, 0, 0.25);
-    border: 0;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
-    user-select: none;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #1677ff !important;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    list-style: none !important;
+    position: relative !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !important;
+    display: inline-block !important;
+    min-width: 44px !important;
+    height: 28px !important;
+    vertical-align: middle !important;
+    background: rgba(0, 0, 0, 0.25) !important;
+    border: 0 !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+    user-select: none !important;
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-switch .ant-switch-handle::before {
-        position: absolute;
-        top: 0;
-        inset-inline-end: 0;
-        bottom: 6px;
-        inset-inline-start: 0;
-        background-color: #fff;
-        border-radius: 2px;
-        box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2);
-        transition: all 0.2s ease-in-out;
-        content: "";
+        position: absolute !important;
+        top: 0 !important;
+        inset-inline-end: 0 !important;
+        bottom: 6px !important;
+        inset-inline-start: 0 !important;
+        background-color: #fff !important;
+        border-radius: 2px !important;
+        box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2) !important;
+        transition: all 0.2s ease-in-out !important;
+        content: "" !important;
     }
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-switch .ant-switch-handle::before {
-        position: absolute;
-        top: 0px;
-        inset-inline-end: 0;
-        bottom: 8px;
-        inset-inline-start: 0;
-        background-color: #fff;
-        border-radius: 2px;
-        box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2);
-        transition: all 0.2s ease-in-out;
-        content: "";
-        height: 24px;
+        position: absolute !important;
+        top: 0px !important;
+        inset-inline-end: 0 !important;
+        bottom: 8px !important;
+        inset-inline-start: 0 !important;
+        background-color: #fff !important;
+        border-radius: 2px !important;
+        box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2) !important;
+        transition: all 0.2s ease-in-out !important;
+        content: "" !important;
+        height: 24px !important;
     }
 
     &:where(.css-dev-only-do-not-override-zg0ahe).ant-switch.ant-switch-checked {
-        background: ${({ context }) => (context === "sidepanel-page" ? "darkturquoise" : "#1677ff")};
+        background: ${({ context }) => (context === "sidepanel-page" ? "darkturquoise" : "#1677ff")} !important;
 
         &:hover {
-            background: ${({ context }) => (context === "sidepanel-page" ? "#00b8bb" : "#1677ff")};
+            background: ${({ context }) => (context === "sidepanel-page" ? "#00b8bb" : "#1677ff")} !important;
         }
     }
     
