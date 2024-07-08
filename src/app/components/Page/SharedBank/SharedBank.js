@@ -49,7 +49,7 @@ export function SharedBank({ sharedBank }) {
             <Heading size={600} color={theme === "light" ? "#efefef" : "#fff"}>
                 Shared Bank
                 <Bracket type="left">[</Bracket>
-                    {items.length - 1}/200
+                    {items.length > 0 ? items.length - 1 : items.length}/200
                 <Bracket type="right">]</Bracket>
             </Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Items..." />

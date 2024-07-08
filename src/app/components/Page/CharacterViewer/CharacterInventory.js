@@ -32,7 +32,7 @@ export function CharacterInventory({ character }) {
             <Heading size={600} color={headerColor}>
                 Inventory
                 <Bracket type="left">[</Bracket>
-                    {items.length - 1}/30
+                    {items.length > 0 ? items.length - 1 : items.length}/30
                 <Bracket type="right">]</Bracket>
             </Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Inventory..." />
