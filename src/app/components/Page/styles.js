@@ -6,6 +6,11 @@ export const StyledText = styled(Text)`
     color: ${({ theme }) => (theme === "light" ? "#fff" : "#fff")};
 `;
 
+export const Bracket = styled.div`
+    display: inline-block;
+    margin: 0 2px 0 ${({ type }) => (type === "left" ? "6px" : "2px")}
+`;
+
 export const SearchBar = styled(SearchInput)`
     color: ${({ theme }) => (theme === "light" ? "#fff" : "#fff")};
     background: ${({ theme }) => (theme === "light" ? "#085e69" : "#212121")};

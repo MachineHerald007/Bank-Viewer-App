@@ -14,7 +14,8 @@ import {
     StyledText,
     ItemTable,
     SearchBar,
-    ExpandButton
+    ExpandButton,
+    Bracket
 } from "../styles";
 import { renderItemRow } from "@/app/util";
 import { useTheme } from "../../Theme/Theme";
@@ -45,7 +46,12 @@ export function SharedBank({ sharedBank }) {
 
     return (
         <ItemPane theme={theme}>
-            <Heading size={600} color={theme === "light" ? "#efefef" : "#fff"}>Shared Bank</Heading>
+            <Heading size={600} color={theme === "light" ? "#efefef" : "#fff"}>
+                Shared Bank
+                <Bracket type="left">[</Bracket>
+                    {items.length}/200
+                <Bracket type="right">]</Bracket>
+            </Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Items..." />
             <ItemTable theme={theme}>
                 <Table.Body>

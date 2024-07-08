@@ -16,7 +16,8 @@ import {
     StyledText,
     ItemTable,
     SearchBar,
-    ExpandButton
+    ExpandButton,
+    Bracket
 } from "../styles";
 import { renderItemRow } from "@/app/util";
 import { useTheme } from "../../Theme/Theme";
@@ -48,7 +49,12 @@ export function CharacterBank({ character }) {
 
     return (
         <ItemPane theme={theme} height={720}>
-            <Heading size={600} color={theme === "light" ? "#fff" : "#fff"}>Bank</Heading>
+            <Heading size={600} color={theme === "light" ? "#fff" : "#fff"}>
+                Bank
+                <Bracket type="left">[</Bracket>
+                    {items.length}/200
+                <Bracket type="right">]</Bracket>
+            </Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Bank..." />
             <ExpandButton
                 theme={theme}

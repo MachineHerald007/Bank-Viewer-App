@@ -16,7 +16,8 @@ import {
     StyledText,
     ItemTable,
     SearchBar,
-    ExpandButton
+    ExpandButton,
+    Bracket
 } from "../styles";
 import { renderItemRow } from "@/app/util";
 import { useTheme } from "../../Theme/Theme";
@@ -24,6 +25,7 @@ import { useTheme } from "../../Theme/Theme";
 export function AllItems({ accountData }) {
     const [sharedBank, setSharedBank] = useState([]);
     const [characters, setCharacters] = useState([]);
+    const [totalItemsCount, setTotalItemsCount] = useState(0);
     const { theme } = useTheme();
 
     useEffect(() => {
@@ -32,6 +34,11 @@ export function AllItems({ accountData }) {
             setCharacters(accountData.characters || []);
         }
     }, [accountData]);
+
+    useEffect(() => {
+        const totalItems = characters.reduce((acc, char) => acc + char.inventory.length + char.bank.length, 0) + sharedBank.length;
+        setTotalItemsCount(totalItems);
+    }, [characters, sharedBank]);
 
     const renderedCharacters = useMemo(() => (
         characters.map((char, index) => (
@@ -55,7 +62,12 @@ export function AllItems({ accountData }) {
                     onSelect={() => console.log(char)}
                 >
                     <Table.TextCell>
-                        <StyledText marginLeft={16}><b>Inventory</b></StyledText>
+                        <StyledText marginLeft={16}>
+                            <b>Inventory</b>
+                            <Bracket type="left">[</Bracket>
+                                <b>{char.inventory.length}/30</b>
+                            <Bracket type="right">]</Bracket>
+                        </StyledText>
                     </Table.TextCell>
                 </ItemTitleRow>
                 {char.inventory.map((item, i) => (
@@ -79,7 +91,12 @@ export function AllItems({ accountData }) {
                     onSelect={() => console.log(char)}
                 >
                     <Table.TextCell>
-                        <StyledText marginLeft={16}><b>Bank</b></StyledText>
+                        <StyledText marginLeft={16}>
+                            <b>Bank</b>
+                            <Bracket type="left">[</Bracket>
+                                <b>{char.bank.length}/30</b>
+                            <Bracket type="right">]</Bracket>
+                        </StyledText>
                     </Table.TextCell>
                 </ItemTitleRow>
                 {char.bank.map((item, i) => (
@@ -118,7 +135,12 @@ export function AllItems({ accountData }) {
 
     return (
         <ItemPane theme={theme}>
-            <Heading size={600} color={theme === "light" ? "#efefef" : "#fff"}>All Items</Heading>
+            <Heading size={600} color={theme === "light" ? "#efefef" : "#fff"}>
+                All Items
+                <Bracket type="left">[</Bracket>
+                    {totalItemsCount}
+                <Bracket type="right">]</Bracket>
+            </Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Items..." />
             <ItemTable theme={theme}>
                 <Table.Body>

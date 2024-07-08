@@ -11,7 +11,8 @@ import {
     ItemRow,
     ItemTable,
     SearchBar,
-    ExpandButton
+    ExpandButton,
+    Bracket
 } from "../styles";
 import { renderItemRow } from "@/app/util";
 import { useTheme } from "../../Theme/Theme";
@@ -28,7 +29,12 @@ export function CharacterInventory({ character }) {
 
     return (
         <ItemPane theme={theme} height={720}>
-            <Heading size={600} color={headerColor}>Inventory</Heading>
+            <Heading size={600} color={headerColor}>
+                Inventory
+                <Bracket type="left">[</Bracket>
+                    {items.length}/30
+                <Bracket type="right">]</Bracket>
+            </Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Inventory..." />
             <ExpandButton
                 theme={theme}
