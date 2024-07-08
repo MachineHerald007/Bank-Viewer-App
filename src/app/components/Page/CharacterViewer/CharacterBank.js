@@ -52,7 +52,7 @@ export function CharacterBank({ character }) {
             <Heading size={600} color={theme === "light" ? "#fff" : "#fff"}>
                 Bank
                 <Bracket type="left">[</Bracket>
-                    {items.length}/200
+                    {items.length - 1}/200
                 <Bracket type="right">]</Bracket>
             </Heading>
             <SearchBar theme={theme} marginTop={24} placeholder="Search Bank..." />

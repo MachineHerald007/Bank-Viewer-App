@@ -65,7 +65,7 @@ export function AllItems({ accountData }) {
                         <StyledText marginLeft={16}>
                             <b>Inventory</b>
                             <Bracket type="left">[</Bracket>
-                                <b>{char.inventory.length}/30</b>
+                                <b>{char.inventory.length - 1}/30</b>
                             <Bracket type="right">]</Bracket>
                         </StyledText>
                     </Table.TextCell>
@@ -94,7 +94,7 @@ export function AllItems({ accountData }) {
                         <StyledText marginLeft={16}>
                             <b>Bank</b>
                             <Bracket type="left">[</Bracket>
-                                <b>{char.bank.length}/30</b>
+                                <b>{char.bank.length - 1}/30</b>
                             <Bracket type="right">]</Bracket>
                         </StyledText>
                     </Table.TextCell>
