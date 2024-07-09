@@ -97,8 +97,14 @@ pub fn weapon(item_code: u32, item_data: Vec<u8>, config: Config) -> Item {
         special_code = format!("0x{:02X}", item_data[4]);
         get_special(&item_data, &config)
     } else {
-        special_code = format!("0x{:06X}", item_code);
-        get_rare_special(item_code, &config)
+        let special_values = [0x00E800, 0x00E801, 0x00E900, 0x00EA00, 0x00EB00];
+        if special_values.contains(&item_code) {
+            special_code = format!("0x{:02X}", item_data[4]);
+            get_special(&item_data, &config)
+        } else {
+            special_code = format!("0x{:06X}", item_code);
+            get_rare_special(item_code, &config)
+        }
     };
     let tekked_mode = is_tekked(&item_data, item_code);
     let mut tekked_text = String::new();
