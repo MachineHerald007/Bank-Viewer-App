@@ -9,8 +9,7 @@ use crate::lib::db::{
     translate_items,
     insert_item,
     get_items,
-    get_character_data,
-    seed_class_default_image,
+    get_character_data
 };
 use crate::parser::types::{
     ParsedFiles,
@@ -113,7 +112,7 @@ pub fn init_app() -> Result<(), SqlError> {
             experience INTEGER NOT NULL,
             ep1_progress TEXT NOT NULL,
             ep2_progress TEXT NOT NULL,
-            image BLOB
+            image BLOB DEFAULT NULL
         )",
         [],
     )?;
@@ -319,22 +318,6 @@ pub fn init_app() -> Result<(), SqlError> {
         )?;
     }
 
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS class_default_image (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            class TEXT NOT NULL UNIQUE,
-            image BLOB
-        )",
-        []
-    )?;
-
-    let mut path = PathBuf::new();
-    path.push("images");
-    path.push("class_defaults");
-    let path_str = path.to_string_lossy().into_owned();
-
-    seed_class_default_image(&transaction, &path_str);
-
     transaction.commit()?;
 
     Ok(())
@@ -465,16 +448,16 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
                 transaction.execute(
                     "INSERT INTO character 
                     (
-                        slot, mode, guild_card, name,
+                        account_id, slot, mode, guild_card, name,
                         class, section_id, level, experience,
-                        ep1_progress, ep2_progress, account_id
+                        ep1_progress, ep2_progress, image
                     )
-                    VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)
+                    VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, NULL)
                     ",
                     params![
-                        slot, mode, guild_card_number, name,
+                        account_id, slot, mode, guild_card_number, name,
                         class, section_id, level, experience,
-                        ep1_progress, ep2_progress, account_id
+                        ep1_progress, ep2_progress
                     ]
                 )?;
 
@@ -520,9 +503,9 @@ pub struct CharacterData {
     pub experience: u64,
     pub ep1_progress: String,
     pub ep2_progress: String,
-    pub image: Vec<u8>,
+    pub image: Option<Vec<u8>>, // Changed to Option<Vec<u8>>
     pub inventory: Vec<DBItem>,
-    pub bank: Vec<DBItem> 
+    pub bank: Vec<DBItem>,
 }
 
 #[tauri::command]

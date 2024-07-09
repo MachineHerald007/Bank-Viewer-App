@@ -5,7 +5,6 @@
 )]
 
 use tauri::Manager;
-use std::fs::create_dir_all;
 
 mod util;
 mod lib {
@@ -50,11 +49,6 @@ use command::{
 fn main() {
     tauri::Builder::default()
     .setup(|app| {
-        let path = app.path_resolver().app_data_dir().expect("This should never be None");
-        let path = path.join(".images/class_defaults");
-
-        create_dir_all(&path);
-
         #[cfg(debug_assertions)] // only include this code on debug builds
         {
             let window = app.get_window("main").unwrap();

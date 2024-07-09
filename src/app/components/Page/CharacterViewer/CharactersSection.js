@@ -19,25 +19,11 @@ import {
     StyledPagination,
     StyledPaginationPane
 } from "./styles";
+import { loadCharacterImage } from "./LoadImage";
 import { useTheme } from "../../Theme/Theme";
 
 function divideAndRoundUp(num) {
     return Math.ceil(num / 4);
-}
-
-function encodeToBase64(binary_img) {
-    let fileType = "png";
-    let uint8Array = new Uint8Array(binary_img);
-    let binaryString = '';
-    
-    for (let i = 0; i < uint8Array.length; i++) {
-        binaryString += String.fromCharCode(uint8Array[i]);
-    }
-
-    let base64String = btoa(binaryString);
-    let image = `data:${fileType};base64,${base64String}`;
-
-    return image;
 }
 
 const CharacterCards = ({ characters }) => {
@@ -68,7 +54,7 @@ const CharacterCards = ({ characters }) => {
                                 position="relative"
                                 top={2}
                                 marginRight={16}
-                                src={encodeToBase64(character.image)}
+                                src={loadCharacterImage(character)}
                                 name={character.name}
                                 size={44}
                             />

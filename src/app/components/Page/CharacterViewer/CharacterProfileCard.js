@@ -8,16 +8,8 @@ import {
     Pane,
 } from 'evergreen-ui';
 import { CharacterProfileCardPane, ProfileCardText } from "./styles";
+import { loadCharacterImage } from "./LoadImage";
 import { useTheme } from "../../Theme/Theme";
-
-function encodeToBase64(binaryImg) {
-    let fileType = "png";
-    let base64String = btoa(
-        new Uint8Array(binaryImg)
-            .reduce((data, byte) => data + String.fromCharCode(byte), '')
-    );
-    return `data:${fileType};base64,${base64String}`;
-}
 
 export function CharacterProfileCard({ character }) {
     const { theme } = useTheme();
@@ -31,7 +23,7 @@ export function CharacterProfileCard({ character }) {
                 position="relative"
                 top={22}
                 size={128}
-                src={encodeToBase64(character.image)}
+                src={loadCharacterImage(character)}
                 name={character.name}
             />
             <Pane
