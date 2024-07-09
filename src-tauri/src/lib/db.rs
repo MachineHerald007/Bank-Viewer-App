@@ -601,7 +601,7 @@ fn translate_meseta(amount: u32, config: &Config) -> WrappedItem {
 pub fn translate_items(conn: &Connection, account_id: i64, character_id: i64, items: &Vec<DBItem>, storage_type: String,  config: Config) -> Result<(), SqlError> {
     for _item in items {
         let (item_data, account_type) = match _item {
-            DBItem::Weapon { item_data, account_type, .. }
+              DBItem::Weapon { item_data, account_type, .. }
             | DBItem::SRankWeapon { item_data, account_type, .. }
             | DBItem::Frame { item_data, account_type, .. }
             | DBItem::Barrier { item_data, account_type, .. }
