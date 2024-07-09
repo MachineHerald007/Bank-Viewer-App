@@ -26,7 +26,6 @@ export function CharacterViewer({ characters }) {
     const [selectedCharacter, setSelectedCharacter] = useState(selected_character);
 
     const saveSelectedCharacter = (character) => {
-        console.log("selected character: ", character);
         setSelectedCharacter({
             id: character.id,
             name: character.name,
@@ -36,7 +35,8 @@ export function CharacterViewer({ characters }) {
             slot: character.slot,
             image: character.image,
             inventory: character.inventory,
-            bank: character.bank
+            bank: character.bank,
+            mode: character.mode
         });
 
         invoke("save_selected_character", {

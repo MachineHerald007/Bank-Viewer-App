@@ -24,13 +24,28 @@ import { useTheme } from "../../Theme/Theme";
 
 export function AllItems({ accountData }) {
     const [sharedBank, setSharedBank] = useState([]);
+    const [classicSharedBank, setClassicSharedBank] = useState([]);
     const [characters, setCharacters] = useState([]);
     const [totalItemsCount, setTotalItemsCount] = useState(0);
     const { theme } = useTheme();
 
     useEffect(() => {
         if (accountData) {
-            setSharedBank(accountData.shared_bank || []);
+            let _sharedBank = [];
+            let _classicSharedBank = [];
+
+            for (let key in accountData.shared_bank) {
+                for (let prop in accountData.shared_bank[key]) {
+                    if (accountData.shared_bank[key][prop]["account_type"] === "NORMAL") {
+                        _sharedBank.push(accountData.shared_bank[key]);
+                    } else {
+                        _classicSharedBank.push(accountData.shared_bank[key]);
+                    }
+                }
+            }
+
+            setSharedBank(_sharedBank);
+            setClassicSharedBank(_classicSharedBank);
             setCharacters(accountData.characters || []);
         }
     }, [accountData]);
@@ -49,6 +64,11 @@ export function AllItems({ accountData }) {
                     onSelect={() => console.log(char)}
                 >
                     <Table.TextCell>
+                        {char.mode === "CLASSIC" ?
+                            <StyledText marginLeft={16}><b>[{char.mode}]</b></StyledText>
+                            : 
+                            <></>
+                        }
                         <StyledText marginLeft={16}><b>Slot: {char.slot}</b></StyledText>
                         <StyledText marginLeft={4}> | <b>{char.name}</b></StyledText>
                         <StyledText marginLeft={4}> | <b>{char.level}</b></StyledText>
@@ -75,7 +95,7 @@ export function AllItems({ accountData }) {
                         theme={theme}
                         key={`inventory-${index}-${i}`}
                         isSelectable
-                        onSelect={() => console.log(char)}
+                        onSelect={() => console.log(item)}
                     >
                         <Table.TextCell>
                             {renderItemRow(item, theme)}
@@ -133,6 +153,21 @@ export function AllItems({ accountData }) {
         ))
     ), [sharedBank, theme]);
 
+    const renderedClassicSharedBank = useMemo(() => (
+        classicSharedBank.map((item, index) => (
+            <ItemRow
+                theme={theme}
+                key={`shared_bank-${index}`}
+                isSelectable
+                onSelect={() => console.log(item)}
+            >
+                <Table.TextCell>
+                    {renderItemRow(item, theme)}
+                </Table.TextCell>
+            </ItemRow>
+        ))
+    ), [classicSharedBank, theme]);
+
     return (
         <ItemPane theme={theme}>
             <Heading size={600} color={theme === "light" ? "#efefef" : "#fff"}>
@@ -153,6 +188,14 @@ export function AllItems({ accountData }) {
                         </ItemTitleRow>
                     )}
                     {renderedSharedBank}
+                    {classicSharedBank.length > 0 && (
+                        <ItemTitleRow theme={theme} isSelectable>
+                            <Table.TextCell>
+                                <StyledText marginLeft={16}><b>Shared Bank - Classic</b></StyledText>
+                            </Table.TextCell>
+                        </ItemTitleRow>
+                    )}
+                    {renderedClassicSharedBank}
                 </Table.Body>
             </ItemTable>
         </ItemPane>

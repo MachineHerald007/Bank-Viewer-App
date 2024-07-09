@@ -50,6 +50,10 @@ export function CharacterProfileCard({ character }) {
                     <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>SLOT:</ProfileCardText>
                     {character.slot}
                 </ProfileCardText>
+                <ProfileCardText theme={theme} display="block" fontSize={16}>
+                    <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>ACCOUNT TYPE:</ProfileCardText>
+                    {character.mode}
+                </ProfileCardText>
             </Pane>
         </CharacterProfileCardPane>
     )
