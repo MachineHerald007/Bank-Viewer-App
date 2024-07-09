@@ -37,6 +37,7 @@ const CharacterCards = ({ characters }) => {
                 <Table.TextHeaderCell>Level</Table.TextHeaderCell>
                 <Table.TextHeaderCell>Class</Table.TextHeaderCell>
                 <Table.TextHeaderCell>Section ID</Table.TextHeaderCell>
+                <Table.TextHeaderCell>Account Type</Table.TextHeaderCell>
                 <Table.TextHeaderCell>Slot</Table.TextHeaderCell>
             </StyledTableHead>
             <Table.Body>
@@ -68,6 +69,9 @@ const CharacterCards = ({ characters }) => {
                         </Table.TextCell>
                         <Table.TextCell>
                             <StyledText theme={theme}>{character.section_id}</StyledText>
+                        </Table.TextCell>
+                        <Table.TextCell>
+                            <StyledText theme={theme}>{character.mode}</StyledText>
                         </Table.TextCell>
                         <Table.TextCell>
                             <StyledText theme={theme}>{character.slot}</StyledText>

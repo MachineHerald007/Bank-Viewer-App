@@ -47,12 +47,12 @@ export function CharacterProfileCard({ character }) {
                     {character.section_id}
                 </ProfileCardText>
                 <ProfileCardText theme={theme} display="block" fontSize={16}>
-                    <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>SLOT:</ProfileCardText>
-                    {character.slot}
-                </ProfileCardText>
-                <ProfileCardText theme={theme} display="block" fontSize={16}>
                     <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>ACCOUNT TYPE:</ProfileCardText>
                     {character.mode}
+                </ProfileCardText>
+                <ProfileCardText theme={theme} display="block" fontSize={16}>
+                    <ProfileCardText theme={theme} fontWeight={600} marginRight={8}>SLOT:</ProfileCardText>
+                    {character.slot}
                 </ProfileCardText>
             </Pane>
         </CharacterProfileCardPane>
