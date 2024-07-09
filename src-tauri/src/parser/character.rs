@@ -4,11 +4,11 @@ use crate::parser::item;
 use crate::parser::types::{Item, Slot, Character, Inventory};
 use crate::config::config::Config;
 
-fn set_mode(char_data: &[u8]) -> u8 {
+fn set_mode(char_data: &[u8]) -> String {
     if char_data[7] == 0x40 {
-        Config::mode("CLASSIC".to_string())
+        String::from("CLASSIC")
     } else {
-        Config::mode("NORMAL".to_string())
+        String::from("NORMAL")
     }
 }
 

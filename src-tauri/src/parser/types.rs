@@ -39,7 +39,7 @@ pub struct SharedBank {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Character {
     pub slot: usize,
-    pub mode: u8,
+    pub mode: String,
     pub name: String,
     pub lang: String,
     pub guild_card_number: u32,

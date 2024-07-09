@@ -44,7 +44,6 @@ export function AccountFileUpload({ theme, onComplete }) {
 
     const parseFilename = useCallback((parsedFiles) => {
         const lang = parsedFiles.files[0].data.lang;
-        const acc_type = parsedFiles.files[0].data.bank.length > 0 ? "NORMAL" : "CLASSIC";
         const acc_info = parsedFiles.files[0].filename.split(".")[0].split("_");
         const result = [];
         let slotNumber = null;
@@ -57,7 +56,7 @@ export function AccountFileUpload({ theme, onComplete }) {
             result.push(acc_info[i]);
         }
 
-        return { info: result, slot: slotNumber, type: acc_type };
+        return { info: result, slot: slotNumber, type: "NORMAL" };
     }, []);
 
     const handleUpload = useCallback(async () => {
@@ -98,7 +97,6 @@ export function AccountFileUpload({ theme, onComplete }) {
     const rebaseFiles = (allFiles, { acceptedMimeTypes, maxFiles, maxSizeInBytes }) => {
         const accepted = [];
         const rejected = [];
-
         const seenFileNames = new Set();
 
         allFiles.forEach(file => {
@@ -134,7 +132,7 @@ export function AccountFileUpload({ theme, onComplete }) {
 
     const fileCountOverLimit = files.length + fileRejections.length - maxFiles;
     const fileCountError = `You can upload up to ${maxFiles} files. Please remove ${fileCountOverLimit} ${fileCountOverLimit === 1 ? 'file' : 'files'}.`;
-
+    
     const handleAcceptedFiles = useCallback(async (acceptedFiles) => {
         const filesToAdd = [];
         const currentFileNames = new Set(files.map(file => file.name));

@@ -21,7 +21,7 @@ use crate::parser::item::{
     set_meseta
 };
 
-pub fn insert_item(conn: &Connection, item: &WrappedItem, account_id: i64, character_id: i64, storage_type: String, lang: &String) -> Result<(), SqlError> {
+pub fn insert_item(conn: &Connection, item: &WrappedItem, account_id: i64, character_id: i64, storage_type: String, account_type: &String, lang: &String) -> Result<(), SqlError> {
     if let Some(item_type) = &item.item {
         match item_type {
             Item::Weapon { name, type_, item_data, special, special_code, grind, attribute, tekked, rare } => {
@@ -29,13 +29,14 @@ pub fn insert_item(conn: &Connection, item: &WrappedItem, account_id: i64, chara
                     "INSERT INTO weapon
                     (
                         account_id, character_id, storage_type, name, type, item_data, special,
-                        special_code, grind, native, a_beast, machine, dark, hit, tekked, rare, lang
+                        special_code, grind, native, a_beast, machine, dark, hit, tekked, rare, 
+                        account_type, lang
                     )
-                    VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9,?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17)",
+                    VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9,?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18)",
                     params![
                         account_id, character_id, storage_type, name, type_, item_data, special, special_code,
                         grind, attribute.native, attribute.a_beast, attribute.machine, attribute.dark,
-                        attribute.hit, tekked, rare, lang
+                        attribute.hit, tekked, rare, account_type, lang
                     ]
                 )?;
             }
@@ -44,12 +45,12 @@ pub fn insert_item(conn: &Connection, item: &WrappedItem, account_id: i64, chara
                     "INSERT INTO frame
                     (
                         account_id, character_id, storage_type, name, type, item_data, slot, dfp,
-                        evp, max_dfp, max_evp, lang
+                        evp, max_dfp, max_evp, account_type, lang
                     )
-                    VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)",
+                    VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13)",
                     params![
                         account_id, character_id, storage_type, name, type_, item_data, slot, addition.dfp,
-                        addition.evp, max_addition.dfp, max_addition.evp, lang
+                        addition.evp, max_addition.dfp, max_addition.evp, account_type, lang
                     ]
                 )?;
             }
@@ -58,20 +59,20 @@ pub fn insert_item(conn: &Connection, item: &WrappedItem, account_id: i64, chara
                     "INSERT INTO barrier
                     (
                         account_id, character_id, storage_type, name, type, dfp, evp, max_dfp, max_evp,
-                        item_data, lang
+                        item_data, account_type, lang
                     )
-                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)",
                      params![
                         account_id, character_id, storage_type, name, type_, addition.dfp, addition.evp,
-                        max_addition.dfp, max_addition.evp, item_data, lang
+                        max_addition.dfp, max_addition.evp, item_data, account_type, lang
                     ]
                 )?;
             }
             Item::Unit { name, type_, item_data } => {
                 conn.execute(
-                    "INSERT INTO unit (account_id, character_id, storage_type, name, type, item_data, lang)
-                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)",
-                     params![account_id, character_id, storage_type, name, type_, item_data, lang]
+                    "INSERT INTO unit (account_id, character_id, storage_type, name, type, item_data, account_type, lang)
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
+                     params![account_id, character_id, storage_type, name, type_, item_data, account_type, lang]
                 )?;
             }
             Item::Mag { name, type_, item_data, level, sync, iq, color, rgb, stats, pbs } => {
@@ -79,50 +80,50 @@ pub fn insert_item(conn: &Connection, item: &WrappedItem, account_id: i64, chara
                     "INSERT INTO mag
                     (
                         account_id, character_id, storage_type, name, type, level, sync, iq, color,
-                        rgb, def, pow, dex, mind, pbs, item_data, lang
+                        rgb, def, pow, dex, mind, pbs, item_data, account_type, lang
                     )
-                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17)",
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18)",
                      params![
                         account_id, character_id, storage_type, name, type_, level, sync, iq, color, rgb,
-                        stats.def, stats.pow, stats.dex, stats.mind, pbs.join(","), item_data, lang
+                        stats.def, stats.pow, stats.dex, stats.mind, pbs.join(","), item_data, account_type, lang
                     ]
                 )?;
             }
             Item::Tech { name, type_, item_data, level } => {
                 conn.execute(
-                    "INSERT INTO tech (account_id, character_id, storage_type, name, type, level, item_data, lang)
-                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
-                     params![account_id, character_id, storage_type, name, type_, level, item_data, lang]
+                    "INSERT INTO tech (account_id, character_id, storage_type, name, type, level, item_data, account_type, lang)
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
+                     params![account_id, character_id, storage_type, name, type_, level, item_data, account_type, lang]
                 )?;
             }
             Item::SRankWeapon { name, type_, item_data, grind, special, special_code } => {
                 conn.execute(
                     "INSERT INTO srank_weapon (
-                        account_id, character_id, storage_type, name, type, grind, special, special_code, item_data, lang
+                        account_id, character_id, storage_type, name, type, grind, special, special_code, item_data, account_type, lang
                      )
-                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)",
-                     params![account_id, character_id, storage_type, name, type_, grind, special, special_code, item_data, lang]
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
+                     params![account_id, character_id, storage_type, name, type_, grind, special, special_code, item_data, account_type, lang]
                 )?;
             }
             Item::Tool { name, type_, item_data, number } => {
                 conn.execute(
-                    "INSERT INTO tool (account_id, character_id, storage_type, name, type, number, item_data, lang)
-                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
-                     params![account_id, character_id, storage_type, name, type_, number, item_data, lang]
+                    "INSERT INTO tool (account_id, character_id, storage_type, name, type, number, item_data, account_type, lang)
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
+                     params![account_id, character_id, storage_type, name, type_, number, item_data, account_type, lang]
                 )?;
             }
             Item::Meseta { name, type_, amount } => {
                 conn.execute(
-                    "INSERT INTO meseta (account_id, character_id, storage_type, name, type, amount, lang)
-                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)",
-                     params![account_id, character_id, storage_type, name, type_, amount, lang]
+                    "INSERT INTO meseta (account_id, character_id, storage_type, name, type, amount, account_type, lang)
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
+                     params![account_id, character_id, storage_type, name, type_, amount, account_type, lang]
                 )?;
             }
             Item::Other { name, type_, item_data, number } => {
                 conn.execute(
-                    "INSERT INTO other (account_id, character_id, storage_type, name, type, number, item_data, lang)
-                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)",
-                     params![account_id, character_id, storage_type, name, type_, number, item_data, lang]
+                    "INSERT INTO other (account_id, character_id, storage_type, name, type, number, item_data, account_type, lang)
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
+                     params![account_id, character_id, storage_type, name, type_, number, item_data, account_type, lang]
                 )?;
             }
         }
@@ -153,6 +154,7 @@ pub enum DBItem {
         tekked: bool,
         rare: bool,
         item_data: String,
+        account_type: String,
         lang: String
     },
     SRankWeapon {
@@ -166,6 +168,7 @@ pub enum DBItem {
         special: String,
         special_code: String,
         item_data: String,
+        account_type: String,
         lang: String
     },
     Frame {
@@ -181,6 +184,7 @@ pub enum DBItem {
         max_dfp: u8,
         max_evp: u8,
         item_data: String,
+        account_type: String,
         lang: String
     },
     Barrier {
@@ -195,6 +199,7 @@ pub enum DBItem {
         max_dfp: u8,
         max_evp: u8,
         item_data: String,
+        account_type: String,
         lang: String
     },
     Unit {
@@ -205,6 +210,7 @@ pub enum DBItem {
         type_: u8,
         name: String,
         item_data: String,
+        account_type: String,
         lang: String
     },
     Mag {
@@ -225,6 +231,7 @@ pub enum DBItem {
         mind: u8,
         pbs: String,
         item_data: String,
+        account_type: String,
         lang: String
     },
     Tech {
@@ -236,6 +243,7 @@ pub enum DBItem {
         name: String,
         level: u8,
         item_data: String,
+        account_type: String,
         lang: String
     },
     Tool {
@@ -247,6 +255,7 @@ pub enum DBItem {
         name: String,
         number: u8,
         item_data: String,
+        account_type: String,
         lang: String
     },
     Other {
@@ -258,6 +267,7 @@ pub enum DBItem {
         name: String,
         number: u32,
         item_data: String,
+        account_type: String,
         lang: String
     },
     Meseta {
@@ -268,6 +278,7 @@ pub enum DBItem {
         type_: u8,
         name: String,
         amount: u32,
+        account_type: String,
         lang: String
     }
 }
@@ -295,7 +306,8 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64, lang: &S
             tekked: row.get(14)?,
             rare: row.get(15)?,
             item_data: row.get(16)?,
-            lang: row.get(17)?
+            account_type: row.get(17)?,
+            lang: row.get(18)?
         })
     })?;
 
@@ -316,7 +328,8 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64, lang: &S
             special: row.get(7)?,
             special_code: row.get(8)?,
             item_data: row.get(9)?,
-            lang: row.get(10)?
+            account_type: row.get(10)?,
+            lang: row.get(11)?
         })
     })?;
 
@@ -339,7 +352,8 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64, lang: &S
             max_dfp: row.get(9)?,
             max_evp: row.get(10)?,
             item_data: row.get(11)?,
-            lang: row.get(12)?
+            account_type: row.get(12)?,
+            lang: row.get(13)?
         })
     })?;
 
@@ -361,7 +375,8 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64, lang: &S
             max_dfp: row.get(8)?,
             max_evp: row.get(9)?,
             item_data: row.get(10)?,
-            lang: row.get(11)?
+            account_type: row.get(11)?,
+            lang: row.get(12)?
         })
     })?;
 
@@ -379,7 +394,8 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64, lang: &S
             type_: row.get(4)?,
             name: row.get(5)?,
             item_data: row.get(6)?,
-            lang: row.get(7)?
+            account_type: row.get(7)?,
+            lang: row.get(8)?
         })
     })?;
 
@@ -407,7 +423,8 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64, lang: &S
             mind: row.get(14)?,
             pbs: row.get(15)?,
             item_data: row.get(16)?,
-            lang: row.get(17)?
+            account_type: row.get(17)?,
+            lang: row.get(18)?
         })
     })?;
 
@@ -426,7 +443,8 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64, lang: &S
             name: row.get(5)?,
             level: row.get(6)?,
             item_data: row.get(7)?,
-            lang: row.get(8)?
+            account_type: row.get(8)?,
+            lang: row.get(9)?
         })
     })?;
 
@@ -445,7 +463,8 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64, lang: &S
             name: row.get(5)?,
             number: row.get(6)?,
             item_data: row.get(7)?,
-            lang: row.get(8)?
+            account_type: row.get(8)?,
+            lang: row.get(9)?
         })
     })?;
 
@@ -464,7 +483,8 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64, lang: &S
             name: row.get(5)?,
             number: row.get(6)?,
             item_data: row.get(7)?,
-            lang: row.get(8)?
+            account_type: row.get(8)?,
+            lang: row.get(9)?
         })
     })?;
 
@@ -482,7 +502,8 @@ pub fn get_items(conn: &Connection, account_id: i64, character_id: i64, lang: &S
             type_: row.get(4)?,
             name: row.get(5)?,
             amount: row.get(6)?,
-            lang: row.get(7)?
+            account_type: row.get(7)?,
+            lang: row.get(8)?
         })
     })?;
 
@@ -579,19 +600,19 @@ fn translate_meseta(amount: u32, config: &Config) -> WrappedItem {
 
 pub fn translate_items(conn: &Connection, account_id: i64, character_id: i64, items: &Vec<DBItem>, storage_type: String,  config: Config) -> Result<(), SqlError> {
     for _item in items {
-        let item_data = match _item {
-              DBItem::Weapon { item_data, .. }
-            | DBItem::SRankWeapon { item_data, .. }
-            | DBItem::Frame { item_data, .. }
-            | DBItem::Barrier { item_data, .. }
-            | DBItem::Unit { item_data, .. }
-            | DBItem::Mag { item_data, .. }
-            | DBItem::Tech { item_data, .. }
-            | DBItem::Tool { item_data, .. }
-            | DBItem::Other { item_data, .. } => translate_item(item_data, &config),
-            DBItem::Meseta { amount, .. } => translate_meseta(*amount, &config),
+        let (item_data, account_type) = match _item {
+            DBItem::Weapon { item_data, account_type, .. }
+            | DBItem::SRankWeapon { item_data, account_type, .. }
+            | DBItem::Frame { item_data, account_type, .. }
+            | DBItem::Barrier { item_data, account_type, .. }
+            | DBItem::Unit { item_data, account_type, .. }
+            | DBItem::Mag { item_data, account_type, .. }
+            | DBItem::Tech { item_data, account_type, .. }
+            | DBItem::Tool { item_data, account_type, .. }
+            | DBItem::Other { item_data, account_type, .. } => (translate_item(item_data, &config), account_type),
+            DBItem::Meseta { amount, account_type, .. } => (translate_meseta(*amount, &config), account_type),
         };
-        insert_item(conn, &item_data, account_id, character_id, storage_type.clone(), &config.lang.clone().unwrap());
+        insert_item(conn, &item_data, account_id, character_id, storage_type.clone(), &account_type, &config.lang.clone().unwrap());
     }
 
     Ok(())

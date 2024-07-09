@@ -103,7 +103,7 @@ pub fn init_app() -> Result<(), SqlError> {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             account_id INTEGER NOT NULL,
             slot INTEGER NOT NULL UNIQUE,
-            mode INTEGER NOT NULL,
+            mode TEXT NOT NULL,
             guild_card INTEGER NOT NULL,
             name TEXT NOT NULL,
             class TEXT NOT NULL,
@@ -136,6 +136,7 @@ pub fn init_app() -> Result<(), SqlError> {
             tekked INTEGER CHECK(tekked IN (0, 1)),
             rare INTEGER CHECK(rare IN (0, 1)),
             item_data TEXT NOT NULL,
+            account_type TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         [],
@@ -153,6 +154,7 @@ pub fn init_app() -> Result<(), SqlError> {
             special TEXT NOT NULL,
             special_code TEXT NOT NULL,
             item_data TEXT NOT NULL,
+            account_type TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         [],
@@ -172,6 +174,7 @@ pub fn init_app() -> Result<(), SqlError> {
             max_dfp INTEGER NOT NULL,
             max_evp INTEGER NOT NULL,
             item_data TEXT NOT NULL,
+            account_type TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         [],
@@ -190,6 +193,7 @@ pub fn init_app() -> Result<(), SqlError> {
             max_dfp INTEGER NOT NULL,
             max_evp INTEGER NOT NULL,
             item_data TEXT NOT NULL,
+            account_type TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         [],
@@ -204,6 +208,7 @@ pub fn init_app() -> Result<(), SqlError> {
             type INTEGER NOT NULL,
             name TEXT NOT NULL,
             item_data TEXT NOT NULL,
+            account_type TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         [],
@@ -228,6 +233,7 @@ pub fn init_app() -> Result<(), SqlError> {
             mind INTEGER NOT NULL,
             pbs TEXT NOT NULL,
             item_data TEXT NOT NULL,
+            account_type TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         [],
@@ -243,6 +249,7 @@ pub fn init_app() -> Result<(), SqlError> {
             name TEXT NOT NULL,
             level INTEGER NOT NULL,
             item_data TEXT NOT NULL,
+            account_type TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         [],
@@ -258,6 +265,7 @@ pub fn init_app() -> Result<(), SqlError> {
             name TEXT NOT NULL,
             number INTEGER NOT NULL,
             item_data TEXT NOT NULL,
+            account_type TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         [],
@@ -272,6 +280,7 @@ pub fn init_app() -> Result<(), SqlError> {
             type INTEGER NOT NULL,
             name TEXT NOT NULL,
             amount INTEGER NOT NULL,
+            account_type TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         [],
@@ -287,6 +296,7 @@ pub fn init_app() -> Result<(), SqlError> {
             name TEXT NOT NULL,
             number INTEGER NOT NULL,
             item_data TEXT NOT NULL,
+            account_type TEXT NOT NULL,
             lang TEXT NOT NULL
         )",
         [],
@@ -435,7 +445,7 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
         match file.data {
             Data::SharedBank(shared_bank) => {
                 for item in shared_bank.bank {
-                    insert_item(&transaction, &item, account_id, 0, String::from("SHARED_BANK"), &account.lang);
+                    insert_item(&transaction, &item, account_id, 0, String::from("SHARED_BANK"), &shared_bank.account_type, &account.lang);
                 }
             },
             Data::Character(character) => {
@@ -464,11 +474,11 @@ pub fn create_account(account: AccountPayload, files: Vec<ParsedFile>) -> Result
                 let character_id = transaction.last_insert_rowid();
 
                 for item in bank {
-                    insert_item(&transaction, &item, account_id, character_id, String::from("BANK"), &account.lang);
+                    insert_item(&transaction, &item, account_id, character_id, String::from("BANK"), &mode, &account.lang);
                 }
 
                 for item in inventory {
-                    insert_item(&transaction, &item, account_id, character_id, String::from("INVENTORY"), &account.lang);
+                    insert_item(&transaction, &item, account_id, character_id, String::from("INVENTORY"), &mode, &account.lang);
                 }
             }
             _ => {
@@ -494,7 +504,7 @@ pub struct CharacterData {
     pub id: i64,
     pub account_id: i64,
     pub slot: u8,
-    pub mode: u8,
+    pub mode: String,
     pub guild_card: u64,
     pub name: String,
     pub class: String,
@@ -503,7 +513,7 @@ pub struct CharacterData {
     pub experience: u64,
     pub ep1_progress: String,
     pub ep2_progress: String,
-    pub image: Option<Vec<u8>>, // Changed to Option<Vec<u8>>
+    pub image: Option<Vec<u8>>,
     pub inventory: Vec<DBItem>,
     pub bank: Vec<DBItem>,
 }
