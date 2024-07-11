@@ -183,7 +183,12 @@ export function AllItems({ accountData }) {
                     {sharedBank.length > 0 && (
                         <ItemTitleRow theme={theme} isSelectable>
                             <Table.TextCell>
-                                <StyledText marginLeft={16}><b>Shared Bank - Normal</b></StyledText>
+                                <StyledText marginLeft={16}>
+                                    <b>Shared Bank - Normal</b>
+                                    <Bracket type="left">[</Bracket>
+                                        <b>{sharedBank.length - 1}/200</b>
+                                    <Bracket type="right">]</Bracket>
+                                </StyledText>
                             </Table.TextCell>
                         </ItemTitleRow>
                     )}
@@ -191,7 +196,12 @@ export function AllItems({ accountData }) {
                     {classicSharedBank.length > 0 && (
                         <ItemTitleRow theme={theme} isSelectable>
                             <Table.TextCell>
-                                <StyledText marginLeft={16}><b>Shared Bank - Classic</b></StyledText>
+                                <StyledText marginLeft={16}>
+                                    <b>Shared Bank - Classic</b>
+                                    <Bracket type="left">[</Bracket>
+                                        <b>{classicSharedBank.length - 1}/200</b>
+                                    <Bracket type="right">]</Bracket>
+                                </StyledText>
                             </Table.TextCell>
                         </ItemTitleRow>
                     )}

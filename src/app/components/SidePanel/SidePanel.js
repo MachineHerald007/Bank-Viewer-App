@@ -33,7 +33,7 @@ import { SharedBank } from "../Page/SharedBank/SharedBank";
 import { CharacterViewer } from "../Page/CharacterViewer/CharacterViewer";
 import { Settings } from "../Page/Settings/Settings";
 import { useTheme } from "../Theme/Theme";
-import { AppContext } from "../../page"; // Ensure correct path
+import { AppContext } from "../../page";
 
 export const AccountContext = createContext();
 
@@ -109,12 +109,12 @@ export function SidePanel() {
 
     const handlePanelPage = (tab) => {
         switch(tab) {
-            case "Analytics": return <Pane><Text>{tab}</Text></Pane>;
-            case "All Items": return <Pane><AllItems accountData={accountData} /></Pane>;
-            case "Shared Bank": return <Pane><SharedBank sharedBank={sharedBank} /></Pane>;
-            case "Custom Item Sets": return <Pane><Text>{tab}</Text></Pane>;
-            case "Character Viewer": return <Pane><CharacterViewer characters={characters} /></Pane>;
-            case "Settings": return <Pane><Settings /></Pane>;
+            case "Analytics":           return <Pane><Text>{tab}</Text></Pane>;
+            case "All Items":           return <Pane><AllItems accountData={accountData} /></Pane>;
+            case "Shared Bank":         return <Pane><SharedBank sharedBank={sharedBank} /></Pane>;
+            case "Custom Item Sets":    return <Pane><Text>{tab}</Text></Pane>;
+            case "Character Viewer":    return <Pane><CharacterViewer characters={characters} /></Pane>;
+            case "Settings":            return <Pane><Settings /></Pane>;
             default: return null;
         }
     };

@@ -111,7 +111,7 @@ export const ThemeToggleSwitch = styled(Switch)`
             cursor: pointer !important;
             transition: all 0.2s !important;
             user-select: none !important; 
-            top: ${context === "sidepanel-page" ? "0px" : "1px"} !important;
+            top: ${context === "sidepanel-page" ? "1px" : "0px"} !important;
         `;
     }}
 `;
