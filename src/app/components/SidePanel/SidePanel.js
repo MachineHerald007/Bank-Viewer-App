@@ -137,6 +137,13 @@ export function SidePanel() {
                             {returnIcon(tab)}
                         </SidePanelTab>
                     ))}
+                    <SidePanelTab
+                        theme={theme}
+                        height={44}
+                        width="100%"
+                    >
+                        <SidePanelText theme={theme} width="inherit">Logout</SidePanelText>
+                    </SidePanelTab>
                 </Tablist>
                 <PanelPageContainer theme={theme} flex="1">
                     <StickyMenu context="sidepanel-page" />

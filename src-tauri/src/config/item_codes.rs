@@ -451,7 +451,8 @@ pub fn rare_weapon_special_codes() -> HashMap<u32, &'static str> {
     codes.insert(0x00E502, "None");
     codes.insert(0x00E600, "None");
     codes.insert(0x00E700, "None");
-    // codes.insert(0x00E800, "TypeGU/HANDGUN");
+    // Type Weps are handled as normal weps
+    // codes.insert(0x00E800, "TypeGU/HANDGUN"); 
     // codes.insert(0x00E801, "TypeGU/MECHGUN");
     // codes.insert(0x00E900, "TypeRI/RIFLE");
     // codes.insert(0x00EA00, "TypeME/MECHGUN");
