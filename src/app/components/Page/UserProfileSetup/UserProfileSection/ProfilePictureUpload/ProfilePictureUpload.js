@@ -7,8 +7,13 @@ import {
     UploadTextPane,
     UploadPlusOutlined,
     UploadContainerPane,
+    GlobalUploadWrapper,
+    GlobalUploadContainerPane,
+    GlobalInputWrapper
 } from "../styles"; 
 import ImgCrop from 'antd-img-crop';
+import { ThemeProvider } from "styled-components";
+import { useTheme } from "@/app/components/Theme/Theme";
 
 const DefaultPicture = {
     uid: '-1',
@@ -62,6 +67,7 @@ export const ProfilePictureUpload = ({ onChange }) => {
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
     const [fileList, setFileList] = useState([DefaultPicture]);
+    const { theme } = useTheme();
 
     const handlePreview = async (file) => {
         if (!file.url && !file.preview) {
@@ -101,32 +107,39 @@ export const ProfilePictureUpload = ({ onChange }) => {
     );
 
     return (
-        <UploadContainerPane>
-            <ImgCrop rotationSlider cropShape="round">
-                <UploadWrapper
-                    accept=".png,.jpg"
-                    beforeUpload={beforeUpload}
-                    listType="picture-circle"
-                    fileList={fileList}
-                    onPreview={handlePreview}
-                    onChange={handleChange}
-                >
-                    {uploadButton}
-                </UploadWrapper>
-            </ImgCrop>
-            {previewImage && (
-                <Image
-                    wrapperStyle={{
-                        display: 'none',
-                    }}
-                    preview={{
-                        visible: previewOpen,
-                        onVisibleChange: (visible) => setPreviewOpen(visible),
-                        afterOpenChange: (visible) => !visible && setPreviewImage(''),
-                    }}
-                    src={previewImage}
-                />
-            )}
-        </UploadContainerPane>
+        <ThemeProvider theme={{ mode: theme }}>
+            <>
+            <GlobalUploadContainerPane />
+            <GlobalUploadWrapper />
+            <GlobalInputWrapper />
+            <UploadContainerPane>
+                <ImgCrop rotationSlider cropShape="round">
+                    <UploadWrapper
+                        accept=".png,.jpg"
+                        beforeUpload={beforeUpload}
+                        listType="picture-circle"
+                        fileList={fileList}
+                        onPreview={handlePreview}
+                        onChange={handleChange}
+                    >
+                        {uploadButton}
+                    </UploadWrapper>
+                </ImgCrop>
+                {previewImage && (
+                    <Image
+                        wrapperStyle={{
+                            display: 'none',
+                        }}
+                        preview={{
+                            visible: previewOpen,
+                            onVisibleChange: (visible) => setPreviewOpen(visible),
+                            afterOpenChange: (visible) => !visible && setPreviewImage(''),
+                        }}
+                        src={previewImage}
+                    />
+                )}
+            </UploadContainerPane>
+            </>
+        </ThemeProvider>
     );
 };

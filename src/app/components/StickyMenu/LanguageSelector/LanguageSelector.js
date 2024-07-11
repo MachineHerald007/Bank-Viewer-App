@@ -3,15 +3,16 @@ import { Select, Space } from 'antd';
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { AppContext } from '@/app/page';
 import { AccountContext } from '../../SidePanel/SidePanel';
-import { LanguageSelectorPane } from './styles';
+import { LanguageSelectorPane, GlobalLanguageSelectorPane } from './styles';
+import { ThemeProvider } from 'styled-components';
 import { useTheme } from '../../Theme/Theme';
 
 export function LanguageSelector({ context }) {
     const { dashboardState, setDashboardState } = useContext(AppContext);
     const accountContext = useContext(AccountContext);
     const accountData = accountContext ? accountContext.accountData : {};
-    const { theme } = useTheme();
     const [value, setValue] = useState(dashboardState.lang);
+    const { theme } = useTheme();
 
     const handleChange = useCallback((lang) => {
         setValue(lang);
@@ -58,18 +59,21 @@ export function LanguageSelector({ context }) {
     }, [value, setDashboardState]);
 
     return (
-        <LanguageSelectorPane theme={theme} context={context}>
-            <Space wrap>
-                <Select
-                    value={value}
-                    style={{ width: 60 }}
-                    onChange={handleChange}
-                    options={[
-                        { value: 'EN', label: 'EN' },
-                        { value: 'JA', label: 'JA' }
-                    ]}
-                />
-            </Space>
-        </LanguageSelectorPane>
+        <ThemeProvider theme={{ mode: theme, context }}>
+            <GlobalLanguageSelectorPane context={context} />
+            <LanguageSelectorPane context={context}>
+                <Space wrap>
+                    <Select
+                        value={value}
+                        style={{ width: 60 }}
+                        onChange={handleChange}
+                        options={[
+                            { value: 'EN', label: 'EN' },
+                            { value: 'JA', label: 'JA' }
+                        ]}
+                    />
+                </Space>
+            </LanguageSelectorPane>
+        </ThemeProvider>
     );
 }
