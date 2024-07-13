@@ -30,6 +30,7 @@ import { StickyMenu } from "../StickyMenu/StickyMenu";
 import { ProfileSection } from "./ProfileSection";
 import { AllItems } from "../Page/All-Items/All-Items";
 import { SharedBank } from "../Page/SharedBank/SharedBank";
+import { CustomItemSets } from "../Page/CustomItemSets/CustomItemSets";
 import { CharacterViewer } from "../Page/CharacterViewer/CharacterViewer";
 import { Settings } from "../Page/Settings/Settings";
 import { useTheme } from "../Theme/Theme";
@@ -112,7 +113,7 @@ export function SidePanel() {
             case "Analytics":           return <Pane><Text>{tab}</Text></Pane>;
             case "All Items":           return <Pane><AllItems accountData={accountData} /></Pane>;
             case "Shared Bank":         return <Pane><SharedBank sharedBank={sharedBank} /></Pane>;
-            case "Custom Item Sets":    return <Pane><Text>{tab}</Text></Pane>;
+            case "Custom Item Sets":    return <Pane><CustomItemSets /></Pane>;
             case "Character Viewer":    return <Pane><CharacterViewer characters={characters} /></Pane>;
             case "Settings":            return <Pane><Settings /></Pane>;
             default: return null;
