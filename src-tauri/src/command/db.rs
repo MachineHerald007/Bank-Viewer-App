@@ -303,6 +303,101 @@ pub fn init_app() -> Result<(), SqlError> {
     )?;
 
     transaction.execute(
+        "CREATE TABLE IF NOT EXISTS saber ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS sword ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS dagger ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS partisan ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS slicer ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS double_saber ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS claw ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS katana ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS twin_sword ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS fist ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS handgun ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS rifle ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS mechgun ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS shot ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS launcher ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS cane ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS rod ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS wand ()",
+        []
+    )?;
+
+    transaction.execute(
+        "CREATE TABLE IF NOT EXISTS card ()",
+        []
+    )?;
+
+    transaction.execute(
         "CREATE TABLE IF NOT EXISTS dashboard_state (
             id INTEGER PRIMARY KEY CHECK (id = 1),
             logged_in_account_id INTEGER DEFAULT 0,
