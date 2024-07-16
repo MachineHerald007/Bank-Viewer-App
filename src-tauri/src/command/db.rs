@@ -303,97 +303,30 @@ pub fn init_app() -> Result<(), SqlError> {
     )?;
 
     transaction.execute(
-        "CREATE TABLE IF NOT EXISTS saber ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS sword ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS dagger ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS partisan ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS slicer ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS double_saber ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS claw ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS katana ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS twin_sword ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS fist ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS handgun ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS rifle ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS mechgun ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS shot ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS launcher ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS cane ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS rod ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS wand ()",
-        []
-    )?;
-
-    transaction.execute(
-        "CREATE TABLE IF NOT EXISTS card ()",
+        "CREATE TABLE IF NOT EXISTS weapon_reference (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            _type TEXT NOT NULL,
+            weapon_type TEXT NOT NULL,
+            name TEXT NOT NULL,
+            hex_code TEXT NOT NULL,
+            description TEXT NOT NULL,
+            rarity INTEGER NOT NULL,
+            maxstack INTEGER NOT NULL,
+            teampoints INTEGER NOT NULL,
+            grind INTEGER NOT NULL,
+            ata INTEGER NOT NULL,
+            min_atp INTEGER NOT NULL,
+            max_atp INTEGER NOT NULL,
+            special TEXT NOT NULL,
+            targets INTEGER NOT NULL,
+            classes TEXT NOT NULL,
+            notes TEXT NOT NULL,
+            total_min_atp INTEGER NOT NULL,
+            total_max_atp INTEGER NOT NULL,
+            requirement_atp INTEGER NOT NULL,
+            requirement_ata INTEGER NOT NULL,
+            requirement_mst INTEGER NOT NULL
+        )",
         []
     )?;
 
