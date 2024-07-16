@@ -27,7 +27,7 @@ pub struct Weapon {
 
 pub fn weapon_info() -> HashMap<u32, Weapon> {
     let mut weapons = HashMap::new();
-        codes.insert(0x000100, Weapon {
+        weapons.insert(0x000100, Weapon {
             name: "Saber",
             hex_code: "000100",
             description: "A sword with a Photon blade Attacks 1 enemy",
@@ -50,7 +50,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000101, Weapon {
+        weapons.insert(0x000101, Weapon {
             name: "Brand",
             hex_code: "000101",
             description: "A sword with good accuracy and power",
@@ -73,7 +73,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000102, Weapon {
+        weapons.insert(0x000102, Weapon {
             name: "Buster",
             hex_code: "000102",
             description: "An extremely high performance sword",
@@ -96,7 +96,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000103, Weapon {
+        weapons.insert(0x000103, Weapon {
             name: "Pallasch",
             hex_code: "000103",
             description: "A superior sword usable only by masters",
@@ -119,7 +119,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000104, Weapon {
+        weapons.insert(0x000104, Weapon {
             name: "Gladius",
             hex_code: "000104",
             description: "An exceptional sword Has amazing power",
@@ -142,7 +142,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00CA00, Weapon {
+        weapons.insert(0x00CA00, Weapon {
             name: "5th Anniv. Blade",
             hex_code: "00CA00",
             description: "It looks like a weapon, but is really just an ornament",
@@ -165,7 +165,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002A00, Weapon {
+        weapons.insert(0x002A00, Weapon {
             name: "Akiko's Wok",
             hex_code: "002A00",
             description: "The ultimate weapon that was created from a wok  ?",
@@ -188,7 +188,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00D900, Weapon {
+        weapons.insert(0x00D900, Weapon {
             name: "Battledore",
             hex_code: "00D900",
             description: "They say that if you miss, your face will become all black",
@@ -211,7 +211,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009000, Weapon {
+        weapons.insert(0x009000, Weapon {
             name: "DB's Saber (3062)",
             hex_code: "009000",
             description: "AUW 3062 model Replica by Mick Co First model Popular replica due to its simple, yet distinctive design",
@@ -234,7 +234,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000107, Weapon {
+        weapons.insert(0x000107, Weapon {
             name: "Durandal",
             hex_code: "000107",
             description: "A legendary sword known as \"The Knight's Blade \"Its special attacksteals experience points",
@@ -257,7 +257,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x006F00, Weapon {
+        weapons.insert(0x006F00, Weapon {
             name: "Flower Bouquet",
             hex_code: "006F00",
             description: "A beautiful flower bouquet It smells very nice",
@@ -280,7 +280,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00DC00, Weapon {
+        weapons.insert(0x00DC00, Weapon {
             name: "Great Bouquet",
             hex_code: "00DC00",
             description: "Everyone loves getting flowers!Cheer up!",
@@ -303,7 +303,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00D600, Weapon {
+        weapons.insert(0x00D600, Weapon {
             name: "Jitte",
             hex_code: "00D600",
             description: "Its effect is unknown, but it's good for use on fleeing enemies",
@@ -326,7 +326,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000106, Weapon {
+        weapons.insert(0x000106, Weapon {
             name: "Kaladbolg",
             hex_code: "000106",
             description: "A legendary sword long sought after by warriors Its special attack freezes enemies",
@@ -349,7 +349,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00DA00, Weapon {
+        weapons.insert(0x00DA00, Weapon {
             name: "Racket",
             hex_code: "00DA00",
             description: "Simply a must for those high-class outings",
@@ -372,7 +372,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002700, Weapon {
+        weapons.insert(0x002700, Weapon {
             name: "Ancient Saber",
             hex_code: "002700",
             description: "Legendary sword found in the ancient ruins It absorbs enemy experience",
@@ -395,7 +395,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00B200, Weapon {
+        weapons.insert(0x00B200, Weapon {
             name: "Commander Blade",
             hex_code: "00B200",
             description: "The design of this blade is indicative of high status",
@@ -418,7 +418,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000105, Weapon {
+        weapons.insert(0x000105, Weapon {
             name: "DB's Saber",
             hex_code: "000105",
             description: "Replica of a saber once used by the military An extremely common replica",
@@ -441,7 +441,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009003, Weapon {
+        weapons.insert(0x009003, Weapon {
             name: "DB's Saber (3064)",
             hex_code: "009003",
             description: "AUW 3064 model Replica by Mick Co Second model Extremely few were made, making it rare and precious",
@@ -464,7 +464,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009001, Weapon {
+        weapons.insert(0x009001, Weapon {
             name: "DB's Saber (3067)",
             hex_code: "009001",
             description: "AUW 3067 model Replica by Torato Co A perfect replica, down to the identical materials and process",
@@ -487,7 +487,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009004, Weapon {
+        weapons.insert(0x009004, Weapon {
             name: "DB's Saber (3069 Torato)",
             hex_code: "009004",
             description: "AUW 3069 model Replica by Torato Co Experts have a difficult time telling this replica apart from the real model",
@@ -510,7 +510,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009002, Weapon {
+        weapons.insert(0x009002, Weapon {
             name: "DB's Saber (3069 Chris)",
             hex_code: "009002",
             description: "AUW 3069 model Replica by Chris Co Effort was put into replicating its function more so than its look",
@@ -533,7 +533,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009006, Weapon {
+        weapons.insert(0x009006, Weapon {
             name: "DB's Saber (3070)",
             hex_code: "009006",
             description: "AUW 3070 model Replica by Mick Co Due to excessive details, this model's performance suffered",
@@ -556,7 +556,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009005, Weapon {
+        weapons.insert(0x009005, Weapon {
             name: "DB's Saber (3073)",
             hex_code: "009005",
             description: "AUW 3073 model Replica by Chris Co The replica's blade is superior because of its use of higher grade material",
@@ -579,7 +579,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009007, Weapon {
+        weapons.insert(0x009007, Weapon {
             name: "DB's Saber (3075)",
             hex_code: "009007",
             description: "AUW 3075 model Replica by Torato Co No compromises were made to allow it to reach its apex of refinement",
@@ -602,7 +602,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009008, Weapon {
+        weapons.insert(0x009008, Weapon {
             name: "DB's Saber (3077)",
             hex_code: "009008",
             description: "AUW 3077 model Replica by Mick Co Limited edition model commemorating the arrival on Ragol",
@@ -625,7 +625,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001A00, Weapon {
+        weapons.insert(0x001A00, Weapon {
             name: "Delsaber's Buster",
             hex_code: "001A00",
             description: "Delsaber's hand, now an enemy weapon Powers up 100%% if used with a SHIELD OF DELSABER Lightning damage",
@@ -648,7 +648,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002C00, Weapon {
+        weapons.insert(0x002C00, Weapon {
             name: "Elysion",
             hex_code: "002C00",
             description: "The ancient characters on its blade produce magic Its special attack is the fire bomb",
@@ -671,7 +671,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 680
         });
-        codes.insert(0x00B900, Weapon {
+        weapons.insert(0x00B900, Weapon {
             name: "Flamberge",
             hex_code: "00B900",
             description: "A saber with a wavy blade that maximizes damage potential",
@@ -694,7 +694,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00B400, Weapon {
+        weapons.insert(0x00B400, Weapon {
             name: "Kusanagi",
             hex_code: "00B400",
             description: "A saber with a charming, symbolic design",
@@ -717,7 +717,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00AB00, Weapon {
+        weapons.insert(0x00AB00, Weapon {
             name: "Lame d'Argent",
             hex_code: "00AB00",
             description: "A dazzling silver sword that shines brightly",
@@ -740,7 +740,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002D00, Weapon {
+        weapons.insert(0x002D00, Weapon {
             name: "Red Saber",
             hex_code: "002D00",
             description: "This red saber is a prototype, so its finish is incomplete Letters, which say \"He,\" are carved on the hilt",
@@ -763,7 +763,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002300, Weapon {
+        weapons.insert(0x002300, Weapon {
             name: "Sting Tip",
             hex_code: "002300",
             description: "A special battle cane with needles on its tip Its special attack steals TP",
@@ -786,7 +786,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 450
         });
-        codes.insert(0x005100, Weapon {
+        weapons.insert(0x005100, Weapon {
             name: "Evil Curst",
             hex_code: "005100",
             description: "The eyes on top of this cursed cane can kill enemies Its special attack can also kill enemies",
@@ -809,7 +809,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 999
         });
-        codes.insert(0x001F00, Weapon {
+        weapons.insert(0x001F00, Weapon {
             name: "Lavis Cannon",
             hex_code: "001F00",
             description: "Few facts or even rumors are known about this ultimate sword Its abilities are a mystery",
@@ -832,7 +832,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00AC00, Weapon {
+        weapons.insert(0x00AC00, Weapon {
             name: "Excalibur",
             hex_code: "00AC00",
             description: "A golden sword that gets even more powerful bysacrificing HP for a powerfulattack",
@@ -855,7 +855,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000108, Weapon {
+        weapons.insert(0x000108, Weapon {
             name: "Galatine",
             hex_code: "000108",
             description: "The sword is said to be at its most powerful when the sun is at its highest",
@@ -878,7 +878,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00DD00, Weapon {
+        weapons.insert(0x00DD00, Weapon {
             name: "TypeSA/Saber",
             hex_code: "00DD00",
             description: "A special photon weapon Its abilities are unknown",
@@ -901,7 +901,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000200, Weapon {
+        weapons.insert(0x000200, Weapon {
             name: "Sword",
             hex_code: "000200",
             description: "A large weapon with a Photon blade",
@@ -924,7 +924,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000201, Weapon {
+        weapons.insert(0x000201, Weapon {
             name: "Gigush",
             hex_code: "000201",
             description: "A large sword with good accuracy and power",
@@ -947,7 +947,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000202, Weapon {
+        weapons.insert(0x000202, Weapon {
             name: "Breaker",
             hex_code: "000202",
             description: "A large, extremely high-performance sword",
@@ -970,7 +970,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000203, Weapon {
+        weapons.insert(0x000203, Weapon {
             name: "Claymore",
             hex_code: "000203",
             description: "A superior large sword usable only by masters",
@@ -993,7 +993,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000204, Weapon {
+        weapons.insert(0x000204, Weapon {
             name: "Calibur",
             hex_code: "000204",
             description: "An exceptional large sword Has amazing power",
@@ -1016,7 +1016,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00CC00, Weapon {
+        weapons.insert(0x00CC00, Weapon {
             name: "Akiko's Cleaver",
             hex_code: "00CC00",
             description: "A great weapon that can stab as well as cleave!",
@@ -1039,7 +1039,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003500, Weapon {
+        weapons.insert(0x003500, Weapon {
             name: "Crazy Tune",
             hex_code: "003500",
             description: "AUW 1985 model Made by Kikoku",
@@ -1062,7 +1062,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00AE00, Weapon {
+        weapons.insert(0x00AE00, Weapon {
             name: "Daisy Chain",
             hex_code: "00AE00",
             description: "A popular, easy-to-use blade Can confuse enemies",
@@ -1085,7 +1085,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000207, Weapon {
+        weapons.insert(0x000207, Weapon {
             name: "Dragon Slayer",
             hex_code: "000207",
             description: "A legendary sword borne by one who defeated a dragon Adds an explosive fire attack",
@@ -1108,7 +1108,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000205, Weapon {
+        weapons.insert(0x000205, Weapon {
             name: "Flowen's Sword",
             hex_code: "000205",
             description: "Replica of a sword once used by the military An extremely common replica",
@@ -1131,7 +1131,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00DB00, Weapon {
+        weapons.insert(0x00DB00, Weapon {
             name: "Hammer",
             hex_code: "00DB00",
             description: "Used to take things and smash 'em down flat!",
@@ -1154,7 +1154,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003100, Weapon {
+        weapons.insert(0x003100, Weapon {
             name: "Huge Battle Fan",
             hex_code: "003100",
             description: "Only certain players can use this ultimate weapon Don't be deceived by its looks",
@@ -1177,7 +1177,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000206, Weapon {
+        weapons.insert(0x000206, Weapon {
             name: "Last Survivor",
             hex_code: "000206",
             description: "A sword said to protect its bearer in any battle Its special attack steals HP",
@@ -1200,7 +1200,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002100, Weapon {
+        weapons.insert(0x002100, Weapon {
             name: "Chain Sawd",
             hex_code: "002100",
             description: "A large sword with small, spinning Photon blades Its special attack steals enemy HP",
@@ -1223,7 +1223,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008F00, Weapon {
+        weapons.insert(0x008F00, Weapon {
             name: "Flowen's Sword (3060)",
             hex_code: "008F00",
             description: "AUW 3060 model Replica by Mick Co First model Popular for its simple, yet distinctive design",
@@ -1246,7 +1246,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008F01, Weapon {
+        weapons.insert(0x008F01, Weapon {
             name: "Flowen's Sword (3064)",
             hex_code: "008F01",
             description: "AUW 3064 model Replica by Mick Co Model that became the standard and made Mick famous",
@@ -1269,7 +1269,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008F02, Weapon {
+        weapons.insert(0x008F02, Weapon {
             name: "Flowen's Sword (3067)",
             hex_code: "008F02",
             description: "AUW 3067 model Replica by Mick Co Due to excessive details, this model's performance suffered",
@@ -1292,7 +1292,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008F03, Weapon {
+        weapons.insert(0x008F03, Weapon {
             name: "Flowen's Sword (3073)",
             hex_code: "008F03",
             description: "AUW 3073 model Replica by Mick Co Relatively few were made, so this model is highly valued among collectors",
@@ -1315,7 +1315,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008F04, Weapon {
+        weapons.insert(0x008F04, Weapon {
             name: "Flowen's Sword (3077)",
             hex_code: "008F04",
             description: "AUW 3077 model Replica by Mick Co Limited edition model commemorating the arrival on Ragol",
@@ -1338,7 +1338,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008F08, Weapon {
+        weapons.insert(0x008F08, Weapon {
             name: "Flowen's Sword (3079)",
             hex_code: "008F08",
             description: "AUW 3079 model Replica by Mick Co No compromises were made to allow it to reach its apex of refinement",
@@ -1361,7 +1361,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008F05, Weapon {
+        weapons.insert(0x008F05, Weapon {
             name: "Flowen's Sword (3082)",
             hex_code: "008F05",
             description: "AUW 3082 model Replica by Mick Co The weight has been reduced by the incorporation of new materials",
@@ -1384,7 +1384,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008F06, Weapon {
+        weapons.insert(0x008F06, Weapon {
             name: "Flowen's Sword (3083)",
             hex_code: "008F06",
             description: "AUW 3083 model Replica by Mick Co Even experts have difficulty determining its authenticity",
@@ -1407,7 +1407,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008F07, Weapon {
+        weapons.insert(0x008F07, Weapon {
             name: "Flowen's Sword (3084)",
             hex_code: "008F07",
             description: "AUW 3084 model Thinking of his beloved Furou-uen, Horusu, Mick poured his body and soul into its creation",
@@ -1430,7 +1430,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002001, Weapon {
+        weapons.insert(0x002001, Weapon {
             name: "Laconium Axe",
             hex_code: "002001",
             description: "A large axe that is heavy and difficult to wield Made of rare laconium metal giving it near unmatchable strength",
@@ -1453,7 +1453,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003400, Weapon {
+        weapons.insert(0x003400, Weapon {
             name: "Red Sword",
             hex_code: "003400",
             description: "This red sword is a prototype, so its finish is incomplete Letters, which say \"a,\" are carved on the hilt",
@@ -1476,7 +1476,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002000, Weapon {
+        weapons.insert(0x002000, Weapon {
             name: "Victor Axe",
             hex_code: "002000",
             description: "A one-handed axe with a Photon blade Its special attack steals HP",
@@ -1499,7 +1499,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009700, Weapon {
+        weapons.insert(0x009700, Weapon {
             name: "Zanba",
             hex_code: "009700",
             description: "A legendary long sword said to be able to slice through anything in a single stroke",
@@ -1522,7 +1522,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009D00, Weapon {
+        weapons.insert(0x009D00, Weapon {
             name: "Dark Flow",
             hex_code: "009D00",
             description: "Sword eroded by Olga Flow DNA Its power is awakened when its owner is in danger",
@@ -1545,7 +1545,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003300, Weapon {
+        weapons.insert(0x003300, Weapon {
             name: "Sealed J-Sword",
             hex_code: "003300",
             description: "Ancient sword with its power sealed by an unknown stamp The seal opens when all techniques are used",
@@ -1568,7 +1568,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003200, Weapon {
+        weapons.insert(0x003200, Weapon {
             name: "Tsumikiri J-Sword",
             hex_code: "003200",
             description: "Owned by Orochi Agito, the blade was made along the same lines as Agito, with a carved seal on the blade",
@@ -1591,7 +1591,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00E002, Weapon {
+        weapons.insert(0x00E002, Weapon {
             name: "TypeSW/J-Sword",
             hex_code: "00E002",
             description: "A special photon weapon Its abilities are unknown",
@@ -1614,7 +1614,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00E001, Weapon {
+        weapons.insert(0x00E001, Weapon {
             name: "TypeSW/Slicer",
             hex_code: "00E001",
             description: "A special photon weapon Its abilities are unknown",
@@ -1637,7 +1637,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00E000, Weapon {
+        weapons.insert(0x00E000, Weapon {
             name: "TypeSW/Sword",
             hex_code: "00E000",
             description: "A special photon weapon Its abilities are unknown",
@@ -1660,7 +1660,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000300, Weapon {
+        weapons.insert(0x000300, Weapon {
             name: "Dagger",
             hex_code: "000300",
             description: "A short Photon sword Attacks enemies twice",
@@ -1683,7 +1683,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000301, Weapon {
+        weapons.insert(0x000301, Weapon {
             name: "Knife",
             hex_code: "000301",
             description: "A short sword with good power and accuracy",
@@ -1706,7 +1706,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000302, Weapon {
+        weapons.insert(0x000302, Weapon {
             name: "Blade",
             hex_code: "000302",
             description: "An extremely high performance short sword",
@@ -1729,7 +1729,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000303, Weapon {
+        weapons.insert(0x000303, Weapon {
             name: "Edge",
             hex_code: "000303",
             description: "A superior short sword usable only by masters",
@@ -1752,7 +1752,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000304, Weapon {
+        weapons.insert(0x000304, Weapon {
             name: "Ripper",
             hex_code: "000304",
             description: "An exceptional short sword Has amazing power",
@@ -1775,7 +1775,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000305, Weapon {
+        weapons.insert(0x000305, Weapon {
             name: "Blade Dance",
             hex_code: "000305",
             description: "A short sword named for its dance-like attack Its special attack paralyzes enemies",
@@ -1798,7 +1798,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000306, Weapon {
+        weapons.insert(0x000306, Weapon {
             name: "Bloody Art",
             hex_code: "000306",
             description: "A legendary short sword named for all the blood that it spilled Its special attack halves enemy HP",
@@ -1821,7 +1821,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000307, Weapon {
+        weapons.insert(0x000307, Weapon {
             name: "Cross Scar",
             hex_code: "000307",
             description: "A legendary short sword that leaves cross-shaped scars on its victims Adds lightning damage",
@@ -1844,7 +1844,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003700, Weapon {
+        weapons.insert(0x003700, Weapon {
             name: "Wok of Akiko's Shop",
             hex_code: "003700",
             description: "The excellent combination of a wok and a ladle It's very useful for both attack and defense",
@@ -1867,7 +1867,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00BC00, Weapon {
+        weapons.insert(0x00BC00, Weapon {
             name: "Flapjack Flapper",
             hex_code: "00BC00",
             description: "A specially-engineered photon blade that can drain HP",
@@ -1890,7 +1890,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001900, Weapon {
+        weapons.insert(0x001900, Weapon {
             name: "P-Arms' Blade",
             hex_code: "001900",
             description: "An enemy weapon made from the hands of a Pan Arms Its special attack paralyzes enemies",
@@ -1913,7 +1913,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003900, Weapon {
+        weapons.insert(0x003900, Weapon {
             name: "Red Dagger",
             hex_code: "003900",
             description: "This red blade is a prototype, so its finish is incomplete Letters, which say \"t,\" are carved on the hilt",
@@ -1936,7 +1936,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001800, Weapon {
+        weapons.insert(0x001800, Weapon {
             name: "S-Beat's Blade",
             hex_code: "001800",
             description: "An enemy weapon made from the hands of a Sinow Beat Its special attack can kill in a single strike",
@@ -1959,7 +1959,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008E00, Weapon {
+        weapons.insert(0x008E00, Weapon {
             name: "S-Berill's Hands #0",
             hex_code: "008E00",
             description: "Sinow Berill's hand, now a weapon Some say there is room for further refinement, but",
@@ -1982,7 +1982,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x006200, Weapon {
+        weapons.insert(0x006200, Weapon {
             name: "S-Red's Blade",
             hex_code: "006200",
             description: "Sinow Red's hands were remodeled into a weapon Attack and defense are increased with its special attack",
@@ -2005,7 +2005,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003600, Weapon {
+        weapons.insert(0x003600, Weapon {
             name: "Twin Chakram",
             hex_code: "003600",
             description: "This round sword was built for short-range attack The attack speed is very fast and it can kill with 1 hit",
@@ -2028,7 +2028,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000308, Weapon {
+        weapons.insert(0x000308, Weapon {
             name: "Zero Divide",
             hex_code: "000308",
             description: "A powerful pair of tonfa Its special attack freezes enemies",
@@ -2051,7 +2051,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008E01, Weapon {
+        weapons.insert(0x008E01, Weapon {
             name: "S-Berill's Hands #1",
             hex_code: "008E01",
             description: "Sinow Berill's knuckle with Photon camouflage",
@@ -2074,7 +2074,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00C800, Weapon {
+        weapons.insert(0x00C800, Weapon {
             name: "Daylight Scar",
             hex_code: "00C800",
             description: "A six-pronged double claw Sacrifices HP for a powerfulattack",
@@ -2097,7 +2097,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003800, Weapon {
+        weapons.insert(0x003800, Weapon {
             name: "Lavis Blade",
             hex_code: "003800",
             description: "A mysterious blade for use with both hands It's very powerful, and if you use a certain item, it will become",
@@ -2120,7 +2120,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000309, Weapon {
+        weapons.insert(0x000309, Weapon {
             name: "Two Kamui",
             hex_code: "000309",
             description: "A powerful and destructive twin weapon, rivaling the power of Sange and Yasha",
@@ -2143,7 +2143,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00E200, Weapon {
+        weapons.insert(0x00E200, Weapon {
             name: "TypeBL/Blade",
             hex_code: "00E200",
             description: "A special photon weapon Its abilities are unknown",
@@ -2166,7 +2166,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000400, Weapon {
+        weapons.insert(0x000400, Weapon {
             name: "Partisan",
             hex_code: "000400",
             description: "A long sword with a Photon blade Hits multiple enemies",
@@ -2189,7 +2189,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000401, Weapon {
+        weapons.insert(0x000401, Weapon {
             name: "Halbert",
             hex_code: "000401",
             description: "A long sword with good accuracy and power",
@@ -2212,7 +2212,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000402, Weapon {
+        weapons.insert(0x000402, Weapon {
             name: "Glaive",
             hex_code: "000402",
             description: "An extremely high performance long sword",
@@ -2235,7 +2235,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000403, Weapon {
+        weapons.insert(0x000403, Weapon {
             name: "Berdys",
             hex_code: "000403",
             description: "A superior long sword usable only by masters",
@@ -2258,7 +2258,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000404, Weapon {
+        weapons.insert(0x000404, Weapon {
             name: "Gungnir",
             hex_code: "000404",
             description: "An exceptional long sword Has amazing power",
@@ -2281,7 +2281,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00D400, Weapon {
+        weapons.insert(0x00D400, Weapon {
             name: "Bamboo Spear",
             hex_code: "00D400",
             description: "An ancient kind of partisan Shout out loud when you use it",
@@ -2304,7 +2304,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000405, Weapon {
+        weapons.insert(0x000405, Weapon {
             name: "Brionac",
             hex_code: "000405",
             description: "A legendary long sword made of precious pure Photons Its special attack steals enemy TP",
@@ -2327,7 +2327,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00D700, Weapon {
+        weapons.insert(0x00D700, Weapon {
             name: "Butterfly Net",
             hex_code: "00D700",
             description: "Use to catch things while keeping your hands clean",
@@ -2350,7 +2350,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x006400, Weapon {
+        weapons.insert(0x006400, Weapon {
             name: "Chameleon Scythe",
             hex_code: "006400",
             description: "This scythe is considered a work of art because of its intricate design Its special attack confuses enemies",
@@ -2373,7 +2373,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000407, Weapon {
+        weapons.insert(0x000407, Weapon {
             name: "Gae Bolg",
             hex_code: "000407",
             description: "A legendary long sword that is said to become sharper with every blow Its special attack freezes enemies",
@@ -2396,7 +2396,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00BD00, Weapon {
+        weapons.insert(0x00BD00, Weapon {
             name: "Getsugasan",
             hex_code: "00BD00",
             description: "A true warrior's weapon, not easy to wield",
@@ -2419,7 +2419,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00CF00, Weapon {
+        weapons.insert(0x00CF00, Weapon {
             name: "Nice Shot",
             hex_code: "00CF00",
             description: "Only old men use these",
@@ -2442,7 +2442,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001100, Weapon {
+        weapons.insert(0x001100, Weapon {
             name: "Soul Eater",
             hex_code: "001100",
             description: "A cursed scythe that drains HP from the user Its special attack drains HP for a powerful strike",
@@ -2465,7 +2465,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00D300, Weapon {
+        weapons.insert(0x00D300, Weapon {
             name: "Synthesizer",
             hex_code: "00D300",
             description: "Allows you to hit the enemy while they're distracted by catchy tunes",
@@ -2488,7 +2488,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00CE00, Weapon {
+        weapons.insert(0x00CE00, Weapon {
             name: "Tree Clippers",
             hex_code: "00CE00",
             description: "There are models for picking flowers, too",
@@ -2511,7 +2511,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00CB00, Weapon {
+        weapons.insert(0x00CB00, Weapon {
             name: "Tyrell's Parasol",
             hex_code: "00CB00",
             description: "A yellow parasol that conveys perfect poise",
@@ -2534,7 +2534,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000406, Weapon {
+        weapons.insert(0x000406, Weapon {
             name: "Vjaya",
             hex_code: "000406",
             description: "A legendary long sword for the wealthy Can launch a powerful attack at the cost of Meseta",
@@ -2557,7 +2557,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000408, Weapon {
+        weapons.insert(0x000408, Weapon {
             name: "Asteron Belt",
             hex_code: "000408",
             description: "One who confronted a great warrior of history wielding his spear, soon fell to the strength of this fine blade",
@@ -2580,7 +2580,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003D00, Weapon {
+        weapons.insert(0x003D00, Weapon {
             name: "Berdysh",
             hex_code: "003D00",
             description: "A very powerful sword Only Android Hunters can use it due to it's stringent requirements",
@@ -2603,7 +2603,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003C00, Weapon {
+        weapons.insert(0x003C00, Weapon {
             name: "Imperial Pick",
             hex_code: "003C00",
             description: "The blades can kill an enemy with only one hit Its special attack can take away half of an enemy's health",
@@ -2626,7 +2626,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003B00, Weapon {
+        weapons.insert(0x003B00, Weapon {
             name: "Madam's Umbrella",
             hex_code: "003B00",
             description: "Proof of Madam Madam's dignity boosts the effective range of Shifta and Deband",
@@ -2649,7 +2649,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00BE00, Weapon {
+        weapons.insert(0x00BE00, Weapon {
             name: "Maguwa",
             hex_code: "00BE00",
             description: "Resembles a simple hoe, but is deadly nonetheless",
@@ -2672,7 +2672,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x006300, Weapon {
+        weapons.insert(0x006300, Weapon {
             name: "Plantain Huge Fan",
             hex_code: "006300",
             description: "When you wave this magic fan once, it produces a very strong wind, which blows enemies away",
@@ -2695,7 +2695,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 690
         });
-        codes.insert(0x003E00, Weapon {
+        weapons.insert(0x003E00, Weapon {
             name: "Red Partisan",
             hex_code: "003E00",
             description: "This red partisan is a prototype, so its finish is incomplete Letters, which say \"h,\" are carved on the grip",
@@ -2718,7 +2718,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00BB00, Weapon {
+        weapons.insert(0x00BB00, Weapon {
             name: "Snake Spire",
             hex_code: "00BB00",
             description: "A partisan with a serpentine design Can cause instant death",
@@ -2741,7 +2741,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001101, Weapon {
+        weapons.insert(0x001101, Weapon {
             name: "Soul Banish",
             hex_code: "001101",
             description: "A cursed, but powerful scythe that drains HP",
@@ -2764,7 +2764,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00BA00, Weapon {
+        weapons.insert(0x00BA00, Weapon {
             name: "Yunchang",
             hex_code: "00BA00",
             description: "A legendary blade of the Blue Dragon Sacrifices HP for a powerfulattack",
@@ -2787,7 +2787,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003A00, Weapon {
+        weapons.insert(0x003A00, Weapon {
             name: "Madam's Parasol",
             hex_code: "003A00",
             description: "Proof of Madam Madam's dignity boosts the effective range of Resta and Anti",
@@ -2810,7 +2810,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00E400, Weapon {
+        weapons.insert(0x00E400, Weapon {
             name: "TypeHA/Halbert",
             hex_code: "00E400",
             description: "A special photon weapon Its abilities are unknown",
@@ -2833,7 +2833,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00E401, Weapon {
+        weapons.insert(0x00E401, Weapon {
             name: "TypeHA/Rod",
             hex_code: "00E401",
             description: "A special photon weapon Its abilities are unknown",
@@ -2856,7 +2856,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 350
         });
-        codes.insert(0x000500, Weapon {
+        weapons.insert(0x000500, Weapon {
             name: "Slicer",
             hex_code: "000500",
             description: "A throwing blade that hits multiple enemies",
@@ -2879,7 +2879,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000501, Weapon {
+        weapons.insert(0x000501, Weapon {
             name: "Spinner",
             hex_code: "000501",
             description: "A throwing blade with good power and accuracy",
@@ -2902,7 +2902,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000502, Weapon {
+        weapons.insert(0x000502, Weapon {
             name: "Cutter",
             hex_code: "000502",
             description: "An extremely high performance throwing blade",
@@ -2925,7 +2925,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000503, Weapon {
+        weapons.insert(0x000503, Weapon {
             name: "Sawcer",
             hex_code: "000503",
             description: "A superb throwing blade usable only by masters",
@@ -2948,7 +2948,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000504, Weapon {
+        weapons.insert(0x000504, Weapon {
             name: "Diska",
             hex_code: "000504",
             description: "An exceptional throwing blade Has amazing power",
@@ -2971,7 +2971,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000507, Weapon {
+        weapons.insert(0x000507, Weapon {
             name: "Diska of Braveman",
             hex_code: "000507",
             description: "A legendary throwing blade for the brave Sacrifices HP for a powerful special attack",
@@ -2994,7 +2994,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000506, Weapon {
+        weapons.insert(0x000506, Weapon {
             name: "Diska of Liberator",
             hex_code: "000506",
             description: "A legendary throwing blade used by a Hunter called \"The Liberator \"Causes confusion",
@@ -3017,7 +3017,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000505, Weapon {
+        weapons.insert(0x000505, Weapon {
             name: "Slicer of Assassin",
             hex_code: "000505",
             description: "A legendary throwing blade used by elite assassins Its special attack can kill instantly",
@@ -3040,7 +3040,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003F00, Weapon {
+        weapons.insert(0x003F00, Weapon {
             name: "Flight Cutter",
             hex_code: "003F00",
             description: "This throwing weapon was based on the ancient ninja's weapon",
@@ -3063,7 +3063,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x004000, Weapon {
+        weapons.insert(0x004000, Weapon {
             name: "Flight Fan",
             hex_code: "004000",
             description: "When thrown, this fan can kill several enemies at once Its special attack steals 12%% of the enemy's experience",
@@ -3086,7 +3086,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000508, Weapon {
+        weapons.insert(0x000508, Weapon {
             name: "Izmaela",
             hex_code: "000508",
             description: "An old throwing blade with hidden power Its special attack releases potent elemental energies",
@@ -3109,7 +3109,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A100, Weapon {
+        weapons.insert(0x00A100, Weapon {
             name: "Rappy's Fan",
             hex_code: "00A100",
             description: "Enemy weapon made from the wings of a Rappy",
@@ -3132,7 +3132,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x004100, Weapon {
+        weapons.insert(0x004100, Weapon {
             name: "Red Slicer",
             hex_code: "004100",
             description: "This red slicer is a prototype, so its finish is incomplete Letters, which say \"cl,\" are carved on the grip",
@@ -3155,7 +3155,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00AA00, Weapon {
+        weapons.insert(0x00AA00, Weapon {
             name: "Slicer of Fanatic",
             hex_code: "00AA00",
             description: "A bizarre slicer that takes away HP when used",
@@ -3178,7 +3178,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009C00, Weapon {
+        weapons.insert(0x009C00, Weapon {
             name: "Rainbow Baton",
             hex_code: "009C00",
             description: "Wand with the magic stone Iritista embedded in it",
@@ -3201,7 +3201,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00DE02, Weapon {
+        weapons.insert(0x00DE02, Weapon {
             name: "TypeSL/Claw",
             hex_code: "00DE02",
             description: "A special photon weapon Its abilities are unknown",
@@ -3224,7 +3224,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00DE03, Weapon {
+        weapons.insert(0x00DE03, Weapon {
             name: "TypeSL/Katana",
             hex_code: "00DE03",
             description: "A special photon weapon Its abilities are unknown",
@@ -3247,7 +3247,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00DE00, Weapon {
+        weapons.insert(0x00DE00, Weapon {
             name: "TypeSL/Saber",
             hex_code: "00DE00",
             description: "A special photon weapon Its abilities are unknown",
@@ -3270,7 +3270,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00DE01, Weapon {
+        weapons.insert(0x00DE01, Weapon {
             name: "TypeSL/Slicer",
             hex_code: "00DE01",
             description: "A special photon weapon Its abilities are unknown",
@@ -3293,7 +3293,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000E00, Weapon {
+        weapons.insert(0x000E00, Weapon {
             name: "Double Saber",
             hex_code: "000E00",
             description: "A double-bladed Photon sword Its special attack steals enemies' TP",
@@ -3316,7 +3316,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009A00, Weapon {
+        weapons.insert(0x009A00, Weapon {
             name: "Demolition Comet",
             hex_code: "009A00",
             description: "A double-hit weapon that shred enemies with countless Photon blades",
@@ -3339,7 +3339,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003001, Weapon {
+        weapons.insert(0x003001, Weapon {
             name: "Girasole",
             hex_code: "003001",
             description: "An intricate double saber that draws in the power of the sun Swinging the blade releases waves of energy that quickly tire those who wield it",
@@ -3362,7 +3362,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002E00, Weapon {
+        weapons.insert(0x002E00, Weapon {
             name: "Meteor Cudgel",
             hex_code: "002E00",
             description: "The crystals on both sides of the staff can inflict a lot of damage Its special attack freezes enemies",
@@ -3385,7 +3385,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002F00, Weapon {
+        weapons.insert(0x002F00, Weapon {
             name: "Monkey King Bar",
             hex_code: "002F00",
             description: "The length of this staff can be changed Its special attack can take away half of an enemy's health",
@@ -3408,7 +3408,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009500, Weapon {
+        weapons.insert(0x009500, Weapon {
             name: "Partisan of Lightning",
             hex_code: "009500",
             description: "A double-edged halberd that can rip the enemy apart with a lightning fast attack",
@@ -3431,7 +3431,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000E01, Weapon {
+        weapons.insert(0x000E01, Weapon {
             name: "Stag Cutlery",
             hex_code: "000E01",
             description: "A legendary double-bladed sword usable only by male Hunters and Rangers Causes confusion",
@@ -3454,7 +3454,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000E02, Weapon {
+        weapons.insert(0x000E02, Weapon {
             name: "Twin Brand",
             hex_code: "000E02",
             description: "The ultimate double-bladed sword, only for masters Its special attack halves enemy HP",
@@ -3477,7 +3477,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002F01, Weapon {
+        weapons.insert(0x002F01, Weapon {
             name: "Black King Bar",
             hex_code: "002F01",
             description: "Magic cane whose power has been enhanced by a blue-black stone",
@@ -3500,7 +3500,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x005E00, Weapon {
+        weapons.insert(0x005E00, Weapon {
             name: "Twin Blaze",
             hex_code: "005E00",
             description: "Flames from both ends of this magic cane will burn enemies Its special flame attack is very powerful",
@@ -3523,7 +3523,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00B300, Weapon {
+        weapons.insert(0x00B300, Weapon {
             name: "Vivienne",
             hex_code: "00B300",
             description: "A lovely double saber for a lovely woman Absorbs TP from targets",
@@ -3546,7 +3546,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003000, Weapon {
+        weapons.insert(0x003000, Weapon {
             name: "Double Cannon",
             hex_code: "003000",
             description: "A mysterious ultimate weapon Its abilities are unknown",
@@ -3569,7 +3569,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00E500, Weapon {
+        weapons.insert(0x00E500, Weapon {
             name: "TypeDS/D.Saber",
             hex_code: "00E500",
             description: "A special photon weapon Its abilities are unknown",
@@ -3592,7 +3592,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00E501, Weapon {
+        weapons.insert(0x00E501, Weapon {
             name: "TypeDS/Rod",
             hex_code: "00E501",
             description: "A special photon weapon Its abilities are unknown",
@@ -3615,7 +3615,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 350
         });
-        codes.insert(0x00E502, Weapon {
+        weapons.insert(0x00E502, Weapon {
             name: "TypeDS/Wand",
             hex_code: "00E502",
             description: "A special photon weapon Its abilities are unknown",
@@ -3638,7 +3638,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000D00, Weapon {
+        weapons.insert(0x000D00, Weapon {
             name: "Photon Claw",
             hex_code: "000D00",
             description: "Claws with photon blades for quick attacks with right hand Its special attack steals enemies' HP",
@@ -3661,7 +3661,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A200, Weapon {
+        weapons.insert(0x00A200, Weapon {
             name: "Booma's Claw",
             hex_code: "00A200",
             description: "Enemy weapon made from the right arm of a Booma",
@@ -3684,7 +3684,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x006100, Weapon {
+        weapons.insert(0x006100, Weapon {
             name: "Panther's Claw",
             hex_code: "006100",
             description: "This is only available for female users It's a very popular accessory, though it's not useful as a weapon",
@@ -3707,7 +3707,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x006000, Weapon {
+        weapons.insert(0x006000, Weapon {
             name: "Dragon's Claw",
             hex_code: "006000",
             description: "A Dragon's claw was used to make this weapon Its special attack is Foie",
@@ -3730,7 +3730,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A202, Weapon {
+        weapons.insert(0x00A202, Weapon {
             name: "Gigobooma's Claw",
             hex_code: "00A202",
             description: "Enemy weapon made from the right arm of a Gigobooma",
@@ -3753,7 +3753,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A201, Weapon {
+        weapons.insert(0x00A201, Weapon {
             name: "Gobooma's Claw",
             hex_code: "00A201",
             description: "Enemy weapon made from the right arm of a Gobooma",
@@ -3776,7 +3776,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x006900, Weapon {
+        weapons.insert(0x006900, Weapon {
             name: "Heart of Poumn",
             hex_code: "006900",
             description: "A Laconiatask tempered with the Eclipse Torch's flame Also known as \"Alis'Claw \"",
@@ -3799,7 +3799,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009400, Weapon {
+        weapons.insert(0x009400, Weapon {
             name: "Morning Glory",
             hex_code: "009400",
             description: "Claw forged from Morningium, which is said to show its true strength under the light of the morning sun",
@@ -3822,7 +3822,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000D02, Weapon {
+        weapons.insert(0x000D02, Weapon {
             name: "Nei's Claw",
             hex_code: "000D02",
             description: "Replica of a claw of a legendary Newman",
@@ -3845,7 +3845,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000D03, Weapon {
+        weapons.insert(0x000D03, Weapon {
             name: "Phoenix Claw",
             hex_code: "000D03",
             description: "A claw bathed in eternal flames with a phoenix feather embedded deep inside It is said that this legendary item would revive it's wielder only once when in great danger",
@@ -3868,7 +3868,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009800, Weapon {
+        weapons.insert(0x009800, Weapon {
             name: "Rika's Claw",
             hex_code: "009800",
             description: "A mysterious mechanical claw created by a legendary Newman It boosts mid level attack techniques",
@@ -3891,7 +3891,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000D01, Weapon {
+        weapons.insert(0x000D01, Weapon {
             name: "Silence Claw",
             hex_code: "000D01",
             description: "Legendary claws that kill silently Its special attack can fell enemies with a single blow",
@@ -3914,7 +3914,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009B00, Weapon {
+        weapons.insert(0x009B00, Weapon {
             name: "Nei's Claw",
             hex_code: "009B00",
             description: "Claw used by a legendary Newman Its aura boosts the power of low level attack techniques",
@@ -3937,7 +3937,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00E600, Weapon {
+        weapons.insert(0x00E600, Weapon {
             name: "TypeCL/Claw",
             hex_code: "00E600",
             description: "A special photon weapon Its abilities are unknown",
@@ -3960,7 +3960,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001600, Weapon {
+        weapons.insert(0x001600, Weapon {
             name: "Akiko's Frying Pan",
             hex_code: "001600",
             description: "The ultimate weapon?--hard, yet supple and smooth!",
@@ -3983,7 +3983,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002800, Weapon {
+        weapons.insert(0x002800, Weapon {
             name: "Harisen Battle Fan",
             hex_code: "002800",
             description: "A special weapon created from the idea of traditional entertainment Its special attack paralyzes enemies",
@@ -4006,7 +4006,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00C700, Weapon {
+        weapons.insert(0x00C700, Weapon {
             name: "Murasame",
             hex_code: "00C700",
             description: "Wielded by one of 8 fabled swordsmen Can cause instant death",
@@ -4029,7 +4029,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002B00, Weapon {
+        weapons.insert(0x002B00, Weapon {
             name: "Toy Hammer",
             hex_code: "002B00",
             description: "Once a child's toy, it has been refined over the years to become the ultimate toy Its power is devastating",
@@ -4052,7 +4052,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001005, Weapon {
+        weapons.insert(0x001005, Weapon {
             name: "Agito (1977)",
             hex_code: "001005",
             description: "AUW 1977 model Made by Jou'un",
@@ -4075,7 +4075,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001006, Weapon {
+        weapons.insert(0x001006, Weapon {
             name: "Agito (1980)",
             hex_code: "001006",
             description: "AUW 1980 model Made by Tengai",
@@ -4098,7 +4098,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001002, Weapon {
+        weapons.insert(0x001002, Weapon {
             name: "Agito (1983)",
             hex_code: "001002",
             description: "AUW 1983 model Made by Dousetsu",
@@ -4121,7 +4121,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001004, Weapon {
+        weapons.insert(0x001004, Weapon {
             name: "Agito (1991)",
             hex_code: "001004",
             description: "AUW 1991 model Made by Kikoku",
@@ -4144,7 +4144,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001003, Weapon {
+        weapons.insert(0x001003, Weapon {
             name: "Agito (2001)",
             hex_code: "001003",
             description: "AUW 2001 model Made by Kikoku",
@@ -4167,7 +4167,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00B600, Weapon {
+        weapons.insert(0x00B600, Weapon {
             name: "Guren",
             hex_code: "00B600",
             description: "A red blade with an embossed seal Deals fire damage",
@@ -4190,7 +4190,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008A02, Weapon {
+        weapons.insert(0x008A02, Weapon {
             name: "Kamui",
             hex_code: "008A02",
             description: "AUW 1977 model Made by Tengai",
@@ -4213,7 +4213,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001007, Weapon {
+        weapons.insert(0x001007, Weapon {
             name: "Raikiri",
             hex_code: "001007",
             description: "A sharp katana embedded with the power of lightning Intricate birds are carved into the tsuka",
@@ -4236,7 +4236,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008A00, Weapon {
+        weapons.insert(0x008A00, Weapon {
             name: "Sange",
             hex_code: "008A00",
             description: "AUW 1963 model Made by Jou'un",
@@ -4259,7 +4259,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00C600, Weapon {
+        weapons.insert(0x00C600, Weapon {
             name: "Shichishito",
             hex_code: "00C600",
             description: "A three-part blade with 61 characters engraved onto its surface",
@@ -4282,7 +4282,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00B700, Weapon {
+        weapons.insert(0x00B700, Weapon {
             name: "Shouren",
             hex_code: "00B700",
             description: "A blue blade that is fit for massacre Deals ice damage",
@@ -4305,7 +4305,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002900, Weapon {
+        weapons.insert(0x002900, Weapon {
             name: "Yamigarasu",
             hex_code: "002900",
             description: "This cursed sword sucks HP from the person who wields it Its special attack can kill an enemy with 1 hit",
@@ -4328,7 +4328,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001001, Weapon {
+        weapons.insert(0x001001, Weapon {
             name: "Agito (1975)",
             hex_code: "001001",
             description: "AUW 1975 model Made by Dousetsu",
@@ -4351,7 +4351,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008A01, Weapon {
+        weapons.insert(0x008A01, Weapon {
             name: "Yasha",
             hex_code: "008A01",
             description: "AUW 2018 model Made by Kikoku",
@@ -4374,7 +4374,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x001000, Weapon {
+        weapons.insert(0x001000, Weapon {
             name: "Orotiagito",
             hex_code: "001000",
             description: "AUW 1975 model Made by Dousetsu",
@@ -4397,7 +4397,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00DF02, Weapon {
+        weapons.insert(0x00DF02, Weapon {
             name: "TypeJS/J-Sword",
             hex_code: "00DF02",
             description: "A special photon weapon Its abilities are unknown",
@@ -4420,7 +4420,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00DF00, Weapon {
+        weapons.insert(0x00DF00, Weapon {
             name: "TypeJS/Saber",
             hex_code: "00DF00",
             description: "A special photon weapon Its abilities are unknown",
@@ -4443,7 +4443,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00DF01, Weapon {
+        weapons.insert(0x00DF01, Weapon {
             name: "TypeJS/Slicer",
             hex_code: "00DF01",
             description: "A special photon weapon Its abilities are unknown",
@@ -4466,7 +4466,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008900, Weapon {
+        weapons.insert(0x008900, Weapon {
             name: "Musashi",
             hex_code: "008900",
             description: "A pair of swords bearing the name of a double sword wielding master",
@@ -4489,7 +4489,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008901, Weapon {
+        weapons.insert(0x008901, Weapon {
             name: "Yamato",
             hex_code: "008901",
             description: "A pair of swords bonded with ultra low temperature Photons Its special attack freezes enemies",
@@ -4512,7 +4512,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008902, Weapon {
+        weapons.insert(0x008902, Weapon {
             name: "Asuka",
             hex_code: "008902",
             description: "A pair of swords bonded with ultra high temperature Photons",
@@ -4535,7 +4535,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A000, Weapon {
+        weapons.insert(0x00A000, Weapon {
             name: "G-Assassin's Sabers",
             hex_code: "00A000",
             description: "Enemy weapon made from the two arms of a Grass Assassin",
@@ -4558,7 +4558,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00B800, Weapon {
+        weapons.insert(0x00B800, Weapon {
             name: "Jizai",
             hex_code: "00B800",
             description: "One of two unparalleled blades from a homeworld Can cause instant death",
@@ -4581,7 +4581,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008903, Weapon {
+        weapons.insert(0x008903, Weapon {
             name: "Sange & Yasha",
             hex_code: "008903",
             description: "A pair of Katanas that work perfectly in concert with one another",
@@ -4604,7 +4604,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00E700, Weapon {
+        weapons.insert(0x00E700, Weapon {
             name: "TypeSS/Sw",
             hex_code: "00E700",
             description: "A special photon weapon Its abilities are unknown",
@@ -4627,7 +4627,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000F00, Weapon {
+        weapons.insert(0x000F00, Weapon {
             name: "Brave Knuckle",
             hex_code: "000F00",
             description: "Gear for the fists and feet to boost attack power for unarmed combat Its special attack causes paralysis",
@@ -4650,7 +4650,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000F03, Weapon {
+        weapons.insert(0x000F03, Weapon {
             name: "Sonic Knuckle",
             hex_code: "000F03",
             description: "Unarmed combat gear that allows attacks at sonic speeds Its special attack steals experience",
@@ -4673,7 +4673,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000F01, Weapon {
+        weapons.insert(0x000F01, Weapon {
             name: "Angry Fist",
             hex_code: "000F01",
             description: "Gear that boosts attack power for unarmed combat Its special attack freezes enemies",
@@ -4696,7 +4696,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000F02, Weapon {
+        weapons.insert(0x000F02, Weapon {
             name: "God Hand",
             hex_code: "000F02",
             description: "The ultimate gear for unarmed combat Its special attack steals experience points",
@@ -4719,7 +4719,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00B500, Weapon {
+        weapons.insert(0x00B500, Weapon {
             name: "Sacred Duster",
             hex_code: "00B500",
             description: "A swift and deadly blue photon claw",
@@ -4742,7 +4742,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00E300, Weapon {
+        weapons.insert(0x00E300, Weapon {
             name: "TypeKN/Blade",
             hex_code: "00E300",
             description: "A special photon weapon Its abilities are unknown",
@@ -4765,7 +4765,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00E301, Weapon {
+        weapons.insert(0x00E301, Weapon {
             name: "TypeKN/Claw",
             hex_code: "00E301",
             description: "A special photon weapon Its abilities are unknown",
@@ -4788,7 +4788,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000600, Weapon {
+        weapons.insert(0x000600, Weapon {
             name: "Handgun",
             hex_code: "000600",
             description: "A small gun that fires Photon bullets",
@@ -4811,7 +4811,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 68,
             requirement_mst: 0
         });
-        codes.insert(0x000601, Weapon {
+        weapons.insert(0x000601, Weapon {
             name: "Autogun",
             hex_code: "000601",
             description: "A small gun with good accuracy and power",
@@ -4834,7 +4834,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 78,
             requirement_mst: 0
         });
-        codes.insert(0x000602, Weapon {
+        weapons.insert(0x000602, Weapon {
             name: "Lockgun",
             hex_code: "000602",
             description: "An extremely high performance small gun",
@@ -4857,7 +4857,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 88,
             requirement_mst: 0
         });
-        codes.insert(0x000603, Weapon {
+        weapons.insert(0x000603, Weapon {
             name: "Railgun",
             hex_code: "000603",
             description: "A superior small gun usable only by masters",
@@ -4880,7 +4880,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 98,
             requirement_mst: 0
         });
-        codes.insert(0x000604, Weapon {
+        weapons.insert(0x000604, Weapon {
             name: "Raygun",
             hex_code: "000604",
             description: "An exceptional small gun Has amazing power",
@@ -4903,7 +4903,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 108,
             requirement_mst: 0
         });
-        codes.insert(0x000607, Weapon {
+        weapons.insert(0x000607, Weapon {
             name: "Bravace",
             hex_code: "000607",
             description: "A legendary pistol reserved for high-ranking officers aboard Pioneer 1 Adds lightning damage",
@@ -4926,7 +4926,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 118,
             requirement_mst: 0
         });
-        codes.insert(0x000606, Weapon {
+        weapons.insert(0x000606, Weapon {
             name: "Custom Ray ver.OO",
             hex_code: "000606",
             description: "A pistol used by military mechanic group \"Team OO \"Proves the bearer to bea member of the team",
@@ -4949,7 +4949,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 114,
             requirement_mst: 0
         });
-        codes.insert(0x000605, Weapon {
+        weapons.insert(0x000605, Weapon {
             name: "Varista",
             hex_code: "000605",
             description: "A legendary, high-performance pistol Its special attack causes paralysis",
@@ -4972,7 +4972,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 110,
             requirement_mst: 0
         });
-        codes.insert(0x000608, Weapon {
+        weapons.insert(0x000608, Weapon {
             name: "Tension Blaster",
             hex_code: "000608",
             description: "A weapon once used by a reporter from a well known TV channel",
@@ -4995,7 +4995,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 100,
             requirement_mst: 0
         });
-        codes.insert(0x00AF00, Weapon {
+        weapons.insert(0x00AF00, Weapon {
             name: "Ophelie Seize",
             hex_code: "00AF00",
             description: "A red and silver compact handgun designed for women",
@@ -5018,7 +5018,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 170,
             requirement_mst: 0
         });
-        codes.insert(0x004400, Weapon {
+        weapons.insert(0x004400, Weapon {
             name: "Red Handgun",
             hex_code: "004400",
             description: "This red gun is a prototype, so its finish is incomplete Letters, which say \"i,\" are carved on the barrel",
@@ -5041,7 +5041,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 140,
             requirement_mst: 0
         });
-        codes.insert(0x00A300, Weapon {
+        weapons.insert(0x00A300, Weapon {
             name: "Ruby Bullet",
             hex_code: "00A300",
             description: "An ancient gun said to have been given to the human race by a divine being around AUW 1980",
@@ -5064,7 +5064,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 160,
             requirement_mst: 0
         });
-        codes.insert(0x002600, Weapon {
+        weapons.insert(0x002600, Weapon {
             name: "Suppressed Gun",
             hex_code: "002600",
             description: "Short gun equipped with a suppressor It has accuracy that is trustworthy",
@@ -5087,7 +5087,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 110,
             requirement_mst: 0
         });
-        codes.insert(0x006A00, Weapon {
+        weapons.insert(0x006A00, Weapon {
             name: "Yasminkov 2000H",
             hex_code: "006A00",
             description: "An antique model that's popular among certain hardcore fans The power is as strong as the new model",
@@ -5110,7 +5110,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 164,
             requirement_mst: 0
         });
-        codes.insert(0x004200, Weapon {
+        weapons.insert(0x004200, Weapon {
             name: "Handgun: Guld",
             hex_code: "004200",
             description: "A small gun with \"GULD\" engraved on the right side of its barrel Its special attack steals enemy TP",
@@ -5133,7 +5133,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 167,
             requirement_mst: 0
         });
-        codes.insert(0x004300, Weapon {
+        weapons.insert(0x004300, Weapon {
             name: "Handgun: Milla",
             hex_code: "004300",
             description: "A small gun with \"Milla\" engraved on the right side of its barrel Its special attack steals enemy HP",
@@ -5156,7 +5156,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 168,
             requirement_mst: 0
         });
-        codes.insert(0x004301, Weapon {
+        weapons.insert(0x004301, Weapon {
             name: "Last Swan",
             hex_code: "004301",
             description: "A small white barrel handgun Usable only by females",
@@ -5179,7 +5179,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 150,
             requirement_mst: 0
         });
-        codes.insert(0x004201, Weapon {
+        weapons.insert(0x004201, Weapon {
             name: "Master Raven",
             hex_code: "004201",
             description: "A heavy black barrel handgun Usable only by males",
@@ -5202,7 +5202,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 150,
             requirement_mst: 0
         });
-        codes.insert(0x001E00, Weapon {
+        weapons.insert(0x001E00, Weapon {
             name: "Heaven Punisher",
             hex_code: "001E00",
             description: "The ultimate gun, a weapon veiled in mystery \"Divine Punishment,\" its special attack, is based on time",
@@ -5225,7 +5225,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 210,
             requirement_mst: 0
         });
-        codes.insert(0x00BF00, Weapon {
+        weapons.insert(0x00BF00, Weapon {
             name: "Heaven Striker",
             hex_code: "00BF00",
             description: "A handgun based on secret military blueprints",
@@ -5248,7 +5248,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 200,
             requirement_mst: 0
         });
-        codes.insert(0x00E800, Weapon {
+        weapons.insert(0x00E800, Weapon {
             name: "TypeGU/Hand",
             hex_code: "00E800",
             description: "A special photon weapon Its abilities are unknown",
@@ -5271,7 +5271,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 90,
             requirement_mst: 0
         });
-        codes.insert(0x00E801, Weapon {
+        weapons.insert(0x00E801, Weapon {
             name: "TypeGU/Mechgun",
             hex_code: "00E801",
             description: "A special photon weapon Its abilities are unknown",
@@ -5294,7 +5294,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 90,
             requirement_mst: 0
         });
-        codes.insert(0x000700, Weapon {
+        weapons.insert(0x000700, Weapon {
             name: "Rifle",
             hex_code: "000700",
             description: "A long-range gun that fires Photon bullets",
@@ -5317,7 +5317,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 72,
             requirement_mst: 0
         });
-        codes.insert(0x000701, Weapon {
+        weapons.insert(0x000701, Weapon {
             name: "Sniper",
             hex_code: "000701",
             description: "A rifle with good accuracy and power",
@@ -5340,7 +5340,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 83,
             requirement_mst: 0
         });
-        codes.insert(0x000702, Weapon {
+        weapons.insert(0x000702, Weapon {
             name: "Blaster",
             hex_code: "000702",
             description: "An extremely high performance rifle",
@@ -5363,7 +5363,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 100,
             requirement_mst: 0
         });
-        codes.insert(0x000703, Weapon {
+        weapons.insert(0x000703, Weapon {
             name: "Beam",
             hex_code: "000703",
             description: "A superior rifle usable only by masters",
@@ -5386,7 +5386,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 106,
             requirement_mst: 0
         });
-        codes.insert(0x000704, Weapon {
+        weapons.insert(0x000704, Weapon {
             name: "Laser",
             hex_code: "000704",
             description: "An exceptional rifle Has amazing power",
@@ -5409,7 +5409,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 115,
             requirement_mst: 0
         });
-        codes.insert(0x004A00, Weapon {
+        weapons.insert(0x004A00, Weapon {
             name: "Drill Launcher",
             hex_code: "004A00",
             description: "This huge drill weapon can be attached to your hand It is a very powerful, short-range weapon",
@@ -5432,7 +5432,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 100,
             requirement_mst: 0
         });
-        codes.insert(0x000707, Weapon {
+        weapons.insert(0x000707, Weapon {
             name: "Justy-23ST",
             hex_code: "000707",
             description: "A legendary rifle crafted by Justy, one of the three masters Its special attack halves enemy HP",
@@ -5455,7 +5455,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 125,
             requirement_mst: 0
         });
-        codes.insert(0x00B100, Weapon {
+        weapons.insert(0x00B100, Weapon {
             name: "Le Cogneur",
             hex_code: "00B100",
             description: "A simple, easy-to-use rifle",
@@ -5478,7 +5478,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 140,
             requirement_mst: 0
         });
-        codes.insert(0x000708, Weapon {
+        weapons.insert(0x000708, Weapon {
             name: "Rianov 303SNR",
             hex_code: "000708",
             description: "An antique model that's popular among certain hardcore fans The power is as strong as the new model",
@@ -5501,7 +5501,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 144,
             requirement_mst: 0
         });
-        codes.insert(0x00CD00, Weapon {
+        weapons.insert(0x00CD00, Weapon {
             name: "Tanegashima",
             hex_code: "00CD00",
             description: "It might be an old style weapon, but it's tried and true",
@@ -5524,7 +5524,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 190,
             requirement_mst: 0
         });
-        codes.insert(0x000705, Weapon {
+        weapons.insert(0x000705, Weapon {
             name: "Visk-235W",
             hex_code: "000705",
             description: "A legendary rifle crafted by Visk, one of the three masters Its special attack paralyzes enemies",
@@ -5547,7 +5547,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 118,
             requirement_mst: 0
         });
-        codes.insert(0x000706, Weapon {
+        weapons.insert(0x000706, Weapon {
             name: "Wals-MK2",
             hex_code: "000706",
             description: "A legendary rifle crafted by Wals, one of the three masters Its special attack confuses enemies",
@@ -5570,7 +5570,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 120,
             requirement_mst: 0
         });
-        codes.insert(0x006600, Weapon {
+        weapons.insert(0x006600, Weapon {
             name: "Ano Rifle",
             hex_code: "006600",
             description: "This rifle was used as the military Android's primary weapon in a certain country",
@@ -5593,7 +5593,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 174,
             requirement_mst: 0
         });
-        codes.insert(0x004600, Weapon {
+        weapons.insert(0x004600, Weapon {
             name: "Anti Android Rifle",
             hex_code: "004600",
             description: "A government certified scientist created this high- performance rifle based on the A-35 rifle function",
@@ -5616,7 +5616,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 163,
             requirement_mst: 0
         });
-        codes.insert(0x001B00, Weapon {
+        weapons.insert(0x001B00, Weapon {
             name: "Bringer's Rifle",
             hex_code: "001B00",
             description: "An enemy weapon made from a Bringer's hand Its special attack cuts enemy HP to 1/4",
@@ -5639,7 +5639,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 140,
             requirement_mst: 0
         });
-        codes.insert(0x001C00, Weapon {
+        weapons.insert(0x001C00, Weapon {
             name: "Egg Blaster",
             hex_code: "001C00",
             description: "A special gun made by a mysterious scientist out to conquer the world Does fire damage",
@@ -5662,7 +5662,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 140,
             requirement_mst: 0
         });
-        codes.insert(0x004500, Weapon {
+        weapons.insert(0x004500, Weapon {
             name: "Frozen Shooter",
             hex_code: "004500",
             description: "The latest freeze gun uses latent heat energy to fire a freeze bomb Its power to freeze is excellent",
@@ -5685,7 +5685,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 162,
             requirement_mst: 0
         });
-        codes.insert(0x001300, Weapon {
+        weapons.insert(0x001300, Weapon {
             name: "Holy Ray",
             hex_code: "001300",
             description: "A special gun that impales enemies with a giant spear Its special attack paralyzes enemies",
@@ -5708,7 +5708,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 680
         });
-        codes.insert(0x000709, Weapon {
+        weapons.insert(0x000709, Weapon {
             name: "Rianov 303SNR-1",
             hex_code: "000709",
             description: "An old world rifle, given a new lease on life with modern photon enhancements Serial No 0996",
@@ -5731,7 +5731,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 144,
             requirement_mst: 0
         });
-        codes.insert(0x00070A, Weapon {
+        weapons.insert(0x00070A, Weapon {
             name: "Rianov 303SNR-2",
             hex_code: "00070A",
             description: "An old world rifle, given a new lease on life with modern photon enhancements Serial No 0997",
@@ -5754,7 +5754,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 144,
             requirement_mst: 0
         });
-        codes.insert(0x00070B, Weapon {
+        weapons.insert(0x00070B, Weapon {
             name: "Rianov 303SNR-3",
             hex_code: "00070B",
             description: "An old world rifle, given a new lease on life with modern photon enhancements Serial No 0998",
@@ -5777,7 +5777,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 194,
             requirement_mst: 0
         });
-        codes.insert(0x00070C, Weapon {
+        weapons.insert(0x00070C, Weapon {
             name: "Rianov 303SNR-4",
             hex_code: "00070C",
             description: "An old world rifle, given a new lease on life with modern photon enhancements Serial No 0999",
@@ -5800,7 +5800,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 194,
             requirement_mst: 0
         });
-        codes.insert(0x001200, Weapon {
+        weapons.insert(0x001200, Weapon {
             name: "Spread Needle",
             hex_code: "001200",
             description: "A custom shotgun that shoots countless needles Its special attack paralyzes enemies",
@@ -5823,7 +5823,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 135,
             requirement_mst: 0
         });
-        codes.insert(0x006500, Weapon {
+        weapons.insert(0x006500, Weapon {
             name: "Yasminkov 3000R",
             hex_code: "006500",
             description: "An antique model that's popular among certain hardcore fans The power is as strong as the new model",
@@ -5846,7 +5846,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 171,
             requirement_mst: 0
         });
-        codes.insert(0x006B00, Weapon {
+        weapons.insert(0x006B00, Weapon {
             name: "Yasminkov 7000V",
             hex_code: "006B00",
             description: "An antique model that's popular among certain hardcore fans The power is as strong as the new model",
@@ -5869,7 +5869,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 190,
             requirement_mst: 0
         });
-        codes.insert(0x009900, Weapon {
+        weapons.insert(0x009900, Weapon {
             name: "Angel Harp",
             hex_code: "009900",
             description: "A wondrous gun whose effects are said to be enhanced by the power of love",
@@ -5892,7 +5892,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 120,
             requirement_mst: 0
         });
-        codes.insert(0x00070D, Weapon {
+        weapons.insert(0x00070D, Weapon {
             name: "Rianov 303SNR-5",
             hex_code: "00070D",
             description: "A high end sniper rifle from the old world, upgraded to output damage rivalling even modern technology Serial No 1000",
@@ -5915,7 +5915,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 194,
             requirement_mst: 0
         });
-        codes.insert(0x004501, Weapon {
+        weapons.insert(0x004501, Weapon {
             name: "Snow Queen",
             hex_code: "004501",
             description: "A mysterious weapon Its abilities are unknown",
@@ -5938,7 +5938,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 162,
             requirement_mst: 0
         });
-        codes.insert(0x00E900, Weapon {
+        weapons.insert(0x00E900, Weapon {
             name: "TypeRI/Rifle",
             hex_code: "00E900",
             description: "A special photon weapon Its abilities are unknown",
@@ -5961,7 +5961,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 90,
             requirement_mst: 0
         });
-        codes.insert(0x000800, Weapon {
+        weapons.insert(0x000800, Weapon {
             name: "Mechgun",
             hex_code: "000800",
             description: "A machine gun that fires a hail of Photon bullets",
@@ -5984,7 +5984,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 79,
             requirement_mst: 0
         });
-        codes.insert(0x000801, Weapon {
+        weapons.insert(0x000801, Weapon {
             name: "Assault",
             hex_code: "000801",
             description: "A machine gun with good power and accuracy",
@@ -6007,7 +6007,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 87,
             requirement_mst: 0
         });
-        codes.insert(0x000802, Weapon {
+        weapons.insert(0x000802, Weapon {
             name: "Repeater",
             hex_code: "000802",
             description: "An extremely high performance machine gun",
@@ -6030,7 +6030,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 97,
             requirement_mst: 0
         });
-        codes.insert(0x000803, Weapon {
+        weapons.insert(0x000803, Weapon {
             name: "Gatling",
             hex_code: "000803",
             description: "A superior machine gun usable only by masters",
@@ -6053,7 +6053,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 109,
             requirement_mst: 0
         });
-        codes.insert(0x000804, Weapon {
+        weapons.insert(0x000804, Weapon {
             name: "Vulcan",
             hex_code: "000804",
             description: "An exceptional machine gun Has amazing power",
@@ -6076,7 +6076,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 117,
             requirement_mst: 0
         });
-        codes.insert(0x000806, Weapon {
+        weapons.insert(0x000806, Weapon {
             name: "H&S25 Justice",
             hex_code: "000806",
             description: "A legendary machine gun from the Justice Corp Its special attack freezes enemies",
@@ -6099,7 +6099,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 122,
             requirement_mst: 0
         });
-        codes.insert(0x000807, Weapon {
+        weapons.insert(0x000807, Weapon {
             name: "L&K14 Combat",
             hex_code: "000807",
             description: "A legendary machine gun from the Combat Corp Its special attack paralyzes enemies",
@@ -6122,7 +6122,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 124,
             requirement_mst: 0
         });
-        codes.insert(0x000805, Weapon {
+        weapons.insert(0x000805, Weapon {
             name: "M&A60 Vise",
             hex_code: "000805",
             description: "A legendary machine gun from the Vise Corp Sacrifices HP for a powerful special attack",
@@ -6145,7 +6145,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 120,
             requirement_mst: 0
         });
-        codes.insert(0x004700, Weapon {
+        weapons.insert(0x004700, Weapon {
             name: "Rocket Punch",
             hex_code: "004700",
             description: "This weapon fires a punch bomb It does great damage, but sequence attacks are not possible",
@@ -6168,7 +6168,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 100,
             requirement_mst: 0
         });
-        codes.insert(0x004800, Weapon {
+        weapons.insert(0x004800, Weapon {
             name: "Samba Maracas",
             hex_code: "004800",
             description: "Shaking the maracas with a Latin rhythm produces shock waves to damage enemies",
@@ -6191,7 +6191,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 100,
             requirement_mst: 0
         });
-        codes.insert(0x00AD03, Weapon {
+        weapons.insert(0x00AD03, Weapon {
             name: "Rage de Feu",
             hex_code: "00AD03",
             description: "A machine gun with an icy blue barrel Special: Burning",
@@ -6214,7 +6214,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 190,
             requirement_mst: 0
         });
-        codes.insert(0x004C00, Weapon {
+        weapons.insert(0x004C00, Weapon {
             name: "Red Mechgun",
             hex_code: "004C00",
             description: "This red mechgun is a prototype, so its finish is incomplete Letters, which say \"ff,\" are carved on the grip",
@@ -6237,7 +6237,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 155,
             requirement_mst: 0
         });
-        codes.insert(0x004900, Weapon {
+        weapons.insert(0x004900, Weapon {
             name: "Twin Psychogun",
             hex_code: "004900",
             description: "These guns convert thought patterns into a laser beam to destroy enemies",
@@ -6260,7 +6260,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 100,
             requirement_mst: 0
         });
-        codes.insert(0x006C00, Weapon {
+        weapons.insert(0x006C00, Weapon {
             name: "Yasminkov 9000M",
             hex_code: "006C00",
             description: "An antique model that's popular among certain hardcore fans The power is as strong as the new model",
@@ -6283,7 +6283,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 168,
             requirement_mst: 0
         });
-        codes.insert(0x004B01, Weapon {
+        weapons.insert(0x004B01, Weapon {
             name: "Dual Bird",
             hex_code: "004B01",
             description: "A pair of guns that work perfectly in concert with one another Steals enemies' experience",
@@ -6306,7 +6306,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 210,
             requirement_mst: 0
         });
-        codes.insert(0x004B00, Weapon {
+        weapons.insert(0x004B00, Weapon {
             name: "Guld Milla",
             hex_code: "004B00",
             description: "A mysterious ultimate weapon Its abilities are unknown",
@@ -6329,7 +6329,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 190,
             requirement_mst: 0
         });
-        codes.insert(0x00B000, Weapon {
+        weapons.insert(0x00B000, Weapon {
             name: "Mille Marteaux",
             hex_code: "00B000",
             description: "Powerful machine gun that's fit only for veteran Rangers",
@@ -6352,7 +6352,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 190,
             requirement_mst: 0
         });
-        codes.insert(0x00EA00, Weapon {
+        weapons.insert(0x00EA00, Weapon {
             name: "TypeME/Mechgun",
             hex_code: "00EA00",
             description: "A special photon weapon Its abilities are unknown",
@@ -6375,7 +6375,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 90,
             requirement_mst: 0
         });
-        codes.insert(0x000900, Weapon {
+        weapons.insert(0x000900, Weapon {
             name: "Shot",
             hex_code: "000900",
             description: "A shotgun that fires a spread of Photon bullets",
@@ -6398,7 +6398,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 85,
             requirement_mst: 0
         });
-        codes.insert(0x000901, Weapon {
+        weapons.insert(0x000901, Weapon {
             name: "Spread",
             hex_code: "000901",
             description: "A shotgun with good accuracy and power",
@@ -6421,7 +6421,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 90,
             requirement_mst: 0
         });
-        codes.insert(0x000902, Weapon {
+        weapons.insert(0x000902, Weapon {
             name: "Cannon",
             hex_code: "000902",
             description: "An extremely high performance shotgun",
@@ -6444,7 +6444,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 102,
             requirement_mst: 0
         });
-        codes.insert(0x000903, Weapon {
+        weapons.insert(0x000903, Weapon {
             name: "Launcher",
             hex_code: "000903",
             description: "A superior shotgun usable only by masters",
@@ -6467,7 +6467,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 112,
             requirement_mst: 0
         });
-        codes.insert(0x000904, Weapon {
+        weapons.insert(0x000904, Weapon {
             name: "Arms",
             hex_code: "000904",
             description: "An exceptional shotgun Has amazing power",
@@ -6490,7 +6490,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 120,
             requirement_mst: 0
         });
-        codes.insert(0x000905, Weapon {
+        weapons.insert(0x000905, Weapon {
             name: "Crush Bullet",
             hex_code: "000905",
             description: "A legendary shotgun made with concentrated pure Photons Its special attack steals enemy HP",
@@ -6513,7 +6513,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 122,
             requirement_mst: 0
         });
-        codes.insert(0x000906, Weapon {
+        weapons.insert(0x000906, Weapon {
             name: "Meteor Smash",
             hex_code: "000906",
             description: "A legendary shotgun with power that rivals a meteor strike Its special attack steals enemy TP",
@@ -6536,7 +6536,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 125,
             requirement_mst: 0
         });
-        codes.insert(0x000907, Weapon {
+        weapons.insert(0x000907, Weapon {
             name: "Final Impact",
             hex_code: "000907",
             description: "A legendary shotgun with tremendous power Its special attack steals enemies' experience points",
@@ -6559,7 +6559,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 125,
             requirement_mst: 0
         });
-        codes.insert(0x006700, Weapon {
+        weapons.insert(0x006700, Weapon {
             name: "Baranz Launcher",
             hex_code: "006700",
             description: "Baranz's parts were used to create this enemy weapon",
@@ -6582,7 +6582,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 181,
             requirement_mst: 0
         });
-        codes.insert(0x004D00, Weapon {
+        weapons.insert(0x004D00, Weapon {
             name: "Belra Cannon",
             hex_code: "004D00",
             description: "Belra's right hand was remodeled into this enemy weapon Its special attack is even more powerful",
@@ -6605,7 +6605,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 187,
             requirement_mst: 0
         });
-        codes.insert(0x001500, Weapon {
+        weapons.insert(0x001500, Weapon {
             name: "Flame Visit",
             hex_code: "001500",
             description: "A flamethrower that incinerates enemies with huge fireballs Its special attack confuses enemies",
@@ -6628,7 +6628,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 164,
             requirement_mst: 0
         });
-        codes.insert(0x001400, Weapon {
+        weapons.insert(0x001400, Weapon {
             name: "Inferno Bazooka",
             hex_code: "001400",
             description: "A powerful bazooka with highly destructive shells",
@@ -6651,7 +6651,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 142,
             requirement_mst: 0
         });
-        codes.insert(0x004E01, Weapon {
+        weapons.insert(0x004E01, Weapon {
             name: "Iron Faust",
             hex_code: "004E01",
             description: "A mysterious weapon Its abilities are unknown",
@@ -6674,7 +6674,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 181,
             requirement_mst: 0
         });
-        codes.insert(0x001402, Weapon {
+        weapons.insert(0x001402, Weapon {
             name: "L&K38 Combat",
             hex_code: "001402",
             description: "A heavy combat ready machine gun that fires many rounds Only a handful of these guns were produced",
@@ -6697,7 +6697,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 145,
             requirement_mst: 0
         });
-        codes.insert(0x006D00, Weapon {
+        weapons.insert(0x006D00, Weapon {
             name: "Maser Beam",
             hex_code: "006D00",
             description: "A special gun that shoots lighting Its accuracy is top class",
@@ -6720,7 +6720,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 160,
             requirement_mst: 0
         });
-        codes.insert(0x004E00, Weapon {
+        weapons.insert(0x004E00, Weapon {
             name: "Panzer Faust",
             hex_code: "004E00",
             description: "It fires a very powerful rocket bomb Its special attack can confuse enemies",
@@ -6743,7 +6743,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 181,
             requirement_mst: 0
         });
-        codes.insert(0x001401, Weapon {
+        weapons.insert(0x001401, Weapon {
             name: "Rambling May",
             hex_code: "001401",
             description: "Female only gun Delude the opponents heart with this special gun",
@@ -6766,7 +6766,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 170,
             requirement_mst: 0
         });
-        codes.insert(0x001501, Weapon {
+        weapons.insert(0x001501, Weapon {
             name: "Burning Visit",
             hex_code: "001501",
             description: "A mysterious weapon Its abilities are unknown",
@@ -6789,7 +6789,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 164,
             requirement_mst: 0
         });
-        codes.insert(0x009E00, Weapon {
+        weapons.insert(0x009E00, Weapon {
             name: "Dark Meteor",
             hex_code: "009E00",
             description: "Long range weapon eroded by Olga Flow DNA When equipped, two different attacks can be used",
@@ -6812,7 +6812,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 190,
             requirement_mst: 0
         });
-        codes.insert(0x006D01, Weapon {
+        weapons.insert(0x006D01, Weapon {
             name: "Power Maser",
             hex_code: "006D01",
             description: "A mysterious weapon Its abilities are unknown",
@@ -6835,7 +6835,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 160,
             requirement_mst: 0
         });
-        codes.insert(0x00EB00, Weapon {
+        weapons.insert(0x00EB00, Weapon {
             name: "TypeSH/Shot",
             hex_code: "00EB00",
             description: "A special photon weapon Its abilities are unknown",
@@ -6858,7 +6858,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 90,
             requirement_mst: 0
         });
-        codes.insert(0x00D200, Weapon {
+        weapons.insert(0x00D200, Weapon {
             name: "Ano Bazooka",
             hex_code: "00D200",
             description: "Men seem to like this unusual bazooka",
@@ -6881,7 +6881,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 170,
             requirement_mst: 0
         });
-        codes.insert(0x00C100, Weapon {
+        weapons.insert(0x00C100, Weapon {
             name: "Meteor Rouge",
             hex_code: "00C100",
             description: "A manly-looking weapon Has the ability to cut enemy HP to 1/4",
@@ -6904,7 +6904,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 140,
             requirement_mst: 0
         });
-        codes.insert(0x008B00, Weapon {
+        weapons.insert(0x008B00, Weapon {
             name: "Photon Launcher",
             hex_code: "008B00",
             description: "A launcher that fires Photons that can pierce through enemies Its special attack paralyzes enemies",
@@ -6927,7 +6927,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 118,
             requirement_mst: 0
         });
-        codes.insert(0x00C000, Weapon {
+        weapons.insert(0x00C000, Weapon {
             name: "Cannon Rouge",
             hex_code: "00C000",
             description: "This bright red blade can confuse opponents",
@@ -6950,7 +6950,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 200,
             requirement_mst: 0
         });
-        codes.insert(0x009100, Weapon {
+        weapons.insert(0x009100, Weapon {
             name: "Gi Gue Bazooka",
             hex_code: "009100",
             description: "Gi Gue's body, now an enemy weapon",
@@ -6973,7 +6973,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 40,
             requirement_mst: 0
         });
-        codes.insert(0x008B01, Weapon {
+        weapons.insert(0x008B01, Weapon {
             name: "Guilty Light",
             hex_code: "008B01",
             description: "A legendary Photon launcher said to have been created by an outlaw",
@@ -6996,7 +6996,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 120,
             requirement_mst: 0
         });
-        codes.insert(0x008B03, Weapon {
+        weapons.insert(0x008B03, Weapon {
             name: "Phonon Maser",
             hex_code: "008B03",
             description: "A powerful weapon using ultrasound to attack Powerful enough to penetrate several enemies in a row",
@@ -7019,7 +7019,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 155,
             requirement_mst: 0
         });
-        codes.insert(0x008B02, Weapon {
+        weapons.insert(0x008B02, Weapon {
             name: "Red Scorpio",
             hex_code: "008B02",
             description: "This was a highly regarded Photon launcher of a certain secret society",
@@ -7042,7 +7042,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 150,
             requirement_mst: 0
         });
-        codes.insert(0x008D00, Weapon {
+        weapons.insert(0x008D00, Weapon {
             name: "NUG2000-Bazooka",
             hex_code: "008D00",
             description: "A bazooka said to have been favored on the battlefield by a brave warrior of ancient times",
@@ -7065,7 +7065,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 200,
             requirement_mst: 0
         });
-        codes.insert(0x000A00, Weapon {
+        weapons.insert(0x000A00, Weapon {
             name: "Cane",
             hex_code: "000A00",
             description: "A cane usable only by Forces Has low attack power",
@@ -7088,7 +7088,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 50
         });
-        codes.insert(0x000A01, Weapon {
+        weapons.insert(0x000A01, Weapon {
             name: "Stick",
             hex_code: "000A01",
             description: "A high-quality cane with average power",
@@ -7111,7 +7111,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 150
         });
-        codes.insert(0x000A02, Weapon {
+        weapons.insert(0x000A02, Weapon {
             name: "Mace",
             hex_code: "000A02",
             description: "A superior cane usable only by masters",
@@ -7134,7 +7134,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 300
         });
-        codes.insert(0x000A03, Weapon {
+        weapons.insert(0x000A03, Weapon {
             name: "Club",
             hex_code: "000A03",
             description: "An exceptional cane Has amazing power",
@@ -7157,7 +7157,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 420
         });
-        codes.insert(0x000A04, Weapon {
+        weapons.insert(0x000A04, Weapon {
             name: "Club of Laconium",
             hex_code: "000A04",
             description: "A legendary cane made of sturdy Laconium metal Its special attack adds explosive fire damage",
@@ -7180,7 +7180,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 430
         });
-        codes.insert(0x000A05, Weapon {
+        weapons.insert(0x000A05, Weapon {
             name: "Mace of Adaman",
             hex_code: "000A05",
             description: "Legendary cane of Adaman, when equipped, boosts Barta Its special attack freezes enemies",
@@ -7203,7 +7203,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 440
         });
-        codes.insert(0x000A06, Weapon {
+        weapons.insert(0x000A06, Weapon {
             name: "Club of Zumiuran",
             hex_code: "000A06",
             description: "Legendary cane of Zumiuran, when equipped, boosts Zonde Its special attack adds lightning damage",
@@ -7226,7 +7226,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 450
         });
-        codes.insert(0x005200, Weapon {
+        weapons.insert(0x005200, Weapon {
             name: "Flower Cane",
             hex_code: "005200",
             description: "Magical cane made for females A useful weapon, its exquisite look also makes it a popular gift",
@@ -7249,7 +7249,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 348
         });
-        codes.insert(0x000A07, Weapon {
+        weapons.insert(0x000A07, Weapon {
             name: "Lollipop",
             hex_code: "000A07",
             description: "A dangerous piece of candy! Beat your foes to death whilst on a sugar high!",
@@ -7272,7 +7272,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00C300, Weapon {
+        weapons.insert(0x00C300, Weapon {
             name: "Clio",
             hex_code: "00C300",
             description: "A rare cane with high attack power",
@@ -7295,7 +7295,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 900
         });
-        codes.insert(0x005000, Weapon {
+        weapons.insert(0x005000, Weapon {
             name: "Windmill",
             hex_code: "005000",
             description: "The windmill-shape gives this cane its power In order to execute its special attack, hold the wind energy, and",
@@ -7318,7 +7318,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 690
         });
-        codes.insert(0x00C900, Weapon {
+        weapons.insert(0x00C900, Weapon {
             name: "Decalog",
             hex_code: "00C900",
             description: "Strange stone tablets that can supposedly part water",
@@ -7341,7 +7341,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 700
         });
-        codes.insert(0x004F00, Weapon {
+        weapons.insert(0x004F00, Weapon {
             name: "Summit Moon",
             hex_code: "004F00",
             description: "The stone on this cane increases your mental strength Its special attack is lightning",
@@ -7364,7 +7364,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 650
         });
-        codes.insert(0x000B00, Weapon {
+        weapons.insert(0x000B00, Weapon {
             name: "Rod",
             hex_code: "000B00",
             description: "A battle cane made only for Forces",
@@ -7387,7 +7387,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 80
         });
-        codes.insert(0x000B01, Weapon {
+        weapons.insert(0x000B01, Weapon {
             name: "Pole",
             hex_code: "000B01",
             description: "A battle cane with good accuracy and power",
@@ -7410,7 +7410,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 200
         });
-        codes.insert(0x000B02, Weapon {
+        weapons.insert(0x000B02, Weapon {
             name: "Pillar",
             hex_code: "000B02",
             description: "A superior battle cane usable only by masters",
@@ -7433,7 +7433,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 340
         });
-        codes.insert(0x000B03, Weapon {
+        weapons.insert(0x000B03, Weapon {
             name: "Striker",
             hex_code: "000B03",
             description: "An exceptional battle cane Has amazing power",
@@ -7456,7 +7456,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 450
         });
-        codes.insert(0x000B06, Weapon {
+        weapons.insert(0x000B06, Weapon {
             name: "Alive Aqhu",
             hex_code: "000B06",
             description: "A legendary battle cane made for a Force for intense fights Its special attack steals enemies' HP",
@@ -7479,7 +7479,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 480
         });
-        codes.insert(0x000B04, Weapon {
+        weapons.insert(0x000B04, Weapon {
             name: "Battle Verge",
             hex_code: "000B04",
             description: "A legendary battle cane made so Forces can hold their own in a fight Halves enemy HP",
@@ -7502,7 +7502,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 460
         });
-        codes.insert(0x000B05, Weapon {
+        weapons.insert(0x000B05, Weapon {
             name: "Brave Hammer",
             hex_code: "000B05",
             description: "A legendary battle cane for brave Forces Its special attack uses TP to launch a powerful strike",
@@ -7525,7 +7525,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 470
         });
-        codes.insert(0x005900, Weapon {
+        weapons.insert(0x005900, Weapon {
             name: "Broom",
             hex_code: "005900",
             description: "This is a cleaning tool that was found in the ancient ruins Something is carved on it It increases mental strength",
@@ -7548,7 +7548,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 348
         });
-        codes.insert(0x005500, Weapon {
+        weapons.insert(0x005500, Weapon {
             name: "Rabbit Wand",
             hex_code: "005500",
             description: "The rabbit's head on the tip of this cane looks very cute People often use this cane as an accessory",
@@ -7571,7 +7571,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 348
         });
-        codes.insert(0x006800, Weapon {
+        weapons.insert(0x006800, Weapon {
             name: "Branch of Pakupaku",
             hex_code: "006800",
             description: "A branch that gives off a fragrance that puts Chao into a trance",
@@ -7594,7 +7594,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 600
         });
-        codes.insert(0x002200, Weapon {
+        weapons.insert(0x002200, Weapon {
             name: "Caduceus",
             hex_code: "002200",
             description: "A special weapon made from a legendary cane Its ripple effect boosts the power of Grants",
@@ -7617,7 +7617,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 720
         });
-        codes.insert(0x005700, Weapon {
+        weapons.insert(0x005700, Weapon {
             name: "Demonic Fork",
             hex_code: "005700",
             description: "A dark weapon, infamous for its malevolent origins Boosts the penetrating power of Megid",
@@ -7640,7 +7640,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 720
         });
-        codes.insert(0x005601, Weapon {
+        weapons.insert(0x005601, Weapon {
             name: "Fatsia",
             hex_code: "005601",
             description: "A huge leaf Weapon becomes more powerful once in contact with water",
@@ -7663,7 +7663,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 590
         });
-        codes.insert(0x00C500, Weapon {
+        weapons.insert(0x00C500, Weapon {
             name: "Glide Divine",
             hex_code: "00C500",
             description: "A solid blue cane that boosts the power of techniques",
@@ -7686,7 +7686,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 900
         });
-        codes.insert(0x005300, Weapon {
+        weapons.insert(0x005300, Weapon {
             name: "Hildebear's Cane",
             hex_code: "005300",
             description: "Hildebears head was used to make this weapon Boosts Foie Its special attack can shoot fireballs",
@@ -7709,7 +7709,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 400
         });
-        codes.insert(0x005400, Weapon {
+        weapons.insert(0x005400, Weapon {
             name: "Hildeblue's Cane",
             hex_code: "005400",
             description: "Hildeblue's head was used to make this weapon Boosts Barta Its special attack freezes enemies",
@@ -7732,7 +7732,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 700
         });
-        codes.insert(0x005600, Weapon {
+        weapons.insert(0x005600, Weapon {
             name: "Plantain Leaf",
             hex_code: "005600",
             description: "A huge leaf Weapon becomes more powerful once in contact with water",
@@ -7755,7 +7755,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 590
         });
-        codes.insert(0x00C400, Weapon {
+        weapons.insert(0x00C400, Weapon {
             name: "Siren Glass Hammer",
             hex_code: "00C400",
             description: "An emerald-tipped rod Increases the user's MST",
@@ -7778,7 +7778,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 900
         });
-        codes.insert(0x001700, Weapon {
+        weapons.insert(0x001700, Weapon {
             name: "Sorcerer's Cane",
             hex_code: "001700",
             description: "A magic cane made from the cane of a Chaos Sorcerer Reduces TP cost by 10% and steals enemy TP",
@@ -7801,7 +7801,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 756
         });
-        codes.insert(0x000B07, Weapon {
+        weapons.insert(0x000B07, Weapon {
             name: "Valkyrie",
             hex_code: "000B07",
             description: "A strong spear used only by women Blesses the bearer with eternal youth",
@@ -7824,7 +7824,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009F00, Weapon {
+        weapons.insert(0x009F00, Weapon {
             name: "Dark Bridge",
             hex_code: "009F00",
             description: "A claw imprinted with Olga Flow DNA The dark malignant Photons still retain the power of ancient techniques",
@@ -7847,7 +7847,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 900
         });
-        codes.insert(0x002201, Weapon {
+        weapons.insert(0x002201, Weapon {
             name: "Mercurius Rod",
             hex_code: "002201",
             description: "This designer analysed a holy relic he owned and then developed this special weapon It produces energy waves that boost Grants",
@@ -7870,7 +7870,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 770
         });
-        codes.insert(0x005800, Weapon {
+        weapons.insert(0x005800, Weapon {
             name: "Striker of Chao",
             hex_code: "005800",
             description: "Chao tipped cane Feel empowered with this popular character on your side",
@@ -7893,7 +7893,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 695
         });
-        codes.insert(0x001D00, Weapon {
+        weapons.insert(0x001D00, Weapon {
             name: "Psycho Wand",
             hex_code: "001D00",
             description: "A mysterious cane known only as the ultimate cane Its abilities are unknown",
@@ -7916,7 +7916,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 900
         });
-        codes.insert(0x00E101, Weapon {
+        weapons.insert(0x00E101, Weapon {
             name: "TypeRO/Halbert",
             hex_code: "00E101",
             description: "A special photon weapon Its abilities are unknown",
@@ -7939,7 +7939,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00E102, Weapon {
+        weapons.insert(0x00E102, Weapon {
             name: "TypeRO/Rod",
             hex_code: "00E102",
             description: "A special photon weapon Its abilities are unknown",
@@ -7962,7 +7962,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 350
         });
-        codes.insert(0x00E100, Weapon {
+        weapons.insert(0x00E100, Weapon {
             name: "TypeRO/Sword",
             hex_code: "00E100",
             description: "A special photon weapon Its abilities are unknown",
@@ -7985,7 +7985,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000C00, Weapon {
+        weapons.insert(0x000C00, Weapon {
             name: "Wand",
             hex_code: "000C00",
             description: "A magic cane for Forces Boosts mind energy",
@@ -8008,7 +8008,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 114
         });
-        codes.insert(0x000C01, Weapon {
+        weapons.insert(0x000C01, Weapon {
             name: "Staff",
             hex_code: "000C01",
             description: "A magic cane with good power and attributes",
@@ -8031,7 +8031,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 250
         });
-        codes.insert(0x000C02, Weapon {
+        weapons.insert(0x000C02, Weapon {
             name: "Baton",
             hex_code: "000C02",
             description: "A superior magic cane usable only by masters",
@@ -8054,7 +8054,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 380
         });
-        codes.insert(0x000C03, Weapon {
+        weapons.insert(0x000C03, Weapon {
             name: "Scepter",
             hex_code: "000C03",
             description: "An exceptional magic cane Has amazing power",
@@ -8077,7 +8077,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 460
         });
-        codes.insert(0x000C04, Weapon {
+        weapons.insert(0x000C04, Weapon {
             name: "Fire Scepter: Agni",
             hex_code: "000C04",
             description: "A legendary magic cane containing the power of fire It's special attack adds fire damage",
@@ -8100,7 +8100,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 470
         });
-        codes.insert(0x000C05, Weapon {
+        weapons.insert(0x000C05, Weapon {
             name: "Ice Staff: Dagon",
             hex_code: "000C05",
             description: "Legendary magic cane with the power of ice Its special attack freezes enemies",
@@ -8123,7 +8123,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 480
         });
-        codes.insert(0x000C06, Weapon {
+        weapons.insert(0x000C06, Weapon {
             name: "Storm Wand: Indra",
             hex_code: "000C06",
             description: "A legendary magic cane containing the power of lightning Adds lightning damage",
@@ -8146,7 +8146,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 490
         });
-        codes.insert(0x006E00, Weapon {
+        weapons.insert(0x006E00, Weapon {
             name: "Game Magazine",
             hex_code: "006E00",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8169,7 +8169,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x006E01, Weapon {
+        weapons.insert(0x006E01, Weapon {
             name: "LOGiN",
             hex_code: "006E01",
             description: "This feature is LOGiN issue #1 Strike!",
@@ -8192,7 +8192,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x005F00, Weapon {
+        weapons.insert(0x005F00, Weapon {
             name: "Marina's Bag",
             hex_code: "005F00",
             description: "This medical bag boosts the effective range for Resta and Anti, and gradually restores HP",
@@ -8215,7 +8215,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 348
         });
-        codes.insert(0x000C07, Weapon {
+        weapons.insert(0x000C07, Weapon {
             name: "Earth Wand: Brownie",
             hex_code: "000C07",
             description: "A special wand enhancing the residual photons in the earth Designed for hand-to-hand combat It looks dormant, but huge blades appear when it is swung",
@@ -8238,7 +8238,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 770
         });
-        codes.insert(0x00C200, Weapon {
+        weapons.insert(0x00C200, Weapon {
             name: "Solferino",
             hex_code: "00C200",
             description: "A circular wand designed with a special photon blade edge",
@@ -8261,7 +8261,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 850
         });
-        codes.insert(0x002500, Weapon {
+        weapons.insert(0x002500, Weapon {
             name: "Technical Crozier",
             hex_code: "002500",
             description: "A special magical cane for Forces, made by an adept in science and magic Casts Barta",
@@ -8284,7 +8284,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 285
         });
-        codes.insert(0x005B00, Weapon {
+        weapons.insert(0x005B00, Weapon {
             name: "The Sigh of a God",
             hex_code: "005B00",
             description: "A magical lightning charged cane Boosts Zonde techniques Its special attack adds lightning damage",
@@ -8307,7 +8307,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 653
         });
-        codes.insert(0x002400, Weapon {
+        weapons.insert(0x002400, Weapon {
             name: "Magical Piece",
             hex_code: "002400",
             description: "Magical Heart-Key cane Boosts mid level attack techniques Its special attack adds lightning damage",
@@ -8330,7 +8330,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x005D00, Weapon {
+        weapons.insert(0x005D00, Weapon {
             name: "Plantain Fan",
             hex_code: "005D00",
             description: "When you wave this magic fan once, it produces a strong wind, which blows enemies away",
@@ -8353,7 +8353,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 630
         });
-        codes.insert(0x005A00, Weapon {
+        weapons.insert(0x005A00, Weapon {
             name: "Prophets of Motav",
             hex_code: "005A00",
             description: "An ancient document left by the developers of techniques There may be secrets hidden inside",
@@ -8376,7 +8376,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 900
         });
-        codes.insert(0x005C00, Weapon {
+        weapons.insert(0x005C00, Weapon {
             name: "Twinkle Star",
             hex_code: "005C00",
             description: "Star tipped cane Boosts 3 types of low level attack techniques Its special attack adds lightning damage",
@@ -8399,7 +8399,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 670
         });
-        codes.insert(0x00EC00, Weapon {
+        weapons.insert(0x00EC00, Weapon {
             name: "TypeWA/Wand",
             hex_code: "00EC00",
             description: "A special photon weapon Its abilities are unknown",
@@ -8422,7 +8422,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 350
         });
-        codes.insert(0x00D500, Weapon {
+        weapons.insert(0x00D500, Weapon {
             name: "Kan'ei Tsuho",
             hex_code: "00D500",
             description: "A very, very old coin",
@@ -8445,7 +8445,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A400, Weapon {
+        weapons.insert(0x00A400, Weapon {
             name: "Amore Rose",
             hex_code: "00A400",
             description: "A precious rose grown using Photon nutrients",
@@ -8468,7 +8468,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 150
         });
-        codes.insert(0x008C04, Weapon {
+        weapons.insert(0x008C04, Weapon {
             name: "Kunai",
             hex_code: "008C04",
             description: "An old tool, now a weapon, used by ninja clans in days gone by",
@@ -8491,7 +8491,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00D800, Weapon {
+        weapons.insert(0x00D800, Weapon {
             name: "Syringe",
             hex_code: "00D800",
             description: "Used for all sorts of different purposes",
@@ -8514,7 +8514,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009600, Weapon {
+        weapons.insert(0x009600, Weapon {
             name: "Gal Wind",
             hex_code: "009600",
             description: "Gal Gryphon's wings, now an enemy weapon",
@@ -8537,7 +8537,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x009200, Weapon {
+        weapons.insert(0x009200, Weapon {
             name: "Guardianna",
             hex_code: "009200",
             description: "A sacred weapon with an arcing fan shaped attack Its special attack uses TP to launch a powerful strike",
@@ -8560,7 +8560,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 490
         });
-        codes.insert(0x008C02, Weapon {
+        weapons.insert(0x008C02, Weapon {
             name: "Hitogata",
             hex_code: "008C02",
             description: "A unique card resembling a human figure Charged with powerful psychic energy, only Forces can use it",
@@ -8583,7 +8583,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 495
         });
-        codes.insert(0x008C01, Weapon {
+        weapons.insert(0x008C01, Weapon {
             name: "Mahu",
             hex_code: "008C01",
             description: "A card bearing an ancient magical incantation Its special attack steals enemy TP",
@@ -8606,7 +8606,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 480
         });
-        codes.insert(0x008C00, Weapon {
+        weapons.insert(0x008C00, Weapon {
             name: "Talis",
             hex_code: "008C00",
             description: "A card charged with a mysterious energy It does not appear to use traditional Photon based technology",
@@ -8629,7 +8629,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 475
         });
-        codes.insert(0x009303, Weapon {
+        weapons.insert(0x009303, Weapon {
             name: "Bluefull Card",
             hex_code: "009303",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8652,7 +8652,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 200
         });
-        codes.insert(0x009301, Weapon {
+        weapons.insert(0x009301, Weapon {
             name: "Greenill Card",
             hex_code: "009301",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8675,7 +8675,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 200
         });
-        codes.insert(0x009307, Weapon {
+        weapons.insert(0x009307, Weapon {
             name: "Oran Card",
             hex_code: "009307",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8698,7 +8698,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 200
         });
-        codes.insert(0x009305, Weapon {
+        weapons.insert(0x009305, Weapon {
             name: "Pinkal Card",
             hex_code: "009305",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8721,7 +8721,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 200
         });
-        codes.insert(0x009304, Weapon {
+        weapons.insert(0x009304, Weapon {
             name: "Purplenum Card",
             hex_code: "009304",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8744,7 +8744,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 200
         });
-        codes.insert(0x009306, Weapon {
+        weapons.insert(0x009306, Weapon {
             name: "Redria Card",
             hex_code: "009306",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8767,7 +8767,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 200
         });
-        codes.insert(0x009302, Weapon {
+        weapons.insert(0x009302, Weapon {
             name: "Skyly Card",
             hex_code: "009302",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8790,7 +8790,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 200
         });
-        codes.insert(0x009300, Weapon {
+        weapons.insert(0x009300, Weapon {
             name: "Viridia Card",
             hex_code: "009300",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8813,7 +8813,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 200
         });
-        codes.insert(0x009309, Weapon {
+        weapons.insert(0x009309, Weapon {
             name: "Whitill Card",
             hex_code: "009309",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8836,7 +8836,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 200
         });
-        codes.insert(0x009308, Weapon {
+        weapons.insert(0x009308, Weapon {
             name: "Yellowboze Card",
             hex_code: "009308",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8859,7 +8859,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 200
         });
-        codes.insert(0x008C03, Weapon {
+        weapons.insert(0x008C03, Weapon {
             name: "Dancing Hitogata",
             hex_code: "008C03",
             description: "A humanoid doll that has gained new powers through ancient sorcery",
@@ -8882,7 +8882,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 900
         });
-        codes.insert(0x00A900, Weapon {
+        weapons.insert(0x00A900, Weapon {
             name: "AXE",
             hex_code: "00A900",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8905,7 +8905,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007E00, Weapon {
+        weapons.insert(0x007E00, Weapon {
             name: "BAZOOKA",
             hex_code: "007E00",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8928,7 +8928,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007200, Weapon {
+        weapons.insert(0x007200, Weapon {
             name: "BLADE",
             hex_code: "007200",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8951,7 +8951,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007900, Weapon {
+        weapons.insert(0x007900, Weapon {
             name: "CANE",
             hex_code: "007900",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8974,7 +8974,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A700, Weapon {
+        weapons.insert(0x00A700, Weapon {
             name: "CARDS",
             hex_code: "00A700",
             description: "A mysterious weapon Its abilities are unknown",
@@ -8997,7 +8997,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007D00, Weapon {
+        weapons.insert(0x007D00, Weapon {
             name: "CLAW",
             hex_code: "007D00",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9020,7 +9020,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007500, Weapon {
+        weapons.insert(0x007500, Weapon {
             name: "GUN",
             hex_code: "007500",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9043,7 +9043,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008100, Weapon {
+        weapons.insert(0x008100, Weapon {
             name: "HAMMER",
             hex_code: "008100",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9066,7 +9066,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008600, Weapon {
+        weapons.insert(0x008600, Weapon {
             name: "HARISEN",
             hex_code: "008600",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9089,7 +9089,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008800, Weapon {
+        weapons.insert(0x008800, Weapon {
             name: "J-CUTTER",
             hex_code: "008800",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9112,7 +9112,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008700, Weapon {
+        weapons.insert(0x008700, Weapon {
             name: "KATANA",
             hex_code: "008700",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9135,7 +9135,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A800, Weapon {
+        weapons.insert(0x00A800, Weapon {
             name: "KNUCKLE",
             hex_code: "00A800",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9158,7 +9158,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A600, Weapon {
+        weapons.insert(0x00A600, Weapon {
             name: "LAUNCHER",
             hex_code: "00A600",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9181,7 +9181,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007700, Weapon {
+        weapons.insert(0x007700, Weapon {
             name: "MECHGUN",
             hex_code: "007700",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9204,7 +9204,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008200, Weapon {
+        weapons.insert(0x008200, Weapon {
             name: "MOON",
             hex_code: "008200",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9227,7 +9227,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007F00, Weapon {
+        weapons.insert(0x007F00, Weapon {
             name: "NEEDLE",
             hex_code: "007F00",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9250,7 +9250,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007300, Weapon {
+        weapons.insert(0x007300, Weapon {
             name: "PARTISAN",
             hex_code: "007300",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9273,7 +9273,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008300, Weapon {
+        weapons.insert(0x008300, Weapon {
             name: "PSYCHOGUN",
             hex_code: "008300",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9296,7 +9296,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008400, Weapon {
+        weapons.insert(0x008400, Weapon {
             name: "PUNCH",
             hex_code: "008400",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9319,7 +9319,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007600, Weapon {
+        weapons.insert(0x007600, Weapon {
             name: "RIFLE",
             hex_code: "007600",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9342,7 +9342,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007A00, Weapon {
+        weapons.insert(0x007A00, Weapon {
             name: "ROD",
             hex_code: "007A00",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9365,7 +9365,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007000, Weapon {
+        weapons.insert(0x007000, Weapon {
             name: "SABER",
             hex_code: "007000",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9388,7 +9388,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008000, Weapon {
+        weapons.insert(0x008000, Weapon {
             name: "SCYTHE",
             hex_code: "008000",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9411,7 +9411,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007800, Weapon {
+        weapons.insert(0x007800, Weapon {
             name: "SHOT",
             hex_code: "007800",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9434,7 +9434,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007400, Weapon {
+        weapons.insert(0x007400, Weapon {
             name: "SLICER",
             hex_code: "007400",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9457,7 +9457,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007100, Weapon {
+        weapons.insert(0x007100, Weapon {
             name: "SWORD",
             hex_code: "007100",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9480,7 +9480,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A500, Weapon {
+        weapons.insert(0x00A500, Weapon {
             name: "SWORDS",
             hex_code: "00A500",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9503,7 +9503,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C00, Weapon {
+        weapons.insert(0x007C00, Weapon {
             name: "TWIN",
             hex_code: "007C00",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9526,7 +9526,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007B00, Weapon {
+        weapons.insert(0x007B00, Weapon {
             name: "WAND",
             hex_code: "007B00",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9549,7 +9549,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008500, Weapon {
+        weapons.insert(0x008500, Weapon {
             name: "WINDMILL",
             hex_code: "008500",
             description: "A mysterious weapon Its abilities are unknown",
@@ -9572,7 +9572,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x000109, Weapon {
+        weapons.insert(0x000109, Weapon {
             name: "Rapier",
             hex_code: "000109",
             description: "A sword whose efficiency knows no bounds",
@@ -9595,7 +9595,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00010A, Weapon {
+        weapons.insert(0x00010A, Weapon {
             name: "Cutlass",
             hex_code: "00010A",
             description: "A sword of legend Its strength is available to any who dare wield it",
@@ -9618,7 +9618,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00010B, Weapon {
+        weapons.insert(0x00010B, Weapon {
             name: "Falchion",
             hex_code: "00010B",
             description: "A mythical sword thought to be lost to time",
@@ -9641,7 +9641,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000208, Weapon {
+        weapons.insert(0x000208, Weapon {
             name: "Spatha",
             hex_code: "000208",
             description: "A large sword whose efficiency knows no bounds",
@@ -9664,7 +9664,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000209, Weapon {
+        weapons.insert(0x000209, Weapon {
             name: "Pallade",
             hex_code: "000209",
             description: "A large sword of legend Its strength is available to any who dare wield it",
@@ -9687,7 +9687,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00020A, Weapon {
+        weapons.insert(0x00020A, Weapon {
             name: "Bastard",
             hex_code: "00020A",
             description: "A mythical large sword thought to be lost to time",
@@ -9710,7 +9710,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00030A, Weapon {
+        weapons.insert(0x00030A, Weapon {
             name: "Anlace",
             hex_code: "00030A",
             description: "A short sword whose efficiency knows no bounds",
@@ -9733,7 +9733,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00030B, Weapon {
+        weapons.insert(0x00030B, Weapon {
             name: "Dirk",
             hex_code: "00030B",
             description: "A short sword of legend Its strength is available to any who dare wield it",
@@ -9756,7 +9756,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00030C, Weapon {
+        weapons.insert(0x00030C, Weapon {
             name: "Stylet",
             hex_code: "00030C",
             description: "A mythical short sword thought to be lost to time",
@@ -9779,7 +9779,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000409, Weapon {
+        weapons.insert(0x000409, Weapon {
             name: "Gisarme",
             hex_code: "000409",
             description: "A long sword whose efficiency knows no bounds",
@@ -9802,7 +9802,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00040A, Weapon {
+        weapons.insert(0x00040A, Weapon {
             name: "Cleaver",
             hex_code: "00040A",
             description: "A long sword of legend Its strength is available to any who dare wield it",
@@ -9825,7 +9825,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00040B, Weapon {
+        weapons.insert(0x00040B, Weapon {
             name: "Fauchard",
             hex_code: "00040B",
             description: "A mythical long sword thought to be lost to time",
@@ -9848,7 +9848,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000509, Weapon {
+        weapons.insert(0x000509, Weapon {
             name: "Fan",
             hex_code: "000509",
             description: "A throwing blade whose efficiency knows no bounds",
@@ -9871,7 +9871,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00050A, Weapon {
+        weapons.insert(0x00050A, Weapon {
             name: "Chain",
             hex_code: "00050A",
             description: "A throwing blade of legend Its strength is available to any who dare wield it",
@@ -9894,7 +9894,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00050B, Weapon {
+        weapons.insert(0x00050B, Weapon {
             name: "Ricochet",
             hex_code: "00050B",
             description: "A mythical throwing blade thought to be lost to time",
@@ -9917,7 +9917,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000609, Weapon {
+        weapons.insert(0x000609, Weapon {
             name: "Rotogun",
             hex_code: "000609",
             description: "A small gun whose efficiency knows no bounds",
@@ -9940,7 +9940,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00060A, Weapon {
+        weapons.insert(0x00060A, Weapon {
             name: "Flintgun",
             hex_code: "00060A",
             description: "A small gun of legend Its strength is available to any who dare wield it",
@@ -9963,7 +9963,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00060B, Weapon {
+        weapons.insert(0x00060B, Weapon {
             name: "Coilgun",
             hex_code: "00060B",
             description: "A mythical small gun thought to be lost to time",
@@ -9986,7 +9986,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00070E, Weapon {
+        weapons.insert(0x00070E, Weapon {
             name: "Musket",
             hex_code: "00070E",
             description: "A rifle whose efficiency knows no bounds",
@@ -10009,7 +10009,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00070F, Weapon {
+        weapons.insert(0x00070F, Weapon {
             name: "Tracer",
             hex_code: "00070F",
             description: "A rifle of legend Its strength is available to any who dare wield it",
@@ -10032,7 +10032,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000710, Weapon {
+        weapons.insert(0x000710, Weapon {
             name: "Deadshot",
             hex_code: "000710",
             description: "A mythical rifle thought to be lost to time",
@@ -10055,7 +10055,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000809, Weapon {
+        weapons.insert(0x000809, Weapon {
             name: "Chopper",
             hex_code: "000809",
             description: "A machine gun whose efficiency knows no bounds",
@@ -10078,7 +10078,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00080A, Weapon {
+        weapons.insert(0x00080A, Weapon {
             name: "Drum",
             hex_code: "00080A",
             description: "A machine gun of legend Its strength is available to any who dare wield it",
@@ -10101,7 +10101,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00080B, Weapon {
+        weapons.insert(0x00080B, Weapon {
             name: "Volley",
             hex_code: "00080B",
             description: "A mythical machine gun thought to be lost to time",
@@ -10124,7 +10124,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000908, Weapon {
+        weapons.insert(0x000908, Weapon {
             name: "Mortar",
             hex_code: "000908",
             description: "A shotgun whose efficiency knows no bounds",
@@ -10147,7 +10147,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000909, Weapon {
+        weapons.insert(0x000909, Weapon {
             name: "Ballista",
             hex_code: "000909",
             description: "A shotgun of legend Its strength is available to any who dare wield it",
@@ -10170,7 +10170,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00090A, Weapon {
+        weapons.insert(0x00090A, Weapon {
             name: "Artillery",
             hex_code: "00090A",
             description: "A mythical shotgun thought to be lost to time",
@@ -10193,7 +10193,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000A08, Weapon {
+        weapons.insert(0x000A08, Weapon {
             name: "Mallet",
             hex_code: "000A08",
             description: "A cane that radiates unbelievable power",
@@ -10216,7 +10216,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000A09, Weapon {
+        weapons.insert(0x000A09, Weapon {
             name: "Sledge",
             hex_code: "000A09",
             description: "A cane whose efficiency knows no bounds",
@@ -10239,7 +10239,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000A0A, Weapon {
+        weapons.insert(0x000A0A, Weapon {
             name: "Bludgeon",
             hex_code: "000A0A",
             description: "A cane of legend Its strength is available to any who dare wield it",
@@ -10262,7 +10262,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000B08, Weapon {
+        weapons.insert(0x000B08, Weapon {
             name: "Switch",
             hex_code: "000B08",
             description: "A battle cane that radiates unbelievable power",
@@ -10285,7 +10285,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000B09, Weapon {
+        weapons.insert(0x000B09, Weapon {
             name: "Spike",
             hex_code: "000B09",
             description: "A battle cane whose efficiency knows no bounds",
@@ -10308,7 +10308,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000C08, Weapon {
+        weapons.insert(0x000C08, Weapon {
             name: "Weaver",
             hex_code: "000C08",
             description: "A magic cane that radiates unbelievable power",
@@ -10331,7 +10331,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000C09, Weapon {
+        weapons.insert(0x000C09, Weapon {
             name: "Reservoir",
             hex_code: "000C09",
             description: "A magic cane whose efficiency knows no bounds",
@@ -10354,7 +10354,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000F04, Weapon {
+        weapons.insert(0x000F04, Weapon {
             name: "Star Song",
             hex_code: "000F04",
             description: "A weapon that fires life itself as a photonbullet It's dangerouselements caused thisweapon to sealed away",
@@ -10377,7 +10377,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00040C, Weapon {
+        weapons.insert(0x00040C, Weapon {
             name: "Asteron Belt*",
             hex_code: "00040C",
             description: "One who confronted a great warrior of history wielding his spear, soon fell to the strength of this fine blade Skin: Plantain Huge Fan",
@@ -10400,7 +10400,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x000808, Weapon {
+        weapons.insert(0x000808, Weapon {
             name: "M&A60 Vise*",
             hex_code: "000808",
             description: "A legendary machine gun from the Vise Corp Sacrifices HP for a powerful special attack Skin: Yasminkov 9000M",
@@ -10423,7 +10423,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 120,
             requirement_mst: 0
         });
-        codes.insert(0x00080C, Weapon {
+        weapons.insert(0x00080C, Weapon {
             name: "M&A60 Vise*",
             hex_code: "00080C",
             description: "A legendary machine gunfrom the Vise Corp Sacrifices HP for apowerful special attack Skin: Samba Maracas",
@@ -10446,7 +10446,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 120,
             requirement_mst: 0
         });
-        codes.insert(0x001201, Weapon {
+        weapons.insert(0x001201, Weapon {
             name: "Spread Needle*",
             hex_code: "001201",
             description: "A custom shotgun that shoots countless needles Its special attack paralyzes enemies Skin: Rianov 303SNR",
@@ -10469,7 +10469,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 135,
             requirement_mst: 0
         });
-        codes.insert(0x001B01, Weapon {
+        weapons.insert(0x001B01, Weapon {
             name: "Bringer's Rifle*",
             hex_code: "001B01",
             description: "An enemy weapon made from a Bringer's hand Its special attack cuts enemy HP to 1/4 Skin: Rianov 303SNR",
@@ -10492,7 +10492,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 140,
             requirement_mst: 0
         });
-        codes.insert(0x001D01, Weapon {
+        weapons.insert(0x001D01, Weapon {
             name: "Psycho Wand*",
             hex_code: "001D01",
             description: "A mysterious cane known only as the ultimate cane Its abilities are unknown Skin: Rabbit Wand",
@@ -10515,7 +10515,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 900
         });
-        codes.insert(0x001D02, Weapon {
+        weapons.insert(0x001D02, Weapon {
             name: "Psycho Wand*",
             hex_code: "001D02",
             description: "A mysterious cane known only as the ultimate cane Its abilities are unknown Skin: Sorcerer's Cane",
@@ -10538,7 +10538,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 900
         });
-        codes.insert(0x001E01, Weapon {
+        weapons.insert(0x001E01, Weapon {
             name: "Heaven Punisher*",
             hex_code: "001E01",
             description: "The ultimate gun, a weapon veiled in mystery \"Divine Punishment,\" its special attack, is based on time   Skin: Tension Blaster",
@@ -10561,7 +10561,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 210,
             requirement_mst: 0
         });
-        codes.insert(0x001E02, Weapon {
+        weapons.insert(0x001E02, Weapon {
             name: "Heaven Punisher*",
             hex_code: "001E02",
             description: "The ultimate gun, a weapon veiled in mystery \"Divine Punishment,\" its special attack, is based on time   Skin: Suppressed Gun",
@@ -10584,7 +10584,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 210,
             requirement_mst: 0
         });
-        codes.insert(0x002101, Weapon {
+        weapons.insert(0x002101, Weapon {
             name: "Chain Sawd*",
             hex_code: "002101",
             description: "A large sword with small, spinning Photon blades Its special attack steals enemy HP Skin: Daisy Chain",
@@ -10607,7 +10607,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002102, Weapon {
+        weapons.insert(0x002102, Weapon {
             name: "Chain Sawd*",
             hex_code: "002102",
             description: "A large sword with small, spinning Photon blades Its special attack steals enemy HP Skin: Crazy Tune",
@@ -10630,7 +10630,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x002401, Weapon {
+        weapons.insert(0x002401, Weapon {
             name: "Magical Piece*",
             hex_code: "002401",
             description: "Magical Heart-Key cane Boosts mid level attack techniques Its special attack adds lightning Skin: The Sigh of a God",
@@ -10653,7 +10653,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x002D01, Weapon {
+        weapons.insert(0x002D01, Weapon {
             name: "Red Saber*",
             hex_code: "002D01",
             description: "This red saber is a prototype, so its finish is incomplete Letters, which say \"He,\" are carved on the hilt Skin: DB's Saber",
@@ -10676,7 +10676,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003201, Weapon {
+        weapons.insert(0x003201, Weapon {
             name: "Tsumikiri J-Sword*",
             hex_code: "003201",
             description: "Owned by Orochi Agito, the blade was made along the same lines as Agito, with a carved seal on the blade Skin: Daisy Chain",
@@ -10699,7 +10699,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003202, Weapon {
+        weapons.insert(0x003202, Weapon {
             name: "Tsumikiri J-Sword*",
             hex_code: "003202",
             description: "Owned by Orochi Agito, the blade was made along the same lines as Agito, with a carved seal on the blade Skin: Crazy Tune",
@@ -10722,7 +10722,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003203, Weapon {
+        weapons.insert(0x003203, Weapon {
             name: "Tsumikiri J-Sword*",
             hex_code: "003203",
             description: "Owned by Orochi Agito, the blade was made along the same lines as Agito, with a carved seal on the blade Skin: Lollipop",
@@ -10745,7 +10745,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003401, Weapon {
+        weapons.insert(0x003401, Weapon {
             name: "Red Sword*",
             hex_code: "003401",
             description: "This red sword is a prototype, so its finish is incomplete Letters, which say \"a,\" are carved on the hilt Skin: Daisy Chain",
@@ -10768,7 +10768,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x003402, Weapon {
+        weapons.insert(0x003402, Weapon {
             name: "Red Sword*",
             hex_code: "003402",
             description: "This red sword is a prototype, so its finish is incomplete Letters, which say \"a,\" are carved on the hilt Skin: Crazy Tune",
@@ -10791,7 +10791,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x004502, Weapon {
+        weapons.insert(0x004502, Weapon {
             name: "Frozen Shooter*",
             hex_code: "004502",
             description: "The latest freeze gun uses latent heat energy to fire a freeze bomb Its power to freeze is excellent Skin: Rianov 303SNR",
@@ -10814,7 +10814,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 162,
             requirement_mst: 0
         });
-        codes.insert(0x004B02, Weapon {
+        weapons.insert(0x004B02, Weapon {
             name: "Guld Milla*",
             hex_code: "004B02",
             description: "A mysterious ultimate weapon Its abilities are unknown Skin: Yasminkov 9000M",
@@ -10837,7 +10837,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 190,
             requirement_mst: 0
         });
-        codes.insert(0x004B03, Weapon {
+        weapons.insert(0x004B03, Weapon {
             name: "Dual Bird*",
             hex_code: "004B03",
             description: "A pair of guns that work perfectly in concert with one another Steals enemies' experience Skin: Yasminkov 9000M",
@@ -10860,7 +10860,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 210,
             requirement_mst: 0
         });
-        codes.insert(0x004F01, Weapon {
+        weapons.insert(0x004F01, Weapon {
             name: "Summit Moon*",
             hex_code: "004F01",
             description: "The stone on this cane increases your mental strength Its special attack is lightning Skin: Lollipop",
@@ -10883,7 +10883,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 650
         });
-        codes.insert(0x005801, Weapon {
+        weapons.insert(0x005801, Weapon {
             name: "Striker of Chao*",
             hex_code: "005801",
             description: "Chao tipped cane Feel empowered with this popular character on your side Skin: Rabbit Wand",
@@ -10906,7 +10906,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 695
         });
-        codes.insert(0x005802, Weapon {
+        weapons.insert(0x005802, Weapon {
             name: "Striker of Chao*",
             hex_code: "005802",
             description: "Chao tipped cane Feel empowered with this popular character on your side Skin: Sorcerer's Cane",
@@ -10929,7 +10929,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 695
         });
-        codes.insert(0x005A01, Weapon {
+        weapons.insert(0x005A01, Weapon {
             name: "Prophets of Motav*",
             hex_code: "005A01",
             description: "An ancient document left by the developers of techniques There may be secrets hidden inside   Skin: The Sigh of a God",
@@ -10952,7 +10952,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 900
         });
-        codes.insert(0x007001, Weapon {
+        weapons.insert(0x007001, Weapon {
             name: "SABER",
             hex_code: "007001",
             description: "A mysterious weapon Its abilities are unknown",
@@ -10975,7 +10975,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007002, Weapon {
+        weapons.insert(0x007002, Weapon {
             name: "SABER",
             hex_code: "007002",
             description: "A mysterious weapon Its abilities are unknown",
@@ -10998,7 +10998,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007003, Weapon {
+        weapons.insert(0x007003, Weapon {
             name: "SABER",
             hex_code: "007003",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11021,7 +11021,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007004, Weapon {
+        weapons.insert(0x007004, Weapon {
             name: "SABER",
             hex_code: "007004",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11044,7 +11044,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007005, Weapon {
+        weapons.insert(0x007005, Weapon {
             name: "SABER",
             hex_code: "007005",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11067,7 +11067,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007006, Weapon {
+        weapons.insert(0x007006, Weapon {
             name: "SABER",
             hex_code: "007006",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11090,7 +11090,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007007, Weapon {
+        weapons.insert(0x007007, Weapon {
             name: "SABER",
             hex_code: "007007",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11113,7 +11113,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007008, Weapon {
+        weapons.insert(0x007008, Weapon {
             name: "SABER",
             hex_code: "007008",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11136,7 +11136,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007009, Weapon {
+        weapons.insert(0x007009, Weapon {
             name: "SABER",
             hex_code: "007009",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11159,7 +11159,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00700A, Weapon {
+        weapons.insert(0x00700A, Weapon {
             name: "SABER",
             hex_code: "00700A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11182,7 +11182,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00700B, Weapon {
+        weapons.insert(0x00700B, Weapon {
             name: "SABER",
             hex_code: "00700B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11205,7 +11205,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00700C, Weapon {
+        weapons.insert(0x00700C, Weapon {
             name: "SABER",
             hex_code: "00700C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11228,7 +11228,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00700D, Weapon {
+        weapons.insert(0x00700D, Weapon {
             name: "SABER",
             hex_code: "00700D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11251,7 +11251,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00700E, Weapon {
+        weapons.insert(0x00700E, Weapon {
             name: "SABER",
             hex_code: "00700E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11274,7 +11274,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00700F, Weapon {
+        weapons.insert(0x00700F, Weapon {
             name: "SABER",
             hex_code: "00700F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11297,7 +11297,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007010, Weapon {
+        weapons.insert(0x007010, Weapon {
             name: "SABER",
             hex_code: "007010",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11320,7 +11320,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007101, Weapon {
+        weapons.insert(0x007101, Weapon {
             name: "SWORD",
             hex_code: "007101",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11343,7 +11343,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007102, Weapon {
+        weapons.insert(0x007102, Weapon {
             name: "SWORD",
             hex_code: "007102",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11366,7 +11366,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007103, Weapon {
+        weapons.insert(0x007103, Weapon {
             name: "SWORD",
             hex_code: "007103",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11389,7 +11389,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007104, Weapon {
+        weapons.insert(0x007104, Weapon {
             name: "SWORD",
             hex_code: "007104",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11412,7 +11412,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007105, Weapon {
+        weapons.insert(0x007105, Weapon {
             name: "SWORD",
             hex_code: "007105",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11435,7 +11435,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007106, Weapon {
+        weapons.insert(0x007106, Weapon {
             name: "SWORD",
             hex_code: "007106",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11458,7 +11458,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007107, Weapon {
+        weapons.insert(0x007107, Weapon {
             name: "SWORD",
             hex_code: "007107",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11481,7 +11481,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007108, Weapon {
+        weapons.insert(0x007108, Weapon {
             name: "SWORD",
             hex_code: "007108",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11504,7 +11504,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007109, Weapon {
+        weapons.insert(0x007109, Weapon {
             name: "SWORD",
             hex_code: "007109",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11527,7 +11527,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00710A, Weapon {
+        weapons.insert(0x00710A, Weapon {
             name: "SWORD",
             hex_code: "00710A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11550,7 +11550,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00710B, Weapon {
+        weapons.insert(0x00710B, Weapon {
             name: "SWORD",
             hex_code: "00710B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11573,7 +11573,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00710C, Weapon {
+        weapons.insert(0x00710C, Weapon {
             name: "SWORD",
             hex_code: "00710C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11596,7 +11596,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00710D, Weapon {
+        weapons.insert(0x00710D, Weapon {
             name: "SWORD",
             hex_code: "00710D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11619,7 +11619,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00710E, Weapon {
+        weapons.insert(0x00710E, Weapon {
             name: "SWORD",
             hex_code: "00710E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11642,7 +11642,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00710F, Weapon {
+        weapons.insert(0x00710F, Weapon {
             name: "SWORD",
             hex_code: "00710F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11665,7 +11665,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007110, Weapon {
+        weapons.insert(0x007110, Weapon {
             name: "SWORD",
             hex_code: "007110",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11688,7 +11688,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007201, Weapon {
+        weapons.insert(0x007201, Weapon {
             name: "BLADE",
             hex_code: "007201",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11711,7 +11711,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007202, Weapon {
+        weapons.insert(0x007202, Weapon {
             name: "BLADE",
             hex_code: "007202",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11734,7 +11734,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007203, Weapon {
+        weapons.insert(0x007203, Weapon {
             name: "BLADE",
             hex_code: "007203",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11757,7 +11757,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007204, Weapon {
+        weapons.insert(0x007204, Weapon {
             name: "BLADE",
             hex_code: "007204",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11780,7 +11780,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007205, Weapon {
+        weapons.insert(0x007205, Weapon {
             name: "BLADE",
             hex_code: "007205",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11803,7 +11803,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007206, Weapon {
+        weapons.insert(0x007206, Weapon {
             name: "BLADE",
             hex_code: "007206",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11826,7 +11826,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007207, Weapon {
+        weapons.insert(0x007207, Weapon {
             name: "BLADE",
             hex_code: "007207",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11849,7 +11849,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007208, Weapon {
+        weapons.insert(0x007208, Weapon {
             name: "BLADE",
             hex_code: "007208",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11872,7 +11872,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007209, Weapon {
+        weapons.insert(0x007209, Weapon {
             name: "BLADE",
             hex_code: "007209",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11895,7 +11895,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00720A, Weapon {
+        weapons.insert(0x00720A, Weapon {
             name: "BLADE",
             hex_code: "00720A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11918,7 +11918,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00720B, Weapon {
+        weapons.insert(0x00720B, Weapon {
             name: "BLADE",
             hex_code: "00720B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11941,7 +11941,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00720C, Weapon {
+        weapons.insert(0x00720C, Weapon {
             name: "BLADE",
             hex_code: "00720C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11964,7 +11964,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00720D, Weapon {
+        weapons.insert(0x00720D, Weapon {
             name: "BLADE",
             hex_code: "00720D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -11987,7 +11987,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00720E, Weapon {
+        weapons.insert(0x00720E, Weapon {
             name: "BLADE",
             hex_code: "00720E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12010,7 +12010,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00720F, Weapon {
+        weapons.insert(0x00720F, Weapon {
             name: "BLADE",
             hex_code: "00720F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12033,7 +12033,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007210, Weapon {
+        weapons.insert(0x007210, Weapon {
             name: "BLADE",
             hex_code: "007210",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12056,7 +12056,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007301, Weapon {
+        weapons.insert(0x007301, Weapon {
             name: "PARTISAN",
             hex_code: "007301",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12079,7 +12079,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007302, Weapon {
+        weapons.insert(0x007302, Weapon {
             name: "PARTISAN",
             hex_code: "007302",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12102,7 +12102,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007303, Weapon {
+        weapons.insert(0x007303, Weapon {
             name: "PARTISAN",
             hex_code: "007303",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12125,7 +12125,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007304, Weapon {
+        weapons.insert(0x007304, Weapon {
             name: "PARTISAN",
             hex_code: "007304",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12148,7 +12148,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007305, Weapon {
+        weapons.insert(0x007305, Weapon {
             name: "PARTISAN",
             hex_code: "007305",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12171,7 +12171,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007306, Weapon {
+        weapons.insert(0x007306, Weapon {
             name: "PARTISAN",
             hex_code: "007306",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12194,7 +12194,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007307, Weapon {
+        weapons.insert(0x007307, Weapon {
             name: "PARTISAN",
             hex_code: "007307",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12217,7 +12217,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007308, Weapon {
+        weapons.insert(0x007308, Weapon {
             name: "PARTISAN",
             hex_code: "007308",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12240,7 +12240,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007309, Weapon {
+        weapons.insert(0x007309, Weapon {
             name: "PARTISAN",
             hex_code: "007309",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12263,7 +12263,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00730A, Weapon {
+        weapons.insert(0x00730A, Weapon {
             name: "PARTISAN",
             hex_code: "00730A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12286,7 +12286,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00730B, Weapon {
+        weapons.insert(0x00730B, Weapon {
             name: "PARTISAN",
             hex_code: "00730B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12309,7 +12309,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00730C, Weapon {
+        weapons.insert(0x00730C, Weapon {
             name: "PARTISAN",
             hex_code: "00730C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12332,7 +12332,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00730D, Weapon {
+        weapons.insert(0x00730D, Weapon {
             name: "PARTISAN",
             hex_code: "00730D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12355,7 +12355,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00730E, Weapon {
+        weapons.insert(0x00730E, Weapon {
             name: "PARTISAN",
             hex_code: "00730E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12378,7 +12378,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00730F, Weapon {
+        weapons.insert(0x00730F, Weapon {
             name: "PARTISAN",
             hex_code: "00730F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12401,7 +12401,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007310, Weapon {
+        weapons.insert(0x007310, Weapon {
             name: "PARTISAN",
             hex_code: "007310",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12424,7 +12424,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007401, Weapon {
+        weapons.insert(0x007401, Weapon {
             name: "SLICER",
             hex_code: "007401",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12447,7 +12447,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007402, Weapon {
+        weapons.insert(0x007402, Weapon {
             name: "SLICER",
             hex_code: "007402",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12470,7 +12470,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007403, Weapon {
+        weapons.insert(0x007403, Weapon {
             name: "SLICER",
             hex_code: "007403",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12493,7 +12493,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007404, Weapon {
+        weapons.insert(0x007404, Weapon {
             name: "SLICER",
             hex_code: "007404",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12516,7 +12516,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007405, Weapon {
+        weapons.insert(0x007405, Weapon {
             name: "SLICER",
             hex_code: "007405",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12539,7 +12539,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007406, Weapon {
+        weapons.insert(0x007406, Weapon {
             name: "SLICER",
             hex_code: "007406",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12562,7 +12562,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007407, Weapon {
+        weapons.insert(0x007407, Weapon {
             name: "SLICER",
             hex_code: "007407",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12585,7 +12585,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007408, Weapon {
+        weapons.insert(0x007408, Weapon {
             name: "SLICER",
             hex_code: "007408",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12608,7 +12608,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007409, Weapon {
+        weapons.insert(0x007409, Weapon {
             name: "SLICER",
             hex_code: "007409",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12631,7 +12631,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00740A, Weapon {
+        weapons.insert(0x00740A, Weapon {
             name: "SLICER",
             hex_code: "00740A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12654,7 +12654,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00740B, Weapon {
+        weapons.insert(0x00740B, Weapon {
             name: "SLICER",
             hex_code: "00740B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12677,7 +12677,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00740C, Weapon {
+        weapons.insert(0x00740C, Weapon {
             name: "SLICER",
             hex_code: "00740C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12700,7 +12700,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00740D, Weapon {
+        weapons.insert(0x00740D, Weapon {
             name: "SLICER",
             hex_code: "00740D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12723,7 +12723,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00740E, Weapon {
+        weapons.insert(0x00740E, Weapon {
             name: "SLICER",
             hex_code: "00740E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12746,7 +12746,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00740F, Weapon {
+        weapons.insert(0x00740F, Weapon {
             name: "SLICER",
             hex_code: "00740F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12769,7 +12769,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007410, Weapon {
+        weapons.insert(0x007410, Weapon {
             name: "SLICER",
             hex_code: "007410",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12792,7 +12792,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007501, Weapon {
+        weapons.insert(0x007501, Weapon {
             name: "GUN",
             hex_code: "007501",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12815,7 +12815,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007502, Weapon {
+        weapons.insert(0x007502, Weapon {
             name: "GUN",
             hex_code: "007502",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12838,7 +12838,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007503, Weapon {
+        weapons.insert(0x007503, Weapon {
             name: "GUN",
             hex_code: "007503",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12861,7 +12861,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007504, Weapon {
+        weapons.insert(0x007504, Weapon {
             name: "GUN",
             hex_code: "007504",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12884,7 +12884,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007505, Weapon {
+        weapons.insert(0x007505, Weapon {
             name: "GUN",
             hex_code: "007505",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12907,7 +12907,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007506, Weapon {
+        weapons.insert(0x007506, Weapon {
             name: "GUN",
             hex_code: "007506",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12930,7 +12930,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007507, Weapon {
+        weapons.insert(0x007507, Weapon {
             name: "GUN",
             hex_code: "007507",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12953,7 +12953,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007508, Weapon {
+        weapons.insert(0x007508, Weapon {
             name: "GUN",
             hex_code: "007508",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12976,7 +12976,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007509, Weapon {
+        weapons.insert(0x007509, Weapon {
             name: "GUN",
             hex_code: "007509",
             description: "A mysterious weapon Its abilities are unknown",
@@ -12999,7 +12999,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00750A, Weapon {
+        weapons.insert(0x00750A, Weapon {
             name: "GUN",
             hex_code: "00750A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13022,7 +13022,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00750B, Weapon {
+        weapons.insert(0x00750B, Weapon {
             name: "GUN",
             hex_code: "00750B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13045,7 +13045,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00750C, Weapon {
+        weapons.insert(0x00750C, Weapon {
             name: "GUN",
             hex_code: "00750C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13068,7 +13068,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00750D, Weapon {
+        weapons.insert(0x00750D, Weapon {
             name: "GUN",
             hex_code: "00750D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13091,7 +13091,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00750E, Weapon {
+        weapons.insert(0x00750E, Weapon {
             name: "GUN",
             hex_code: "00750E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13114,7 +13114,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00750F, Weapon {
+        weapons.insert(0x00750F, Weapon {
             name: "GUN",
             hex_code: "00750F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13137,7 +13137,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007510, Weapon {
+        weapons.insert(0x007510, Weapon {
             name: "GUN",
             hex_code: "007510",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13160,7 +13160,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007601, Weapon {
+        weapons.insert(0x007601, Weapon {
             name: "RIFLE",
             hex_code: "007601",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13183,7 +13183,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007602, Weapon {
+        weapons.insert(0x007602, Weapon {
             name: "RIFLE",
             hex_code: "007602",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13206,7 +13206,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007603, Weapon {
+        weapons.insert(0x007603, Weapon {
             name: "RIFLE",
             hex_code: "007603",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13229,7 +13229,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007604, Weapon {
+        weapons.insert(0x007604, Weapon {
             name: "RIFLE",
             hex_code: "007604",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13252,7 +13252,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007605, Weapon {
+        weapons.insert(0x007605, Weapon {
             name: "RIFLE",
             hex_code: "007605",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13275,7 +13275,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007606, Weapon {
+        weapons.insert(0x007606, Weapon {
             name: "RIFLE",
             hex_code: "007606",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13298,7 +13298,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007607, Weapon {
+        weapons.insert(0x007607, Weapon {
             name: "RIFLE",
             hex_code: "007607",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13321,7 +13321,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007608, Weapon {
+        weapons.insert(0x007608, Weapon {
             name: "RIFLE",
             hex_code: "007608",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13344,7 +13344,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007609, Weapon {
+        weapons.insert(0x007609, Weapon {
             name: "RIFLE",
             hex_code: "007609",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13367,7 +13367,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00760A, Weapon {
+        weapons.insert(0x00760A, Weapon {
             name: "RIFLE",
             hex_code: "00760A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13390,7 +13390,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00760B, Weapon {
+        weapons.insert(0x00760B, Weapon {
             name: "RIFLE",
             hex_code: "00760B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13413,7 +13413,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00760C, Weapon {
+        weapons.insert(0x00760C, Weapon {
             name: "RIFLE",
             hex_code: "00760C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13436,7 +13436,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00760D, Weapon {
+        weapons.insert(0x00760D, Weapon {
             name: "RIFLE",
             hex_code: "00760D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13459,7 +13459,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00760E, Weapon {
+        weapons.insert(0x00760E, Weapon {
             name: "RIFLE",
             hex_code: "00760E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13482,7 +13482,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00760F, Weapon {
+        weapons.insert(0x00760F, Weapon {
             name: "RIFLE",
             hex_code: "00760F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13505,7 +13505,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007610, Weapon {
+        weapons.insert(0x007610, Weapon {
             name: "RIFLE",
             hex_code: "007610",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13528,7 +13528,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007701, Weapon {
+        weapons.insert(0x007701, Weapon {
             name: "MECHGUN",
             hex_code: "007701",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13551,7 +13551,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007702, Weapon {
+        weapons.insert(0x007702, Weapon {
             name: "MECHGUN",
             hex_code: "007702",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13574,7 +13574,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007703, Weapon {
+        weapons.insert(0x007703, Weapon {
             name: "MECHGUN",
             hex_code: "007703",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13597,7 +13597,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007704, Weapon {
+        weapons.insert(0x007704, Weapon {
             name: "MECHGUN",
             hex_code: "007704",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13620,7 +13620,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007705, Weapon {
+        weapons.insert(0x007705, Weapon {
             name: "MECHGUN",
             hex_code: "007705",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13643,7 +13643,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007706, Weapon {
+        weapons.insert(0x007706, Weapon {
             name: "MECHGUN",
             hex_code: "007706",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13666,7 +13666,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007707, Weapon {
+        weapons.insert(0x007707, Weapon {
             name: "MECHGUN",
             hex_code: "007707",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13689,7 +13689,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007708, Weapon {
+        weapons.insert(0x007708, Weapon {
             name: "MECHGUN",
             hex_code: "007708",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13712,7 +13712,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007709, Weapon {
+        weapons.insert(0x007709, Weapon {
             name: "MECHGUN",
             hex_code: "007709",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13735,7 +13735,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00770A, Weapon {
+        weapons.insert(0x00770A, Weapon {
             name: "MECHGUN",
             hex_code: "00770A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13758,7 +13758,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00770B, Weapon {
+        weapons.insert(0x00770B, Weapon {
             name: "MECHGUN",
             hex_code: "00770B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13781,7 +13781,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00770C, Weapon {
+        weapons.insert(0x00770C, Weapon {
             name: "MECHGUN",
             hex_code: "00770C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13804,7 +13804,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00770D, Weapon {
+        weapons.insert(0x00770D, Weapon {
             name: "MECHGUN",
             hex_code: "00770D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13827,7 +13827,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00770E, Weapon {
+        weapons.insert(0x00770E, Weapon {
             name: "MECHGUN",
             hex_code: "00770E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13850,7 +13850,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00770F, Weapon {
+        weapons.insert(0x00770F, Weapon {
             name: "MECHGUN",
             hex_code: "00770F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13873,7 +13873,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007710, Weapon {
+        weapons.insert(0x007710, Weapon {
             name: "MECHGUN",
             hex_code: "007710",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13896,7 +13896,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007801, Weapon {
+        weapons.insert(0x007801, Weapon {
             name: "SHOT",
             hex_code: "007801",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13919,7 +13919,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007802, Weapon {
+        weapons.insert(0x007802, Weapon {
             name: "SHOT",
             hex_code: "007802",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13942,7 +13942,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007803, Weapon {
+        weapons.insert(0x007803, Weapon {
             name: "SHOT",
             hex_code: "007803",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13965,7 +13965,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007804, Weapon {
+        weapons.insert(0x007804, Weapon {
             name: "SHOT",
             hex_code: "007804",
             description: "A mysterious weapon Its abilities are unknown",
@@ -13988,7 +13988,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007805, Weapon {
+        weapons.insert(0x007805, Weapon {
             name: "SHOT",
             hex_code: "007805",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14011,7 +14011,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007806, Weapon {
+        weapons.insert(0x007806, Weapon {
             name: "SHOT",
             hex_code: "007806",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14034,7 +14034,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007807, Weapon {
+        weapons.insert(0x007807, Weapon {
             name: "SHOT",
             hex_code: "007807",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14057,7 +14057,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007808, Weapon {
+        weapons.insert(0x007808, Weapon {
             name: "SHOT",
             hex_code: "007808",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14080,7 +14080,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007809, Weapon {
+        weapons.insert(0x007809, Weapon {
             name: "SHOT",
             hex_code: "007809",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14103,7 +14103,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00780A, Weapon {
+        weapons.insert(0x00780A, Weapon {
             name: "SHOT",
             hex_code: "00780A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14126,7 +14126,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00780B, Weapon {
+        weapons.insert(0x00780B, Weapon {
             name: "SHOT",
             hex_code: "00780B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14149,7 +14149,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00780C, Weapon {
+        weapons.insert(0x00780C, Weapon {
             name: "SHOT",
             hex_code: "00780C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14172,7 +14172,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00780D, Weapon {
+        weapons.insert(0x00780D, Weapon {
             name: "SHOT",
             hex_code: "00780D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14195,7 +14195,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00780E, Weapon {
+        weapons.insert(0x00780E, Weapon {
             name: "SHOT",
             hex_code: "00780E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14218,7 +14218,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00780F, Weapon {
+        weapons.insert(0x00780F, Weapon {
             name: "SHOT",
             hex_code: "00780F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14241,7 +14241,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007810, Weapon {
+        weapons.insert(0x007810, Weapon {
             name: "SHOT",
             hex_code: "007810",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14264,7 +14264,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007901, Weapon {
+        weapons.insert(0x007901, Weapon {
             name: "CANE",
             hex_code: "007901",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14287,7 +14287,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007902, Weapon {
+        weapons.insert(0x007902, Weapon {
             name: "CANE",
             hex_code: "007902",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14310,7 +14310,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007903, Weapon {
+        weapons.insert(0x007903, Weapon {
             name: "CANE",
             hex_code: "007903",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14333,7 +14333,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007904, Weapon {
+        weapons.insert(0x007904, Weapon {
             name: "CANE",
             hex_code: "007904",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14356,7 +14356,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007905, Weapon {
+        weapons.insert(0x007905, Weapon {
             name: "CANE",
             hex_code: "007905",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14379,7 +14379,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007906, Weapon {
+        weapons.insert(0x007906, Weapon {
             name: "CANE",
             hex_code: "007906",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14402,7 +14402,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007907, Weapon {
+        weapons.insert(0x007907, Weapon {
             name: "CANE",
             hex_code: "007907",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14425,7 +14425,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007908, Weapon {
+        weapons.insert(0x007908, Weapon {
             name: "CANE",
             hex_code: "007908",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14448,7 +14448,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007909, Weapon {
+        weapons.insert(0x007909, Weapon {
             name: "CANE",
             hex_code: "007909",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14471,7 +14471,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00790A, Weapon {
+        weapons.insert(0x00790A, Weapon {
             name: "CANE",
             hex_code: "00790A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14494,7 +14494,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00790B, Weapon {
+        weapons.insert(0x00790B, Weapon {
             name: "CANE",
             hex_code: "00790B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14517,7 +14517,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00790C, Weapon {
+        weapons.insert(0x00790C, Weapon {
             name: "CANE",
             hex_code: "00790C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14540,7 +14540,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00790D, Weapon {
+        weapons.insert(0x00790D, Weapon {
             name: "CANE",
             hex_code: "00790D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14563,7 +14563,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00790E, Weapon {
+        weapons.insert(0x00790E, Weapon {
             name: "CANE",
             hex_code: "00790E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14586,7 +14586,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00790F, Weapon {
+        weapons.insert(0x00790F, Weapon {
             name: "CANE",
             hex_code: "00790F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14609,7 +14609,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007910, Weapon {
+        weapons.insert(0x007910, Weapon {
             name: "CANE",
             hex_code: "007910",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14632,7 +14632,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A01, Weapon {
+        weapons.insert(0x007A01, Weapon {
             name: "ROD",
             hex_code: "007A01",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14655,7 +14655,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A02, Weapon {
+        weapons.insert(0x007A02, Weapon {
             name: "ROD",
             hex_code: "007A02",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14678,7 +14678,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A03, Weapon {
+        weapons.insert(0x007A03, Weapon {
             name: "ROD",
             hex_code: "007A03",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14701,7 +14701,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A04, Weapon {
+        weapons.insert(0x007A04, Weapon {
             name: "ROD",
             hex_code: "007A04",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14724,7 +14724,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A05, Weapon {
+        weapons.insert(0x007A05, Weapon {
             name: "ROD",
             hex_code: "007A05",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14747,7 +14747,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A06, Weapon {
+        weapons.insert(0x007A06, Weapon {
             name: "ROD",
             hex_code: "007A06",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14770,7 +14770,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A07, Weapon {
+        weapons.insert(0x007A07, Weapon {
             name: "ROD",
             hex_code: "007A07",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14793,7 +14793,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A08, Weapon {
+        weapons.insert(0x007A08, Weapon {
             name: "ROD",
             hex_code: "007A08",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14816,7 +14816,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A09, Weapon {
+        weapons.insert(0x007A09, Weapon {
             name: "ROD",
             hex_code: "007A09",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14839,7 +14839,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A0A, Weapon {
+        weapons.insert(0x007A0A, Weapon {
             name: "ROD",
             hex_code: "007A0A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14862,7 +14862,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A0B, Weapon {
+        weapons.insert(0x007A0B, Weapon {
             name: "ROD",
             hex_code: "007A0B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14885,7 +14885,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A0C, Weapon {
+        weapons.insert(0x007A0C, Weapon {
             name: "ROD",
             hex_code: "007A0C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14908,7 +14908,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A0D, Weapon {
+        weapons.insert(0x007A0D, Weapon {
             name: "ROD",
             hex_code: "007A0D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14931,7 +14931,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A0E, Weapon {
+        weapons.insert(0x007A0E, Weapon {
             name: "ROD",
             hex_code: "007A0E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14954,7 +14954,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A0F, Weapon {
+        weapons.insert(0x007A0F, Weapon {
             name: "ROD",
             hex_code: "007A0F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -14977,7 +14977,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007A10, Weapon {
+        weapons.insert(0x007A10, Weapon {
             name: "ROD",
             hex_code: "007A10",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15000,7 +15000,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B01, Weapon {
+        weapons.insert(0x007B01, Weapon {
             name: "WAND",
             hex_code: "007B01",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15023,7 +15023,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B02, Weapon {
+        weapons.insert(0x007B02, Weapon {
             name: "WAND",
             hex_code: "007B02",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15046,7 +15046,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B03, Weapon {
+        weapons.insert(0x007B03, Weapon {
             name: "WAND",
             hex_code: "007B03",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15069,7 +15069,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B04, Weapon {
+        weapons.insert(0x007B04, Weapon {
             name: "WAND",
             hex_code: "007B04",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15092,7 +15092,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B05, Weapon {
+        weapons.insert(0x007B05, Weapon {
             name: "WAND",
             hex_code: "007B05",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15115,7 +15115,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B06, Weapon {
+        weapons.insert(0x007B06, Weapon {
             name: "WAND",
             hex_code: "007B06",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15138,7 +15138,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B07, Weapon {
+        weapons.insert(0x007B07, Weapon {
             name: "WAND",
             hex_code: "007B07",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15161,7 +15161,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B08, Weapon {
+        weapons.insert(0x007B08, Weapon {
             name: "WAND",
             hex_code: "007B08",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15184,7 +15184,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B09, Weapon {
+        weapons.insert(0x007B09, Weapon {
             name: "WAND",
             hex_code: "007B09",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15207,7 +15207,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B0A, Weapon {
+        weapons.insert(0x007B0A, Weapon {
             name: "WAND",
             hex_code: "007B0A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15230,7 +15230,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B0B, Weapon {
+        weapons.insert(0x007B0B, Weapon {
             name: "WAND",
             hex_code: "007B0B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15253,7 +15253,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B0C, Weapon {
+        weapons.insert(0x007B0C, Weapon {
             name: "WAND",
             hex_code: "007B0C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15276,7 +15276,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B0D, Weapon {
+        weapons.insert(0x007B0D, Weapon {
             name: "WAND",
             hex_code: "007B0D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15299,7 +15299,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B0E, Weapon {
+        weapons.insert(0x007B0E, Weapon {
             name: "WAND",
             hex_code: "007B0E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15322,7 +15322,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B0F, Weapon {
+        weapons.insert(0x007B0F, Weapon {
             name: "WAND",
             hex_code: "007B0F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15345,7 +15345,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007B10, Weapon {
+        weapons.insert(0x007B10, Weapon {
             name: "WAND",
             hex_code: "007B10",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15368,7 +15368,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x007C01, Weapon {
+        weapons.insert(0x007C01, Weapon {
             name: "TWIN",
             hex_code: "007C01",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15391,7 +15391,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C02, Weapon {
+        weapons.insert(0x007C02, Weapon {
             name: "TWIN",
             hex_code: "007C02",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15414,7 +15414,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C03, Weapon {
+        weapons.insert(0x007C03, Weapon {
             name: "TWIN",
             hex_code: "007C03",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15437,7 +15437,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C04, Weapon {
+        weapons.insert(0x007C04, Weapon {
             name: "TWIN",
             hex_code: "007C04",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15460,7 +15460,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C05, Weapon {
+        weapons.insert(0x007C05, Weapon {
             name: "TWIN",
             hex_code: "007C05",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15483,7 +15483,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C06, Weapon {
+        weapons.insert(0x007C06, Weapon {
             name: "TWIN",
             hex_code: "007C06",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15506,7 +15506,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C07, Weapon {
+        weapons.insert(0x007C07, Weapon {
             name: "TWIN",
             hex_code: "007C07",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15529,7 +15529,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C08, Weapon {
+        weapons.insert(0x007C08, Weapon {
             name: "TWIN",
             hex_code: "007C08",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15552,7 +15552,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C09, Weapon {
+        weapons.insert(0x007C09, Weapon {
             name: "TWIN",
             hex_code: "007C09",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15575,7 +15575,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C0A, Weapon {
+        weapons.insert(0x007C0A, Weapon {
             name: "TWIN",
             hex_code: "007C0A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15598,7 +15598,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C0B, Weapon {
+        weapons.insert(0x007C0B, Weapon {
             name: "TWIN",
             hex_code: "007C0B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15621,7 +15621,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C0C, Weapon {
+        weapons.insert(0x007C0C, Weapon {
             name: "TWIN",
             hex_code: "007C0C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15644,7 +15644,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C0D, Weapon {
+        weapons.insert(0x007C0D, Weapon {
             name: "TWIN",
             hex_code: "007C0D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15667,7 +15667,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C0E, Weapon {
+        weapons.insert(0x007C0E, Weapon {
             name: "TWIN",
             hex_code: "007C0E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15690,7 +15690,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C0F, Weapon {
+        weapons.insert(0x007C0F, Weapon {
             name: "TWIN",
             hex_code: "007C0F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15713,7 +15713,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007C10, Weapon {
+        weapons.insert(0x007C10, Weapon {
             name: "TWIN",
             hex_code: "007C10",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15736,7 +15736,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D01, Weapon {
+        weapons.insert(0x007D01, Weapon {
             name: "CLAW",
             hex_code: "007D01",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15759,7 +15759,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D02, Weapon {
+        weapons.insert(0x007D02, Weapon {
             name: "CLAW",
             hex_code: "007D02",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15782,7 +15782,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D03, Weapon {
+        weapons.insert(0x007D03, Weapon {
             name: "CLAW",
             hex_code: "007D03",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15805,7 +15805,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D04, Weapon {
+        weapons.insert(0x007D04, Weapon {
             name: "CLAW",
             hex_code: "007D04",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15828,7 +15828,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D05, Weapon {
+        weapons.insert(0x007D05, Weapon {
             name: "CLAW",
             hex_code: "007D05",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15851,7 +15851,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D06, Weapon {
+        weapons.insert(0x007D06, Weapon {
             name: "CLAW",
             hex_code: "007D06",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15874,7 +15874,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D07, Weapon {
+        weapons.insert(0x007D07, Weapon {
             name: "CLAW",
             hex_code: "007D07",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15897,7 +15897,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D08, Weapon {
+        weapons.insert(0x007D08, Weapon {
             name: "CLAW",
             hex_code: "007D08",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15920,7 +15920,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D09, Weapon {
+        weapons.insert(0x007D09, Weapon {
             name: "CLAW",
             hex_code: "007D09",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15943,7 +15943,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D0A, Weapon {
+        weapons.insert(0x007D0A, Weapon {
             name: "CLAW",
             hex_code: "007D0A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15966,7 +15966,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D0B, Weapon {
+        weapons.insert(0x007D0B, Weapon {
             name: "CLAW",
             hex_code: "007D0B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -15989,7 +15989,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D0C, Weapon {
+        weapons.insert(0x007D0C, Weapon {
             name: "CLAW",
             hex_code: "007D0C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16012,7 +16012,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D0D, Weapon {
+        weapons.insert(0x007D0D, Weapon {
             name: "CLAW",
             hex_code: "007D0D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16035,7 +16035,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D0E, Weapon {
+        weapons.insert(0x007D0E, Weapon {
             name: "CLAW",
             hex_code: "007D0E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16058,7 +16058,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D0F, Weapon {
+        weapons.insert(0x007D0F, Weapon {
             name: "CLAW",
             hex_code: "007D0F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16081,7 +16081,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007D10, Weapon {
+        weapons.insert(0x007D10, Weapon {
             name: "CLAW",
             hex_code: "007D10",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16104,7 +16104,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x007E01, Weapon {
+        weapons.insert(0x007E01, Weapon {
             name: "BAZOOKA",
             hex_code: "007E01",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16127,7 +16127,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E02, Weapon {
+        weapons.insert(0x007E02, Weapon {
             name: "BAZOOKA",
             hex_code: "007E02",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16150,7 +16150,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E03, Weapon {
+        weapons.insert(0x007E03, Weapon {
             name: "BAZOOKA",
             hex_code: "007E03",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16173,7 +16173,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E04, Weapon {
+        weapons.insert(0x007E04, Weapon {
             name: "BAZOOKA",
             hex_code: "007E04",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16196,7 +16196,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E05, Weapon {
+        weapons.insert(0x007E05, Weapon {
             name: "BAZOOKA",
             hex_code: "007E05",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16219,7 +16219,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E06, Weapon {
+        weapons.insert(0x007E06, Weapon {
             name: "BAZOOKA",
             hex_code: "007E06",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16242,7 +16242,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E07, Weapon {
+        weapons.insert(0x007E07, Weapon {
             name: "BAZOOKA",
             hex_code: "007E07",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16265,7 +16265,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E08, Weapon {
+        weapons.insert(0x007E08, Weapon {
             name: "BAZOOKA",
             hex_code: "007E08",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16288,7 +16288,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E09, Weapon {
+        weapons.insert(0x007E09, Weapon {
             name: "BAZOOKA",
             hex_code: "007E09",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16311,7 +16311,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E0A, Weapon {
+        weapons.insert(0x007E0A, Weapon {
             name: "BAZOOKA",
             hex_code: "007E0A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16334,7 +16334,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E0B, Weapon {
+        weapons.insert(0x007E0B, Weapon {
             name: "BAZOOKA",
             hex_code: "007E0B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16357,7 +16357,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E0C, Weapon {
+        weapons.insert(0x007E0C, Weapon {
             name: "BAZOOKA",
             hex_code: "007E0C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16380,7 +16380,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E0D, Weapon {
+        weapons.insert(0x007E0D, Weapon {
             name: "BAZOOKA",
             hex_code: "007E0D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16403,7 +16403,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E0E, Weapon {
+        weapons.insert(0x007E0E, Weapon {
             name: "BAZOOKA",
             hex_code: "007E0E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16426,7 +16426,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E0F, Weapon {
+        weapons.insert(0x007E0F, Weapon {
             name: "BAZOOKA",
             hex_code: "007E0F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16449,7 +16449,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007E10, Weapon {
+        weapons.insert(0x007E10, Weapon {
             name: "BAZOOKA",
             hex_code: "007E10",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16472,7 +16472,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F01, Weapon {
+        weapons.insert(0x007F01, Weapon {
             name: "NEEDLE",
             hex_code: "007F01",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16495,7 +16495,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F02, Weapon {
+        weapons.insert(0x007F02, Weapon {
             name: "NEEDLE",
             hex_code: "007F02",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16518,7 +16518,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F03, Weapon {
+        weapons.insert(0x007F03, Weapon {
             name: "NEEDLE",
             hex_code: "007F03",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16541,7 +16541,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F04, Weapon {
+        weapons.insert(0x007F04, Weapon {
             name: "NEEDLE",
             hex_code: "007F04",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16564,7 +16564,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F05, Weapon {
+        weapons.insert(0x007F05, Weapon {
             name: "NEEDLE",
             hex_code: "007F05",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16587,7 +16587,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F06, Weapon {
+        weapons.insert(0x007F06, Weapon {
             name: "NEEDLE",
             hex_code: "007F06",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16610,7 +16610,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F07, Weapon {
+        weapons.insert(0x007F07, Weapon {
             name: "NEEDLE",
             hex_code: "007F07",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16633,7 +16633,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F08, Weapon {
+        weapons.insert(0x007F08, Weapon {
             name: "NEEDLE",
             hex_code: "007F08",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16656,7 +16656,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F09, Weapon {
+        weapons.insert(0x007F09, Weapon {
             name: "NEEDLE",
             hex_code: "007F09",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16679,7 +16679,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F0A, Weapon {
+        weapons.insert(0x007F0A, Weapon {
             name: "NEEDLE",
             hex_code: "007F0A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16702,7 +16702,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F0B, Weapon {
+        weapons.insert(0x007F0B, Weapon {
             name: "NEEDLE",
             hex_code: "007F0B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16725,7 +16725,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F0C, Weapon {
+        weapons.insert(0x007F0C, Weapon {
             name: "NEEDLE",
             hex_code: "007F0C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16748,7 +16748,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F0D, Weapon {
+        weapons.insert(0x007F0D, Weapon {
             name: "NEEDLE",
             hex_code: "007F0D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16771,7 +16771,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F0E, Weapon {
+        weapons.insert(0x007F0E, Weapon {
             name: "NEEDLE",
             hex_code: "007F0E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16794,7 +16794,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F0F, Weapon {
+        weapons.insert(0x007F0F, Weapon {
             name: "NEEDLE",
             hex_code: "007F0F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16817,7 +16817,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x007F10, Weapon {
+        weapons.insert(0x007F10, Weapon {
             name: "NEEDLE",
             hex_code: "007F10",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16840,7 +16840,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008001, Weapon {
+        weapons.insert(0x008001, Weapon {
             name: "SCYTHE",
             hex_code: "008001",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16863,7 +16863,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008002, Weapon {
+        weapons.insert(0x008002, Weapon {
             name: "SCYTHE",
             hex_code: "008002",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16886,7 +16886,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008003, Weapon {
+        weapons.insert(0x008003, Weapon {
             name: "SCYTHE",
             hex_code: "008003",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16909,7 +16909,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008004, Weapon {
+        weapons.insert(0x008004, Weapon {
             name: "SCYTHE",
             hex_code: "008004",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16932,7 +16932,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008005, Weapon {
+        weapons.insert(0x008005, Weapon {
             name: "SCYTHE",
             hex_code: "008005",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16955,7 +16955,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008006, Weapon {
+        weapons.insert(0x008006, Weapon {
             name: "SCYTHE",
             hex_code: "008006",
             description: "A mysterious weapon Its abilities are unknown",
@@ -16978,7 +16978,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008007, Weapon {
+        weapons.insert(0x008007, Weapon {
             name: "SCYTHE",
             hex_code: "008007",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17001,7 +17001,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008008, Weapon {
+        weapons.insert(0x008008, Weapon {
             name: "SCYTHE",
             hex_code: "008008",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17024,7 +17024,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008009, Weapon {
+        weapons.insert(0x008009, Weapon {
             name: "SCYTHE",
             hex_code: "008009",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17047,7 +17047,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00800A, Weapon {
+        weapons.insert(0x00800A, Weapon {
             name: "SCYTHE",
             hex_code: "00800A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17070,7 +17070,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00800B, Weapon {
+        weapons.insert(0x00800B, Weapon {
             name: "SCYTHE",
             hex_code: "00800B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17093,7 +17093,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00800C, Weapon {
+        weapons.insert(0x00800C, Weapon {
             name: "SCYTHE",
             hex_code: "00800C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17116,7 +17116,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00800D, Weapon {
+        weapons.insert(0x00800D, Weapon {
             name: "SCYTHE",
             hex_code: "00800D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17139,7 +17139,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00800E, Weapon {
+        weapons.insert(0x00800E, Weapon {
             name: "SCYTHE",
             hex_code: "00800E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17162,7 +17162,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00800F, Weapon {
+        weapons.insert(0x00800F, Weapon {
             name: "SCYTHE",
             hex_code: "00800F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17185,7 +17185,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008010, Weapon {
+        weapons.insert(0x008010, Weapon {
             name: "SCYTHE",
             hex_code: "008010",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17208,7 +17208,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008101, Weapon {
+        weapons.insert(0x008101, Weapon {
             name: "HAMMER",
             hex_code: "008101",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17231,7 +17231,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008102, Weapon {
+        weapons.insert(0x008102, Weapon {
             name: "HAMMER",
             hex_code: "008102",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17254,7 +17254,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008103, Weapon {
+        weapons.insert(0x008103, Weapon {
             name: "HAMMER",
             hex_code: "008103",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17277,7 +17277,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008104, Weapon {
+        weapons.insert(0x008104, Weapon {
             name: "HAMMER",
             hex_code: "008104",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17300,7 +17300,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008105, Weapon {
+        weapons.insert(0x008105, Weapon {
             name: "HAMMER",
             hex_code: "008105",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17323,7 +17323,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008106, Weapon {
+        weapons.insert(0x008106, Weapon {
             name: "HAMMER",
             hex_code: "008106",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17346,7 +17346,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008107, Weapon {
+        weapons.insert(0x008107, Weapon {
             name: "HAMMER",
             hex_code: "008107",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17369,7 +17369,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008108, Weapon {
+        weapons.insert(0x008108, Weapon {
             name: "HAMMER",
             hex_code: "008108",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17392,7 +17392,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008109, Weapon {
+        weapons.insert(0x008109, Weapon {
             name: "HAMMER",
             hex_code: "008109",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17415,7 +17415,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00810A, Weapon {
+        weapons.insert(0x00810A, Weapon {
             name: "HAMMER",
             hex_code: "00810A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17438,7 +17438,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00810B, Weapon {
+        weapons.insert(0x00810B, Weapon {
             name: "HAMMER",
             hex_code: "00810B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17461,7 +17461,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00810C, Weapon {
+        weapons.insert(0x00810C, Weapon {
             name: "HAMMER",
             hex_code: "00810C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17484,7 +17484,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00810D, Weapon {
+        weapons.insert(0x00810D, Weapon {
             name: "HAMMER",
             hex_code: "00810D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17507,7 +17507,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00810E, Weapon {
+        weapons.insert(0x00810E, Weapon {
             name: "HAMMER",
             hex_code: "00810E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17530,7 +17530,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00810F, Weapon {
+        weapons.insert(0x00810F, Weapon {
             name: "HAMMER",
             hex_code: "00810F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17553,7 +17553,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008110, Weapon {
+        weapons.insert(0x008110, Weapon {
             name: "HAMMER",
             hex_code: "008110",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17576,7 +17576,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008201, Weapon {
+        weapons.insert(0x008201, Weapon {
             name: "MOON",
             hex_code: "008201",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17599,7 +17599,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008202, Weapon {
+        weapons.insert(0x008202, Weapon {
             name: "MOON",
             hex_code: "008202",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17622,7 +17622,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008203, Weapon {
+        weapons.insert(0x008203, Weapon {
             name: "MOON",
             hex_code: "008203",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17645,7 +17645,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008204, Weapon {
+        weapons.insert(0x008204, Weapon {
             name: "MOON",
             hex_code: "008204",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17668,7 +17668,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008205, Weapon {
+        weapons.insert(0x008205, Weapon {
             name: "MOON",
             hex_code: "008205",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17691,7 +17691,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008206, Weapon {
+        weapons.insert(0x008206, Weapon {
             name: "MOON",
             hex_code: "008206",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17714,7 +17714,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008207, Weapon {
+        weapons.insert(0x008207, Weapon {
             name: "MOON",
             hex_code: "008207",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17737,7 +17737,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008208, Weapon {
+        weapons.insert(0x008208, Weapon {
             name: "MOON",
             hex_code: "008208",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17760,7 +17760,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008209, Weapon {
+        weapons.insert(0x008209, Weapon {
             name: "MOON",
             hex_code: "008209",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17783,7 +17783,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00820A, Weapon {
+        weapons.insert(0x00820A, Weapon {
             name: "MOON",
             hex_code: "00820A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17806,7 +17806,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00820B, Weapon {
+        weapons.insert(0x00820B, Weapon {
             name: "MOON",
             hex_code: "00820B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17829,7 +17829,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00820C, Weapon {
+        weapons.insert(0x00820C, Weapon {
             name: "MOON",
             hex_code: "00820C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17852,7 +17852,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00820D, Weapon {
+        weapons.insert(0x00820D, Weapon {
             name: "MOON",
             hex_code: "00820D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17875,7 +17875,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00820E, Weapon {
+        weapons.insert(0x00820E, Weapon {
             name: "MOON",
             hex_code: "00820E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17898,7 +17898,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00820F, Weapon {
+        weapons.insert(0x00820F, Weapon {
             name: "MOON",
             hex_code: "00820F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17921,7 +17921,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008210, Weapon {
+        weapons.insert(0x008210, Weapon {
             name: "MOON",
             hex_code: "008210",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17944,7 +17944,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008301, Weapon {
+        weapons.insert(0x008301, Weapon {
             name: "PSYCHOGUN",
             hex_code: "008301",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17967,7 +17967,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008302, Weapon {
+        weapons.insert(0x008302, Weapon {
             name: "PSYCHOGUN",
             hex_code: "008302",
             description: "A mysterious weapon Its abilities are unknown",
@@ -17990,7 +17990,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008303, Weapon {
+        weapons.insert(0x008303, Weapon {
             name: "PSYCHOGUN",
             hex_code: "008303",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18013,7 +18013,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008304, Weapon {
+        weapons.insert(0x008304, Weapon {
             name: "PSYCHOGUN",
             hex_code: "008304",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18036,7 +18036,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008305, Weapon {
+        weapons.insert(0x008305, Weapon {
             name: "PSYCHOGUN",
             hex_code: "008305",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18059,7 +18059,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008306, Weapon {
+        weapons.insert(0x008306, Weapon {
             name: "PSYCHOGUN",
             hex_code: "008306",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18082,7 +18082,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008307, Weapon {
+        weapons.insert(0x008307, Weapon {
             name: "PSYCHOGUN",
             hex_code: "008307",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18105,7 +18105,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008308, Weapon {
+        weapons.insert(0x008308, Weapon {
             name: "PSYCHOGUN",
             hex_code: "008308",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18128,7 +18128,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008309, Weapon {
+        weapons.insert(0x008309, Weapon {
             name: "PSYCHOGUN",
             hex_code: "008309",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18151,7 +18151,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00830A, Weapon {
+        weapons.insert(0x00830A, Weapon {
             name: "PSYCHOGUN",
             hex_code: "00830A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18174,7 +18174,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00830B, Weapon {
+        weapons.insert(0x00830B, Weapon {
             name: "PSYCHOGUN",
             hex_code: "00830B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18197,7 +18197,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00830C, Weapon {
+        weapons.insert(0x00830C, Weapon {
             name: "PSYCHOGUN",
             hex_code: "00830C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18220,7 +18220,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00830D, Weapon {
+        weapons.insert(0x00830D, Weapon {
             name: "PSYCHOGUN",
             hex_code: "00830D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18243,7 +18243,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00830E, Weapon {
+        weapons.insert(0x00830E, Weapon {
             name: "PSYCHOGUN",
             hex_code: "00830E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18266,7 +18266,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00830F, Weapon {
+        weapons.insert(0x00830F, Weapon {
             name: "PSYCHOGUN",
             hex_code: "00830F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18289,7 +18289,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008310, Weapon {
+        weapons.insert(0x008310, Weapon {
             name: "PSYCHOGUN",
             hex_code: "008310",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18312,7 +18312,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008401, Weapon {
+        weapons.insert(0x008401, Weapon {
             name: "PUNCH",
             hex_code: "008401",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18335,7 +18335,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008402, Weapon {
+        weapons.insert(0x008402, Weapon {
             name: "PUNCH",
             hex_code: "008402",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18358,7 +18358,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008403, Weapon {
+        weapons.insert(0x008403, Weapon {
             name: "PUNCH",
             hex_code: "008403",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18381,7 +18381,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008404, Weapon {
+        weapons.insert(0x008404, Weapon {
             name: "PUNCH",
             hex_code: "008404",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18404,7 +18404,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008405, Weapon {
+        weapons.insert(0x008405, Weapon {
             name: "PUNCH",
             hex_code: "008405",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18427,7 +18427,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008406, Weapon {
+        weapons.insert(0x008406, Weapon {
             name: "PUNCH",
             hex_code: "008406",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18450,7 +18450,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008407, Weapon {
+        weapons.insert(0x008407, Weapon {
             name: "PUNCH",
             hex_code: "008407",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18473,7 +18473,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008408, Weapon {
+        weapons.insert(0x008408, Weapon {
             name: "PUNCH",
             hex_code: "008408",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18496,7 +18496,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008409, Weapon {
+        weapons.insert(0x008409, Weapon {
             name: "PUNCH",
             hex_code: "008409",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18519,7 +18519,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00840A, Weapon {
+        weapons.insert(0x00840A, Weapon {
             name: "PUNCH",
             hex_code: "00840A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18542,7 +18542,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00840B, Weapon {
+        weapons.insert(0x00840B, Weapon {
             name: "PUNCH",
             hex_code: "00840B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18565,7 +18565,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00840C, Weapon {
+        weapons.insert(0x00840C, Weapon {
             name: "PUNCH",
             hex_code: "00840C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18588,7 +18588,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00840D, Weapon {
+        weapons.insert(0x00840D, Weapon {
             name: "PUNCH",
             hex_code: "00840D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18611,7 +18611,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00840E, Weapon {
+        weapons.insert(0x00840E, Weapon {
             name: "PUNCH",
             hex_code: "00840E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18634,7 +18634,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00840F, Weapon {
+        weapons.insert(0x00840F, Weapon {
             name: "PUNCH",
             hex_code: "00840F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18657,7 +18657,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008410, Weapon {
+        weapons.insert(0x008410, Weapon {
             name: "PUNCH",
             hex_code: "008410",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18680,7 +18680,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x008501, Weapon {
+        weapons.insert(0x008501, Weapon {
             name: "WINDMILL",
             hex_code: "008501",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18703,7 +18703,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008502, Weapon {
+        weapons.insert(0x008502, Weapon {
             name: "WINDMILL",
             hex_code: "008502",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18726,7 +18726,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008503, Weapon {
+        weapons.insert(0x008503, Weapon {
             name: "WINDMILL",
             hex_code: "008503",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18749,7 +18749,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008504, Weapon {
+        weapons.insert(0x008504, Weapon {
             name: "WINDMILL",
             hex_code: "008504",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18772,7 +18772,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008505, Weapon {
+        weapons.insert(0x008505, Weapon {
             name: "WINDMILL",
             hex_code: "008505",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18795,7 +18795,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008506, Weapon {
+        weapons.insert(0x008506, Weapon {
             name: "WINDMILL",
             hex_code: "008506",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18818,7 +18818,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008507, Weapon {
+        weapons.insert(0x008507, Weapon {
             name: "WINDMILL",
             hex_code: "008507",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18841,7 +18841,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008508, Weapon {
+        weapons.insert(0x008508, Weapon {
             name: "WINDMILL",
             hex_code: "008508",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18864,7 +18864,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008509, Weapon {
+        weapons.insert(0x008509, Weapon {
             name: "WINDMILL",
             hex_code: "008509",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18887,7 +18887,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00850A, Weapon {
+        weapons.insert(0x00850A, Weapon {
             name: "WINDMILL",
             hex_code: "00850A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18910,7 +18910,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00850B, Weapon {
+        weapons.insert(0x00850B, Weapon {
             name: "WINDMILL",
             hex_code: "00850B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18933,7 +18933,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00850C, Weapon {
+        weapons.insert(0x00850C, Weapon {
             name: "WINDMILL",
             hex_code: "00850C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18956,7 +18956,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00850D, Weapon {
+        weapons.insert(0x00850D, Weapon {
             name: "WINDMILL",
             hex_code: "00850D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -18979,7 +18979,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00850E, Weapon {
+        weapons.insert(0x00850E, Weapon {
             name: "WINDMILL",
             hex_code: "00850E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19002,7 +19002,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00850F, Weapon {
+        weapons.insert(0x00850F, Weapon {
             name: "WINDMILL",
             hex_code: "00850F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19025,7 +19025,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008510, Weapon {
+        weapons.insert(0x008510, Weapon {
             name: "WINDMILL",
             hex_code: "008510",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19048,7 +19048,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x008601, Weapon {
+        weapons.insert(0x008601, Weapon {
             name: "HARISEN",
             hex_code: "008601",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19071,7 +19071,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008602, Weapon {
+        weapons.insert(0x008602, Weapon {
             name: "HARISEN",
             hex_code: "008602",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19094,7 +19094,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008603, Weapon {
+        weapons.insert(0x008603, Weapon {
             name: "HARISEN",
             hex_code: "008603",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19117,7 +19117,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008604, Weapon {
+        weapons.insert(0x008604, Weapon {
             name: "HARISEN",
             hex_code: "008604",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19140,7 +19140,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008605, Weapon {
+        weapons.insert(0x008605, Weapon {
             name: "HARISEN",
             hex_code: "008605",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19163,7 +19163,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008606, Weapon {
+        weapons.insert(0x008606, Weapon {
             name: "HARISEN",
             hex_code: "008606",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19186,7 +19186,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008607, Weapon {
+        weapons.insert(0x008607, Weapon {
             name: "HARISEN",
             hex_code: "008607",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19209,7 +19209,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008608, Weapon {
+        weapons.insert(0x008608, Weapon {
             name: "HARISEN",
             hex_code: "008608",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19232,7 +19232,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008609, Weapon {
+        weapons.insert(0x008609, Weapon {
             name: "HARISEN",
             hex_code: "008609",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19255,7 +19255,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00860A, Weapon {
+        weapons.insert(0x00860A, Weapon {
             name: "HARISEN",
             hex_code: "00860A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19278,7 +19278,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00860B, Weapon {
+        weapons.insert(0x00860B, Weapon {
             name: "HARISEN",
             hex_code: "00860B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19301,7 +19301,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00860C, Weapon {
+        weapons.insert(0x00860C, Weapon {
             name: "HARISEN",
             hex_code: "00860C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19324,7 +19324,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00860D, Weapon {
+        weapons.insert(0x00860D, Weapon {
             name: "HARISEN",
             hex_code: "00860D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19347,7 +19347,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00860E, Weapon {
+        weapons.insert(0x00860E, Weapon {
             name: "HARISEN",
             hex_code: "00860E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19370,7 +19370,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00860F, Weapon {
+        weapons.insert(0x00860F, Weapon {
             name: "HARISEN",
             hex_code: "00860F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19393,7 +19393,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008610, Weapon {
+        weapons.insert(0x008610, Weapon {
             name: "HARISEN",
             hex_code: "008610",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19416,7 +19416,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008701, Weapon {
+        weapons.insert(0x008701, Weapon {
             name: "KATANA",
             hex_code: "008701",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19439,7 +19439,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008702, Weapon {
+        weapons.insert(0x008702, Weapon {
             name: "KATANA",
             hex_code: "008702",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19462,7 +19462,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008703, Weapon {
+        weapons.insert(0x008703, Weapon {
             name: "KATANA",
             hex_code: "008703",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19485,7 +19485,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008704, Weapon {
+        weapons.insert(0x008704, Weapon {
             name: "KATANA",
             hex_code: "008704",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19508,7 +19508,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008705, Weapon {
+        weapons.insert(0x008705, Weapon {
             name: "KATANA",
             hex_code: "008705",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19531,7 +19531,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008706, Weapon {
+        weapons.insert(0x008706, Weapon {
             name: "KATANA",
             hex_code: "008706",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19554,7 +19554,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008707, Weapon {
+        weapons.insert(0x008707, Weapon {
             name: "KATANA",
             hex_code: "008707",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19577,7 +19577,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008708, Weapon {
+        weapons.insert(0x008708, Weapon {
             name: "KATANA",
             hex_code: "008708",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19600,7 +19600,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008709, Weapon {
+        weapons.insert(0x008709, Weapon {
             name: "KATANA",
             hex_code: "008709",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19623,7 +19623,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00870A, Weapon {
+        weapons.insert(0x00870A, Weapon {
             name: "KATANA",
             hex_code: "00870A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19646,7 +19646,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00870B, Weapon {
+        weapons.insert(0x00870B, Weapon {
             name: "KATANA",
             hex_code: "00870B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19669,7 +19669,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00870C, Weapon {
+        weapons.insert(0x00870C, Weapon {
             name: "KATANA",
             hex_code: "00870C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19692,7 +19692,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00870D, Weapon {
+        weapons.insert(0x00870D, Weapon {
             name: "KATANA",
             hex_code: "00870D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19715,7 +19715,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00870E, Weapon {
+        weapons.insert(0x00870E, Weapon {
             name: "KATANA",
             hex_code: "00870E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19738,7 +19738,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00870F, Weapon {
+        weapons.insert(0x00870F, Weapon {
             name: "KATANA",
             hex_code: "00870F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19761,7 +19761,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008710, Weapon {
+        weapons.insert(0x008710, Weapon {
             name: "KATANA",
             hex_code: "008710",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19784,7 +19784,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008801, Weapon {
+        weapons.insert(0x008801, Weapon {
             name: "J-CUTTER",
             hex_code: "008801",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19807,7 +19807,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008802, Weapon {
+        weapons.insert(0x008802, Weapon {
             name: "J-CUTTER",
             hex_code: "008802",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19830,7 +19830,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008803, Weapon {
+        weapons.insert(0x008803, Weapon {
             name: "J-CUTTER",
             hex_code: "008803",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19853,7 +19853,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008804, Weapon {
+        weapons.insert(0x008804, Weapon {
             name: "J-CUTTER",
             hex_code: "008804",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19876,7 +19876,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008805, Weapon {
+        weapons.insert(0x008805, Weapon {
             name: "J-CUTTER",
             hex_code: "008805",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19899,7 +19899,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008806, Weapon {
+        weapons.insert(0x008806, Weapon {
             name: "J-CUTTER",
             hex_code: "008806",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19922,7 +19922,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008807, Weapon {
+        weapons.insert(0x008807, Weapon {
             name: "J-CUTTER",
             hex_code: "008807",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19945,7 +19945,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008808, Weapon {
+        weapons.insert(0x008808, Weapon {
             name: "J-CUTTER",
             hex_code: "008808",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19968,7 +19968,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008809, Weapon {
+        weapons.insert(0x008809, Weapon {
             name: "J-CUTTER",
             hex_code: "008809",
             description: "A mysterious weapon Its abilities are unknown",
@@ -19991,7 +19991,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00880A, Weapon {
+        weapons.insert(0x00880A, Weapon {
             name: "J-CUTTER",
             hex_code: "00880A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20014,7 +20014,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00880B, Weapon {
+        weapons.insert(0x00880B, Weapon {
             name: "J-CUTTER",
             hex_code: "00880B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20037,7 +20037,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00880C, Weapon {
+        weapons.insert(0x00880C, Weapon {
             name: "J-CUTTER",
             hex_code: "00880C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20060,7 +20060,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00880D, Weapon {
+        weapons.insert(0x00880D, Weapon {
             name: "J-CUTTER",
             hex_code: "00880D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20083,7 +20083,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00880E, Weapon {
+        weapons.insert(0x00880E, Weapon {
             name: "J-CUTTER",
             hex_code: "00880E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20106,7 +20106,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00880F, Weapon {
+        weapons.insert(0x00880F, Weapon {
             name: "J-CUTTER",
             hex_code: "00880F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20129,7 +20129,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008810, Weapon {
+        weapons.insert(0x008810, Weapon {
             name: "J-CUTTER",
             hex_code: "008810",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20152,7 +20152,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008F09, Weapon {
+        weapons.insert(0x008F09, Weapon {
             name: "Flowen's Sword (3084)*",
             hex_code: "008F09",
             description: "AUW 3084 model Thinking of his beloved Furou-uen, Horusu, Mick poured his body and soul into its creation Skin: Daisy Chain",
@@ -20175,7 +20175,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x008F0A, Weapon {
+        weapons.insert(0x008F0A, Weapon {
             name: "Flowen's Sword (3084)*",
             hex_code: "008F0A",
             description: "AUW 3084 model Thinking of his beloved Furou-uen, Horusu, Mick poured his body and soul into its creation Skin: Crazy Tune",
@@ -20198,7 +20198,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009701, Weapon {
+        weapons.insert(0x009701, Weapon {
             name: "Zanba*",
             hex_code: "009701",
             description: "A legendary long sword said to be able to slice through anything in a single stroke Skin: Daisy Chain",
@@ -20221,7 +20221,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009702, Weapon {
+        weapons.insert(0x009702, Weapon {
             name: "Zanba*",
             hex_code: "009702",
             description: "A legendary long sword said to be able to slice through anything in a single stroke Skin: Crazy Tune",
@@ -20244,7 +20244,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009C01, Weapon {
+        weapons.insert(0x009C01, Weapon {
             name: "Rainbow Baton*",
             hex_code: "009C01",
             description: "Wand with the magic stone Iritista embedded in it Skin: Diska of Liberator",
@@ -20267,7 +20267,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009C02, Weapon {
+        weapons.insert(0x009C02, Weapon {
             name: "Rainbow Baton*",
             hex_code: "009C02",
             description: "Wand with the magic stone Iritista embedded in it Skin: Izmaela",
@@ -20290,7 +20290,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009D01, Weapon {
+        weapons.insert(0x009D01, Weapon {
             name: "Dark Flow*",
             hex_code: "009D01",
             description: "Sword eroded by Olga Flow DNA Its power is awakened when its owner is in danger Skin: Daisy Chain",
@@ -20313,7 +20313,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x009D02, Weapon {
+        weapons.insert(0x009D02, Weapon {
             name: "Dark Flow*",
             hex_code: "009D02",
             description: "Sword eroded by Olga Flow DNA Its power is awakened when its owner is in danger Skin: Crazy Tune",
@@ -20336,7 +20336,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A501, Weapon {
+        weapons.insert(0x00A501, Weapon {
             name: "SWORDS",
             hex_code: "00A501",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20359,7 +20359,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A502, Weapon {
+        weapons.insert(0x00A502, Weapon {
             name: "SWORDS",
             hex_code: "00A502",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20382,7 +20382,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A503, Weapon {
+        weapons.insert(0x00A503, Weapon {
             name: "SWORDS",
             hex_code: "00A503",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20405,7 +20405,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A504, Weapon {
+        weapons.insert(0x00A504, Weapon {
             name: "SWORDS",
             hex_code: "00A504",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20428,7 +20428,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A505, Weapon {
+        weapons.insert(0x00A505, Weapon {
             name: "SWORDS",
             hex_code: "00A505",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20451,7 +20451,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A506, Weapon {
+        weapons.insert(0x00A506, Weapon {
             name: "SWORDS",
             hex_code: "00A506",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20474,7 +20474,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A507, Weapon {
+        weapons.insert(0x00A507, Weapon {
             name: "SWORDS",
             hex_code: "00A507",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20497,7 +20497,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A508, Weapon {
+        weapons.insert(0x00A508, Weapon {
             name: "SWORDS",
             hex_code: "00A508",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20520,7 +20520,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A509, Weapon {
+        weapons.insert(0x00A509, Weapon {
             name: "SWORDS",
             hex_code: "00A509",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20543,7 +20543,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A50A, Weapon {
+        weapons.insert(0x00A50A, Weapon {
             name: "SWORDS",
             hex_code: "00A50A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20566,7 +20566,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A50B, Weapon {
+        weapons.insert(0x00A50B, Weapon {
             name: "SWORDS",
             hex_code: "00A50B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20589,7 +20589,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A50C, Weapon {
+        weapons.insert(0x00A50C, Weapon {
             name: "SWORDS",
             hex_code: "00A50C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20612,7 +20612,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A50D, Weapon {
+        weapons.insert(0x00A50D, Weapon {
             name: "SWORDS",
             hex_code: "00A50D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20635,7 +20635,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A50E, Weapon {
+        weapons.insert(0x00A50E, Weapon {
             name: "SWORDS",
             hex_code: "00A50E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20658,7 +20658,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A50F, Weapon {
+        weapons.insert(0x00A50F, Weapon {
             name: "SWORDS",
             hex_code: "00A50F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20681,7 +20681,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A510, Weapon {
+        weapons.insert(0x00A510, Weapon {
             name: "SWORDS",
             hex_code: "00A510",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20704,7 +20704,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A601, Weapon {
+        weapons.insert(0x00A601, Weapon {
             name: "LAUNCHER",
             hex_code: "00A601",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20727,7 +20727,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A602, Weapon {
+        weapons.insert(0x00A602, Weapon {
             name: "LAUNCHER",
             hex_code: "00A602",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20750,7 +20750,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A603, Weapon {
+        weapons.insert(0x00A603, Weapon {
             name: "LAUNCHER",
             hex_code: "00A603",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20773,7 +20773,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A604, Weapon {
+        weapons.insert(0x00A604, Weapon {
             name: "LAUNCHER",
             hex_code: "00A604",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20796,7 +20796,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A605, Weapon {
+        weapons.insert(0x00A605, Weapon {
             name: "LAUNCHER",
             hex_code: "00A605",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20819,7 +20819,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A606, Weapon {
+        weapons.insert(0x00A606, Weapon {
             name: "LAUNCHER",
             hex_code: "00A606",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20842,7 +20842,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A607, Weapon {
+        weapons.insert(0x00A607, Weapon {
             name: "LAUNCHER",
             hex_code: "00A607",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20865,7 +20865,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A608, Weapon {
+        weapons.insert(0x00A608, Weapon {
             name: "LAUNCHER",
             hex_code: "00A608",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20888,7 +20888,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A609, Weapon {
+        weapons.insert(0x00A609, Weapon {
             name: "LAUNCHER",
             hex_code: "00A609",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20911,7 +20911,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A60A, Weapon {
+        weapons.insert(0x00A60A, Weapon {
             name: "LAUNCHER",
             hex_code: "00A60A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20934,7 +20934,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A60B, Weapon {
+        weapons.insert(0x00A60B, Weapon {
             name: "LAUNCHER",
             hex_code: "00A60B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20957,7 +20957,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A60C, Weapon {
+        weapons.insert(0x00A60C, Weapon {
             name: "LAUNCHER",
             hex_code: "00A60C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -20980,7 +20980,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A60D, Weapon {
+        weapons.insert(0x00A60D, Weapon {
             name: "LAUNCHER",
             hex_code: "00A60D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21003,7 +21003,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A60E, Weapon {
+        weapons.insert(0x00A60E, Weapon {
             name: "LAUNCHER",
             hex_code: "00A60E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21026,7 +21026,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A60F, Weapon {
+        weapons.insert(0x00A60F, Weapon {
             name: "LAUNCHER",
             hex_code: "00A60F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21049,7 +21049,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A610, Weapon {
+        weapons.insert(0x00A610, Weapon {
             name: "LAUNCHER",
             hex_code: "00A610",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21072,7 +21072,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 180,
             requirement_mst: 0
         });
-        codes.insert(0x00A701, Weapon {
+        weapons.insert(0x00A701, Weapon {
             name: "CARDS",
             hex_code: "00A701",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21095,7 +21095,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A702, Weapon {
+        weapons.insert(0x00A702, Weapon {
             name: "CARDS",
             hex_code: "00A702",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21118,7 +21118,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A703, Weapon {
+        weapons.insert(0x00A703, Weapon {
             name: "CARDS",
             hex_code: "00A703",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21141,7 +21141,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A704, Weapon {
+        weapons.insert(0x00A704, Weapon {
             name: "CARDS",
             hex_code: "00A704",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21164,7 +21164,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A705, Weapon {
+        weapons.insert(0x00A705, Weapon {
             name: "CARDS",
             hex_code: "00A705",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21187,7 +21187,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A706, Weapon {
+        weapons.insert(0x00A706, Weapon {
             name: "CARDS",
             hex_code: "00A706",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21210,7 +21210,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A707, Weapon {
+        weapons.insert(0x00A707, Weapon {
             name: "CARDS",
             hex_code: "00A707",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21233,7 +21233,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A708, Weapon {
+        weapons.insert(0x00A708, Weapon {
             name: "CARDS",
             hex_code: "00A708",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21256,7 +21256,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A709, Weapon {
+        weapons.insert(0x00A709, Weapon {
             name: "CARDS",
             hex_code: "00A709",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21279,7 +21279,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A70A, Weapon {
+        weapons.insert(0x00A70A, Weapon {
             name: "CARDS",
             hex_code: "00A70A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21302,7 +21302,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A70B, Weapon {
+        weapons.insert(0x00A70B, Weapon {
             name: "CARDS",
             hex_code: "00A70B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21325,7 +21325,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A70C, Weapon {
+        weapons.insert(0x00A70C, Weapon {
             name: "CARDS",
             hex_code: "00A70C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21348,7 +21348,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A70D, Weapon {
+        weapons.insert(0x00A70D, Weapon {
             name: "CARDS",
             hex_code: "00A70D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21371,7 +21371,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A70E, Weapon {
+        weapons.insert(0x00A70E, Weapon {
             name: "CARDS",
             hex_code: "00A70E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21394,7 +21394,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A70F, Weapon {
+        weapons.insert(0x00A70F, Weapon {
             name: "CARDS",
             hex_code: "00A70F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21417,7 +21417,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A710, Weapon {
+        weapons.insert(0x00A710, Weapon {
             name: "CARDS",
             hex_code: "00A710",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21440,7 +21440,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 800
         });
-        codes.insert(0x00A801, Weapon {
+        weapons.insert(0x00A801, Weapon {
             name: "KNUCKLE",
             hex_code: "00A801",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21463,7 +21463,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A802, Weapon {
+        weapons.insert(0x00A802, Weapon {
             name: "KNUCKLE",
             hex_code: "00A802",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21486,7 +21486,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A803, Weapon {
+        weapons.insert(0x00A803, Weapon {
             name: "KNUCKLE",
             hex_code: "00A803",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21509,7 +21509,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A804, Weapon {
+        weapons.insert(0x00A804, Weapon {
             name: "KNUCKLE",
             hex_code: "00A804",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21532,7 +21532,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A805, Weapon {
+        weapons.insert(0x00A805, Weapon {
             name: "KNUCKLE",
             hex_code: "00A805",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21555,7 +21555,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A806, Weapon {
+        weapons.insert(0x00A806, Weapon {
             name: "KNUCKLE",
             hex_code: "00A806",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21578,7 +21578,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A807, Weapon {
+        weapons.insert(0x00A807, Weapon {
             name: "KNUCKLE",
             hex_code: "00A807",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21601,7 +21601,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A808, Weapon {
+        weapons.insert(0x00A808, Weapon {
             name: "KNUCKLE",
             hex_code: "00A808",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21624,7 +21624,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A809, Weapon {
+        weapons.insert(0x00A809, Weapon {
             name: "KNUCKLE",
             hex_code: "00A809",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21647,7 +21647,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A80A, Weapon {
+        weapons.insert(0x00A80A, Weapon {
             name: "KNUCKLE",
             hex_code: "00A80A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21670,7 +21670,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A80B, Weapon {
+        weapons.insert(0x00A80B, Weapon {
             name: "KNUCKLE",
             hex_code: "00A80B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21693,7 +21693,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A80C, Weapon {
+        weapons.insert(0x00A80C, Weapon {
             name: "KNUCKLE",
             hex_code: "00A80C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21716,7 +21716,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A80D, Weapon {
+        weapons.insert(0x00A80D, Weapon {
             name: "KNUCKLE",
             hex_code: "00A80D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21739,7 +21739,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A80E, Weapon {
+        weapons.insert(0x00A80E, Weapon {
             name: "KNUCKLE",
             hex_code: "00A80E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21762,7 +21762,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A80F, Weapon {
+        weapons.insert(0x00A80F, Weapon {
             name: "KNUCKLE",
             hex_code: "00A80F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21785,7 +21785,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A810, Weapon {
+        weapons.insert(0x00A810, Weapon {
             name: "KNUCKLE",
             hex_code: "00A810",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21808,7 +21808,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A901, Weapon {
+        weapons.insert(0x00A901, Weapon {
             name: "AXE",
             hex_code: "00A901",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21831,7 +21831,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A902, Weapon {
+        weapons.insert(0x00A902, Weapon {
             name: "AXE",
             hex_code: "00A902",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21854,7 +21854,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A903, Weapon {
+        weapons.insert(0x00A903, Weapon {
             name: "AXE",
             hex_code: "00A903",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21877,7 +21877,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A904, Weapon {
+        weapons.insert(0x00A904, Weapon {
             name: "AXE",
             hex_code: "00A904",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21900,7 +21900,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A905, Weapon {
+        weapons.insert(0x00A905, Weapon {
             name: "AXE",
             hex_code: "00A905",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21923,7 +21923,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A906, Weapon {
+        weapons.insert(0x00A906, Weapon {
             name: "AXE",
             hex_code: "00A906",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21946,7 +21946,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A907, Weapon {
+        weapons.insert(0x00A907, Weapon {
             name: "AXE",
             hex_code: "00A907",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21969,7 +21969,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A908, Weapon {
+        weapons.insert(0x00A908, Weapon {
             name: "AXE",
             hex_code: "00A908",
             description: "A mysterious weapon Its abilities are unknown",
@@ -21992,7 +21992,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A909, Weapon {
+        weapons.insert(0x00A909, Weapon {
             name: "AXE",
             hex_code: "00A909",
             description: "A mysterious weapon Its abilities are unknown",
@@ -22015,7 +22015,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A90A, Weapon {
+        weapons.insert(0x00A90A, Weapon {
             name: "AXE",
             hex_code: "00A90A",
             description: "A mysterious weapon Its abilities are unknown",
@@ -22038,7 +22038,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A90B, Weapon {
+        weapons.insert(0x00A90B, Weapon {
             name: "AXE",
             hex_code: "00A90B",
             description: "A mysterious weapon Its abilities are unknown",
@@ -22061,7 +22061,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A90C, Weapon {
+        weapons.insert(0x00A90C, Weapon {
             name: "AXE",
             hex_code: "00A90C",
             description: "A mysterious weapon Its abilities are unknown",
@@ -22084,7 +22084,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A90D, Weapon {
+        weapons.insert(0x00A90D, Weapon {
             name: "AXE",
             hex_code: "00A90D",
             description: "A mysterious weapon Its abilities are unknown",
@@ -22107,7 +22107,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A90E, Weapon {
+        weapons.insert(0x00A90E, Weapon {
             name: "AXE",
             hex_code: "00A90E",
             description: "A mysterious weapon Its abilities are unknown",
@@ -22130,7 +22130,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A90F, Weapon {
+        weapons.insert(0x00A90F, Weapon {
             name: "AXE",
             hex_code: "00A90F",
             description: "A mysterious weapon Its abilities are unknown",
@@ -22153,7 +22153,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00A910, Weapon {
+        weapons.insert(0x00A910, Weapon {
             name: "AXE",
             hex_code: "00A910",
             description: "A mysterious weapon Its abilities are unknown",
@@ -22176,7 +22176,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00AA01, Weapon {
+        weapons.insert(0x00AA01, Weapon {
             name: "Slicer of Fanatic*",
             hex_code: "00AA01",
             description: "A bizarre slicer that takes away HP when used Skin: Diska of Liberator",
@@ -22199,7 +22199,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00AA02, Weapon {
+        weapons.insert(0x00AA02, Weapon {
             name: "Slicer of Fanatic*",
             hex_code: "00AA02",
             description: "A bizarre slicer that takes away HP when used Skin: Izmaela",
@@ -22222,7 +22222,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00AC01, Weapon {
+        weapons.insert(0x00AC01, Weapon {
             name: "Excalibur*",
             hex_code: "00AC01",
             description: "A golden sword that gets even more powerful bysacrificing HP for a powerfulattack Skin: Lollipop",
@@ -22245,7 +22245,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00AC02, Weapon {
+        weapons.insert(0x00AC02, Weapon {
             name: "Excalibur*",
             hex_code: "00AC02",
             description: "A golden sword that gets even more powerful bysacrificing HP for a powerfulattack Skin: DB's Saber",
@@ -22268,7 +22268,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00AD00, Weapon {
+        weapons.insert(0x00AD00, Weapon {
             name: "Rage de Foudre",
             hex_code: "00AD00",
             description: "A machine gun with an icy blue barrel Special: Tempest",
@@ -22291,7 +22291,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 190,
             requirement_mst: 0
         });
-        codes.insert(0x00AD01, Weapon {
+        weapons.insert(0x00AD01, Weapon {
             name: "Rage de Glace",
             hex_code: "00AD01",
             description: "A machine gun with an icy blue barrel Special: Blizzard",
@@ -22314,7 +22314,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 190,
             requirement_mst: 0
         });
-        codes.insert(0x00AD02, Weapon {
+        weapons.insert(0x00AD02, Weapon {
             name: "Rage d'Ame",
             hex_code: "00AD02",
             description: "A machine gun with an icy blue barrel Special: Geist",
@@ -22337,7 +22337,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 190,
             requirement_mst: 0
         });
-        codes.insert(0x00B001, Weapon {
+        weapons.insert(0x00B001, Weapon {
             name: "Mille Marteaux*",
             hex_code: "00B001",
             description: "Powerful machine gun that's fit only for veteran Rangers Skin: Yasminkov 9000M",
@@ -22360,7 +22360,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 190,
             requirement_mst: 0
         });
-        codes.insert(0x00B002, Weapon {
+        weapons.insert(0x00B002, Weapon {
             name: "Mille Marteaux*",
             hex_code: "00B002",
             description: "Powerful machine gun that's fit only for veteran Rangers Skin: Samba Maracas",
@@ -22383,7 +22383,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 190,
             requirement_mst: 0
         });
-        codes.insert(0x00BA01, Weapon {
+        weapons.insert(0x00BA01, Weapon {
             name: "Yunchang*",
             hex_code: "00BA01",
             description: "A legendary blade of the Blue Dragon Sacrifices HP for a powerfulattack Skin: Plantain Huge Fan",
@@ -22406,7 +22406,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 0
         });
-        codes.insert(0x00BF01, Weapon {
+        weapons.insert(0x00BF01, Weapon {
             name: "Heaven Striker*",
             hex_code: "00BF01",
             description: "A handgun based on secret military blueprints Skin: Tension Blaster",
@@ -22429,7 +22429,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 200,
             requirement_mst: 0
         });
-        codes.insert(0x00BF02, Weapon {
+        weapons.insert(0x00BF02, Weapon {
             name: "Heaven Striker*",
             hex_code: "00BF02",
             description: "A handgun based on secret military blueprints Skin: Suppressed Gun",
@@ -22452,7 +22452,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 200,
             requirement_mst: 0
         });
-        codes.insert(0x00C501, Weapon {
+        weapons.insert(0x00C501, Weapon {
             name: "Glide Divine*",
             hex_code: "00C501",
             description: "A solid blue cane that boosts the power of techniques Skin: Rabbit Wand",
@@ -22475,7 +22475,7 @@ pub fn weapon_info() -> HashMap<u32, Weapon> {
             requirement_ata: 0,
             requirement_mst: 900
         });
-        codes.insert(0x00C502, Weapon {
+        weapons.insert(0x00C502, Weapon {
             name: "Glide Divine*",
             hex_code: "00C502",
             description: "A solid blue cane that boosts the power of techniques Skin: Sorcerer's Cane",
